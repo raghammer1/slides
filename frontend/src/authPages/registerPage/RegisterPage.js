@@ -4,6 +4,7 @@ import RegisterPageInputs from './RegisterPageInputs';
 import RegisterPageFooter from './RegisterPageFooter';
 import { validateRegisterForm } from '../../shared/validators';
 import AuthBox from '../../components/AuthBox';
+import { register } from '../../api/api';
 
 const RegisterPage = () => {
   const [mail, setMail] = useState('');
@@ -16,8 +17,14 @@ const RegisterPage = () => {
     setIsFormValid(validateRegisterForm({ mail, username, password }));
   }, [mail, password, username, setIsFormValid]);
 
-  const handleRegister = () => {
-    console.log(mail, password);
+  const handleRegister = async () => {
+    const registerData = await register({
+      email: mail,
+      password,
+      name: username,
+    });
+    const token = registerData.data.token;
+    localStorage.setItem('token', token);
   };
 
   return (

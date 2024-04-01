@@ -4,6 +4,7 @@ import LoginPageFooter from './LoginPageFooter';
 import { Typography } from '@mui/material';
 import { validateLoginForm } from '../../shared/validators';
 import AuthBox from '../../components/AuthBox';
+import { login } from '../../api/api';
 
 const Login = () => {
   const [mail, setMail] = useState('');
@@ -14,8 +15,10 @@ const Login = () => {
     setIsFormValid(validateLoginForm({ mail, password }));
   }, [mail, password, setIsFormValid]);
 
-  const handleLoginFunction = () => {
-    console.log(mail, password);
+  const handleLoginFunction = async () => {
+    const loginData = await login({ email: mail, password });
+    const token = loginData.data.token;
+    localStorage.setItem('token', token);
   };
 
   return (
