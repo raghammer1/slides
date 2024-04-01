@@ -1,7 +1,6 @@
 export const validateLoginForm = ({ mail, password }) => {
   const isMailValid = validateMail(mail);
   const isPassValid = validatePassword(password);
-  console.log(isMailValid, isPassValid);
   return isMailValid && isPassValid;
 };
 

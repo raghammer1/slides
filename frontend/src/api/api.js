@@ -7,10 +7,9 @@ const apiClient = axios.create({
 
 apiClient.interceptors.request.use(
   (config) => {
-    const userDetails = localStorage.getItem('user'); // Retrieve user details from localStorage
-    if (userDetails) {
+    const token = localStorage.getItem('token'); // Retrieve token from localStorage
+    if (token) {
       try {
-        const token = JSON.parse(userDetails).token;
         config.headers.Authorization = `Bearer ${token}`;
       } catch (err) {
         console.log(err);
@@ -27,7 +26,6 @@ apiClient.interceptors.request.use(
 
 export const login = async (data) => {
   try {
-    console.log('I AM HERE WITH DATA: ', data);
     return await apiClient.post('/admin/auth/login', data);
   } catch (e) {
     return { error: true, e };
