@@ -13,6 +13,9 @@ const CustomPrimaryButton = ({ label, additionalStyle, disabled, onClick }) => {
         fontWeight: 500,
         width: '100%',
         height: '40px',
+        '&:disabled': {
+          color: '#555',
+        },
       }}
       style={additionalStyle || {}}
       disabled={disabled}
