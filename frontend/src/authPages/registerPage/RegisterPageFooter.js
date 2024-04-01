@@ -12,7 +12,7 @@ const RegisterPageFooter = ({ handleRegister, isFormValid }) => {
   };
 
   const getNotFormValid = () => {
-    return 'Username must contain between 3 and 12 characters, password must contain between 6 to 12 characters and email must be correct as well';
+    return isFormValid.message;
   };
 
   const getFormValid = () => {
@@ -21,12 +21,12 @@ const RegisterPageFooter = ({ handleRegister, isFormValid }) => {
 
   return (
     <>
-      <Tooltip title={!isFormValid ? getNotFormValid() : getFormValid()}>
+      <Tooltip title={!isFormValid.valid ? getNotFormValid() : getFormValid()}>
         <div>
           <CustomPrimaryButton
             label="Register"
             additionalStyle={{ marginTop: '30px' }}
-            disabled={!isFormValid}
+            disabled={!isFormValid.valid}
             onClick={handleRegister}
           />
         </div>

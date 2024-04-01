@@ -5,12 +5,30 @@ export const validateLoginForm = ({ mail, password }) => {
   return isMailValid && isPassValid;
 };
 
-export const validateRegisterForm = ({ mail, username, password }) => {
+export const validateRegisterForm = ({
+  mail,
+  username,
+  password,
+  checkPassword,
+}) => {
   const isMailValid = validateMail(mail);
   const isPassValid = validatePassword(password);
   const isUsernameValid = validateUsername(username);
-  console.log(isMailValid, isPassValid);
-  return isMailValid && isPassValid && isUsernameValid;
+  const passwordsMatch = password === checkPassword;
+
+  let message =
+    'Username must contain between 3 and 12 characters, password must contain between 6 to 12 characters';
+
+  if (!isMailValid) {
+    message = 'Email must be of valid type';
+  } else if (!passwordsMatch) {
+    message = 'Passwords must match';
+  }
+
+  return {
+    message,
+    valid: isMailValid && isPassValid && isUsernameValid && passwordsMatch,
+  };
 };
 
 const validateUsername = (username) => {

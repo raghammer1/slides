@@ -10,12 +10,15 @@ const RegisterPage = () => {
   const [mail, setMail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [checkPassword, setCheckPassword] = useState('');
 
   const [isFormValid, setIsFormValid] = useState(true);
 
   useEffect(() => {
-    setIsFormValid(validateRegisterForm({ mail, username, password }));
-  }, [mail, password, username, setIsFormValid]);
+    setIsFormValid(
+      validateRegisterForm({ mail, username, password, checkPassword })
+    );
+  }, [mail, password, username, checkPassword, setIsFormValid]);
 
   const handleRegister = async () => {
     const registerData = await register({
@@ -39,6 +42,8 @@ const RegisterPage = () => {
         setMail={setMail}
         password={password}
         setPassword={setPassword}
+        checkPassword={checkPassword}
+        setCheckPassword={setCheckPassword}
       />
       <RegisterPageFooter
         isFormValid={isFormValid}
