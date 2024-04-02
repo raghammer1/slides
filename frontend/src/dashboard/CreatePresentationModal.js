@@ -38,10 +38,17 @@ const CreatePresentationModal = ({ open, handleClose }) => {
 
   const handleCreatePresentationFunction = () => {
     const randomId = uuidv4();
+    const randomIdSlides = uuidv4();
     const newPresentation = {
       id: randomId,
       name,
-      slides: [{ name: 'Slide One PLACEHOLDER FOR NOW' }],
+      slides: [
+        {
+          id: randomIdSlides,
+          name: 'Slide One PLACEHOLDER FOR NOW',
+          slideNumber: 1,
+        },
+      ],
     };
     addPresentation(newPresentation);
     handleClose();

@@ -11,7 +11,7 @@ const usePresentationListStore = create((set) => ({
   presentations: [],
   addPresentation: (newPresentation) => {
     set((state) => {
-      // console.log(state);
+      console.log(state);
       return { presentations: [...state.presentations, newPresentation] };
     });
   },
@@ -26,7 +26,20 @@ const usePresentationListStore = create((set) => ({
     set((state) => ({
       presentations: state.presentations.map((presentation) =>
         presentation.id === id
-          ? { ...presentation, slides: [...presentation.slides, newSlide] }
+          ? {
+              ...presentation,
+              slides: [
+                ...presentation.slides,
+                {
+                  ...newSlide,
+                  slideNumber:
+                    presentation.slides.reduce(
+                      (max, slide) => Math.max(max, slide.slideNumber),
+                      0
+                    ) + 1,
+                },
+              ],
+            }
           : presentation
       ),
     })),
