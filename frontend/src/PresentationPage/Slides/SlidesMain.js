@@ -1,6 +1,12 @@
 import React from 'react';
-const SlidesMain = (slides) => {
-  console.log(slides.slides[0]);
-  return <div>{slides.slides[0].name}</div>;
+import useSlidesListStore from '../../zustandStore/useSlidesListStore';
+const SlidesMain = ({ presentationId }) => {
+  const getSlidesForPresentation = useSlidesListStore(
+    (state) => state.getSlidesForPresentation
+  );
+  const slides = getSlidesForPresentation(presentationId);
+
+  console.log(slides[0]);
+  return <div>{slides[0].name}</div>;
 };
 export default SlidesMain;

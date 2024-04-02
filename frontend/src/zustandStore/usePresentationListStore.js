@@ -22,27 +22,27 @@ const usePresentationListStore = create((set) => ({
         (presentation) => presentation.id !== id
       ),
     })),
-  addSlideToPresentation: (id, newSlide) =>
-    set((state) => ({
-      presentations: state.presentations.map((presentation) =>
-        presentation.id === id
-          ? {
-              ...presentation,
-              slides: [
-                ...presentation.slides,
-                {
-                  ...newSlide,
-                  slideNumber:
-                    presentation.slides.reduce(
-                      (max, slide) => Math.max(max, slide.slideNumber),
-                      0
-                    ) + 1,
-                },
-              ],
-            }
-          : presentation
-      ),
-    })),
+  // addSlideToPresentation: (id, newSlide) =>
+  //   set((state) => ({
+  //     presentations: state.presentations.map((presentation) =>
+  //       presentation.id === id
+  //         ? {
+  //             ...presentation,
+  //             slides: [
+  //               ...presentation.slides,
+  //               {
+  //                 ...newSlide,
+  //                 slideNumber:
+  //                   presentation.slides.reduce(
+  //                     (max, slide) => Math.max(max, slide.slideNumber),
+  //                     0
+  //                   ) + 1,
+  //               },
+  //             ],
+  //           }
+  //         : presentation
+  //     ),
+  //   })),
   updatePresentationTitle: (id, newTitle) =>
     set((state) => ({
       presentations: state.presentations.map((presentation) =>

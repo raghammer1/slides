@@ -110,7 +110,7 @@ const PresentationDetail = () => {
           onClick={handleGoBack}
         />
       </Wrapper>
-      <SlidesMain slides={presentation.slides} />
+      <SlidesMain presentationId={presentation.id} />
       <DeletePresentationModal
         open={open}
         handleClose={handleClose}
