@@ -60,7 +60,7 @@ const CreatePresentationModal = ({ open, handleClose }) => {
         <Tooltip title={!isFormValid ? getNotFormValid() : getFormValid()}>
           <div>
             <CustomPrimaryButton
-              label="Log in"
+              label="Create"
               additionalStyle={{ marginTop: '30px' }}
               disabled={!isFormValid}
               onClick={handleCreatePresentationFunction}

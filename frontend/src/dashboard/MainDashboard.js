@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { styled } from '@mui/system';
 import CustomPrimaryButton from '../components/CustomePrimaryButton';
 import CreatePresentationModal from './CreatePresentationModal';
+import PresentationList from './PresentationList/PresentationList';
 
 const MainDashboard = () => {
   const Wrapper = styled('div')({
@@ -19,12 +20,13 @@ const MainDashboard = () => {
     <Wrapper>
       <div style={{ backgroundColor: '#444', padding: '20px' }}>
         <CustomPrimaryButton
-          label={'New Dashboard'}
+          label={'New Presentation'}
           additionalStyle={{ width: '200px', height: '40px' }}
           onClick={handleOpen}
         />
       </div>
-      <div>LIST OF PRESENTATIONS</div>
+      {/* <div>LIST OF PRESENTATIONS</div> */}
+      <PresentationList />
       {/* MODAL */}
       <CreatePresentationModal open={open} handleClose={handleClose} />
     </Wrapper>
