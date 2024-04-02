@@ -3,6 +3,7 @@ import { styled } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import CustomPrimaryButton from '../../components/CustomePrimaryButton';
 import useCurrentUserStore from '../../zustandStore/useCurrentUserStore';
+import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 
 const Fold = () => {
   const NavWrapper = styled('div')({
@@ -19,6 +20,7 @@ const Fold = () => {
   });
 
   const { clearCurrentUser } = useCurrentUserStore();
+  const { clearPresentations } = usePresentationListStore();
 
   const nav = useNavigate();
 
@@ -26,6 +28,7 @@ const Fold = () => {
   const LogoutUser = () => {
     localStorage.clear();
     clearCurrentUser();
+    clearPresentations();
     nav('/login');
   };
 

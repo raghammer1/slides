@@ -10,7 +10,7 @@ const PresentationCard = ({ presentation }) => {
     backgroundColor: '#333',
     color: '#fff',
     width: 'calc(33.333% - 20px)',
-    aspectRatio: '2 / 1',
+    height: '175px',
     marginTop: '10px',
   });
   return <Wrapper>{presentation.name}</Wrapper>;
