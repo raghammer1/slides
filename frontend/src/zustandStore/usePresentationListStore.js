@@ -30,6 +30,14 @@ const usePresentationListStore = create((set) => ({
           : presentation
       ),
     })),
+  updatePresentationTitle: (id, newTitle) =>
+    set((state) => ({
+      presentations: state.presentations.map((presentation) =>
+        presentation.id === id
+          ? { ...presentation, name: newTitle }
+          : presentation
+      ),
+    })),
 }));
 
 export default usePresentationListStore;
