@@ -6,6 +6,7 @@ import DeletePresentationModal from './DeletePresentationModal';
 import { Typography } from '@mui/material';
 import styled from '@emotion/styled';
 import EditPresentationTitleModal from './EditPresentationTitleModal';
+import SlidesMain from './Slides/SlidesMain';
 
 const Wrapper = styled('div')({
   display: 'flex',
@@ -109,6 +110,7 @@ const PresentationDetail = () => {
           onClick={handleGoBack}
         />
       </Wrapper>
+      <SlidesMain slides={presentation.slides} />
       <DeletePresentationModal
         open={open}
         handleClose={handleClose}
