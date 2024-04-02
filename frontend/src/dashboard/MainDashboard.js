@@ -5,26 +5,26 @@ import CreatePresentationModal from './CreatePresentationModal';
 
 const MainDashboard = () => {
   const Wrapper = styled('div')({
-    height: '40px',
+    height: '89vh',
     display: 'flex',
     flexDirection: 'row',
     gap: '20px',
-    marginTop: '20px',
   });
 
-  // const openSetPresentationModal = () => {};
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
     <Wrapper>
-      <CustomPrimaryButton
-        label={'New Dashboard'}
-        additionalStyle={{ width: '200px', height: '40px' }}
-        onClick={handleOpen}
-      />
-      MainDashboard
+      <div style={{ backgroundColor: '#444', padding: '20px' }}>
+        <CustomPrimaryButton
+          label={'New Dashboard'}
+          additionalStyle={{ width: '200px', height: '40px' }}
+          onClick={handleOpen}
+        />
+      </div>
+      <div>LIST OF PRESENTATIONS</div>
       {/* MODAL */}
       <CreatePresentationModal open={open} handleClose={handleClose} />
     </Wrapper>
