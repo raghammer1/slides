@@ -4,6 +4,7 @@ import Login from './authPages/loginPage/Login.js';
 import RegisterPage from './authPages/registerPage/RegisterPage.js';
 import Dashboard from './dashboard/Dashboard.js';
 import ProtectedRoute from './ProtectedRoute.js';
+import PresentationMainPage from './PresentationPage/PresentationMainPage.js';
 
 const App = () => {
   return (
@@ -18,6 +19,14 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/presentation/:id"
+            element={
+              <ProtectedRoute>
+                <PresentationMainPage />
               </ProtectedRoute>
             }
           />
