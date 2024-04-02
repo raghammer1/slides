@@ -9,8 +9,8 @@ const PresentationCard = ({ presentation }) => {
     alignItems: 'center',
     backgroundColor: '#333',
     color: '#fff',
-    width: 'calc(33.333% - 20px)',
-    height: '175px',
+    width: 'calc(25% - 20px)',
+    height: '120px',
     marginTop: '10px',
   });
   return <Wrapper>{presentation.name}</Wrapper>;
