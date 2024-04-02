@@ -12,6 +12,8 @@ const PresentationList = () => {
     display: 'flex',
     flexDirection: 'row',
     gap: '20px',
+    flexWrap: 'wrap',
+    overflow: 'auto',
   });
 
   return (
