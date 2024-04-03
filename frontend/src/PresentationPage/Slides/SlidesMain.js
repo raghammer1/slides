@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useSlidesListStore from '../../zustandStore/useSlidesListStore';
 import styled from '@emotion/styled';
 import SlidesList from './SlidesList';
@@ -19,15 +19,15 @@ const SlidesMain = ({ presentationId }) => {
   );
   const slides = getSlidesForPresentation(presentationId);
 
+  const [selectedSlide, setSelectedSlide] = useState(slides[0]);
+
   console.log(slides[0]);
   return (
     <Wrapper>
-      <SlidesList />
-      <SlideDisplay />
+      <SlidesList setSelectedSlide={setSelectedSlide} />
+      <SlideDisplay selectedSlide={selectedSlide} />
     </Wrapper>
   );
 };
-
-// STABLE SAVE
 
 export default SlidesMain;
