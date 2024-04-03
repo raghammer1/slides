@@ -9,9 +9,10 @@ const SlideDisplay = ({ selectedSlide }) => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: '#999',
       }}
     >
-      {selectedSlide.id}
+      Slide: {selectedSlide.slideNumber} and id: {selectedSlide.id}
     </div>
   );
 };

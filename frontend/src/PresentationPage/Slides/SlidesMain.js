@@ -21,6 +21,7 @@ const SlidesMain = ({ presentationId }) => {
   const slides = getSlidesForPresentation(presentationId);
 
   const [selectedSlide, setSelectedSlide] = useState(slides[0]);
+  const selectedSlideId = selectedSlide.id;
 
   return (
     <div
@@ -35,6 +36,7 @@ const SlidesMain = ({ presentationId }) => {
         <SlidesList
           presentationId={presentationId}
           setSelectedSlide={setSelectedSlide}
+          selectedSlideId={selectedSlideId}
         />
         <SlideDisplay selectedSlide={selectedSlide} />
       </Wrapper>

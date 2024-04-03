@@ -2,7 +2,7 @@ import React from 'react';
 import useSlidesListStore from '../../zustandStore/useSlidesListStore';
 import { v4 as uuidv4 } from 'uuid';
 
-const SlidesList = ({ presentationId, setSelectedSlide }) => {
+const SlidesList = ({ selectedSlideId, presentationId, setSelectedSlide }) => {
   const { slides, addSlide } = useSlidesListStore((state) => ({
     slides: state.getSlidesForPresentation(presentationId),
     addSlide: state.addSlide,
@@ -32,7 +32,8 @@ const SlidesList = ({ presentationId, setSelectedSlide }) => {
             margin: '5px',
             border: '1px solid #ccc',
             borderRadius: '5px',
-            backgroundColor: '#f0f0f0',
+            backgroundColor:
+              slide.id === selectedSlideId ? '#aaf0d1' : '#f0f0f0',
             width: '250px',
           }}
         >
