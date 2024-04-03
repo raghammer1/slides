@@ -77,7 +77,6 @@ const SlidesList = ({ selectedSlideId, presentationId, setSelectedSlide }) => {
   const handleAddNewSlide = () => {
     const newSlide = {
       id: uuidv4(),
-      // Add more slide properties as needed
     };
     addSlide(presentationId, newSlide);
   };
