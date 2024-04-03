@@ -1,5 +1,17 @@
 import React from 'react';
 import useSlidesListStore from '../../zustandStore/useSlidesListStore';
+import styled from '@emotion/styled';
+import SlidesList from './SlidesList';
+import SlideDisplay from './SlideDisplay';
+
+const Wrapper = styled('div')({
+  width: '90vw',
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  padding: '30px',
+});
 
 const SlidesMain = ({ presentationId }) => {
   const getSlidesForPresentation = useSlidesListStore(
@@ -8,6 +20,12 @@ const SlidesMain = ({ presentationId }) => {
   const slides = getSlidesForPresentation(presentationId);
 
   console.log(slides[0]);
-  return <div>{slides[0].name}</div>;
+  return (
+    <Wrapper>
+      <SlidesList />
+      <SlideDisplay />
+    </Wrapper>
+  );
 };
+
 export default SlidesMain;
