@@ -48,7 +48,6 @@ const CreatePresentationModal = ({ open, handleClose }) => {
 
     const slide = {
       id: randomIdSlides,
-      name: 'Slide One PLACEHOLDER FOR NOW',
     };
 
     addSlide(presentationId, slide);

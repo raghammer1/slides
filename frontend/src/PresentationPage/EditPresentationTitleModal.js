@@ -2,7 +2,6 @@ import React from 'react';
 import CustomModal from '../components/CustomModal';
 import InputWithLabels from '../components/InputLabel';
 import CustomPrimaryButton from '../components/CustomePrimaryButton';
-// import CustomPrimaryButton from '../components/CustomePrimaryButton';
 
 const style = {
   position: 'absolute',

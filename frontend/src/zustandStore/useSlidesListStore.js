@@ -32,6 +32,15 @@ const useSlidesListStore = create((set, get) => ({
       };
     });
   },
+  deletePresentationAllSlides: (presentationId) => {
+    set((state) => {
+      const { [presentationId]: _, ...remainingSlides } = state.slides;
+      console.log(remainingSlides, 'REMAINING SLIDES');
+      return {
+        slides: remainingSlides,
+      };
+    });
+  },
   getSlidesForPresentation: (presentationId) => {
     // Using get() to access the current state
     const state = get();

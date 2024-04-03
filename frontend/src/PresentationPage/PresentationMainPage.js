@@ -7,6 +7,7 @@ import { Typography } from '@mui/material';
 import styled from '@emotion/styled';
 import EditPresentationTitleModal from './EditPresentationTitleModal';
 import SlidesMain from './Slides/SlidesMain';
+import useSlidesListStore from '../zustandStore/useSlidesListStore';
 
 const Wrapper = styled('div')({
   display: 'flex',
@@ -60,6 +61,8 @@ const PresentationDetail = () => {
   const { presentations, deleteOnePresentation, updatePresentationTitle } =
     usePresentationListStore();
 
+  const { deletePresentationAllSlides } = useSlidesListStore();
+
   const presentation = presentations.find((p) => p.id === id);
 
   const [title, setTitle] = useState(`${presentation.name}`);
@@ -68,6 +71,7 @@ const PresentationDetail = () => {
     console.log('delete');
     setOpen(false);
     deleteOnePresentation(id);
+    deletePresentationAllSlides(id);
     nav('/dashboard');
   };
 
