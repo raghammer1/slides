@@ -22,13 +22,17 @@ const useSlidesListStore = create((set, get) => ({
       };
     });
   },
-  deleteSlide: (presentationId, slideNumber) => {
+  deleteSlide: (presentationId, slideId) => {
     set((state) => {
       const updatedSlides = state.slides[presentationId].filter(
-        (slide) => slide.slideNumber !== slideNumber
+        (slide) => slide.id !== slideId
       );
+      const renumberedSlides = updatedSlides.map((slide, index) => ({
+        ...slide,
+        slideNumber: index + 1,
+      }));
       return {
-        slides: { ...state.slides, [presentationId]: updatedSlides },
+        slides: { ...state.slides, [presentationId]: renumberedSlides },
       };
     });
   },
