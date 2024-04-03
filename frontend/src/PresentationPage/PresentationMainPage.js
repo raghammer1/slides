@@ -89,28 +89,40 @@ const PresentationDetail = () => {
         alignItems: 'center',
       }}
     >
-      <StyledTypography
-        sx={{
-          fontSize: '32px',
-          textAlign: 'center',
+      <div
+        style={{
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'row',
+          justifyContent: 'space-around',
         }}
-        onClick={handleOpenEdit}
       >
-        {presentation.name}
-      </StyledTypography>
-      <Wrapper>
-        <CustomPrimaryButton
-          label="Delete"
-          additionalStyle={{ width: '200px' }}
-          onClick={handleOpen}
-        />
-        <CustomPrimaryButton
-          label="Back"
-          additionalStyle={{ width: '200px' }}
-          onClick={handleGoBack}
-        />
-      </Wrapper>
-      <SlidesMain presentationId={presentation.id} />
+        <StyledTypography
+          sx={{
+            fontSize: '32px',
+            textAlign: 'center',
+          }}
+          onClick={handleOpenEdit}
+        >
+          <b>Title -</b> {presentation.name}
+        </StyledTypography>
+        <Wrapper>
+          <CustomPrimaryButton
+            label="Delete"
+            additionalStyle={{ width: '200px' }}
+            onClick={handleOpen}
+          />
+          <CustomPrimaryButton
+            label="Back"
+            additionalStyle={{ width: '200px' }}
+            onClick={handleGoBack}
+          />
+        </Wrapper>
+      </div>
+      <div>
+        <SlidesMain presentationId={presentation.id} />
+      </div>
       <DeletePresentationModal
         open={open}
         handleClose={handleClose}

@@ -1,5 +1,6 @@
 import React from 'react';
 import useSlidesListStore from '../../zustandStore/useSlidesListStore';
+
 const SlidesMain = ({ presentationId }) => {
   const getSlidesForPresentation = useSlidesListStore(
     (state) => state.getSlidesForPresentation
