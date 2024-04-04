@@ -71,6 +71,38 @@ const useSlidesListStore = create((set, get) => ({
       return { slides: updatedSlides };
     });
   },
+  updateElementPosition: (presentationId, slideId, elementId, top, left) => {
+    set((state) => {
+      const slides = state.slides[presentationId] || [];
+      const slideIndex = slides.findIndex((slide) => slide.id === slideId);
+
+      // Check if the slide was found
+      if (slideIndex === -1) return;
+
+      // Clone the slide to avoid direct state mutation
+      const updatedSlide = { ...slides[slideIndex] };
+
+      // Update the element within the slide
+      updatedSlide.elements = updatedSlide.elements.map((element) => {
+        if (element.id === elementId) {
+          return { ...element, top, left }; // Update the targeted element's position
+        }
+        return element; // Return all other elements unchanged
+      });
+
+      // Clone the slides array to insert the updated slide
+      const updatedSlides = [...slides];
+      updatedSlides[slideIndex] = updatedSlide;
+
+      // Update the state with the modified slides array
+      return {
+        slides: {
+          ...state.slides,
+          [presentationId]: updatedSlides,
+        },
+      };
+    });
+  },
 }));
 
 export default useSlidesListStore;
