@@ -19,8 +19,6 @@ const EditMenu = ({
   };
 
   const handleAddTextOnSlide = () => {
-    // OPEN MODAL HERE THEN ADD ELEMENT TO THE ELEMENTS ARRAYS AND IN THE DIPLAY PAGE CREATE CODE TO DISPAY THAT ELEMENT ACCORDING TO THE PROPERTIES YOU HAVE SET IN THE ELEMENTS OBJECT SAVED IN THE ZUSTAND
-    // !OPEN MODAL FIRST THEN WHEN CLICKED CREATE THEN DO THIS :
     handleOpenCreateTextBox();
     console.log('Clickes');
   };
@@ -49,6 +47,7 @@ const EditMenu = ({
         presentationId={presentationId}
         selectedSlideId={selectedSlideId}
         handleCloseCreateTextBox={handleCloseCreateTextBox}
+        setAnchorEl={setAnchorEl}
       />
     </Menu>
   );

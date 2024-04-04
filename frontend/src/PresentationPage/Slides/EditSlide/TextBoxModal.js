@@ -24,12 +24,13 @@ const TextBoxModal = ({
   presentationId,
   selectedSlideId,
   handleCloseCreateTextBox,
+  setAnchorEl,
 }) => {
   const [title, setTitle] = useState('');
-  const [sizeTextBoxWidth, setSizeTextBoxWidth] = useState('');
-  const [sizeTextBoxHeight, setSizeTextBoxHeight] = useState('');
-  const [fontSizeTextBox, setFontSizeTextBox] = useState('');
-  const [colourTextBox, setColourTextBox] = useState('');
+  const [sizeTextBoxWidth, setSizeTextBoxWidth] = useState('50');
+  const [sizeTextBoxHeight, setSizeTextBoxHeight] = useState('50');
+  const [fontSizeTextBox, setFontSizeTextBox] = useState('5');
+  const [colourTextBox, setColourTextBox] = useState('#000');
 
   const { addElementToSlide } = useSlidesListStore();
 
@@ -48,8 +49,10 @@ const TextBoxModal = ({
     };
     addElementToSlide(presentationId, selectedSlideId, element);
     setTitle('');
+    setColourTextBox('#000');
     handleClose();
     handleCloseCreateTextBox();
+    setAnchorEl(null);
   };
 
   return (

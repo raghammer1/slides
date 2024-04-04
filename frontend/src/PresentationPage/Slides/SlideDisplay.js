@@ -45,6 +45,7 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
                 color: element.color,
                 resize: 'none',
                 overflow: 'hidden',
+                border: '2px solid #999',
               }}
             />
           );
