@@ -29,6 +29,29 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
         position: 'relative',
       }}
     >
+      {selectedSlide?.elements?.map((element) => {
+        if (element.type === 'textarea') {
+          return (
+            <textarea
+              key={element.id}
+              defaultValue={element.text}
+              style={{
+                position: 'absolute',
+                top: element.top,
+                left: element.left,
+                height: element.height,
+                width: element.width,
+                resize: 'none',
+                overflow: 'hidden',
+              }}
+            />
+          );
+        } else {
+          return <div key="nul">f</div>;
+        }
+        // Handle other element types as needed
+      })}
+
       <Typography
         style={{
           position: 'absolute',
