@@ -48,7 +48,7 @@ const ImageModal = ({
   setAnchorEl,
 }) => {
   // State to manage toggle between URL input and image upload
-  const [imageInputType, setImageInputType] = useState(null);
+  const [imageInputType, setImageInputType] = useState('url');
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageAlt, setImageAlt] = useState(null);
@@ -61,6 +61,24 @@ const ImageModal = ({
     if (file && file.type.startsWith('image/')) {
       imageEncoder(file, (base64String) => {
         setSelectedFile(base64String);
+
+        const img = new Image();
+        img.onload = () => {
+          const imageAspectRatio = img.naturalWidth / img.naturalHeight;
+
+          const containerAspectRatio = 2 / 1;
+
+          let scalePercentageWidth, scalePercentageHeight;
+
+          if (imageAspectRatio > containerAspectRatio) {
+            scalePercentageHeight = 'auto';
+          } else {
+            scalePercentageWidth = 'auto';
+          }
+          setSizeTextBoxWidth(scalePercentageWidth);
+          setSizeTextBoxHeight(scalePercentageHeight);
+        };
+        img.src = base64String;
       });
     } else {
       setSelectedFile(null);
@@ -92,7 +110,7 @@ const ImageModal = ({
   return (
     <CustomModal
       open={open}
-      handleCloseCreateTextBox={handleCloseImageHandler} // Ensure this matches the prop expected by CustomModal for closing
+      handleCloseCreateTextBox={handleCloseImageHandler}
       style={style}
     >
       <InputWithLabels
@@ -186,13 +204,13 @@ const ImageModal = ({
       <Tooltip
         title={
           selectedFile === null
-            ? 'Give a valid url or image file'
+            ? 'Give a valid url or image file, also give alt'
             : 'submit image'
         }
       >
         <div>
           <CustomPrimaryButton
-            disabled={selectedFile === null}
+            disabled={selectedFile === null || imageAlt === null}
             label="Create Now"
             additionalStyle={{ marginTop: '30px' }}
             onClick={handlePresentationTitleCreateImage}
