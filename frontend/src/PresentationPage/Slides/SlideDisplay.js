@@ -49,6 +49,22 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
               }}
             />
           );
+        } else if (element.type === 'image') {
+          return (
+            <img
+              key={element.id}
+              src={element.src}
+              alt={element.alt}
+              style={{
+                position: 'absolute',
+                top: element.top,
+                left: element.left,
+                height: element.height,
+                width: element.width,
+                resize: 'none',
+              }}
+            />
+          );
         } else {
           return <></>;
         }

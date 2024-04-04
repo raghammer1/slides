@@ -1,6 +1,7 @@
 import { Menu, MenuItem } from '@mui/material';
 import React, { useState } from 'react';
 import TextBoxModal from './TextBoxModal';
+import ImageModal from './ImageModal';
 
 const EditMenu = ({
   anchorEl,
@@ -14,6 +15,10 @@ const EditMenu = ({
   const handleOpenCreateTextBox = () => setOpenCreateTextBox(true);
   const handleCloseCreateTextBox = () => setOpenCreateTextBox(false);
 
+  const [openImageHandler, setOpenImageHandler] = useState(false);
+  const handleOpenImageHandler = () => setOpenImageHandler(true);
+  const handleCloseImageHandler = () => setOpenImageHandler(false);
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -21,6 +26,10 @@ const EditMenu = ({
   const handleAddTextOnSlide = () => {
     handleOpenCreateTextBox();
     console.log('Clickes');
+  };
+
+  const handleAddImageOnSlide = () => {
+    handleOpenImageHandler();
   };
 
   return (
@@ -40,13 +49,19 @@ const EditMenu = ({
       >
         Add Text
       </MenuItem>
-      <MenuItem onClick={handleClose}>Option 2</MenuItem>
+      <MenuItem onClick={handleAddImageOnSlide}>Add Image</MenuItem>
       <TextBoxModal
         open={openCreateTextBox}
-        handleClose={handleCloseCreateTextBox}
+        handleCloseCreateTextBox={handleCloseCreateTextBox}
         presentationId={presentationId}
         selectedSlideId={selectedSlideId}
-        handleCloseCreateTextBox={handleCloseCreateTextBox}
+        setAnchorEl={setAnchorEl}
+      />
+      <ImageModal
+        open={openImageHandler}
+        handleCloseImageHandler={handleCloseImageHandler}
+        presentationId={presentationId}
+        selectedSlideId={selectedSlideId}
         setAnchorEl={setAnchorEl}
       />
     </Menu>

@@ -20,10 +20,9 @@ const style = {
 
 const TextBoxModal = ({
   open,
-  handleClose,
+  handleCloseCreateTextBox,
   presentationId,
   selectedSlideId,
-  handleCloseCreateTextBox,
   setAnchorEl,
 }) => {
   const [title, setTitle] = useState('');
@@ -42,21 +41,24 @@ const TextBoxModal = ({
       text: title,
       top: '0',
       left: '0',
-      height: `${sizeTextBoxWidth}%`,
-      width: `${sizeTextBoxHeight}%`,
+      height: `${sizeTextBoxHeight}%`,
+      width: `${sizeTextBoxWidth}%`,
       fontSize: `${fontSizeTextBox}em`,
       color: `${colourTextBox}`,
     };
     addElementToSlide(presentationId, selectedSlideId, element);
     setTitle('');
     setColourTextBox('#000');
-    handleClose();
     handleCloseCreateTextBox();
     setAnchorEl(null);
   };
 
   return (
-    <CustomModal open={open} handleClose={handleClose} style={style}>
+    <CustomModal
+      open={open}
+      handleCloseCreateTextBox={handleCloseCreateTextBox}
+      style={style}
+    >
       <InputWithLabels
         value={title}
         setValue={setTitle}

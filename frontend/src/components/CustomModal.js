@@ -2,11 +2,11 @@ import React from 'react';
 import { Modal } from '@mui/material';
 import { Box } from '@mui/system';
 
-const CustomModal = ({ open, handleClose, style, children }) => {
+const CustomModal = ({ open, handleCloseCreateTextBox, style, children }) => {
   return (
     <Modal
       open={open}
-      onClose={handleClose}
+      onClose={handleCloseCreateTextBox}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
