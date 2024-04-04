@@ -47,9 +47,8 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
             />
           );
         } else {
-          return <div key="nul">f</div>;
+          return <></>;
         }
-        // Handle other element types as needed
       })}
 
       <Typography
