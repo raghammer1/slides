@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 const useSlidesListStore = create((set, get) => ({
-  slides: {}, // Using an object to map presentation IDs to their slides for quick access
+  slides: {},
   addSlide: (presentationId, newSlide) => {
     set((state) => {
       console.log(state);
@@ -46,9 +46,8 @@ const useSlidesListStore = create((set, get) => ({
     });
   },
   getSlidesForPresentation: (presentationId) => {
-    // Using get() to access the current state
     const state = get();
-    return state.slides[presentationId] || []; // Return the slides for the given ID, or an empty array if none found
+    return state.slides[presentationId] || [];
   },
   getSlideFromPresentationById: (presentationId, slideId) => {
     const state = get();

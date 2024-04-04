@@ -64,8 +64,8 @@
 import React from 'react';
 import useSlidesListStore from '../../zustandStore/useSlidesListStore';
 import { v4 as uuidv4 } from 'uuid';
-import DeleteIcon from '@mui/icons-material/Delete'; // Importing MUI Delete icon
-import IconButton from '@mui/material/IconButton'; // Importing MUI IconButton for clickable icons
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
 
 const SlidesList = ({
   selectedSlideId,

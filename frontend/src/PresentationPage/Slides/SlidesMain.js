@@ -29,7 +29,6 @@ const SlidesMain = ({ presentationId }) => {
       !selectedSlide ||
       !slides.find((slide) => slide.id === selectedSlide.id)
     ) {
-      // If the selectedSlide is no longer in slides, or initially when slides is populated
       setSelectedSlide(slides[0] || null);
     }
   }, [slides, selectedSlide, setSelectedSlide]);
