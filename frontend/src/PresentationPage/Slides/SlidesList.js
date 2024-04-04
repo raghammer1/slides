@@ -67,11 +67,15 @@ import { v4 as uuidv4 } from 'uuid';
 import DeleteIcon from '@mui/icons-material/Delete'; // Importing MUI Delete icon
 import IconButton from '@mui/material/IconButton'; // Importing MUI IconButton for clickable icons
 
-const SlidesList = ({ selectedSlideId, presentationId, setSelectedSlide }) => {
-  const { slides, addSlide, deleteSlide } = useSlidesListStore((state) => ({
+const SlidesList = ({
+  selectedSlideId,
+  presentationId,
+  setSelectedSlide,
+  handleDeleteSlide,
+}) => {
+  const { slides, addSlide } = useSlidesListStore((state) => ({
     slides: state.getSlidesForPresentation(presentationId),
     addSlide: state.addSlide,
-    deleteSlide: state.deleteSlide, // Assuming this method exists for deleting a slide
   }));
 
   const handleAddNewSlide = () => {
@@ -79,18 +83,6 @@ const SlidesList = ({ selectedSlideId, presentationId, setSelectedSlide }) => {
       id: uuidv4(),
     };
     addSlide(presentationId, newSlide);
-  };
-
-  const handleDeleteSlide = (e, slide) => {
-    e.stopPropagation();
-    if (selectedSlideId === slide.id) {
-      if (slide.slideNumber === 1 && slides.length > 1) {
-        setSelectedSlide(slides[1]);
-      } else if (slides.length > 1) {
-        setSelectedSlide(slides[slide.slideNumber - 2]);
-      }
-    }
-    deleteSlide(presentationId, slide.id);
   };
 
   return (

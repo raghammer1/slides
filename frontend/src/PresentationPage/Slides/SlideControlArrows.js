@@ -8,11 +8,16 @@ import useSlidesListStore from '../../zustandStore/useSlidesListStore';
 const SlideControlArrows = ({
   presentationId,
   setSelectedSlide,
-  selectedSlide,
+  selectedSlideId,
 }) => {
-  const { slides } = useSlidesListStore((state) => ({
+  const { slides, selectedSlide } = useSlidesListStore((state) => ({
     slides: state.getSlidesForPresentation(presentationId),
+    selectedSlide: state.getSlideFromPresentationById(
+      presentationId,
+      selectedSlideId
+    ),
   }));
+
   const totalSlides = slides.length;
 
   const handlePrev = () => {

@@ -50,6 +50,11 @@ const useSlidesListStore = create((set, get) => ({
     const state = get();
     return state.slides[presentationId] || []; // Return the slides for the given ID, or an empty array if none found
   },
+  getSlideFromPresentationById: (presentationId, slideId) => {
+    const state = get();
+    const slides = state.slides[presentationId] || [];
+    return slides.find((slide) => slide.id === slideId);
+  },
 }));
 
 export default useSlidesListStore;
