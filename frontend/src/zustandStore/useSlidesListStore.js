@@ -14,7 +14,7 @@ const useSlidesListStore = create((set, get) => ({
 
       const updatedSlides = [
         ...currentSlides,
-        { ...newSlide, slideNumber: newSlideNumber },
+        { ...newSlide, slideNumber: newSlideNumber, elements: [] },
       ];
 
       return {
@@ -53,6 +53,36 @@ const useSlidesListStore = create((set, get) => ({
     const state = get();
     const slides = state.slides[presentationId] || [];
     return slides.find((slide) => slide.id === slideId);
+  },
+  addElementToSlide: (presentationId, slideId, newElement) => {
+    set((state) => {
+      // Clone the current state to avoid direct mutations
+      const newState = { ...state };
+
+      // Ensure the presentation exists
+      if (!newState.slides[presentationId]) {
+        console.warn('Presentation not found');
+        return newState; // Return the current state unmodified
+      }
+
+      // Find the target slide
+      const slideIndex = newState.slides[presentationId].findIndex(
+        (slide) => slide.id === slideId
+      );
+      if (slideIndex === -1) {
+        console.warn('Slide not found');
+        return newState; // Return the current state unmodified
+      }
+
+      // Clone the slide and its elements to avoid direct mutations
+      const updatedSlide = { ...newState.slides[presentationId][slideIndex] };
+      updatedSlide.elements = [...updatedSlide.elements, newElement]; // Add the new element
+
+      // Update the slide in the presentation's slides array
+      newState.slides[presentationId][slideIndex] = updatedSlide;
+
+      return { slides: newState.slides }; // Return the updated state
+    });
   },
 }));
 

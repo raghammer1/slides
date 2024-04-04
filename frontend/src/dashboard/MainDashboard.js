@@ -25,7 +25,6 @@ const MainDashboard = () => {
           onClick={handleOpen}
         />
       </div>
-      {/* <div>LIST OF PRESENTATIONS</div> */}
       <PresentationList />
       {/* MODAL */}
       <CreatePresentationModal open={open} handleClose={handleClose} />

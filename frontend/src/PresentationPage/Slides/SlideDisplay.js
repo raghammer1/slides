@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useSlidesListStore from '../../zustandStore/useSlidesListStore';
+import { Typography } from '@mui/material';
+import EditMenu from './EditSlide/EditMenu';
 
 const SlideDisplay = ({ presentationId, selectedSlideId }) => {
   const { selectedSlide } = useSlidesListStore((store) => ({
@@ -8,6 +10,12 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
       selectedSlideId
     ),
   }));
+
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
   return (
     <div
@@ -21,11 +29,7 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
         position: 'relative',
       }}
     >
-      <div>
-        Slide: {selectedSlide.slideNumber} and id: {selectedSlide.id}
-      </div>
-
-      <div
+      <Typography
         style={{
           position: 'absolute',
           bottom: '10px',
@@ -36,8 +40,31 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
           borderRadius: '5px',
         }}
       >
-        {selectedSlide.slideNumber}
-      </div>
+        {selectedSlide?.slideNumber}
+      </Typography>
+
+      <Typography
+        style={{
+          position: 'absolute',
+          bottom: '10px',
+          right: '10px',
+          color: '#fff',
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          padding: '5px 10px',
+          borderRadius: '5px',
+          cursor: 'pointer',
+        }}
+        onClick={handleClick}
+      >
+        Edit
+      </Typography>
+
+      <EditMenu
+        anchorEl={anchorEl}
+        setAnchorEl={setAnchorEl}
+        presentationId={presentationId}
+        selectedSlideId={selectedSlideId}
+      />
     </div>
   );
 };
