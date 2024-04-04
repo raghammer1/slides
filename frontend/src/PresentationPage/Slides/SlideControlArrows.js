@@ -17,7 +17,7 @@ const SlideControlArrows = ({
       selectedSlideId
     ),
   }));
-
+  // ! STILL NEED TO ADD KEYBOARD COMMANDS
   const totalSlides = slides.length;
 
   const handlePrev = () => {
