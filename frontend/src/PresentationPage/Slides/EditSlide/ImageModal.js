@@ -59,24 +59,6 @@ const ImageModal = ({
     if (file && file.type.startsWith('image/')) {
       imageEncoder(file, (base64String) => {
         setSelectedFile(base64String);
-
-        const img = new Image();
-        img.onload = () => {
-          const imageAspectRatio = img.naturalWidth / img.naturalHeight;
-
-          const containerAspectRatio = 2 / 1;
-
-          let scalePercentageWidth, scalePercentageHeight;
-
-          if (imageAspectRatio > containerAspectRatio) {
-            scalePercentageHeight = 'auto';
-          } else {
-            scalePercentageWidth = 'auto';
-          }
-          setSizeTextBoxWidth(scalePercentageWidth);
-          setSizeTextBoxHeight(scalePercentageHeight);
-        };
-        img.src = base64String;
       });
     } else {
       setSelectedFile(null);

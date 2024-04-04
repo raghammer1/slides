@@ -12,10 +12,45 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
     ),
   }));
 
+  const [selectedElement, setSelectedElement] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+  };
+
+  const handleSelectedElement = (element) => {
+    setSelectedElement(element);
+  };
+
+  const renderCornerBoxes = () => {
+    console.log(selectedElement);
+    if (selectedElement === null) return null;
+    const { top, left, width, height } = selectedElement; // Assuming these are numerical values for simplicity
+
+    console.log(top, left, width, height);
+
+    // Positions for each corner box
+    const corners = [
+      { top: `${parseInt(top)}%`, left: `${parseInt(left)}%` }, // Top-left
+      {
+        top: `${parseInt(top)}%`,
+        left: `${parseInt(left) + parseInt(width) - (10 / 1000) * 100}%`,
+      }, // Top-right
+      {
+        top: `${parseInt(top) + parseInt(height) - (10 / 500) * 100}%`,
+        left: `${parseInt(left)}%`,
+      }, // Bottom-left
+      {
+        top: `${parseInt(top) + parseInt(height) - (10 / 500) * 100}%`,
+        left: `${parseInt(left) + parseInt(width) - (10 / 1000) * 100}%`,
+      }, // Bottom-right
+    ];
+    console.log(corners);
+
+    return corners.map((style, index) => (
+      <CornerBox key={index} style={style} />
+    ));
   };
 
   return (
@@ -28,43 +63,50 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
         alignItems: 'center',
         backgroundColor: '#999',
         position: 'relative',
+        overflow: 'hidden',
       }}
     >
       {selectedSlide?.elements?.map((element) => {
         if (element.type === 'textarea') {
           return (
-            <textarea
-              key={element.id}
-              defaultValue={element.text}
-              style={{
-                position: 'absolute',
-                top: element.top,
-                left: element.left,
-                height: `${element.height}%`,
-                width: `${element.width}%`,
-                fontSize: element.fontSize,
-                color: element.color,
-                resize: 'none',
-                overflow: 'hidden',
-                border: '2px solid #999',
-              }}
-            />
+            <div key={element.id}>
+              <textarea
+                defaultValue={element.text}
+                style={{
+                  position: 'absolute',
+                  top: element.top,
+                  left: element.left,
+                  height: `${element.height}%`,
+                  width: `${element.width}%`,
+                  fontSize: element.fontSize,
+                  color: element.color,
+                  resize: 'none',
+                  overflow: 'hidden',
+                  border: '2px solid #999',
+                }}
+                onClick={() => handleSelectedElement(element)}
+              />
+              {renderCornerBoxes()}
+            </div>
           );
         } else if (element.type === 'image') {
           return (
-            <img
-              key={element.id}
-              src={element.src}
-              alt={element.alt}
-              style={{
-                position: 'absolute',
-                top: element.top,
-                left: element.left,
-                height: `${element.height}%`,
-                width: `${element.width}%`,
-                resize: 'none',
-              }}
-            />
+            <div key={element.id}>
+              <img
+                src={element.src}
+                alt={element.alt}
+                style={{
+                  position: 'absolute',
+                  top: element.top,
+                  left: element.left,
+                  height: `${element.height}%`,
+                  width: `${element.width}%`,
+                  resize: 'none',
+                }}
+                onClick={() => handleSelectedElement(element)}
+              />
+              {renderCornerBoxes()}
+            </div>
           );
         } else if (element.type === 'video') {
           return (
@@ -78,6 +120,7 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
               }}
               key={element.id}
               element={element}
+              onClick={() => handleSelectedElement(element)}
             />
           );
         } else {
@@ -126,3 +169,20 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
 };
 
 export default SlideDisplay;
+const CornerBox = ({ style }) => {
+  // Log the style object to the console
+  console.log(style, 'style');
+
+  // Now return your component JSX
+  return (
+    <div
+      style={{
+        width: '10px',
+        height: '10px',
+        backgroundColor: 'red',
+        position: 'absolute',
+        ...style, // Spread the received style props here
+      }}
+    />
+  );
+};
