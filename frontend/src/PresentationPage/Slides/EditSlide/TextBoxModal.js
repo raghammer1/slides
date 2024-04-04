@@ -4,6 +4,7 @@ import InputWithLabels from '../../../components/InputLabel';
 import CustomPrimaryButton from '../../../components/CustomePrimaryButton';
 import useSlidesListStore from '../../../zustandStore/useSlidesListStore';
 import { v4 as uuidv4 } from 'uuid';
+import InputLabelRange from '../../../components/InputLabelRange';
 
 const style = {
   position: 'absolute',
@@ -40,10 +41,10 @@ const TextBoxModal = ({
       text: title,
       top: '0',
       left: '0',
-      height: sizeTextBoxWidth,
-      width: sizeTextBoxHeight,
-      fontSize: fontSizeTextBox,
-      color: colourTextBox,
+      height: `${sizeTextBoxWidth}%`,
+      width: `${sizeTextBoxHeight}%`,
+      fontSize: `${fontSizeTextBox}em`,
+      color: `${colourTextBox}`,
     };
     addElementToSlide(presentationId, selectedSlideId, element);
     setTitle('');
@@ -60,33 +61,40 @@ const TextBoxModal = ({
         placeholder="Enter Title"
         label="Title"
       />
-      <InputWithLabels
-        value={sizeTextBoxWidth}
-        setValue={setSizeTextBoxWidth}
-        type="Width"
-        placeholder="width"
-        label="Width"
-      />
-      <InputWithLabels
-        value={sizeTextBoxHeight}
-        setValue={setSizeTextBoxHeight}
-        type="Height"
-        placeholder="Enter Height"
-        label="Height"
-      />
-      <InputWithLabels
-        value={fontSizeTextBox}
-        setValue={setFontSizeTextBox}
-        type="Font Size"
-        placeholder="Enter Font Size"
-        label="Font Size"
-      />
+
       <InputWithLabels
         value={colourTextBox}
         setValue={setColourTextBox}
         type="Font Colour"
         placeholder="Enter Font Colour"
         label="Font Colour"
+      />
+
+      <InputLabelRange
+        value={sizeTextBoxWidth}
+        setValue={setSizeTextBoxWidth}
+        label={'Width'}
+        max={'100'}
+        min={'0'}
+        sign={'%'}
+        customeStyle={{ marginTop: '20px' }}
+      />
+      <InputLabelRange
+        value={sizeTextBoxHeight}
+        setValue={setSizeTextBoxHeight}
+        label="Height"
+        max={'100'}
+        min={'0'}
+        sign={'%'}
+      />
+
+      <InputLabelRange
+        value={fontSizeTextBox}
+        setValue={setFontSizeTextBox}
+        label="Font Size"
+        max={'10'}
+        min={'0'}
+        sign={'em'}
       />
       <CustomPrimaryButton
         label="Create Now"

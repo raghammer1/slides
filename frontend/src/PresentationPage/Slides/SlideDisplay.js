@@ -41,6 +41,8 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
                 left: element.left,
                 height: element.height,
                 width: element.width,
+                fontSize: element.fontSize,
+                color: element.color,
                 resize: 'none',
                 overflow: 'hidden',
               }}
