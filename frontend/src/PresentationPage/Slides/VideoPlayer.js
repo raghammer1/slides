@@ -19,6 +19,8 @@ const VideoPlayer = ({ style, element }) => {
   return (
     <div style={style}>
       <iframe
+        width={style.width}
+        height={style.height}
         src={videoSrc}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen

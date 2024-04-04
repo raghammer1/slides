@@ -70,6 +70,7 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
           return (
             <VideoPlayer
               style={{
+                position: 'absolute',
                 top: `${element.top}`,
                 left: `${element.left}`,
                 width: `${element.width}%`,

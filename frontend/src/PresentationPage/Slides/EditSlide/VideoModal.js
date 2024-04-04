@@ -30,7 +30,7 @@ const VideoModal = ({
   const [videoUrl, setVideoUrl] = useState(null);
   const [autoplay, setAutoplay] = useState(false);
 
-  const [sizeTextBoxWidth, setSizeTextBoxWidth] = useState('auto');
+  const [sizeTextBoxWidth, setSizeTextBoxWidth] = useState('50');
   const [sizeTextBoxHeight, setSizeTextBoxHeight] = useState('50');
 
   const { addElementToSlide } = useSlidesListStore();
