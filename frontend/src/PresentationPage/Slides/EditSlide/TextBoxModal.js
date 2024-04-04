@@ -41,8 +41,8 @@ const TextBoxModal = ({
       text: title,
       top: '0',
       left: '0',
-      height: `${sizeTextBoxHeight}%`,
-      width: `${sizeTextBoxWidth}%`,
+      height: sizeTextBoxHeight,
+      width: sizeTextBoxWidth,
       fontSize: `${fontSizeTextBox}em`,
       color: `${colourTextBox}`,
     };

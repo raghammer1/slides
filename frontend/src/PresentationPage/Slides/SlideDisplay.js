@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useSlidesListStore from '../../zustandStore/useSlidesListStore';
 import { Typography } from '@mui/material';
 import EditMenu from './EditSlide/EditMenu';
+import VideoPlayer from './VideoPlayer';
 
 const SlideDisplay = ({ presentationId, selectedSlideId }) => {
   const { selectedSlide } = useSlidesListStore((store) => ({
@@ -39,8 +40,8 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
                 position: 'absolute',
                 top: element.top,
                 left: element.left,
-                height: element.height,
-                width: element.width,
+                height: `${element.height}%`,
+                width: `${element.width}%`,
                 fontSize: element.fontSize,
                 color: element.color,
                 resize: 'none',
@@ -59,10 +60,23 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
                 position: 'absolute',
                 top: element.top,
                 left: element.left,
-                height: element.height,
-                width: element.width,
+                height: `${element.height}%`,
+                width: `${element.width}%`,
                 resize: 'none',
               }}
+            />
+          );
+        } else if (element.type === 'video') {
+          return (
+            <VideoPlayer
+              style={{
+                top: `${element.top}`,
+                left: `${element.left}`,
+                width: `${element.width}%`,
+                height: `${element.height}%`,
+              }}
+              key={element.id}
+              element={element}
             />
           );
         } else {

@@ -95,8 +95,8 @@ const ImageModal = ({
       src: selectedFile,
       top: '0',
       left: '0',
-      height: `${sizeTextBoxHeight}%`,
-      width: `${sizeTextBoxWidth}%`,
+      height: sizeTextBoxHeight,
+      width: sizeTextBoxWidth,
     };
     addElementToSlide(presentationId, selectedSlideId, element);
     setSelectedFile(null);

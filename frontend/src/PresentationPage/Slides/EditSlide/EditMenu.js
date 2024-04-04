@@ -2,6 +2,7 @@ import { Menu, MenuItem } from '@mui/material';
 import React, { useState } from 'react';
 import TextBoxModal from './TextBoxModal';
 import ImageModal from './ImageModal';
+import VideoModal from './VideoModal';
 
 const EditMenu = ({
   anchorEl,
@@ -19,6 +20,10 @@ const EditMenu = ({
   const handleOpenImageHandler = () => setOpenImageHandler(true);
   const handleCloseImageHandler = () => setOpenImageHandler(false);
 
+  const [openVideoHandler, setOpenVideoHandler] = useState(false);
+  const handleOpenVideoHandler = () => setOpenVideoHandler(true);
+  const handleCloseVideoHandler = () => setOpenVideoHandler(false);
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -30,6 +35,10 @@ const EditMenu = ({
 
   const handleAddImageOnSlide = () => {
     handleOpenImageHandler();
+  };
+
+  const handleAddVideoOnSlide = () => {
+    handleOpenVideoHandler();
   };
 
   return (
@@ -50,6 +59,7 @@ const EditMenu = ({
         Add Text
       </MenuItem>
       <MenuItem onClick={handleAddImageOnSlide}>Add Image</MenuItem>
+      <MenuItem onClick={handleAddVideoOnSlide}>Add Video</MenuItem>
       <TextBoxModal
         open={openCreateTextBox}
         handleCloseCreateTextBox={handleCloseCreateTextBox}
@@ -60,6 +70,13 @@ const EditMenu = ({
       <ImageModal
         open={openImageHandler}
         handleCloseImageHandler={handleCloseImageHandler}
+        presentationId={presentationId}
+        selectedSlideId={selectedSlideId}
+        setAnchorEl={setAnchorEl}
+      />
+      <VideoModal
+        open={openVideoHandler}
+        handleCloseVideoHandler={handleCloseVideoHandler}
         presentationId={presentationId}
         selectedSlideId={selectedSlideId}
         setAnchorEl={setAnchorEl}
