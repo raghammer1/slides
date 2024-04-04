@@ -4,6 +4,9 @@ import styled from '@emotion/styled';
 import SlidesList from './SlidesList';
 import SlideDisplay from './SlideDisplay';
 import SlideControlArrows from './SlideControlArrows';
+import DeletePresentationModal from '../DeletePresentationModal';
+import { useNavigate } from 'react-router-dom';
+import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 // hi
 const Wrapper = styled('div')({
   width: '90vw',
@@ -24,6 +27,10 @@ const SlidesMain = ({ presentationId }) => {
   const [selectedSlide, setSelectedSlide] = useState(slides[0]);
   const selectedSlideId = selectedSlide.id;
 
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   useEffect(() => {
     if (
       !selectedSlide ||
@@ -33,8 +40,13 @@ const SlidesMain = ({ presentationId }) => {
     }
   }, [slides, selectedSlide, setSelectedSlide]);
 
+  const nav = useNavigate();
   const handleDeleteSlide = (e, slide) => {
     e.stopPropagation();
+    if (slides.length === 1) {
+      handleOpen();
+      return;
+    }
     if (selectedSlideId === slide.id) {
       if (slide.slideNumber === 1 && slides.length > 1) {
         setSelectedSlide(slides[1]);
@@ -43,6 +55,17 @@ const SlidesMain = ({ presentationId }) => {
       }
     }
     deleteSlide(presentationId, slide.id);
+  };
+
+  const { deleteOnePresentation } = usePresentationListStore();
+  const { deletePresentationAllSlides } = useSlidesListStore();
+
+  const handlePresentationDelete = () => {
+    console.log('delete');
+    setOpen(false);
+    deleteOnePresentation(presentationId);
+    deletePresentationAllSlides(presentationId);
+    nav('/dashboard');
   };
 
   return (
@@ -71,6 +94,12 @@ const SlidesMain = ({ presentationId }) => {
         setSelectedSlide={setSelectedSlide}
         selectedSlideId={selectedSlideId}
       />
+      <DeletePresentationModal
+        open={open}
+        handleClose={handleClose}
+        handlePresentationDelete={handlePresentationDelete}
+      />
+      ;
     </div>
   );
 };
