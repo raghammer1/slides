@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import useSlidesListStore from '../../zustandStore/useSlidesListStore';
 import { Typography } from '@mui/material';
 import EditMenu from './EditSlide/EditMenu';
 import VideoPlayer from './VideoPlayer';
 import CornerBox from './CornerBox';
+import { Rnd } from 'react-rnd';
 
 const SlideDisplay = ({ presentationId, selectedSlideId }) => {
-  const { selectedSlide } = useSlidesListStore((store) => ({
-    selectedSlide: store.getSlideFromPresentationById(
-      presentationId,
-      selectedSlideId
-    ),
-  }));
+  const { selectedSlide, updateElementPosition } = useSlidesListStore(
+    (store) => ({
+      selectedSlide: store.getSlideFromPresentationById(
+        presentationId,
+        selectedSlideId
+      ),
+      updateElementPosition: store.updateElementPosition,
+      updateElementSize: store.updateElementSize,
+    })
+  );
 
   const [selectedElement, setSelectedElement] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -24,38 +29,90 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
     setSelectedElement(element);
   };
 
-  const renderCornerBoxes = () => {
-    console.log(selectedElement);
-    if (selectedElement === null) return null;
-    const { top, left, width, height } = selectedElement; // Assuming these are numerical values for simplicity
+  // Handler for updating element position
+  const onDragStop = (e, d, element) => {
+    // const newPosition = {
+    //   top: `${(d.y / 500) * 100}%`, // Convert pixels back to percentage
+    //   left: `${(d.x / 1000) * 100}%`,
+    // };
 
-    console.log(top, left, width, height);
+    // const top = `${(d.x / 500) * 100}%`; // Convert pixels back to percentage
+    // const left = `${(d.y / 1000) * 100}%`;
+    const top = '0';
+    const left = '0';
+    console.log('IENNFUHEWFIUWEBFU TOP LEFT  NEW', top, left);
 
-    // Positions for each corner box
-    const corners = [
-      { top: `${parseInt(top)}%`, left: `${parseInt(left)}%` }, // Top-left
-      {
-        top: `${parseInt(top)}%`,
-        left: `${parseInt(left) + parseInt(width) - (10 / 1000) * 100}%`,
-      }, // Top-right
-      {
-        top: `${parseInt(top) + parseInt(height) - (10 / 500) * 100}%`,
-        left: `${parseInt(left)}%`,
-      }, // Bottom-left
-      {
-        top: `${parseInt(top) + parseInt(height) - (10 / 500) * 100}%`,
-        left: `${parseInt(left) + parseInt(width) - (10 / 1000) * 100}%`,
-      }, // Bottom-right
-    ];
-    console.log(corners);
-
-    return corners.map((style, index) => (
-      <CornerBox key={index} style={style} />
-    ));
+    updateElementPosition(
+      presentationId,
+      selectedSlideId,
+      element.id,
+      top,
+      left
+    );
+    setSelectedElement({ ...element, top, left });
   };
+
+  // Handler for updating element size
+  // const onResizeStop = (e, direction, ref, delta, position, element) => {
+  //   const newSize = {
+  //     width: `${(ref.offsetWidth / 1000) * 100}%`, // Convert pixels back to percentage
+  //     height: `${(ref.offsetHeight / 500) * 100}%`,
+  //   };
+  //   const newPosition = {
+  //     top: `${(position.y / 500) * 100}%`,
+  //     left: `${(position.x / 1000) * 100}%`,
+  //   };
+  //   updateElementSize(
+  //     presentationId,
+  //     selectedSlideId,
+  //     element.id,
+  //     newSize.width,
+  //     newSize.height
+  //   );
+  //   setSelectedElement({ ...element, ...newSize, ...newPosition });
+  // };
+
+  const renderCornerBoxes = useCallback(
+    (element) => {
+      console.log(selectedElement);
+      if (selectedElement === null || selectedElement.id !== element.id) {
+        return null;
+      }
+      // Assuming top, left, width, height are in percentages
+      const containerWidth = 1000; // SlideDisplay width in pixels
+      const containerHeight = 500; // SlideDisplay height in pixels
+      const elementWidthPx =
+        (parseInt(selectedElement.width) / 100) * containerWidth;
+      const elementHeightPx =
+        (parseInt(selectedElement.height) / 100) * containerHeight;
+      const elementTopPx =
+        (parseInt(selectedElement.top) / 100) * containerHeight;
+      const elementLeftPx =
+        (parseInt(selectedElement.left) / 100) * containerWidth;
+
+      // Positions for each corner box, now in pixels
+      const corners = [
+        { top: elementTopPx, left: elementLeftPx }, // Top-left
+        { top: elementTopPx, left: elementLeftPx + elementWidthPx - 10 }, // Top-right, assuming corner box width of 10px
+        { top: elementTopPx + elementHeightPx - 10, left: elementLeftPx }, // Bottom-left, assuming corner box height of 10px
+        {
+          top: elementTopPx + elementHeightPx - 10,
+          left: elementLeftPx + elementWidthPx - 10,
+        }, // Bottom-right
+      ];
+
+      console.log(corners);
+
+      return corners.map((style, index) => (
+        <CornerBox key={index} style={style} />
+      ));
+    },
+    [selectedElement]
+  );
 
   return (
     <div
+      className="slideDisplaylolol"
       style={{
         width: '1000px',
         height: '500px',
@@ -87,27 +144,44 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
                 }}
                 onClick={() => handleSelectedElement(element)}
               />
-              {renderCornerBoxes()}
+              {renderCornerBoxes(element)}
             </div>
           );
         } else if (element.type === 'image') {
           return (
-            <div key={element.id}>
-              <img
-                src={element.src}
-                alt={element.alt}
-                style={{
-                  position: 'absolute',
-                  top: element.top,
-                  left: element.left,
-                  height: `${element.height}%`,
-                  width: `${element.width}%`,
-                  resize: 'none',
-                }}
-                onClick={() => handleSelectedElement(element)}
-              />
-              {renderCornerBoxes()}
-            </div>
+            <Rnd
+              default={{
+                x: element.top,
+                y: element.left,
+                width: `${element.width}%`, // Initial width based on element's width
+                height: `${element.height}%`, // Initial height based on element's height
+              }}
+              // minWidth={(parseFloat(element.width) / 100) * 1000}
+              // minHeight={(parseFloat(element.height) / 100) * 500}
+              bounds="parent"
+              key={element.id}
+              onDragStop={(e, d) => onDragStop(e, d, element)}
+              // onResizeStop={(e, direction, ref, delta, position) =>
+              //   onResizeStop(e, direction, ref, delta, position, element)
+              // }
+            >
+              <div key={element.id}>
+                <img
+                  src={element.src}
+                  alt={element.alt}
+                  style={{
+                    position: 'absolute',
+                    top: element.top,
+                    left: element.left,
+                    height: '100%',
+                    width: '100%',
+                    resize: 'none',
+                  }}
+                  onClick={() => handleSelectedElement(element)}
+                />
+                {renderCornerBoxes(element)}
+              </div>
+            </Rnd>
           );
         } else if (element.type === 'video') {
           return (
