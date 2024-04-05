@@ -45,7 +45,6 @@ const CodeElementDisplay = ({
             style={{
               width: '100%',
               height: '100%',
-              fontSize: element.fontSize,
               fontFamily:
                 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
               position: 'absolute',
@@ -75,7 +74,10 @@ const CodeElementDisplay = ({
               pointerEvents: 'none', // Prevent interaction with the highlighted code
             }}
           >
-            <code className={`language-${element.language}`}>
+            <code
+              style={{ fontSize: element.fontSize }}
+              className={`language-${element.language}`}
+            >
               {element.text}
             </code>
           </pre>

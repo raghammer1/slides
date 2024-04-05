@@ -11,6 +11,7 @@ import SelectWithLabel from '../../../components/SelectWithLabel';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-c';
+import InputWithLabels from '../../../components/InputLabel';
 
 const style = {
   position: 'absolute',
@@ -130,6 +131,13 @@ const CodeModal = ({
         placeholder="Enter code"
         label="code"
       />
+      <InputWithLabels
+        value={fontSizeTextBox}
+        setValue={setFontSizeTextBox}
+        type="Font Size"
+        placeholder="Font Size"
+        label="Font Size"
+      />
 
       <InputLabelRange
         value={sizeTextBoxWidth}
@@ -149,14 +157,14 @@ const CodeModal = ({
         sign={'%'}
       />
 
-      <InputLabelRange
+      {/* <InputLabelRange
         value={fontSizeTextBox}
         setValue={setFontSizeTextBox}
         label="Font Size"
         max={'10'}
         min={'0'}
         sign={'em'}
-      />
+      /> */}
       <CustomPrimaryButton
         label="Create Now"
         additionalStyle={{ marginTop: '30px' }}
