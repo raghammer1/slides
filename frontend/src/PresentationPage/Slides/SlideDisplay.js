@@ -176,9 +176,15 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
                 position: 'absolute',
                 top: `${element.top}`,
                 left: `${element.left}`,
-                width: `${element.width}%`,
-                height: `${element.height}%`,
+                width: '100%',
+                height: '100%',
+                padding: '10px',
+                backgroundColor: '#000',
               }}
+              onDragStop={onDragStop}
+              onResizeStop={onResizeStop}
+              handleDeleteElement={handleDeleteElement}
+              renderCornerBoxes={renderCornerBoxes}
               key={element.id}
               element={element}
               onClick={() => handleSelectedElement(element)}

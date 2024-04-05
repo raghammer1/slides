@@ -1,6 +1,14 @@
 import React from 'react';
+import { Rnd } from 'react-rnd';
 
-const VideoPlayer = ({ style, element }) => {
+const VideoPlayer = ({
+  style,
+  element,
+  onDragStop,
+  onResizeStop,
+  handleDeleteElement,
+  renderCornerBoxes,
+}) => {
   // State to manage whether autoplay is enabled
   // Construct the YouTube video URL with autoplay parameter
 
@@ -17,15 +25,35 @@ const VideoPlayer = ({ style, element }) => {
     element.src
   )}?autoplay=${element.autoplay ? '1' : '0'}&mute=1`;
   return (
-    <div style={style}>
-      <iframe
-        width={style.width}
-        height={style.height}
-        src={videoSrc}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
-    </div>
+    <Rnd
+      default={{
+        x: element.top,
+        y: element.left,
+        width: `${element.width}%`, // Initial width based on element's width
+        height: `${element.height}%`, // Initial height based on element's height
+      }}
+      className={element.id}
+      // minWidth={(parseFloat(element.width) / 100) * 1000}
+      // minHeight={(parseFloat(element.height) / 100) * 500}
+      bounds="parent"
+      key={element.id}
+      onDragStop={(e, d) => onDragStop(e, d, element)}
+      onResizeStop={(e, direction, ref, delta, position) =>
+        onResizeStop(e, direction, ref, delta, position, element)
+      }
+      onContextMenu={(e) => handleDeleteElement(element.id, e)}
+    >
+      <div style={style}>
+        <iframe
+          width={style.width}
+          height={style.height}
+          src={videoSrc}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      </div>
+      {renderCornerBoxes(element)}
+    </Rnd>
   );
 };
 
