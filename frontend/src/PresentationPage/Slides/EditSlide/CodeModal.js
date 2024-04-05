@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import CustomModal from '../../../components/CustomModal';
-import InputWithLabels from '../../../components/InputLabel';
 import CustomPrimaryButton from '../../../components/CustomePrimaryButton';
 import useSlidesListStore from '../../../zustandStore/useSlidesListStore';
 import { v4 as uuidv4 } from 'uuid';
 import InputLabelRange from '../../../components/InputLabelRange';
+import TextBoxWithLabel from '../../../components/TextBoxWithLabel';
 
 const style = {
   position: 'absolute',
@@ -18,9 +18,9 @@ const style = {
   p: 4,
 };
 
-const TextBoxModal = ({
+const CodeModal = ({
   open,
-  handleCloseCreateTextBox,
+  handleCloseCodeHandler,
   presentationId,
   selectedSlideId,
   setAnchorEl,
@@ -29,7 +29,6 @@ const TextBoxModal = ({
   const [sizeTextBoxWidth, setSizeTextBoxWidth] = useState('50');
   const [sizeTextBoxHeight, setSizeTextBoxHeight] = useState('50');
   const [fontSizeTextBox, setFontSizeTextBox] = useState('1');
-  const [colourTextBox, setColourTextBox] = useState('#000');
 
   const { addElementToSlide } = useSlidesListStore();
 
@@ -44,36 +43,25 @@ const TextBoxModal = ({
       height: sizeTextBoxHeight,
       width: sizeTextBoxWidth,
       fontSize: `${fontSizeTextBox}em`,
-      color: `${colourTextBox}`,
     };
     addElementToSlide(presentationId, selectedSlideId, element);
     setTitle('');
-    setColourTextBox('#000');
-    setFontSizeTextBox('1');
-    handleCloseCreateTextBox();
+    handleCloseCodeHandler();
     setAnchorEl(null);
   };
 
   return (
     <CustomModal
       open={open}
-      handleCloseCreateTextBox={handleCloseCreateTextBox}
+      handleCloseCreateTextBox={handleCloseCodeHandler}
       style={style}
     >
-      <InputWithLabels
+      <TextBoxWithLabel
         value={title}
         setValue={setTitle}
         type="Title"
         placeholder="Enter Title"
         label="Title"
-      />
-
-      <InputWithLabels
-        value={colourTextBox}
-        setValue={setColourTextBox}
-        type="Font Colour"
-        placeholder="Enter Font Colour"
-        label="Font Colour"
       />
 
       <InputLabelRange
@@ -110,4 +98,4 @@ const TextBoxModal = ({
     </CustomModal>
   );
 };
-export default TextBoxModal;
+export default CodeModal;

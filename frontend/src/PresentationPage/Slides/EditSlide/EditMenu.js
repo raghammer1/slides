@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import TextBoxModal from './TextBoxModal';
 import ImageModal from './ImageModal';
 import VideoModal from './VideoModal';
+import CodeModal from './CodeModal';
 
 const EditMenu = ({
   anchorEl,
@@ -24,6 +25,10 @@ const EditMenu = ({
   const handleOpenVideoHandler = () => setOpenVideoHandler(true);
   const handleCloseVideoHandler = () => setOpenVideoHandler(false);
 
+  const [openCodeHandler, setOpenCodeHandler] = useState(false);
+  const handleOpenCodeHandler = () => setOpenCodeHandler(true);
+  const handleCloseCodeHandler = () => setOpenCodeHandler(false);
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -39,6 +44,10 @@ const EditMenu = ({
 
   const handleAddVideoOnSlide = () => {
     handleOpenVideoHandler();
+  };
+
+  const handleAddCodeOnSlide = () => {
+    handleOpenCodeHandler();
   };
 
   return (
@@ -60,6 +69,7 @@ const EditMenu = ({
       </MenuItem>
       <MenuItem onClick={handleAddImageOnSlide}>Add Image</MenuItem>
       <MenuItem onClick={handleAddVideoOnSlide}>Add Video</MenuItem>
+      <MenuItem onClick={handleAddCodeOnSlide}>Add Code</MenuItem>
       <TextBoxModal
         open={openCreateTextBox}
         handleCloseCreateTextBox={handleCloseCreateTextBox}
@@ -77,6 +87,13 @@ const EditMenu = ({
       <VideoModal
         open={openVideoHandler}
         handleCloseVideoHandler={handleCloseVideoHandler}
+        presentationId={presentationId}
+        selectedSlideId={selectedSlideId}
+        setAnchorEl={setAnchorEl}
+      />
+      <CodeModal
+        open={openCodeHandler}
+        handleCloseCodeHandler={handleCloseCodeHandler}
         presentationId={presentationId}
         selectedSlideId={selectedSlideId}
         setAnchorEl={setAnchorEl}
