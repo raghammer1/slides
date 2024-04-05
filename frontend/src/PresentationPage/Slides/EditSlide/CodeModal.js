@@ -37,7 +37,27 @@ const CodeModal = ({
   const [fontSizeTextBox, setFontSizeTextBox] = useState('1');
   const [language, setLanguage] = useState('javascript');
 
+  const detectLanguage = (codeSnippet) => {
+    // Define simple patterns/keywords for each supported language
+    const patterns = {
+      javascript: /\b(function|=>|var|let|const)\b/,
+      python: /\b(def|print|import|from)\b/,
+      c: /\b(#include|int|printf|char)\b/,
+    };
+
+    // Attempt to detect the language by matching patterns
+    for (const [language, pattern] of Object.entries(patterns)) {
+      if (pattern.test(codeSnippet)) {
+        return language;
+      }
+    }
+
+    // Default to JavaScript if no specific patterns are found
+    return 'javascript';
+  };
+
   useEffect(() => {
+    setLanguage(detectLanguage(code));
     Prism.highlightAll();
   }, [code, language]);
 
@@ -62,31 +82,13 @@ const CodeModal = ({
     setAnchorEl(null);
   };
 
-  const handleCodeChange = (e) => {
-    setCode(e.target.value);
-  };
-
   return (
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleCloseCodeHandler}
       style={style}
     >
-      <div style={{ position: 'relative' }}>
-        <textarea
-          value={code}
-          onChange={handleCodeChange}
-          style={{
-            width: '100%',
-            height: '150px',
-            border: 'none',
-            padding: '10px',
-            fontSize: '16px',
-            fontFamily:
-              'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
-            whiteSpace: 'pre',
-          }}
-        />
+      <div style={{ width: '100px', height: '100px' }}>
         <pre
           aria-hidden="true"
           style={{
@@ -101,6 +103,9 @@ const CodeModal = ({
             color: 'transparent',
             overflowY: 'scroll',
             fontSize: '16px',
+            width: '300px',
+            overflow: 'auto',
+            height: '100px',
             fontFamily:
               'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
           }}

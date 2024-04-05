@@ -1,10 +1,15 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import useSlidesListStore from '../../zustandStore/useSlidesListStore';
 import { Typography } from '@mui/material';
 import EditMenu from './EditSlide/EditMenu';
 import VideoPlayer from './VideoPlayer';
 import CornerBox from './CornerBox';
 import { Rnd } from 'react-rnd';
+import 'prismjs/themes/prism-okaidia.css'; // Feel free to choose another theme
+import Prism from 'prismjs';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-python';
+import 'prismjs/components/prism-c';
 
 const SlideDisplay = ({ presentationId, selectedSlideId }) => {
   const {
@@ -28,6 +33,10 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
+  useEffect(() => {
+    Prism.highlightAll();
+  }, [selectedSlide]);
 
   const handleSelectedElement = (element) => {
     setSelectedElement(element);
@@ -251,25 +260,60 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
               }
               onContextMenu={(e) => handleDeleteElement(element.id, e)}
             >
-              <div key={element.id}>
-                <textarea
-                  defaultValue={element.text}
+              <div
+                key={element.id}
+                style={{ position: 'relative', width: '100%', height: '100%' }}
+              >
+                <div
                   style={{
-                    position: 'absolute',
-                    top: element.top,
-                    left: element.left,
-                    height: '100%',
+                    position: 'relative',
                     width: '100%',
-                    fontSize: element.fontSize,
-                    color: element.color,
-                    resize: 'none',
-                    overflow: 'hidden',
-                    border: '2px solid #999',
-                    cursor: 'default',
+                    height: '100%',
                   }}
-                  readOnly
-                  onClick={() => handleSelectedElement(element)}
-                />
+                >
+                  <textarea
+                    defaultValue={element.text}
+                    onChange={(e) => {
+                      /* Handler to update code text */
+                    }}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      fontSize: element.fontSize,
+                      fontFamily:
+                        'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      zIndex: 1,
+                      color: 'transparent', // Hide text in textarea, showing only the highlighted code below
+                      background: 'none',
+                      pointerEvents: 'none', // Make the textarea non-interactive
+                      overflowY: 'auto',
+                      resize: 'none',
+                      border: 'none',
+                    }}
+                    readOnly // Remove readOnly if you want to make it editable
+                  />
+                  <pre
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      margin: 0,
+                      padding: '10px',
+                      overflowY: 'auto',
+                      zIndex: 0,
+                      pointerEvents: 'none', // Prevent interaction with the highlighted code
+                    }}
+                  >
+                    <code className={`language-${element.language}`}>
+                      {element.text}
+                    </code>
+                  </pre>
+                </div>
                 {renderCornerBoxes(element)}
               </div>
             </Rnd>
