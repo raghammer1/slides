@@ -29,8 +29,7 @@ export const getStore = async () => {
         Authorization: `Bearer ${token}`,
       },
     });
-
-    return response;
+    if (response.status === 200) return response.data.store;
   } catch (e) {
     return { error: true, message: e.message };
   }
@@ -39,6 +38,7 @@ export const getStore = async () => {
 export const setStore = async (data) => {
   try {
     const token = localStorage.getItem('token');
+    console.log('DATA', data);
 
     // Ensure token exists before proceeding
     if (!token) {
@@ -48,21 +48,24 @@ export const setStore = async (data) => {
     const oldData = await getStore();
     console.log(oldData);
 
-    const response = await apiClient.put(
-      '/store',
-      { store: data },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await apiClient.put('/store', data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     return response;
   } catch (e) {
     return { error: true, message: e.message };
   }
 };
+
+// STORE SCHEMA
+/**
+ * @typedef {Object} Store
+ * @property {Object} Slides - The unique identifier for the user.
+ * @property {Object} Presentations - The name of the user.
+ */
 
 // WE ARE CHECKING THIS AS THIS WILL TELL US IF THE ROUTE THAT IS BEING ACCESSED BY THE USER
 // IS BEING DONE WHEN THEY HAVE A VALID TOKEN ELSE THEY WON'T BE ABLE TO ACCESS THE PATH
