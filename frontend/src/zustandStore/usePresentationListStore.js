@@ -69,12 +69,17 @@ const usePresentationListStore = create(
     },
 
     clearPresentations: () => set({ presentations: [] }),
-    deleteOnePresentation: (id) =>
-      set((state) => ({
-        presentations: state.presentations.filter(
+    deleteOnePresentation: (id) => {
+      console.log(`Deleting presentation with ID: ${id}`);
+      set((state) => {
+        const updatedPresentations = state.presentations.filter(
           (presentation) => presentation.id !== id
-        ),
-      })),
+        );
+        return {
+          presentations: updatedPresentations,
+        };
+      });
+    },
     updatePresentationTitle: (id, newTitle) =>
       set((state) => ({
         presentations: state.presentations.map((presentation) =>
