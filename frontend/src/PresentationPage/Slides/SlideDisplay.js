@@ -2,14 +2,16 @@ import React, { useCallback, useEffect, useState } from 'react';
 import useSlidesListStore from '../../zustandStore/useSlidesListStore';
 import { Typography } from '@mui/material';
 import EditMenu from './EditSlide/EditMenu';
-import VideoPlayer from './VideoPlayer';
+import VideoPlayer from './ElementDisplays.js/VideoPlayer';
 import CornerBox from './CornerBox';
-import { Rnd } from 'react-rnd';
 import 'prismjs/themes/prism-okaidia.css'; // Feel free to choose another theme
 import Prism from 'prismjs';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-c';
+import CodeElementDisplay from './ElementDisplays.js/CodeElementDisplay';
+import ImageElementDisplay from './ElementDisplays.js/ImageElementDisplay';
+import TextBoxElementDisplay from './ElementDisplays.js/TextBoxElementDisplay';
 
 const SlideDisplay = ({ presentationId, selectedSlideId }) => {
   const {
@@ -145,84 +147,27 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
       {selectedSlide?.elements?.map((element) => {
         if (element.type === 'textarea') {
           return (
-            <Rnd
-              default={{
-                x: element.top,
-                y: element.left,
-                width: `${element.width}%`, // Initial width based on element's width
-                height: `${element.height}%`, // Initial height based on element's height
-              }}
-              className={element.id}
-              // minWidth={(parseFloat(element.width) / 100) * 1000}
-              // minHeight={(parseFloat(element.height) / 100) * 500}
-              bounds="parent"
+            <TextBoxElementDisplay
               key={element.id}
-              onDragStop={(e, d) => onDragStop(e, d, element)}
-              onResizeStop={(e, direction, ref, delta, position) =>
-                onResizeStop(e, direction, ref, delta, position, element)
-              }
-              onContextMenu={(e) => handleDeleteElement(element.id, e)}
-            >
-              <div key={element.id}>
-                <textarea
-                  defaultValue={element.text}
-                  style={{
-                    position: 'absolute',
-                    top: element.top,
-                    left: element.left,
-                    height: '100%',
-                    width: '100%',
-                    fontSize: element.fontSize,
-                    color: element.color,
-                    resize: 'none',
-                    overflow: 'hidden',
-                    border: '2px solid #999',
-                    cursor: 'default',
-                  }}
-                  readOnly
-                  onClick={() => handleSelectedElement(element)}
-                />
-                {renderCornerBoxes(element)}
-              </div>
-            </Rnd>
+              element={element}
+              onDragStop={onDragStop}
+              onResizeStop={onResizeStop}
+              handleDeleteElement={handleDeleteElement}
+              renderCornerBoxes={renderCornerBoxes}
+              handleSelectedElement={handleSelectedElement}
+            />
           );
         } else if (element.type === 'image') {
           return (
-            <Rnd
-              default={{
-                x: element.top,
-                y: element.left,
-                width: `${element.width}%`, // Initial width based on element's width
-                height: `${element.height}%`, // Initial height based on element's height
-              }}
-              className={element.id}
-              // minWidth={(parseFloat(element.width) / 100) * 1000}
-              // minHeight={(parseFloat(element.height) / 100) * 500}
-              bounds="parent"
+            <ImageElementDisplay
               key={element.id}
-              onDragStop={(e, d) => onDragStop(e, d, element)}
-              onResizeStop={(e, direction, ref, delta, position) =>
-                onResizeStop(e, direction, ref, delta, position, element)
-              }
-              onContextMenu={(e) => handleDeleteElement(element.id, e)}
-            >
-              <div key={element.id}>
-                <img
-                  src={element.src}
-                  alt={element.alt}
-                  style={{
-                    position: 'absolute',
-                    top: element.top,
-                    left: element.left,
-                    height: '100%',
-                    width: '100%',
-                    resize: 'none',
-                  }}
-                  onClick={() => handleSelectedElement(element)}
-                />
-                {renderCornerBoxes(element)}
-              </div>
-            </Rnd>
+              element={element}
+              onDragStop={onDragStop}
+              onResizeStop={onResizeStop}
+              handleDeleteElement={handleDeleteElement}
+              renderCornerBoxes={renderCornerBoxes}
+              handleSelectedElement={handleSelectedElement}
+            />
           );
         } else if (element.type === 'video') {
           return (
@@ -242,81 +187,14 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
         }
         if (element.type === 'code') {
           return (
-            <Rnd
-              default={{
-                x: element.top,
-                y: element.left,
-                width: `${element.width}%`, // Initial width based on element's width
-                height: `${element.height}%`, // Initial height based on element's height
-              }}
-              className={element.id}
-              // minWidth={(parseFloat(element.width) / 100) * 1000}
-              // minHeight={(parseFloat(element.height) / 100) * 500}
-              bounds="parent"
+            <CodeElementDisplay
               key={element.id}
-              onDragStop={(e, d) => onDragStop(e, d, element)}
-              onResizeStop={(e, direction, ref, delta, position) =>
-                onResizeStop(e, direction, ref, delta, position, element)
-              }
-              onContextMenu={(e) => handleDeleteElement(element.id, e)}
-            >
-              <div
-                key={element.id}
-                style={{ position: 'relative', width: '100%', height: '100%' }}
-              >
-                <div
-                  style={{
-                    position: 'relative',
-                    width: '100%',
-                    height: '100%',
-                  }}
-                >
-                  <textarea
-                    defaultValue={element.text}
-                    onChange={(e) => {
-                      /* Handler to update code text */
-                    }}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      fontSize: element.fontSize,
-                      fontFamily:
-                        'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      zIndex: 1,
-                      color: 'transparent', // Hide text in textarea, showing only the highlighted code below
-                      background: 'none',
-                      pointerEvents: 'none', // Make the textarea non-interactive
-                      overflowY: 'auto',
-                      resize: 'none',
-                      border: 'none',
-                    }}
-                    readOnly // Remove readOnly if you want to make it editable
-                  />
-                  <pre
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      margin: 0,
-                      padding: '10px',
-                      overflowY: 'auto',
-                      zIndex: 0,
-                      pointerEvents: 'none', // Prevent interaction with the highlighted code
-                    }}
-                  >
-                    <code className={`language-${element.language}`}>
-                      {element.text}
-                    </code>
-                  </pre>
-                </div>
-                {renderCornerBoxes(element)}
-              </div>
-            </Rnd>
+              element={element}
+              onDragStop={onDragStop}
+              onResizeStop={onResizeStop}
+              handleDeleteElement={handleDeleteElement}
+              renderCornerBoxes={renderCornerBoxes}
+            />
           );
         } else {
           return <></>;
