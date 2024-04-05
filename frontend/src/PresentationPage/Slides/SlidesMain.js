@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import useSlidesListStore from '../../zustandStore/useSlidesListStore';
 import styled from '@emotion/styled';
 import SlidesList from './SlidesList';
 import SlideDisplay from './SlideDisplay';
@@ -18,7 +17,7 @@ const Wrapper = styled('div')({
 });
 
 const SlidesMain = ({ presentationId }) => {
-  const { slides, deleteSlide } = useSlidesListStore((state) => ({
+  const { slides, deleteSlide } = usePresentationListStore((state) => ({
     slides: state.getSlidesForPresentation(presentationId),
     deleteSlide: state.deleteSlide, // Assuming this method exists for deleting a slide
   }));
@@ -58,13 +57,11 @@ const SlidesMain = ({ presentationId }) => {
   };
 
   const { deleteOnePresentation } = usePresentationListStore();
-  const { deletePresentationAllSlides } = useSlidesListStore();
 
   const handlePresentationDelete = () => {
     console.log('delete');
     setOpen(false);
     deleteOnePresentation(presentationId);
-    deletePresentationAllSlides(presentationId);
     nav('/dashboard');
   };
 

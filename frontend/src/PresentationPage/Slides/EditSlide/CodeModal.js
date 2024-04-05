@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CustomModal from '../../../components/CustomModal';
 import CustomPrimaryButton from '../../../components/CustomePrimaryButton';
-import useSlidesListStore from '../../../zustandStore/useSlidesListStore';
 import { v4 as uuidv4 } from 'uuid';
 import InputLabelRange from '../../../components/InputLabelRange';
 import TextBoxWithLabel from '../../../components/TextBoxWithLabel';
@@ -12,6 +11,7 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-c';
 import InputWithLabels from '../../../components/InputLabel';
+import usePresentationListStore from '../../../zustandStore/usePresentationListStore';
 
 const style = {
   position: 'absolute',
@@ -62,7 +62,7 @@ const CodeModal = ({
     Prism.highlightAll();
   }, [code, language]);
 
-  const { addElementToSlide } = useSlidesListStore();
+  const { addElementToSlide } = usePresentationListStore();
 
   const handlePresentationcodeCreateTextBox = () => {
     const idElements = uuidv4();

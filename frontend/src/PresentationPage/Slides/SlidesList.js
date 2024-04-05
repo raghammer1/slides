@@ -62,10 +62,10 @@
 
 // export default SlidesList;
 import React from 'react';
-import useSlidesListStore from '../../zustandStore/useSlidesListStore';
 import { v4 as uuidv4 } from 'uuid';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
+import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 
 const SlidesList = ({
   selectedSlideId,
@@ -73,7 +73,7 @@ const SlidesList = ({
   setSelectedSlide,
   handleDeleteSlide,
 }) => {
-  const { slides, addSlide } = useSlidesListStore((state) => ({
+  const { slides, addSlide } = usePresentationListStore((state) => ({
     slides: state.getSlidesForPresentation(presentationId),
     addSlide: state.addSlide,
   }));
@@ -81,6 +81,7 @@ const SlidesList = ({
   const handleAddNewSlide = () => {
     const newSlide = {
       id: uuidv4(),
+      elements: [],
     };
     addSlide(presentationId, newSlide);
   };

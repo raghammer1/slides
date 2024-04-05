@@ -6,7 +6,7 @@ import InputWithLabels from '../../../components/InputLabel';
 import { v4 as uuidv4 } from 'uuid';
 import CustomPrimaryButton from '../../../components/CustomePrimaryButton';
 import InputLabelRange from '../../../components/InputLabelRange';
-import useSlidesListStore from '../../../zustandStore/useSlidesListStore';
+import usePresentationListStore from '../../../zustandStore/usePresentationListStore';
 
 const style = {
   position: 'absolute',
@@ -33,7 +33,7 @@ const VideoModal = ({
   const [sizeTextBoxWidth, setSizeTextBoxWidth] = useState('50');
   const [sizeTextBoxHeight, setSizeTextBoxHeight] = useState('50');
 
-  const { addElementToSlide } = useSlidesListStore();
+  const { addElementToSlide } = usePresentationListStore();
 
   const handlePresentationTitleCreateImage = () => {
     const idElements = uuidv4();

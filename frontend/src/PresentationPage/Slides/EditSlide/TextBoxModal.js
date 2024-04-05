@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import CustomModal from '../../../components/CustomModal';
 import InputWithLabels from '../../../components/InputLabel';
 import CustomPrimaryButton from '../../../components/CustomePrimaryButton';
-import useSlidesListStore from '../../../zustandStore/useSlidesListStore';
 import { v4 as uuidv4 } from 'uuid';
 import InputLabelRange from '../../../components/InputLabelRange';
+import usePresentationListStore from '../../../zustandStore/usePresentationListStore';
 
 const style = {
   position: 'absolute',
@@ -31,7 +31,7 @@ const TextBoxModal = ({
   const [fontSizeTextBox, setFontSizeTextBox] = useState('1');
   const [colourTextBox, setColourTextBox] = useState('#000');
 
-  const { addElementToSlide } = useSlidesListStore();
+  const { addElementToSlide } = usePresentationListStore();
 
   const handlePresentationTitleCreateTextBox = () => {
     const idElements = uuidv4();

@@ -16,8 +16,8 @@ import { v4 as uuidv4 } from 'uuid';
 import styled from '@emotion/styled';
 import CustomPrimaryButton from '../../../components/CustomePrimaryButton';
 import InputLabelRange from '../../../components/InputLabelRange';
-import useSlidesListStore from '../../../zustandStore/useSlidesListStore';
 import { imageEncoder } from '../../../shared/base64Image';
+import usePresentationListStore from '../../../zustandStore/usePresentationListStore';
 
 const ImagePreview = styled('img')({
   maxWidth: '100%',
@@ -66,7 +66,7 @@ const ImageModal = ({
     }
   };
 
-  const { addElementToSlide } = useSlidesListStore();
+  const { addElementToSlide } = usePresentationListStore();
 
   const handlePresentationTitleCreateImage = () => {
     const idElements = uuidv4();

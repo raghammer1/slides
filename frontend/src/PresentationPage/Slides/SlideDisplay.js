@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import useSlidesListStore from '../../zustandStore/useSlidesListStore';
 import { Typography } from '@mui/material';
 import EditMenu from './EditSlide/EditMenu';
 import VideoPlayer from './ElementDisplays.js/VideoPlayer';
@@ -12,6 +11,7 @@ import 'prismjs/components/prism-c';
 import CodeElementDisplay from './ElementDisplays.js/CodeElementDisplay';
 import ImageElementDisplay from './ElementDisplays.js/ImageElementDisplay';
 import TextBoxElementDisplay from './ElementDisplays.js/TextBoxElementDisplay';
+import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 
 const SlideDisplay = ({ presentationId, selectedSlideId }) => {
   const {
@@ -19,7 +19,7 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
     updateElementPosition,
     updateElementSize,
     deleteElementFromSlide,
-  } = useSlidesListStore((store) => ({
+  } = usePresentationListStore((store) => ({
     selectedSlide: store.getSlideFromPresentationById(
       presentationId,
       selectedSlideId

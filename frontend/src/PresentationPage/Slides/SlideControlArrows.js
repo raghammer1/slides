@@ -3,14 +3,14 @@ import IconButton from '@mui/material/IconButton';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Box from '@mui/material/Box';
-import useSlidesListStore from '../../zustandStore/useSlidesListStore';
+import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 
 const SlideControlArrows = ({
   presentationId,
   setSelectedSlide,
   selectedSlideId,
 }) => {
-  const { slides, selectedSlide } = useSlidesListStore((state) => ({
+  const { slides, selectedSlide } = usePresentationListStore((state) => ({
     slides: state.getSlidesForPresentation(presentationId),
     selectedSlide: state.getSlideFromPresentationById(
       presentationId,
