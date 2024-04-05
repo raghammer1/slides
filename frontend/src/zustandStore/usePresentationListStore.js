@@ -345,14 +345,11 @@ const usePresentationListStore = create(
   }))
 );
 
-// const initializeStore = async () => {
-//   await setStore({ store: {} });
-//   // usePresentationListStore.setState({
-//   //   presentations: initialStore.presentation,
-//   // });
-// };
-
-// // // Immediately call the function to initialize the store
-// initializeStore();
+export const initializeStore = async () => {
+  const initialStore = await getStore();
+  usePresentationListStore.setState({
+    presentations: initialStore.store.presentations,
+  });
+};
 
 export default usePresentationListStore;
