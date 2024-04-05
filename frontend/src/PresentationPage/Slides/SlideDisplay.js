@@ -37,7 +37,8 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
     // };
 
     // const top = `${(d.x / 500) * 100}%`; // Convert pixels back to percentage
-    // const left = `${(d.y / 1000) * 100}%`;
+    // const left = `${(d.y / 1000) * 100}%`
+
     const top = '0';
     const left = '0';
     console.log('IENNFUHEWFIUWEBFU TOP LEFT  NEW', top, left);
@@ -46,10 +47,10 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
       presentationId,
       selectedSlideId,
       element.id,
-      top,
-      left
+      `${d.x}`,
+      `${d.y}`
     );
-    setSelectedElement({ ...element, top, left });
+    setSelectedElement({ ...element, top: `${d.x}`, left: `${d.y}` });
   };
 
   // Handler for updating element size
@@ -85,23 +86,19 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
         (parseInt(selectedElement.width) / 100) * containerWidth;
       const elementHeightPx =
         (parseInt(selectedElement.height) / 100) * containerHeight;
-      const elementTopPx =
-        (parseInt(selectedElement.top) / 100) * containerHeight;
-      const elementLeftPx =
-        (parseInt(selectedElement.left) / 100) * containerWidth;
 
       // Positions for each corner box, now in pixels
       const corners = [
-        { top: elementTopPx, left: elementLeftPx }, // Top-left
-        { top: elementTopPx, left: elementLeftPx + elementWidthPx - 10 }, // Top-right, assuming corner box width of 10px
-        { top: elementTopPx + elementHeightPx - 10, left: elementLeftPx }, // Bottom-left, assuming corner box height of 10px
+        { top: 0, left: 0 }, // Top-left
+        { top: 0, left: 0 + elementWidthPx - 10 }, // Top-right, assuming corner box width of 10px
+        { top: 0 + elementHeightPx - 10, left: 0 }, // Bottom-left, assuming corner box height of 10px
         {
-          top: elementTopPx + elementHeightPx - 10,
-          left: elementLeftPx + elementWidthPx - 10,
+          top: 0 + elementHeightPx - 10,
+          left: 0 + elementWidthPx - 10,
         }, // Bottom-right
       ];
 
-      console.log(corners);
+      console.log(corners, 'corners I AM CORNER HEY HEY');
 
       return corners.map((style, index) => (
         <CornerBox key={index} style={style} />
@@ -156,6 +153,7 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
                 width: `${element.width}%`, // Initial width based on element's width
                 height: `${element.height}%`, // Initial height based on element's height
               }}
+              className={element.id}
               // minWidth={(parseFloat(element.width) / 100) * 1000}
               // minHeight={(parseFloat(element.height) / 100) * 500}
               bounds="parent"
