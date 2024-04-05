@@ -16,6 +16,54 @@ export const register = async (data) => {
   }
 };
 
+export const getStore = async () => {
+  try {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      throw new Error('No token found');
+    }
+
+    const response = await apiClient.get('/store', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return response;
+  } catch (e) {
+    return { error: true, message: e.message };
+  }
+};
+
+export const setStore = async (data) => {
+  try {
+    const token = localStorage.getItem('token');
+
+    // Ensure token exists before proceeding
+    if (!token) {
+      throw new Error('No token found');
+    }
+
+    const oldData = await getStore();
+    console.log(oldData);
+
+    const response = await apiClient.put(
+      '/store',
+      { store: data },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    return response;
+  } catch (e) {
+    return { error: true, message: e.message };
+  }
+};
+
 // WE ARE CHECKING THIS AS THIS WILL TELL US IF THE ROUTE THAT IS BEING ACCESSED BY THE USER
 // IS BEING DONE WHEN THEY HAVE A VALID TOKEN ELSE THEY WON'T BE ABLE TO ACCESS THE PATH
 // ONLY NEEDED ON AUTHORIZED ROUTES HENCE !
@@ -29,3 +77,7 @@ export const register = async (data) => {
 //   localStorage.clear();
 //   window.location.pathname = '/login';
 // };
+
+// await setStore( { hoooo: 'WOW' } );
+// const oldData = await getStore();
+// console.log(oldData, 'STORE');

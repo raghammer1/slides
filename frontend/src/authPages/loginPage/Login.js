@@ -23,7 +23,6 @@ const Login = () => {
 
   const handleLoginFunction = useCallback(async () => {
     const loginData = await login({ email: mail, password });
-    console.log(loginData);
 
     if (loginData?.status === 200) {
       const token = loginData.data.token;
