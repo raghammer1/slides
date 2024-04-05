@@ -3,6 +3,7 @@ import useSlidesListStore from '../../zustandStore/useSlidesListStore';
 import { Typography } from '@mui/material';
 import EditMenu from './EditSlide/EditMenu';
 import VideoPlayer from './VideoPlayer';
+import CornerBox from './CornerBox';
 
 const SlideDisplay = ({ presentationId, selectedSlideId }) => {
   const { selectedSlide } = useSlidesListStore((store) => ({
@@ -169,20 +170,3 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
 };
 
 export default SlideDisplay;
-const CornerBox = ({ style }) => {
-  // Log the style object to the console
-  console.log(style, 'style');
-
-  // Now return your component JSX
-  return (
-    <div
-      style={{
-        width: '10px',
-        height: '10px',
-        backgroundColor: 'red',
-        position: 'absolute',
-        ...style, // Spread the received style props here
-      }}
-    />
-  );
-};
