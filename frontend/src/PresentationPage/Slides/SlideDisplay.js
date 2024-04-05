@@ -7,15 +7,20 @@ import CornerBox from './CornerBox';
 import { Rnd } from 'react-rnd';
 
 const SlideDisplay = ({ presentationId, selectedSlideId }) => {
-  const { selectedSlide, updateElementPosition, updateElementSize } =
-    useSlidesListStore((store) => ({
-      selectedSlide: store.getSlideFromPresentationById(
-        presentationId,
-        selectedSlideId
-      ),
-      updateElementPosition: store.updateElementPosition,
-      updateElementSize: store.updateElementSize,
-    }));
+  const {
+    selectedSlide,
+    updateElementPosition,
+    updateElementSize,
+    deleteElementFromSlide,
+  } = useSlidesListStore((store) => ({
+    selectedSlide: store.getSlideFromPresentationById(
+      presentationId,
+      selectedSlideId
+    ),
+    updateElementPosition: store.updateElementPosition,
+    updateElementSize: store.updateElementSize,
+    deleteElementFromSlide: store.deleteElementFromSlide,
+  }));
 
   const [selectedElement, setSelectedElement] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -70,6 +75,14 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
       newSize.height
     );
     setSelectedElement({ ...element, ...newSize, ...newPosition });
+  };
+
+  const handleDeleteElement = (elementId, e) => {
+    e.preventDefault(); // Prevent the default context menu from opening
+    if (selectedElement?.id === elementId) {
+      setSelectedElement(null);
+    }
+    deleteElementFromSlide(presentationId, selectedSlideId, elementId);
   };
 
   const renderCornerBoxes = useCallback(
@@ -139,6 +152,7 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
               onResizeStop={(e, direction, ref, delta, position) =>
                 onResizeStop(e, direction, ref, delta, position, element)
               }
+              onContextMenu={(e) => handleDeleteElement(element.id, e)}
             >
               <div key={element.id}>
                 <textarea
@@ -181,6 +195,7 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
               onResizeStop={(e, direction, ref, delta, position) =>
                 onResizeStop(e, direction, ref, delta, position, element)
               }
+              onContextMenu={(e) => handleDeleteElement(element.id, e)}
             >
               <div key={element.id}>
                 <img

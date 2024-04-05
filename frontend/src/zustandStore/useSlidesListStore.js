@@ -135,6 +135,35 @@ const useSlidesListStore = create((set, get) => ({
       };
     });
   },
+  deleteElementFromSlide: (presentationId, slideId, elementId) => {
+    set((state) => {
+      // Locate the correct slide
+      const slides = state.slides[presentationId] || [];
+      const slideIndex = slides.findIndex((slide) => slide.id === slideId);
+
+      if (slideIndex === -1) return; // Slide not found, nothing to delete
+
+      // Clone the slide to avoid direct state mutation
+      const updatedSlide = { ...slides[slideIndex] };
+
+      // Filter out the element to be deleted
+      updatedSlide.elements = updatedSlide.elements.filter(
+        (element) => element.id !== elementId
+      );
+
+      // Clone the slides array to insert the updated slide
+      const updatedSlides = [...slides];
+      updatedSlides[slideIndex] = updatedSlide;
+
+      // Update the state with the modified slides array
+      return {
+        slides: {
+          ...state.slides,
+          [presentationId]: updatedSlides,
+        },
+      };
+    });
+  },
 }));
 
 export default useSlidesListStore;
