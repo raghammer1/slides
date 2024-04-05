@@ -7,16 +7,15 @@ import CornerBox from './CornerBox';
 import { Rnd } from 'react-rnd';
 
 const SlideDisplay = ({ presentationId, selectedSlideId }) => {
-  const { selectedSlide, updateElementPosition } = useSlidesListStore(
-    (store) => ({
+  const { selectedSlide, updateElementPosition, updateElementSize } =
+    useSlidesListStore((store) => ({
       selectedSlide: store.getSlideFromPresentationById(
         presentationId,
         selectedSlideId
       ),
       updateElementPosition: store.updateElementPosition,
       updateElementSize: store.updateElementSize,
-    })
-  );
+    }));
 
   const [selectedElement, setSelectedElement] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -54,24 +53,24 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
   };
 
   // Handler for updating element size
-  // const onResizeStop = (e, direction, ref, delta, position, element) => {
-  //   const newSize = {
-  //     width: `${(ref.offsetWidth / 1000) * 100}%`, // Convert pixels back to percentage
-  //     height: `${(ref.offsetHeight / 500) * 100}%`,
-  //   };
-  //   const newPosition = {
-  //     top: `${(position.y / 500) * 100}%`,
-  //     left: `${(position.x / 1000) * 100}%`,
-  //   };
-  //   updateElementSize(
-  //     presentationId,
-  //     selectedSlideId,
-  //     element.id,
-  //     newSize.width,
-  //     newSize.height
-  //   );
-  //   setSelectedElement({ ...element, ...newSize, ...newPosition });
-  // };
+  const onResizeStop = (e, direction, ref, delta, position, element) => {
+    const newSize = {
+      width: `${(ref.offsetWidth / 1000) * 100}`, // Convert pixels back to percentage
+      height: `${(ref.offsetHeight / 500) * 100}`,
+    };
+    const newPosition = {
+      top: `${position.y}`,
+      left: `${position.x}`,
+    };
+    updateElementSize(
+      presentationId,
+      selectedSlideId,
+      element.id,
+      newSize.width,
+      newSize.height
+    );
+    setSelectedElement({ ...element, ...newSize, ...newPosition });
+  };
 
   const renderCornerBoxes = useCallback(
     (element) => {
@@ -159,9 +158,9 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
               bounds="parent"
               key={element.id}
               onDragStop={(e, d) => onDragStop(e, d, element)}
-              // onResizeStop={(e, direction, ref, delta, position) =>
-              //   onResizeStop(e, direction, ref, delta, position, element)
-              // }
+              onResizeStop={(e, direction, ref, delta, position) =>
+                onResizeStop(e, direction, ref, delta, position, element)
+              }
             >
               <div key={element.id}>
                 <img
