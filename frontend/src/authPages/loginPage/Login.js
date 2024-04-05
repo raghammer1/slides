@@ -7,7 +7,6 @@ import AuthBox from '../../components/AuthBox';
 import { login } from '../../services/api';
 import { useNavigate } from 'react-router-dom';
 import useCurrentUserStore from '../../zustandStore/useCurrentUserStore';
-import { initializeStore } from '../../zustandStore/usePresentationListStore';
 
 const Login = () => {
   const [mail, setMail] = useState('');
@@ -28,8 +27,6 @@ const Login = () => {
     if (loginData?.status === 200) {
       const token = loginData.data.token;
       localStorage.setItem('token', token);
-
-      initializeStore();
 
       setCurrentUser({ name: '', email: mail });
 
