@@ -45,6 +45,7 @@ const SlideControlArrows = ({
       }}
     >
       <IconButton
+        data-testid={'btn-go-left'}
         onClick={handlePrev}
         disabled={selectedSlide.slideNumber === 1}
         aria-label="previous slide"
@@ -52,6 +53,7 @@ const SlideControlArrows = ({
         <ArrowBackIosIcon />
       </IconButton>
       <IconButton
+        data-testid={'btn-go-right'}
         onClick={handleNext}
         disabled={selectedSlide.slideNumber === totalSlides}
         aria-label="next slide"

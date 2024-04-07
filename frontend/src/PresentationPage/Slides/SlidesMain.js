@@ -92,6 +92,7 @@ const SlidesMain = ({ presentationId }) => {
         selectedSlideId={selectedSlideId}
       />
       <DeletePresentationModal
+        dataTestid={'delete-presentation-delete-slide'}
         open={open}
         handleClose={handleClose}
         handlePresentationDelete={handlePresentationDelete}

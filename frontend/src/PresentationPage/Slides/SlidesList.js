@@ -110,7 +110,11 @@ const SlidesList = ({
           <span>
             Slide {slide.slideNumber} - {slide.id}
           </span>
-          <IconButton onClick={(e) => handleDeleteSlide(e, slide)} size="small">
+          <IconButton
+            data-testid={`slide-delete-btn-test-${slide.id}`}
+            onClick={(e) => handleDeleteSlide(e, slide)}
+            size="small"
+          >
             <DeleteIcon fontSize="small" />
           </IconButton>
         </div>

@@ -76,6 +76,7 @@ module.exports = defineConfig({
     coverageFolder: 'coverage',
   },
   e2e: {
+    baseUrl: 'http://localhost:3000',
     setupNodeEvents(on, config) {
       // Integrate the code coverage task
       codeCoverageTask(on, config);

@@ -143,6 +143,35 @@ describe('Beautiful Testing 2', () => {
     cy.get('[data-testid^="data-test-slide-"]').eq(3).click();
     cy.get('[data-testid^="data-test-slide-"]').eq(2).click();
     cy.get('[data-testid^="data-test-slide-"]').eq(4).click();
+
+    cy.get('[data-testid="btn-go-right"]').click()
+    cy.get('[data-testid="btn-go-left"]').click()
+    cy.get('[data-testid="btn-go-left"]').click()
+
+
+    cy.get('[data-testid="edit-btn"]').click();
+    cy.get('[data-testid="add-image-box-btn"]').click();
+    cy.get('input[type="radio"][value="upload"]').click();
+    cy.get('[data-testid="image-box-alt-test"]').type('Girl2');
+    cy.get('[data-testid="image-box-upload-test-btn"]').click();
+    cy.get('[data-testid="image-box-upload-test"]').attachFile('girl2.jpg');
+    cy.get('[data-testid="image-box-create-btn-test"]').click();
+    cy.get('[data-testid="image-box-element-test"]').first().rightclick();
+
+    cy.get('[data-testid^="slide-delete-btn-test-"]').eq(1).click();
+    cy.get('[data-testid^="slide-delete-btn-test-"]').first().click();
+    cy.get('[data-testid="btn-go-left"]').click()
+    cy.get('[data-testid^="slide-delete-btn-test-"]').eq(1).click();
+
+    cy.get('[data-testid^="slide-delete-btn-test-"]').first().click();
+    cy.get('[data-testid^="slide-delete-btn-test-"]').first().click();
+    cy.get('[data-testid^="slide-delete-btn-test-"]').first().click();
+    cy.get('[data-testid^="slide-delete-btn-test-"]').first().click();
+    cy.get('[data-testid^="slide-delete-btn-test-"]').first().click();
+    cy.get('[data-testid^="slide-delete-btn-test-"]').first().click();
+
+    cy.get('[data-testid="delete-presentation-delete-slide"]').click()
+
   });
 });
 

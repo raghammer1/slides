@@ -138,9 +138,14 @@ const ImageModal = ({
           </div>
         ) : (
           <div>
-            <Button variant="contained" component="label">
+            <Button
+              data-testid={'image-box-upload-test-btn'}
+              variant="contained"
+              component="label"
+            >
               Upload File
               <input
+                data-testid={'image-box-upload-test'}
                 type="file"
                 hidden
                 accept="image/*"
