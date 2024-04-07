@@ -8,9 +8,8 @@ import { IconButton } from '@mui/material';
 const AlertContext = createContext();
 
 const useStyles = makeStyles((theme) => ({
-  // Custom snackbar styling
   snackbar: {
-    backgroundColor: (props) => props.bgColor || theme.palette.primary.main, // Use provided color or fallback to theme's primary color
+    backgroundColor: (props) => props.bgColor || theme.palette.primary.main,
   },
 }));
 
@@ -20,7 +19,7 @@ export const AlertProvider = ({ children }) => {
   const [alertState, setAlertState] = useState({
     open: false,
     message: '',
-    bgColor: 'default', // default background color
+    bgColor: 'default',
   });
 
   const { bgColor } = alertState;

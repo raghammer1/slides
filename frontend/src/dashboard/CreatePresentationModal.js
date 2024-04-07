@@ -25,7 +25,6 @@ const CreatePresentationModal = ({ open, handleClose }) => {
   const { showAlert } = useAlert();
 
   const { addPresentation } = usePresentationListStore();
-  // const { addSlide } = usePresentationListStore();
 
   useEffect(() => {
     setIsFormValid(name.length > 3);

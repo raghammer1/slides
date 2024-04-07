@@ -2,9 +2,9 @@ import { create } from 'zustand';
 
 /**
  * @typedef {Object} CurrentUser
- * @property {number} id - The unique identifier for the user.
- * @property {string} name - The name of the user.
- * @property {string} [email] - The email of the user. Optional property.
+ * @property {number} id
+ * @property {string} name
+ * @property {string} [email]
  */
 
 const useCurrentUserStore = create((set) => ({

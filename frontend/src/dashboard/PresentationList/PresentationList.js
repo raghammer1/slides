@@ -17,7 +17,7 @@ const PresentationList = () => {
   const { presentations } = usePresentationListStore((state) => ({
     presentations: state.presentations,
   }));
-  // debugger;
+
   console.log(presentations, 'JJRIUOHIUWHYIWEGIRYEWGRYUWEGR');
 
   return (

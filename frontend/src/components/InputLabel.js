@@ -36,8 +36,6 @@ const InputWithLabels = ({
   placeholder,
   dataTestId,
 }) => {
-  // const  = props;
-
   const handleValueChange = (event) => {
     setValue(event.target.value);
   };

@@ -6,7 +6,7 @@ export const updateSlide = (
 ) => {
   if (!slides[presentationId]) {
     console.warn('Presentation not found');
-    return slides; // Return the slides unmodified
+    return slides;
   }
 
   const slideIndex = slides[presentationId].findIndex(
@@ -14,17 +14,14 @@ export const updateSlide = (
   );
   if (slideIndex === -1) {
     console.warn('Slide not found');
-    return slides; // Return the slides unmodified
+    return slides;
   }
 
-  // Clone the slides array for the presentation to avoid direct mutations
   const updatedSlidesForPresentation = [...slides[presentationId]];
 
-  // Use the provided callback to update the target slide
   updatedSlidesForPresentation[slideIndex] = updateCallback(
     updatedSlidesForPresentation[slideIndex]
   );
 
-  // Return the updated slides with the modified presentation's slides array
   return { ...slides, [presentationId]: updatedSlidesForPresentation };
 };

@@ -56,7 +56,6 @@ export const setStore = async (data) => {
 // STORE SCHEMA
 /**
  * @typedef {Object} Store
- * @property {Object} Slides - The unique identifier for the user.
  * @property {Object} Presentations - The name of the user.
  */
 

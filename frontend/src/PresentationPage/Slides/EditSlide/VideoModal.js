@@ -40,7 +40,7 @@ const VideoModal = ({
     const element = {
       id: idElements,
       type: 'video',
-      src: videoUrl, // Store the original URL as well
+      src: videoUrl,
       top: '0',
       left: '0',
       height: sizeTextBoxHeight,
@@ -54,9 +54,7 @@ const VideoModal = ({
     setAnchorEl(null);
   };
 
-  // Function to handle the change of the checkbox
   const handleAutoplayChange = (event) => {
-    // Update the autoplay state based on checkbox value
     setAutoplay(event.target.checked);
   };
 

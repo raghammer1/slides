@@ -45,7 +45,6 @@ const ImageModal = ({
   selectedSlideId,
   setAnchorEl,
 }) => {
-  // State to manage toggle between URL input and image upload
   const [imageInputType, setImageInputType] = useState('url');
 
   const [selectedFile, setSelectedFile] = useState(null);

@@ -34,7 +34,7 @@ const DeletePresentationModal = ({
         additionalStyle={{ marginTop: '30px' }}
         onClick={handlePresentationDelete}
         // eslint-disable-next-line no-unneeded-ternary
-        dataTestid={dataTestid ? dataTestid : 'j'}
+        dataTestid={dataTestid ? dataTestid : ''}
       />
     </CustomModal>
   );

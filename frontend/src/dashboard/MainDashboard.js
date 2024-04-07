@@ -27,7 +27,6 @@ const MainDashboard = () => {
         />
       </div>
       <PresentationList />
-      {/* MODAL */}
       <CreatePresentationModal open={open} handleClose={handleClose} />
     </Wrapper>
   );

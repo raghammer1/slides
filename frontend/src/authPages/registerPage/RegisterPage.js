@@ -8,7 +8,6 @@ import { register } from '../../services/api';
 import useCurrentUserStore from '../../zustandStore/useCurrentUserStore';
 import { useNavigate } from 'react-router-dom';
 import { useAlert } from '../../components/AlertError';
-// import { initializeStore } from '../../zustandStore/usePresentationListStore';
 
 const RegisterPage = () => {
   const [mail, setMail] = useState('');
@@ -37,7 +36,6 @@ const RegisterPage = () => {
         name: username,
       });
 
-      // Assuming the success response structure has a status of 200
       if (response?.status === 200) {
         const token = response.data.token;
         localStorage.setItem('token', token);

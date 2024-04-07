@@ -13,13 +13,11 @@ const ImageElementDisplay = ({
       default={{
         x: element.top,
         y: element.left,
-        width: `${element.width}%`, // Initial width bafsed on element's width
-        height: `${element.height}%`, // Initial height based on element's height
+        width: `${element.width}%`,
+        height: `${element.height}%`,
       }}
       className={element.id}
       data-testid={'image-box-element-test'}
-      // minWidth={(parseFloat(element.width) / 100) * 1000}
-      // minHeight={(parseFloat(element.height) / 100) * 500}
       bounds="parent"
       key={element.id}
       onDragStop={(e, d) => onDragStop(e, d, element)}

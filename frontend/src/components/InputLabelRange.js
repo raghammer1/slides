@@ -17,7 +17,7 @@ const SliderLabel = styled('label')({
 });
 
 const SliderInput = styled('input')({
-  width: '100%', // Make the slider take up the full width of its container
+  width: '100%',
   cursor: 'pointer',
 });
 

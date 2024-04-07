@@ -1,11 +1,10 @@
 describe('template spec', () => {
   it('passes', () => {
-    cy.visit('http://localhost:3000/')
-  })
-})
+    cy.visit('http://localhost:3000/');
+  });
+});
 
 describe('Beautiful Testing', () => {
-  
   let uniqueEmail;
 
   beforeEach(() => {
@@ -25,18 +24,24 @@ describe('Beautiful Testing', () => {
     cy.url().should('include', '/dashboard');
 
     cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type('newPresentation');
+    cy.get('[data-testid="create-presentation-name-test"]').type(
+      'newPresentation'
+    );
     cy.get('[data-testid="create-presentation-name-test-button"]').click();
 
     cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type('newPresentation2');
+    cy.get('[data-testid="create-presentation-name-test"]').type(
+      'newPresentation2'
+    );
     cy.get('[data-testid="create-presentation-name-test-button"]').click();
 
     cy.get('[data-testid^="presentation-card-"]').first().click();
     cy.url().should('include', '/presentation');
 
     cy.get('[data-testid^="presentation-delete-"]').first().click();
-    cy.get('[data-testid^="presentation-delete-modal-button-"]').first().click();
+    cy.get('[data-testid^="presentation-delete-modal-button-"]')
+      .first()
+      .click();
 
     // To be changed after delete bug fix
     cy.get('[data-testid^="presentation-card-"]').first().click();
@@ -93,5 +98,3 @@ describe('Beautiful Testing', () => {
   //     });
   // });
 });
-
-

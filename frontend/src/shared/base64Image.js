@@ -3,7 +3,7 @@ export const imageEncoder = (file, callback) => {
     const reader = new FileReader();
     reader.onload = function (e) {
       const base64 = e.target.result;
-      callback(base64); // Invoke the callback with the Base64 string
+      callback(base64);
     };
     reader.readAsDataURL(file);
   }

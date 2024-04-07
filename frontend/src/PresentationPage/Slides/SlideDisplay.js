@@ -3,7 +3,7 @@ import { Typography } from '@mui/material';
 import EditMenu from './EditSlide/EditMenu';
 import VideoPlayer from './ElementDisplays.js/VideoPlayer';
 import CornerBox from './CornerBox';
-import 'prismjs/themes/prism-okaidia.css'; // Feel free to choose another theme
+import 'prismjs/themes/prism-okaidia.css';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-python';
@@ -44,16 +44,7 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
     setSelectedElement(element);
   };
 
-  // Handler for updating element position
   const onDragStop = (e, d, element) => {
-    // const newPosition = {
-    //   top: `${(d.y / 500) * 100}%`, // Convert pixels back to percentage
-    //   left: `${(d.x / 1000) * 100}%`,
-    // };
-
-    // const top = `${(d.x / 500) * 100}%`; // Convert pixels back to percentage
-    // const left = `${(d.y / 1000) * 100}%`
-
     const top = '0';
     const left = '0';
     console.log('IENNFUHEWFIUWEBFU TOP LEFT  NEW', top, left);
@@ -68,10 +59,9 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
     setSelectedElement({ ...element, top: `${d.x}`, left: `${d.y}` });
   };
 
-  // Handler for updating element size
   const onResizeStop = (e, direction, ref, delta, position, element) => {
     const newSize = {
-      width: `${(ref.offsetWidth / 1000) * 100}`, // Convert pixels back to percentage
+      width: `${(ref.offsetWidth / 1000) * 100}`,
       height: `${(ref.offsetHeight / 500) * 100}`,
     };
     const newPosition = {
@@ -89,7 +79,7 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
   };
 
   const handleDeleteElement = (elementId, e) => {
-    e.preventDefault(); // Prevent the default context menu from opening
+    e.preventDefault();
     if (selectedElement?.id === elementId) {
       setSelectedElement(null);
     }
@@ -102,19 +92,18 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
       if (selectedElement === null || selectedElement.id !== element.id) {
         return null;
       }
-      // Assuming top, left, width, height are in percentages
-      const containerWidth = 1000; // SlideDisplay width in pixels
-      const containerHeight = 500; // SlideDisplay height in pixels
+
+      const containerWidth = 1000;
+      const containerHeight = 500;
       const elementWidthPx =
         (parseInt(selectedElement.width) / 100) * containerWidth;
       const elementHeightPx =
         (parseInt(selectedElement.height) / 100) * containerHeight;
 
-      // Positions for each corner box, now in pixels
       const corners = [
         { top: 0, left: 0 }, // Top-left
-        { top: 0, left: 0 + elementWidthPx - 10 }, // Top-right, assuming corner box width of 10px
-        { top: 0 + elementHeightPx - 10, left: 0 }, // Bottom-left, assuming corner box height of 10px
+        { top: 0, left: 0 + elementWidthPx - 10 }, // Top-right
+        { top: 0 + elementHeightPx - 10, left: 0 }, // Bottom-left
         {
           top: 0 + elementHeightPx - 10,
           left: 0 + elementWidthPx - 10,
@@ -217,6 +206,7 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
           padding: '5px 10px',
           borderRadius: '5px',
         }}
+        data-testid={'slide-number-for-current-slide'}
       >
         {selectedSlide?.slideNumber}
       </Typography>

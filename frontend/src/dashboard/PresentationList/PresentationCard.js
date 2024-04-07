@@ -18,13 +18,11 @@ const PresentationCard = ({ presentation }) => {
   const nav = useNavigate();
 
   const handleOpenPresentation = () => {
-    // Use arrow function here
     console.log(presentation);
     nav(`/presentation/${presentation.id}`);
   };
 
   return (
-    // Pass a reference to the function instead of invoking it
     <Wrapper
       data-testid={`presentation-card-${presentation.id}`}
       onClick={handleOpenPresentation}

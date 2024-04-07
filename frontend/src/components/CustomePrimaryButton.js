@@ -27,7 +27,7 @@ const CustomPrimaryButton = ({
       disabled={disabled}
       onClick={onClick}
       // eslint-disable-next-line no-unneeded-ternary
-      data-testid={dataTestid ? dataTestid : 'j'}
+      data-testid={dataTestid ? dataTestid : ''}
     >
       {label}
     </Button>

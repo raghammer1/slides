@@ -12,12 +12,10 @@ const CodeElementDisplay = ({
       default={{
         x: element.top,
         y: element.left,
-        width: `${element.width}%`, // Initial width based on element's width
-        height: `${element.height}%`, // Initial height based on element's height
+        width: `${element.width}%`,
+        height: `${element.height}%`,
       }}
       className={element.id}
-      // minWidth={(parseFloat(element.width) / 100) * 1000}
-      // minHeight={(parseFloat(element.height) / 100) * 500}
       bounds="parent"
       key={element.id}
       onDragStop={(e, d) => onDragStop(e, d, element)}
@@ -51,14 +49,14 @@ const CodeElementDisplay = ({
               top: 0,
               left: 0,
               zIndex: 1,
-              color: 'transparent', // Hide text in textarea, showing only the highlighted code below
+              color: 'transparent',
               background: 'none',
-              pointerEvents: 'none', // Make the textarea non-interactive
+              pointerEvents: 'none',
               overflowY: 'auto',
               resize: 'none',
               border: 'none',
             }}
-            readOnly // Remove readOnly if you want to make it editable
+            readOnly
           />
           <pre
             style={{
@@ -71,7 +69,7 @@ const CodeElementDisplay = ({
               padding: '10px',
               overflowY: 'auto',
               zIndex: 0,
-              pointerEvents: 'none', // Prevent interaction with the highlighted code
+              pointerEvents: 'none',
             }}
           >
             <code

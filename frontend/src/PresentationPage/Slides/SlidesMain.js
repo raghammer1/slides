@@ -6,7 +6,8 @@ import SlideControlArrows from './SlideControlArrows';
 import DeletePresentationModal from '../DeletePresentationModal';
 import { useNavigate } from 'react-router-dom';
 import usePresentationListStore from '../../zustandStore/usePresentationListStore';
-// hi
+import { useAlert } from '../../components/AlertError';
+
 const Wrapper = styled('div')({
   width: '90vw',
   display: 'flex',
@@ -19,9 +20,8 @@ const Wrapper = styled('div')({
 const SlidesMain = ({ presentationId }) => {
   const { slides, deleteSlide } = usePresentationListStore((state) => ({
     slides: state.getSlidesForPresentation(presentationId),
-    deleteSlide: state.deleteSlide, // Assuming this method exists for deleting a slide
+    deleteSlide: state.deleteSlide,
   }));
-  // const slides = getSlidesForPresentation(presentationId);
 
   const [selectedSlide, setSelectedSlide] = useState(slides[0]);
   const selectedSlideId = selectedSlide.id;
@@ -29,6 +29,7 @@ const SlidesMain = ({ presentationId }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const { showAlert } = useAlert();
 
   useEffect(() => {
     if (
@@ -62,6 +63,7 @@ const SlidesMain = ({ presentationId }) => {
     console.log('delete');
     setOpen(false);
     deleteOnePresentation(presentationId);
+    showAlert('Presentation Successfully Deleted', 'tomato');
     nav('/dashboard');
   };
 

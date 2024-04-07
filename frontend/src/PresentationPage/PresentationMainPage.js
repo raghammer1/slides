@@ -7,6 +7,7 @@ import { Typography } from '@mui/material';
 import styled from '@emotion/styled';
 import EditPresentationTitleModal from './EditPresentationTitleModal';
 import SlidesMain from './Slides/SlidesMain';
+import { useAlert } from '../components/AlertError';
 
 const Wrapper = styled('div')({
   display: 'flex',
@@ -23,12 +24,12 @@ const StyledTypography = styled(Typography)`
   &:hover::before {
     content: '';
     position: absolute;
-    bottom: -5px; // Adjust this value as per your Typography line-height
+    bottom: -5px;
     left: 0;
     width: 100%;
-    height: 2px; // Line thickness
-    background-color: black; // Line color
-    animation: lineAnimation 0.5s forwards; // Animation time
+    height: 2px;
+    background-color: black;
+    animation: lineAnimation 0.5s forwards;
   }
 
   @keyframes lineAnimation {
@@ -46,12 +47,13 @@ const StyledTypography = styled(Typography)`
 `;
 
 const PresentationDetail = () => {
-  const { id } = useParams(); // Get the id from route parameters
+  const { id } = useParams();
   const nav = useNavigate();
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const { showAlert } = useAlert();
 
   const [openEdit, setOpenEdit] = useState(false);
   const handleOpenEdit = () => setOpenEdit(true);
@@ -68,6 +70,7 @@ const PresentationDetail = () => {
     console.log('delete');
     setOpen(false);
     deleteOnePresentation(id);
+    showAlert('Presentation Successfully Deleted', 'tomato');
     nav('/dashboard');
   };
 
