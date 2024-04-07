@@ -13,7 +13,7 @@ const ImageElementDisplay = ({
       default={{
         x: element.top,
         y: element.left,
-        width: `${element.width}%`, // Initial width based on element's width
+        width: `${element.width}%`, // Initial width bafsed on element's width
         height: `${element.height}%`, // Initial height based on element's height
       }}
       className={element.id}
