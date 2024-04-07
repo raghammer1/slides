@@ -2,6 +2,8 @@ import React, { createContext, useContext, useState } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import SnackbarContent from '@mui/material/SnackbarContent';
 import { makeStyles } from '@mui/styles';
+import CloseIcon from '@mui/icons-material/Close';
+import { IconButton } from '@mui/material';
 
 const AlertContext = createContext();
 
@@ -50,13 +52,23 @@ export const AlertProvider = ({ children }) => {
         autoHideDuration={6000}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: 'top', // Positions the Snackbar at the top
-          horizontal: 'right', // Positions the Snackbar at the right
+          vertical: 'top',
+          horizontal: 'right',
         }}
       >
         <SnackbarContent
           className={classes.snackbar}
           message={<span id="client-snackbar">{alertState.message}</span>}
+          action={[
+            <IconButton
+              key="close"
+              aria-label="Close"
+              color="inherit"
+              onClick={handleClose}
+            >
+              <CloseIcon style={{ color: '#fff' }} />
+            </IconButton>,
+          ]}
         />
       </Snackbar>
     </AlertContext.Provider>
