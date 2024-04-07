@@ -67,6 +67,7 @@ const VideoModal = ({
       style={style}
     >
       <InputWithLabels
+        dataTestId={'title-video-url-box-test'}
         value={videoUrl}
         setValue={setVideoUrl}
         type="Video URL"
@@ -93,6 +94,7 @@ const VideoModal = ({
       <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
         <h3>AutoPlay</h3>
         <input
+          data-testid={'autoplay-checkbox-btn'}
           type="checkbox"
           checked={autoplay}
           onChange={handleAutoplayChange}
@@ -101,6 +103,7 @@ const VideoModal = ({
       <Tooltip title={videoUrl === null ? 'Give a valid url' : 'submit video'}>
         <div>
           <CustomPrimaryButton
+            dataTestid={'create-new-video-box-btn'}
             disabled={videoUrl === null}
             label="Create Now"
             additionalStyle={{ marginTop: '30px' }}
