@@ -1,60 +1,64 @@
-import React, { useState, useEffect } from 'react';
-import styled, { keyframes } from 'styled-components';
+import React, { createContext, useContext, useState } from 'react';
+import Snackbar from '@mui/material/Snackbar';
+import SnackbarContent from '@mui/material/SnackbarContent';
+import { makeStyles } from '@mui/styles';
 
-// Animation for the alert dropdown
-const dropDown = keyframes`
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-`;
+const AlertContext = createContext();
 
-// Animation for the alert retract
-const retractUp = keyframes`
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-100%);
-  }
-`;
+const useStyles = makeStyles((theme) => ({
+  // Custom snackbar styling
+  snackbar: {
+    backgroundColor: (props) => props.bgColor || theme.palette.primary.main, // Use provided color or fallback to theme's primary color
+  },
+}));
 
-const AlertContainer = styled.div`
-  animation: ${(props) => (props.show ? dropDown : retractUp)} 0.5s forwards;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: ${(props) => props.bgColor || 'lightblue'};
-  color: white;
-  text-align: center;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  z-index: 9999;
-`;
+export const useAlert = () => useContext(AlertContext);
 
-const AlertError = ({
-  message = 'This is an alert message!',
-  bgColor,
-  duration = 5000,
-}) => {
-  const [show, setShow] = useState(false);
+export const AlertProvider = ({ children }) => {
+  const [alertState, setAlertState] = useState({
+    open: false,
+    message: '',
+    bgColor: 'default', // default background color
+  });
 
-  useEffect(() => {
-    setShow(true);
-    const timer = setTimeout(() => {
-      setShow(false);
-    }, duration);
-    return () => clearTimeout(timer);
-  }, [message, bgColor, duration]);
+  const { bgColor } = alertState;
+  const classes = useStyles({ bgColor });
+
+  const showAlert = (message, bgColor = 'default') => {
+    setAlertState({
+      open: true,
+      message,
+      bgColor,
+    });
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setAlertState((prevState) => ({
+      ...prevState,
+      open: false,
+    }));
+  };
 
   return (
-    <AlertContainer show={show} bgColor={bgColor}>
-      {message}
-    </AlertContainer>
+    <AlertContext.Provider value={{ showAlert }}>
+      {children}
+      <Snackbar
+        open={alertState.open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'top', // Positions the Snackbar at the top
+          horizontal: 'right', // Positions the Snackbar at the right
+        }}
+      >
+        <SnackbarContent
+          className={classes.snackbar}
+          message={<span id="client-snackbar">{alertState.message}</span>}
+        />
+      </Snackbar>
+    </AlertContext.Provider>
   );
 };
-
-export default AlertError;

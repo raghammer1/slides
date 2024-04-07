@@ -7,6 +7,7 @@ import AuthBox from '../../components/AuthBox';
 import { register } from '../../services/api';
 import useCurrentUserStore from '../../zustandStore/useCurrentUserStore';
 import { useNavigate } from 'react-router-dom';
+import { useAlert } from '../../components/AlertError';
 // import { initializeStore } from '../../zustandStore/usePresentationListStore';
 
 const RegisterPage = () => {
@@ -14,6 +15,7 @@ const RegisterPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [checkPassword, setCheckPassword] = useState('');
+  const { showAlert } = useAlert();
 
   const [isFormValid, setIsFormValid] = useState(true);
 
@@ -38,6 +40,12 @@ const RegisterPage = () => {
       const token = registerData.data.token;
       localStorage.setItem('token', token);
       setCurrentUser({ name: username, email: mail });
+      showAlert(
+        `${
+          username.charAt(0).toUpperCase() + username.slice(1)
+        } Successfully registered`,
+        'green'
+      );
 
       nav('/dashboard');
     }

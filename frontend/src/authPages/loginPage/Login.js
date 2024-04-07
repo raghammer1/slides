@@ -7,11 +7,13 @@ import AuthBox from '../../components/AuthBox';
 import { login } from '../../services/api';
 import { useNavigate } from 'react-router-dom';
 import useCurrentUserStore from '../../zustandStore/useCurrentUserStore';
+import { useAlert } from '../../components/AlertError';
 
 const Login = () => {
   const [mail, setMail] = useState('');
   const [password, setPassword] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
+  const { showAlert } = useAlert();
 
   const { setCurrentUser } = useCurrentUserStore();
 
@@ -29,6 +31,7 @@ const Login = () => {
       localStorage.setItem('token', token);
 
       setCurrentUser({ name: '', email: mail });
+      showAlert('Welcome back', 'green');
 
       nav('/dashboard');
     }
