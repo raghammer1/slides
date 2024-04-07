@@ -22,8 +22,6 @@ describe('Beautiful Testing', () => {
     cy.get('[data-testid="Re-Enter-Password-data"]').type('yourpassword');
     cy.get('[data-testid="register-button"]').click();
 
-    // Note: Implement logic to handle "User already registered" scenario if applicable.
-
     cy.url().should('include', '/dashboard');
 
     cy.get('[data-testid="newPresentationButton"]').click();
@@ -41,7 +39,7 @@ describe('Beautiful Testing', () => {
     cy.get('[data-testid^="presentation-delete-modal-button-"]').first().click();
 
     // To be changed after delete bug fix
-    cy.get('[data-testid^="presentation-card-"]').eq(1).click();
+    cy.get('[data-testid^="presentation-card-"]').first().click();
     cy.url().should('include', '/presentation');
 
     cy.get('[data-testid="add-slide-button"]').click();
