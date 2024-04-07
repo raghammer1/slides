@@ -46,9 +46,8 @@ describe('Beautiful Testing 2', () => {
     cy.get('[data-testid^="presentation-delete-"]').first().click();
     cy.get('[data-testid^="presentation-delete-modal-button-"]').first().click();
 
-    //!!!!!! To be changed after delete bug fix
     // Opening the second presentation
-    cy.get('[data-testid^="presentation-card-"]').eq(1).click();
+    cy.get('[data-testid^="presentation-card-"]').first().click();
     cy.url().should('include', '/presentation');
 
     // Creating 4 new slides on the presentation

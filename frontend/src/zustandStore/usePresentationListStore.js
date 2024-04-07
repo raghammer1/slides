@@ -23,14 +23,8 @@ const presentationsChangeLogger = (config) => (set, get, api) =>
       if (currentState.presentations !== newState.presentations) {
         console.log('presentations changed:', newState.presentations);
 
-        // Fetch new store data asynchronously
-        const storeData = await getStore(); // Assuming getStore() fetches the current store structure
-        // It's important to correctly reference the actual presentations data here
-        // If getStore() returns an object that directly contains the "presentations" field, you don't need to drill down further
-        // storeData = storeData.data.store; // Adjust based on the actual shape of your data
         const updatedData = {
           store: {
-            ...storeData.store,
             presentations: newState.presentations,
           },
         };

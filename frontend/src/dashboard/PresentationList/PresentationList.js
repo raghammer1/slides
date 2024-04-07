@@ -14,7 +14,9 @@ const Wrapper = styled('div')({
 });
 
 const PresentationList = () => {
-  const { presentations } = usePresentationListStore();
+  const { presentations } = usePresentationListStore((state) => ({
+    presentations: state.presentations,
+  }));
   // debugger;
   console.log(presentations, 'JJRIUOHIUWHYIWEGIRYEWGRYUWEGR');
 

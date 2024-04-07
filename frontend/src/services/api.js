@@ -45,9 +45,6 @@ export const setStore = async (data) => {
       throw new Error('No token found');
     }
 
-    const oldData = await getStore();
-    console.log(oldData);
-
     const response = await apiClient.put('/store', data, {
       headers: {
         Authorization: `Bearer ${token}`,
