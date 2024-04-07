@@ -5,6 +5,7 @@ import { Tooltip } from '@mui/material';
 import CustomPrimaryButton from '../components/CustomePrimaryButton';
 import { v4 as uuidv4 } from 'uuid';
 import usePresentationListStore from '../zustandStore/usePresentationListStore';
+import { useAlert } from '../components/AlertError';
 
 const style = {
   position: 'absolute',
@@ -21,6 +22,7 @@ const style = {
 const CreatePresentationModal = ({ open, handleClose }) => {
   const [name, setName] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
+  const { showAlert } = useAlert();
 
   const { addPresentation } = usePresentationListStore();
   // const { addSlide } = usePresentationListStore();
@@ -51,7 +53,8 @@ const CreatePresentationModal = ({ open, handleClose }) => {
     };
 
     addPresentation(newPresentation);
-    // addSlide(presentationId, slide);
+    showAlert(`'${name}' Presentation Created`, 'green');
+
     handleClose();
   };
 

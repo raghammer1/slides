@@ -58,6 +58,7 @@ export const AlertProvider = ({ children }) => {
       >
         <SnackbarContent
           className={classes.snackbar}
+          style={{ backgroundColor: alertState.bgColor }}
           message={<span id="client-snackbar">{alertState.message}</span>}
           action={[
             <IconButton
