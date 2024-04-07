@@ -125,6 +125,7 @@ const CodeModal = ({
         ]}
       />
       <TextBoxWithLabel
+        dataTestId={'main-code-box-test'}
         value={code}
         setValue={setCode}
         type="code"
@@ -132,6 +133,7 @@ const CodeModal = ({
         label="code"
       />
       <InputWithLabels
+        dataTestId={'main-code-box-font-size-test'}
         value={fontSizeTextBox}
         setValue={setFontSizeTextBox}
         type="Font Size"
@@ -166,6 +168,7 @@ const CodeModal = ({
         sign={'em'}
       /> */}
       <CustomPrimaryButton
+        dataTestid={'create-new-code-box-btn'}
         label="Create Now"
         additionalStyle={{ marginTop: '30px' }}
         onClick={handlePresentationcodeCreateTextBox}

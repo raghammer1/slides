@@ -107,6 +107,22 @@ describe('Beautiful Testing 2', () => {
     cy.get('[data-testid="autoplay-checkbox-btn"]').click()
     cy.get('[data-testid="create-new-video-box-btn"]').click();
 
+    cy.get('[data-testid^="data-test-slide-"]').eq(2).click();
+    cy.get('[data-testid="edit-btn"]').click();
+    cy.get('[data-testid="add-code-box-btn"]').click();
+    cy.get('[data-testid="main-code-box-test"]').type('import fs from \'fs/promises\';\nconsole.log(data);');
+    cy.get('[data-testid="main-code-box-font-size-test"]').type('.1');
+    cy.wait(1000);
+    cy.get('[data-testid="create-new-code-box-btn"]').click();
+
+    cy.get('[data-testid^="data-test-slide-"]').eq(3).click();
+    cy.get('[data-testid="edit-btn"]').click();
+    cy.get('[data-testid="add-code-box-btn"]').click();
+    cy.get('[data-testid="main-code-box-test"]').type('import sys\nprint("Hello,World!")');
+    cy.get('[data-testid="main-code-box-font-size-test"]').type('.1');
+    cy.wait(1000);
+    cy.get('[data-testid="create-new-code-box-btn"]').click();
+
     // ????? THIS IS TO CHECK THE SAVE IN DB THAT's it SO EVERYTHING ELSE BEFORE THIS
     cy.get('[data-testid^="presentation-go-back-"]').click();
     cy.get('[data-testid="logout-btn"]').click();
@@ -123,6 +139,9 @@ describe('Beautiful Testing 2', () => {
     cy.get('[data-testid="add-slide-button"]').click();
     cy.get('[data-testid="add-slide-button"]').click();
 
+    cy.get('[data-testid^="data-test-slide-"]').eq(1).click();
+    cy.get('[data-testid^="data-test-slide-"]').eq(3).click();
+    cy.get('[data-testid^="data-test-slide-"]').eq(2).click();
     cy.get('[data-testid^="data-test-slide-"]').eq(4).click();
   });
 });

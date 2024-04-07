@@ -80,7 +80,9 @@ const EditMenu = ({
       >
         Add Video
       </MenuItem>
-      <MenuItem onClick={handleAddCodeOnSlide}>Add Code</MenuItem>
+      <MenuItem data-testid={'add-code-box-btn'} onClick={handleAddCodeOnSlide}>
+        Add Code
+      </MenuItem>
       <TextBoxModal
         open={openCreateTextBox}
         handleCloseCreateTextBox={handleCloseCreateTextBox}

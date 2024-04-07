@@ -27,9 +27,14 @@ const Input = styled('textarea')({
   padding: '0 5px',
 });
 
-const TextBoxWithLabel = (props) => {
-  const { value, setValue, label, type, placeholder } = props;
-
+const TextBoxWithLabel = ({
+  value,
+  setValue,
+  label,
+  type,
+  placeholder,
+  dataTestId,
+}) => {
   const handleValueChange = (event) => {
     setValue(event.target.value);
   };
@@ -42,6 +47,8 @@ const TextBoxWithLabel = (props) => {
         onChange={handleValueChange}
         placeholder={placeholder}
         type={type}
+        // eslint-disable-next-line no-unneeded-ternary
+        data-testid={dataTestId ? dataTestId : ''}
       />
     </Wrapper>
   );
