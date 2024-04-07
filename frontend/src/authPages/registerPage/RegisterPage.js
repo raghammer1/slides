@@ -30,26 +30,47 @@ const RegisterPage = () => {
   }, [mail, password, username, checkPassword, setIsFormValid]);
 
   const handleRegister = useCallback(async () => {
-    const registerData = await register({
-      email: mail,
-      password,
-      name: username,
-    });
+    try {
+      const response = await register({
+        email: mail,
+        password,
+        name: username,
+      });
 
-    if (registerData?.status === 200) {
-      const token = registerData.data.token;
-      localStorage.setItem('token', token);
-      setCurrentUser({ name: username, email: mail });
-      showAlert(
-        `${
-          username.charAt(0).toUpperCase() + username.slice(1)
-        } Successfully registered`,
-        'green'
-      );
+      // Assuming the success response structure has a status of 200
+      if (response?.status === 200) {
+        const token = response.data.token;
+        localStorage.setItem('token', token);
+        setCurrentUser({ name: username, email: mail });
 
-      nav('/dashboard');
+        showAlert(
+          `${
+            username.charAt(0).toUpperCase() + username.slice(1)
+          } Successfully registered`,
+          'green'
+        );
+
+        nav('/dashboard');
+      }
+    } catch (error) {
+      if (error.response) {
+        console.log('Error data:', error.response.data);
+        const errorMessage =
+          error.response.data.message ||
+          'Registration failed. Please try again.';
+        showAlert(errorMessage, 'tomato');
+      } else if (error.request) {
+        console.log('Error request:', error.request);
+        showAlert(
+          'No response from the server. Please check your network connection.',
+          'tomato'
+        );
+      } else {
+        console.log('Error', error.message);
+        showAlert('An unexpected error occurred. Please try again.', 'tomato');
+      }
     }
-  }, [mail, password, username, setCurrentUser, nav]);
+  }, [mail, password, username, setCurrentUser, nav, showAlert]);
 
   return (
     <AuthBox>

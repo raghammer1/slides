@@ -24,16 +24,26 @@ const Login = () => {
   }, [mail, password, setIsFormValid]);
 
   const handleLoginFunction = useCallback(async () => {
-    const loginData = await login({ email: mail, password });
-
-    if (loginData?.status === 200) {
-      const token = loginData.data.token;
+    try {
+      const response = await login({ email: mail, password });
+      const token = response.data.token;
       localStorage.setItem('token', token);
 
       setCurrentUser({ name: '', email: mail });
       showAlert('Welcome back', 'green');
 
       nav('/dashboard');
+    } catch (error) {
+      if (error.response) {
+        console.log('Error data:', error.response.data);
+        const errorMessage =
+          error.response.data.error || 'An unexpected error occurred';
+        showAlert(errorMessage, 'tomato');
+      } else if (error.request) {
+        console.log('Error request:', error.request);
+      } else {
+        console.log('Error', error.message);
+      }
     }
   }, [mail, password]);
 

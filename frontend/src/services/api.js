@@ -1,11 +1,7 @@
 import apiClient from './client';
 
 export const login = async (data) => {
-  try {
-    return await apiClient.post('/admin/auth/login', data);
-  } catch (e) {
-    return { error: true, e };
-  }
+  return await apiClient.post('/admin/auth/login', data);
 };
 
 export const register = async (data) => {
