@@ -1,3 +1,4 @@
+/* eslint-disable no-unneeded-ternary */
 import React from 'react';
 import { styled } from '@mui/system';
 
@@ -43,13 +44,14 @@ const InputWithLabels = ({
 
   return (
     <Wrapper>
-      <Label>{label}</Label>
+      <Label data-testid={dataTestId ? `${dataTestId}-label` : `${label}-data`}>
+        {label}
+      </Label>
       <Input
         value={value}
         onChange={handleValueChange}
         placeholder={placeholder}
         type={type}
-        // eslint-disable-next-line no-unneeded-ternary
         data-testid={dataTestId ? dataTestId : `${label}-data`}
       />
     </Wrapper>

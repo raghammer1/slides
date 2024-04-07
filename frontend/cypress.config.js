@@ -5,6 +5,7 @@ module.exports = defineConfig({
   env: {
     coverageFolder: 'coverage',
   },
+
   e2e: {
     baseUrl: 'http://localhost:3000',
     setupNodeEvents(on, config) {
@@ -13,6 +14,11 @@ module.exports = defineConfig({
     },
     specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
   },
+
   component: {
+    devServer: {
+      framework: 'create-react-app',
+      bundler: 'webpack',
+    },
   },
 });

@@ -53,4 +53,5 @@ const Login = () => {
     </AuthBox>
   );
 };
+
 export default Login;

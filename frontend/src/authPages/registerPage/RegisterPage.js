@@ -37,14 +37,11 @@ const RegisterPage = () => {
     if (registerData?.status === 200) {
       const token = registerData.data.token;
       localStorage.setItem('token', token);
-
       setCurrentUser({ name: username, email: mail });
-
-      // await initializeStore();
 
       nav('/dashboard');
     }
-  }, [mail, password, username]);
+  }, [mail, password, username, setCurrentUser, nav]);
 
   return (
     <AuthBox>
