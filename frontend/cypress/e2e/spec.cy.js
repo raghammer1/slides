@@ -4,7 +4,7 @@ describe('template spec', () => {
   })
 })
 
-describe('Register Page', () => {
+describe('Beautiful Testing', () => {
   
   let uniqueEmail;
 
