@@ -61,6 +61,7 @@ const TextBoxModal = ({
       style={style}
     >
       <InputWithLabels
+        dataTestId={'title-text-box-test'}
         value={title}
         setValue={setTitle}
         type="Title"
@@ -106,6 +107,7 @@ const TextBoxModal = ({
         label="Create Now"
         additionalStyle={{ marginTop: '30px' }}
         onClick={handlePresentationTitleCreateTextBox}
+        dataTestid={'create-new-text-box-btn'}
       />
     </CustomModal>
   );

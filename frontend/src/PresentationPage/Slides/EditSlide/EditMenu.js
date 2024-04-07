@@ -61,6 +61,7 @@ const EditMenu = ({
       }}
     >
       <MenuItem
+        data-testid={'add-text-box-btn'}
         onClick={() => {
           handleAddTextOnSlide();
         }}

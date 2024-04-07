@@ -232,6 +232,7 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
           borderRadius: '5px',
           cursor: 'pointer',
         }}
+        data-testid={'edit-btn'}
         onClick={handleClick}
       >
         Edit

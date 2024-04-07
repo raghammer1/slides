@@ -1,10 +1,11 @@
 describe('template spec', () => {
   it('passes', () => {
-    cy.visit('http://localhost:3000/')
+    cy.visit('https://example.cypress.io')
   })
 })
 
-describe('Beautiful Testing', () => {
+
+describe('Beautiful Testing 2', () => {
   
   let uniqueEmail;
 
@@ -54,6 +55,11 @@ describe('Beautiful Testing', () => {
     cy.get('[data-testid^="data-test-slide-"]').eq(2).click();
     cy.get('[data-testid^="data-test-slide-"]').eq(4).click();
 
+    cy.get('[data-testid="edit-btn"]').click();
+    cy.get('[data-testid="add-text-box-btn"]').click();
+    cy.get('[data-testid="title-text-box-test"]').type('HI HELLO HOW ARE YOU');
+    cy.get('[data-testid="create-new-text-box-btn"]').click();
+
     cy.get('[data-testid^="presentation-go-back-"]').click();
 
     cy.get('[data-testid="logout-btn"]').click();
@@ -70,30 +76,7 @@ describe('Beautiful Testing', () => {
     cy.get('[data-testid="add-slide-button"]').click();
     cy.get('[data-testid="add-slide-button"]').click();
 
-    cy.get('[data-testid^="data-test-slide-"]').eq(1).click();
-    cy.get('[data-testid^="data-test-slide-"]').eq(3).click();
-    cy.get('[data-testid^="data-test-slide-"]').eq(2).click();
     cy.get('[data-testid^="data-test-slide-"]').eq(4).click();
   });
-
-  // after(() => {
-  // // Retrieve the token from localStorage
-  //   cy.window().then((win) => win.localStorage.getItem('token'))
-  //     .then((token) => {
-  //       // Once you have the token, use it in the cy.request()
-  //       cy.request({
-  //         method: 'PUT', // Adjust the method as necessary
-  //         url: 'http://localhost:5005/store', // Replace with your actual API endpoint
-  //         headers: {
-  //           'Authorization': `Bearer ${token}`, // Use the token for authorization
-  //         },
-  //         body: { store: {} }, // Your request body as needed
-  //       }).then((response) => {
-  //         expect(response.status).to.eq(200);
-  //         // Further actions based on the response
-  //       });
-  //     });
-  // });
 });
-
 
