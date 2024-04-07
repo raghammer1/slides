@@ -1,7 +1,13 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 
-const CustomPrimaryButton = ({ label, additionalStyle, disabled, onClick }) => {
+const CustomPrimaryButton = ({
+  label,
+  additionalStyle,
+  disabled,
+  onClick,
+  dataTestid,
+}) => {
   return (
     <Button
       variant="contained"
@@ -20,6 +26,8 @@ const CustomPrimaryButton = ({ label, additionalStyle, disabled, onClick }) => {
       style={additionalStyle || {}}
       disabled={disabled}
       onClick={onClick}
+      // eslint-disable-next-line no-unneeded-ternary
+      data-testid={dataTestid ? dataTestid : 'j'}
     >
       {label}
     </Button>

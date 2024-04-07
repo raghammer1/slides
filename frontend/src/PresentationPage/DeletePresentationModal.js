@@ -19,6 +19,7 @@ const DeletePresentationModal = ({
   open,
   handleClose,
   handlePresentationDelete,
+  dataTestid,
 }) => {
   return (
     <CustomModal open={open} handleClose={handleClose} style={style}>
@@ -32,6 +33,8 @@ const DeletePresentationModal = ({
         label="Delete"
         additionalStyle={{ marginTop: '30px' }}
         onClick={handlePresentationDelete}
+        // eslint-disable-next-line no-unneeded-ternary
+        dataTestid={dataTestid ? dataTestid : 'j'}
       />
     </CustomModal>
   );

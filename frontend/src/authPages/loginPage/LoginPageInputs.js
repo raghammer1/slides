@@ -10,6 +10,7 @@ const LoginPageInputs = ({ mail, setMail, password, setPassword }) => {
         type="Email"
         placeholder="Enter email"
         label="Email"
+        dataTestId={'email-login-data'}
       />
       <InputWithLabels
         value={password}
@@ -17,6 +18,7 @@ const LoginPageInputs = ({ mail, setMail, password, setPassword }) => {
         type="password"
         placeholder="Enter password"
         label="password"
+        dataTestId={'password-login-data'}
       />
     </>
   );

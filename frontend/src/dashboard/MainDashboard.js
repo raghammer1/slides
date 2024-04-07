@@ -23,6 +23,7 @@ const MainDashboard = () => {
           label={'New Presentation'}
           additionalStyle={{ width: '200px', height: '40px' }}
           onClick={handleOpen}
+          dataTestid="newPresentationButton"
         />
       </div>
       <PresentationList />

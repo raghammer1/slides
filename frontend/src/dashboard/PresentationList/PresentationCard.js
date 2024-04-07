@@ -25,7 +25,12 @@ const PresentationCard = ({ presentation }) => {
 
   return (
     // Pass a reference to the function instead of invoking it
-    <Wrapper onClick={handleOpenPresentation}>{presentation.name}</Wrapper>
+    <Wrapper
+      data-testid={`presentation-card-${presentation.id}`}
+      onClick={handleOpenPresentation}
+    >
+      {presentation.name}
+    </Wrapper>
   );
 };
 export default PresentationCard;

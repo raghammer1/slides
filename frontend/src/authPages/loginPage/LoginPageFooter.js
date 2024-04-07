@@ -28,6 +28,7 @@ const LoginPageFooter = ({ handleLoginFunction, isFormValid }) => {
             additionalStyle={{ marginTop: '30px' }}
             disabled={!isFormValid}
             onClick={handleLoginFunction}
+            dataTestid="login-button"
           />
         </div>
       </Tooltip>

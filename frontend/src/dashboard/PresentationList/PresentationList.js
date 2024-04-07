@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import React from 'react';
 import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 import PresentationCard from './PresentationCard';
@@ -14,7 +15,8 @@ const Wrapper = styled('div')({
 
 const PresentationList = () => {
   const { presentations } = usePresentationListStore();
-  // console.log(presentations, 'JJRIUOHIUWHYIWEGIRYEWGRYUWEGR');
+  // debugger;
+  console.log(presentations, 'JJRIUOHIUWHYIWEGIRYEWGRYUWEGR');
 
   return (
     <Wrapper>

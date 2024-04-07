@@ -105,6 +105,7 @@ const SlidesList = ({
               slide.id === selectedSlideId ? '#aaf0d1' : '#f0f0f0',
             width: '250px',
           }}
+          data-testid={`data-test-slide-${slide.id}`}
         >
           <span>
             Slide {slide.slideNumber} - {slide.id}
@@ -125,6 +126,7 @@ const SlidesList = ({
           backgroundColor: '#f0f0f0',
           width: '250px',
         }}
+        data-testid={'add-slide-button'}
       >
         Add Slide +
       </div>

@@ -7,6 +7,7 @@ import AuthBox from '../../components/AuthBox';
 import { register } from '../../services/api';
 import useCurrentUserStore from '../../zustandStore/useCurrentUserStore';
 import { useNavigate } from 'react-router-dom';
+// import { initializeStore } from '../../zustandStore/usePresentationListStore';
 
 const RegisterPage = () => {
   const [mail, setMail] = useState('');
@@ -38,6 +39,8 @@ const RegisterPage = () => {
       localStorage.setItem('token', token);
 
       setCurrentUser({ name: username, email: mail });
+
+      // await initializeStore();
 
       nav('/dashboard');
     }

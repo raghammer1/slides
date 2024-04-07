@@ -353,8 +353,15 @@ const usePresentationListStore = create(
 export const initializeStore = async () => {
   const initialStore = await getStore();
   usePresentationListStore.setState({
-    presentations: initialStore.store.presentations,
+    presentations: initialStore.store.presentations
+      ? initialStore.store.presentations
+      : [],
   });
+  console.log(
+    `${
+      initialStore.store.presentations ? initialStore.store.presentations : {}
+    }`
+  );
 };
 
 export default usePresentationListStore;

@@ -28,6 +28,7 @@ const RegisterPageFooter = ({ handleRegister, isFormValid }) => {
             additionalStyle={{ marginTop: '30px' }}
             disabled={!isFormValid.valid}
             onClick={handleRegister}
+            dataTestid="register-button"
           />
         </div>
       </Tooltip>

@@ -42,6 +42,7 @@ const Fold = () => {
         label={'Logout'}
         additionalStyle={{ width: '100px', height: '30px' }}
         onClick={LogoutUser}
+        dataTestid={'logout-btn'}
       />
     </NavWrapper>
   );

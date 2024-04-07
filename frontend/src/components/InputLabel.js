@@ -27,8 +27,15 @@ const Input = styled('input')({
   padding: '0 5px',
 });
 
-const InputWithLabels = (props) => {
-  const { value, setValue, label, type, placeholder } = props;
+const InputWithLabels = ({
+  value,
+  setValue,
+  label,
+  type,
+  placeholder,
+  dataTestId,
+}) => {
+  // const  = props;
 
   const handleValueChange = (event) => {
     setValue(event.target.value);
@@ -42,6 +49,8 @@ const InputWithLabels = (props) => {
         onChange={handleValueChange}
         placeholder={placeholder}
         type={type}
+        // eslint-disable-next-line no-unneeded-ternary
+        data-testid={dataTestId ? dataTestId : `${label}-data`}
       />
     </Wrapper>
   );

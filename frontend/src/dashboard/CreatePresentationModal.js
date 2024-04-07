@@ -62,6 +62,7 @@ const CreatePresentationModal = ({ open, handleClose }) => {
         setValue={setName}
         type="Presentation Name"
         placeholder="Enter Presentation Name"
+        dataTestId={'create-presentation-name-test'}
         label="Presentation Name"
       />
       <>
@@ -72,6 +73,7 @@ const CreatePresentationModal = ({ open, handleClose }) => {
               additionalStyle={{ marginTop: '30px' }}
               disabled={!isFormValid}
               onClick={handleCreatePresentationFunction}
+              dataTestid={'create-presentation-name-test-button'}
             />
           </div>
         </Tooltip>

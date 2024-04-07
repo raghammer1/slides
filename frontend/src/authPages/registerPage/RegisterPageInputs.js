@@ -17,7 +17,7 @@ const RegisterPageInputs = (props) => {
       <InputWithLabels
         value={mail}
         setValue={setMail}
-        label="Email address"
+        label="Email-address"
         type="text"
         placeholder="Enter the email address"
       />
@@ -31,14 +31,14 @@ const RegisterPageInputs = (props) => {
       <InputWithLabels
         value={password}
         setValue={setPassword}
-        label="Enter Password"
+        label="Enter-Password"
         type="password"
         placeholder="Enter password"
       />
       <InputWithLabels
         value={checkPassword}
         setValue={setCheckPassword}
-        label="Re-Enter Password"
+        label="Re-Enter-Password"
         type="password"
         placeholder="Enter password"
       />

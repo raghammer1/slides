@@ -112,11 +112,13 @@ const PresentationDetail = () => {
             label="Delete"
             additionalStyle={{ width: '200px' }}
             onClick={handleOpen}
+            dataTestid={`presentation-delete-${presentation.id}`}
           />
           <CustomPrimaryButton
             label="Back"
             additionalStyle={{ width: '200px' }}
             onClick={handleGoBack}
+            dataTestid={`presentation-go-back-${presentation.id}`}
           />
         </Wrapper>
       </div>
@@ -127,6 +129,7 @@ const PresentationDetail = () => {
         open={open}
         handleClose={handleClose}
         handlePresentationDelete={handlePresentationDelete}
+        dataTestid={`presentation-delete-modal-button-${presentation.id}`}
       />
       <EditPresentationTitleModal
         open={openEdit}
