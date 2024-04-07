@@ -50,7 +50,7 @@ describe('Beautiful Testing', () => {
     cy.get('[data-testid="add-slide-button"]').click();
 
     cy.get('[data-testid^="data-test-slide-"]').eq(1).click();
-    cy.get('[data-testid^="data-test-slide-"]').eq(3).click();
+    cy.get('[data-testid^="data-test-slide-"]').eq(0).click();
     cy.get('[data-testid^="data-test-slide-"]').eq(2).click();
     cy.get('[data-testid^="data-test-slide-"]').eq(4).click();
 

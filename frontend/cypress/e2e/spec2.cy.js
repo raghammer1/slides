@@ -123,7 +123,7 @@ describe('Beautiful Testing 2', () => {
     cy.wait(1000);
     cy.get('[data-testid="create-new-code-box-btn"]').click();
 
-    // ????? THIS IS TO CHECK THE SAVE IN DB THAT's it SO EVERYTHING ELSE BEFORE THIS
+    // ????? THIS IS TO CHECK THE SAVE IN DB THAT's it SO EVERYTnHING ELSE BEFORE THIS
     cy.get('[data-testid^="presentation-go-back-"]').click();
     cy.get('[data-testid="logout-btn"]').click();
 
