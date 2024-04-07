@@ -60,8 +60,37 @@ describe('Beautiful Testing 2', () => {
     cy.get('[data-testid="title-text-box-test"]').type('HI HELLO HOW ARE YOU');
     cy.get('[data-testid="create-new-text-box-btn"]').click();
 
-    cy.get('[data-testid^="presentation-go-back-"]').click();
+    cy.get('[data-testid^="text-box-element-test"]').first().trigger('mousedown', {
+      button: 0, // Left button
+      clientX: 100,
+      clientY: 100,
+    });
+    cy.get('[data-testid^="text-box-element-test"]').first().trigger('mousemove', {
+      clientX: 400,
+      clientY: 400,
+    });
+    cy.get('[data-testid^="text-box-element-test"]').first().trigger('mouseup', { force: true });
 
+    cy.get('[data-testid^="text-box-element-test"]').first().trigger('mousedown', {
+      which: 1,
+      pageX: 600,
+      pageY: 400,
+    });
+    cy.get('[data-testid^="text-box-element-test"]').first().trigger('mousemove', {
+      pageX: 800, // Move right to increase width
+      pageY: 600, // Move down to increase height
+    });
+    cy.get('[data-testid^="text-box-element-test"]').first().trigger('mouseup');
+
+    cy.get('[data-testid="edit-btn"]').click();
+    cy.get('[data-testid="add-image-box-btn"]').click();
+    cy.get('input[type="radio"][value="url"]').click();
+    cy.get('[data-testid="image-box-alt-test"]').type('Girl');
+    cy.get('[data-testid="image-box-url-test"]').type('https://images.pexels.com/photos/1202363/pexels-photo-1202363.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    cy.get('[data-testid="image-box-create-btn-test"]').click();
+
+    // ????? THIS IS TO CHECK THE SAVE IN DB THAT's it SO EVERYTHING ELSE BEFORE THIS
+    cy.get('[data-testid^="presentation-go-back-"]').click();
     cy.get('[data-testid="logout-btn"]').click();
 
     cy.get('[data-testid="email-login-data"]').type(`${uniqueEmail}`);

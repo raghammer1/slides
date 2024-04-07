@@ -94,6 +94,7 @@ const ImageModal = ({
       style={style}
     >
       <InputWithLabels
+        dataTestId={'image-box-alt-test'}
         value={imageAlt}
         setValue={setImageAlt}
         type="Alt Text"
@@ -120,6 +121,7 @@ const ImageModal = ({
         {imageInputType === 'url' ? (
           <div>
             <InputWithLabels
+              dataTestId={'image-box-url-test'}
               value={selectedFile}
               setValue={setSelectedFile}
               type="Url"
@@ -194,6 +196,7 @@ const ImageModal = ({
             label="Create Now"
             additionalStyle={{ marginTop: '30px' }}
             onClick={handlePresentationTitleCreateImage}
+            dataTestid={'image-box-create-btn-test'}
           />
         </div>
       </Tooltip>

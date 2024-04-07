@@ -17,6 +17,7 @@ const TextBoxElementDisplay = ({
         height: `${element.height}%`, // Initial height based on element's height
       }}
       className={element.id}
+      data-testid={'text-box-element-test'}
       // minWidth={(parseFloat(element.width) / 100) * 1000}
       // minHeight={(parseFloat(element.height) / 100) * 500}
       bounds="parent"

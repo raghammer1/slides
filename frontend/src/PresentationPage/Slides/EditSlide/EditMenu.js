@@ -68,7 +68,12 @@ const EditMenu = ({
       >
         Add Text
       </MenuItem>
-      <MenuItem onClick={handleAddImageOnSlide}>Add Image</MenuItem>
+      <MenuItem
+        data-testid={'add-image-box-btn'}
+        onClick={handleAddImageOnSlide}
+      >
+        Add Image
+      </MenuItem>
       <MenuItem onClick={handleAddVideoOnSlide}>Add Video</MenuItem>
       <MenuItem onClick={handleAddCodeOnSlide}>Add Code</MenuItem>
       <TextBoxModal
