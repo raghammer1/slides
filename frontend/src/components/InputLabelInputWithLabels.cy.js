@@ -4,10 +4,8 @@ import RegisterPageInputs from '../authPages/registerPage/RegisterPageInputs';
 
 describe('<InputWithLabels />', () => {
   it('renders', () => {
-    // see: https://on.cypress.io/mounting-react
     const setValueSpy = cy.spy().as('setValueSpy');
 
-    // Mount the component with the spy as the setValue prop
     cy.mount(
       <InputWithLabels
         value=""
@@ -18,18 +16,14 @@ describe('<InputWithLabels />', () => {
       />
     );
 
-    // Simulate typing into the input
     cy.get('[data-testid="input-test"]').type('h');
 
-    // Assert that setValue was called correctly
     cy.get('@setValueSpy').should('have.been.calledWith', 'h');
   });
 
   it('renders', () => {
-    // see: https://on.cypress.io/mounting-react
     const setValueSpy = cy.spy().as('setValueSpy');
 
-    // Mount the component with the spy as the setValue prop
     cy.mount(
       <InputWithLabels
         value="hihi"
@@ -65,12 +59,9 @@ describe('<InputWithLabels />', () => {
         dataTestId="responsive-input"
       />
     );
-
-    // Conceptual: you would need a specific assertion here based on what changes
   });
 
   it('renders with fake values', () => {
-    // Mount component with fake values and spies
     cy.mount(
       <RegisterPageInputs
         mail="fake@mail.com"
@@ -80,9 +71,6 @@ describe('<InputWithLabels />', () => {
       />
     );
 
-    // Example assertions
-    // Assert the initial value of an input field, assuming your component correctly sets these values.
-    // This depends on the implementation details of your RegisterPageInputs component.
     cy.get('[data-testid="Email-address-data"]').should(
       'have.value',
       'fake@mail.com'
@@ -96,17 +84,13 @@ describe('<InputWithLabels />', () => {
       'have.value',
       'fakePassword'
     );
-
-    // Similar actions and assertions can be made for the other inputs and their corresponding set functions.
   });
   it('renders with fake values', () => {
-    // Mock set functions
     const setMailSpy = cy.spy().as('setMailSpy');
     const setUsernameSpy = cy.spy().as('setUsernameSpy');
     const setPasswordSpy = cy.spy().as('setPasswordSpy');
     const setCheckPasswordSpy = cy.spy().as('setCheckPasswordSpy');
 
-    // Mount component with fake values and spies
     cy.mount(
       <RegisterPageInputs
         mail=""
@@ -120,16 +104,20 @@ describe('<InputWithLabels />', () => {
       />
     );
 
-    cy.get('[data-testid="Email-address-data"]').clear().type('s');
+    cy.get('[data-testid="Email-address-data"]').clear();
+    cy.get('[data-testid="Email-address-data"]').type('s');
     cy.get('@setMailSpy').should('have.been.calledWith', 's');
 
-    cy.get('[data-testid="Username-data"]').clear().type('s');
+    cy.get('[data-testid="Username-data"]').clear();
+    cy.get('[data-testid="Username-data"]').type('s');
     cy.get('@setUsernameSpy').should('have.been.calledWith', 's');
 
-    cy.get('[data-testid="Enter-Password-data"]').clear().type('s');
+    cy.get('[data-testid="Enter-Password-data"]').clear();
+    cy.get('[data-testid="Enter-Password-data"]').type('s');
     cy.get('@setPasswordSpy').should('have.been.calledWith', 's');
 
-    cy.get('[data-testid="Re-Enter-Password-data"]').clear().type('s');
+    cy.get('[data-testid="Re-Enter-Password-data"]').clear();
+    cy.get('[data-testid="Re-Enter-Password-data"]').type('s');
     cy.get('@setCheckPasswordSpy').should('have.been.calledWith', 's');
   });
 });
