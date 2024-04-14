@@ -18,10 +18,14 @@ const Wrapper = styled('div')({
 });
 
 const SlidesMain = ({ presentationId }) => {
-  const { slides, deleteSlide } = usePresentationListStore((state) => ({
-    slides: state.getSlidesForPresentation(presentationId),
-    deleteSlide: state.deleteSlide,
-  }));
+  const { slides, deleteSlide, startTimer, stopTimer, getElapsedTime } =
+    usePresentationListStore((state) => ({
+      slides: state.getSlidesForPresentation(presentationId),
+      deleteSlide: state.deleteSlide,
+      startTimer: state.startTimer,
+      stopTimer: state.stopTimer,
+      getElapsedTime: state.getElapsedTime,
+    }));
 
   const [selectedSlide, setSelectedSlide] = useState(slides[0]);
   const selectedSlideId = selectedSlide.id;
@@ -39,6 +43,17 @@ const SlidesMain = ({ presentationId }) => {
       setSelectedSlide(slides[0] || null);
     }
   }, [slides, selectedSlide, setSelectedSlide]);
+
+  useEffect(() => {
+    // When a slide is selected, start the timer
+    startTimer();
+
+    return () => {
+      // When the slide changes or the component unmounts, stop the timer
+      stopTimer();
+      console.log(`Elapsed Time: ${getElapsedTime()}ms`);
+    };
+  }, [selectedSlideId, startTimer, stopTimer, getElapsedTime]);
 
   const nav = useNavigate();
   const handleDeleteSlide = (e, slide) => {
