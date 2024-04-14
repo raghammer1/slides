@@ -78,6 +78,10 @@ const PresentationDetail = () => {
     nav('/dashboard');
   };
 
+  const handleReArrangeSlides = () => {
+    nav(`/presentation/${presentation.id}/rearrange`);
+  };
+
   const handlePresentationTitleEdit = useCallback(() => {
     updatePresentationTitle(presentation.id, title);
     handleCloseEdit();
@@ -122,6 +126,12 @@ const PresentationDetail = () => {
             additionalStyle={{ width: '200px' }}
             onClick={handleGoBack}
             dataTestid={`presentation-go-back-${presentation.id}`}
+          />
+          <CustomPrimaryButton
+            label="Re Arrange Slides"
+            additionalStyle={{ width: '200px' }}
+            onClick={handleReArrangeSlides}
+            dataTestid={`presentation-re-arrange-page-${presentation.id}`}
           />
         </Wrapper>
       </div>

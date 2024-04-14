@@ -34,6 +34,37 @@ const presentationsChangeLogger = (config) => (set, get, api) =>
 const usePresentationListStore = create(
   presentationsChangeLogger((set, get) => ({
     presentations: [],
+    timerStart: null,
+    elapsedTime: 0,
+
+    // Method to start the timer
+    startTimer: () => {
+      set({ timerStart: Date.now() });
+    },
+    // Method to stop the timer and calculate elapsed time
+    stopTimer: () => {
+      const startTime = get().timerStart;
+      if (startTime) {
+        const endTime = Date.now();
+        const elapsed = endTime - startTime;
+        set({
+          elapsedTime: elapsed,
+          timerStart: null, // Reset timer start
+        });
+      }
+    },
+    // Calculate the elapsed time dynamically
+    calculateCurrentElapsedTime: () => {
+      const startTime = get().timerStart;
+      if (startTime) {
+        const endTime = Date.now();
+        return endTime - startTime;
+      }
+      return 0; // Return 0 if the timer has not been started
+    },
+    // Get the current elapsed time
+    getElapsedTime: () => get().elapsedTime,
+
     addPresentation: (newPresentation) => {
       set((state) => {
         const presentationWithStandardizedSlide = {
@@ -149,6 +180,7 @@ const usePresentationListStore = create(
 
       const slide = presentation.slides.find((s) => s.id === slideId);
       return slide || null;
+      // return slide[0] || null;
     },
     addElementToSlide: (presentationId, slideId, newElement) => {
       set((state) => {
@@ -292,6 +324,34 @@ const usePresentationListStore = create(
         updatedPresentations[presentationIndex] = updatedPresentation;
 
         return { ...state, presentations: updatedPresentations };
+      });
+    },
+    setSlidesForPresentation: (presentationId, newSlides) => {
+      set((state) => {
+        const presentationIndex = state.presentations.findIndex(
+          (p) => p.id === presentationId
+        );
+        if (presentationIndex === -1) {
+          console.error('Presentation not found');
+          return state;
+        }
+
+        const updatedPresentations = state.presentations.map(
+          (presentation, index) => {
+            if (index === presentationIndex) {
+              return {
+                ...presentation,
+                slides: newSlides.map((slide, idx) => ({
+                  ...slide,
+                  slideNumber: idx + 1,
+                })),
+              };
+            }
+            return presentation;
+          }
+        );
+
+        return { presentations: updatedPresentations };
       });
     },
   }))

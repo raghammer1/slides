@@ -18,6 +18,7 @@ const SlidesList = ({
   const handleAddNewSlide = () => {
     const newSlide = {
       id: uuidv4(),
+      // historyTime: 0,
       elements: [],
     };
     addSlide(presentationId, newSlide);
