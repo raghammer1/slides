@@ -14,6 +14,9 @@ import TextBoxElementDisplay from './ElementDisplays.js/TextBoxElementDisplay';
 import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 
 const SlideDisplay = ({ presentationId, selectedSlideId }) => {
+  // const containerWidth = 1000;
+  // const containerHeight = 500;
+
   const {
     selectedSlide,
     updateElementPosition,
