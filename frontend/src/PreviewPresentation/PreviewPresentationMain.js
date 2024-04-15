@@ -22,7 +22,7 @@ const Wrapper = styled('div')({
 
 const PreviewPresentationMain = () => {
   useEffect(() => {
-    initializeStore(); // Make sure this is called on app start
+    initializeStore();
   }, []);
 
   const { id } = useParams();

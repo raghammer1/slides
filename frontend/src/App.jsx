@@ -8,7 +8,6 @@ import PresentationMainPage from './PresentationPage/PresentationMainPage.js';
 import { AlertProvider } from './components/AlertError.js';
 import ReArrangeMainPage from './PresentationPage/ReArrangeSlides/ReArrangeMainPage.js';
 import PreviewPresentationMain from './PreviewPresentation/PreviewPresentationMain.js';
-// import { initializeStore } from './zustandStore/usePresentationListStore.js';
 
 const App = () => {
   return (
