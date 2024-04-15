@@ -4,6 +4,13 @@ import usePresentationListStore from '../zustandStore/usePresentationListStore';
 import TextBoxPreview from './PreviewElementDisplay/TextBoxPreview';
 import ImagePreview from './PreviewElementDisplay/ImagePreview';
 import { styled } from '@mui/system';
+import VideoPreview from './PreviewElementDisplay/VideoPreview';
+import CodePreview from './PreviewElementDisplay/CodePreview';
+import 'prismjs/themes/prism-okaidia.css';
+import Prism from 'prismjs';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-python';
+import 'prismjs/components/prism-c';
 
 const Wrapper = styled('div')({
   height: '100vh',
@@ -12,6 +19,7 @@ const Wrapper = styled('div')({
 });
 
 const PreviewPresentationMain = () => {
+  Prism.highlightAll();
   const { id } = useParams();
   const { getSlidesForPresentation } = usePresentationListStore();
   const slides = getSlidesForPresentation(id);
@@ -53,14 +61,22 @@ const PreviewPresentationMain = () => {
     <Wrapper ref={parentRef}>
       {slides[currSlideNumber]?.elements?.map((element) => {
         if (element.type === 'textarea') {
-          return <TextBoxPreview key={element.id} element={element} />;
+          return (
+            <TextBoxPreview key={element.id} element={element} size={size} />
+          );
         } else if (element.type === 'image') {
-          console.log(element.top, element.left, element.width, element.height);
           return (
             <ImagePreview key={element.id} element={element} size={size} />
           );
+        } else if (element.type === 'video') {
+          return (
+            <VideoPreview key={element.id} element={element} size={size} />
+          );
+        }
+        if (element.type === 'code') {
+          return <CodePreview key={element.id} element={element} size={size} />;
         } else {
-          return <div key={element.id}></div>;
+          return <></>;
         }
       })}
     </Wrapper>
