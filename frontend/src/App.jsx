@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './authPages/loginPage/Login.js';
 import RegisterPage from './authPages/registerPage/RegisterPage.js';
@@ -8,12 +8,9 @@ import PresentationMainPage from './PresentationPage/PresentationMainPage.js';
 import { AlertProvider } from './components/AlertError.js';
 import ReArrangeMainPage from './PresentationPage/ReArrangeSlides/ReArrangeMainPage.js';
 import PreviewPresentationMain from './PreviewPresentation/PreviewPresentationMain.js';
-import { initializeStore } from './zustandStore/usePresentationListStore.js';
+// import { initializeStore } from './zustandStore/usePresentationListStore.js';
 
 const App = () => {
-  useEffect(() => {
-    initializeStore(); // Make sure this is called on app start
-  }, []);
   return (
     <div>
       <AlertProvider>

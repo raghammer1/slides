@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import usePresentationListStore from '../zustandStore/usePresentationListStore';
+import usePresentationListStore, {
+  initializeStore,
+} from '../zustandStore/usePresentationListStore';
 import TextBoxPreview from './PreviewElementDisplay/TextBoxPreview';
 import ImagePreview from './PreviewElementDisplay/ImagePreview';
 import { styled } from '@mui/system';
@@ -19,6 +21,10 @@ const Wrapper = styled('div')({
 });
 
 const PreviewPresentationMain = () => {
+  useEffect(() => {
+    initializeStore(); // Make sure this is called on app start
+  }, []);
+
   const { id } = useParams();
   const { getSlidesForPresentation } = usePresentationListStore();
   const slides = getSlidesForPresentation(id);
