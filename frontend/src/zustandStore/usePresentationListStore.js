@@ -364,6 +364,7 @@ export const initializeStore = async () => {
       ? initialStore.store.presentations
       : [],
   });
+
   console.log(
     `${
       initialStore.store.presentations ? initialStore.store.presentations : {}

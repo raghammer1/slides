@@ -87,6 +87,13 @@ const PresentationDetail = () => {
     handleCloseEdit();
   }, [title]);
 
+  const handleOpenSlideshow = () => {
+    // Construct the URL for the '/preview' route
+    const previewUrl = `${window.location.origin}/preview/${id}`;
+    // Open the new tab with the '/preview' route
+    window.open(previewUrl, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <div
       style={{
@@ -131,6 +138,12 @@ const PresentationDetail = () => {
             label="Re Arrange Slides"
             additionalStyle={{ width: '200px' }}
             onClick={handleReArrangeSlides}
+            dataTestid={`presentation-re-arrange-page-${presentation.id}`}
+          />
+          <CustomPrimaryButton
+            label="Slideshow"
+            additionalStyle={{ width: '200px' }}
+            onClick={handleOpenSlideshow}
             dataTestid={`presentation-re-arrange-page-${presentation.id}`}
           />
         </Wrapper>
