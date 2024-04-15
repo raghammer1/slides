@@ -109,7 +109,7 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
 
       const corners = [
         { top: 0, left: 0 }, // Top-left
-        { top: 0, left: 0 + elementWidthPx - 10 }, // Tsop-right-
+        { top: 0, left: 0 + elementWidthPx - 10 }, // Top-right-
         { top: 0 + elementHeightPx - 10, left: 0 }, // Bottom-left
         {
           top: 0 + elementHeightPx - 10,
