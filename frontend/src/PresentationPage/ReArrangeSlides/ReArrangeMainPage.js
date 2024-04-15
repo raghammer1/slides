@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import {
   DndContext,
   closestCenter,
@@ -29,6 +29,7 @@ const Wrapper = styled('div')({
 
 const ReArrangeMainPage = () => {
   const { id } = useParams();
+  const nav = useNavigate();
   const { zustandSlides, setSlidesForPresentation } = usePresentationListStore(
     (state) => ({
       zustandSlides: state.getSlidesForPresentation(id),
@@ -56,6 +57,7 @@ const ReArrangeMainPage = () => {
 
   const handleGoToSlideFunction = () => {
     setSlidesForPresentation(id, slides);
+    nav(`/presentation/${id}`);
   };
 
   return (
