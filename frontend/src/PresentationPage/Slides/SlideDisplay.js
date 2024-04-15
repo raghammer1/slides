@@ -75,6 +75,13 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
       newSize.width,
       newSize.height
     );
+    updateElementPosition(
+      presentationId,
+      selectedSlideId,
+      element.id,
+      `${newPosition.left}`,
+      `${newPosition.top}`
+    );
     setSelectedElement({ ...element, ...newSize, ...newPosition });
   };
 
