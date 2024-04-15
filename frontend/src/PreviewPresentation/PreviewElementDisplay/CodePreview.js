@@ -2,28 +2,29 @@ import React from 'react';
 const CodePreview = ({ element, size }) => {
   const topStyle = `${(element.left / 500) * size.height}px`;
   const leftStyle = `${(element.top / 1000) * size.width}px`;
+  const widthStyle = `${element.width}%`; // adjust according to your data structure
+  const heightStyle = `${element.height}%`; // adjust according to your data structure
 
   return (
     <div
       style={{
         position: 'relative',
-        width: element.width,
-        height: element.height,
+        width: widthStyle,
+        height: heightStyle,
+        top: topStyle,
+        left: leftStyle,
       }}
     >
       <textarea
         defaultValue={element.text}
-        onChange={(e) => {
-          /* Handler to update code text */
-        }}
         style={{
           width: '100%',
           height: '100%',
           fontFamily:
             'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
           position: 'absolute',
-          top: topStyle,
-          left: leftStyle,
+          top: 0,
+          left: 0,
           zIndex: 1,
           color: 'transparent',
           background: 'none',
