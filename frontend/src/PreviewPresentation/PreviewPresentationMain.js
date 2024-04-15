@@ -24,21 +24,20 @@ const PreviewPresentationMain = () => {
   const slides = getSlidesForPresentation(id);
   const [currSlideNumber, setCurrSlideNumber] = useState(0);
 
-  const parentRef = useRef(null); // Step 1: Create the ref
+  const parentRef = useRef(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
     if (parentRef.current) {
-      const { width, height } = parentRef.current.getBoundingClientRect(); // Using getBoundingClientRect
+      const { width, height } = parentRef.current.getBoundingClientRect();
       setSize({ width, height });
     }
-  }, []); // Empty dependency array means this runs once after the initial render
+  }, []);
 
   useEffect(() => {
     setCurrSlideNumber(0);
-  }, [id, slides.length]); // Also depends on slides.length to reset if slides change
+  }, [id, slides.length]);
 
-  // Key press event handler
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === 'ArrowRight') {
@@ -54,7 +53,7 @@ const PreviewPresentationMain = () => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [slides.length]); // Dependency on slides.length ensures updates if slide count changes
+  }, [slides.length]);
 
   useEffect(() => {
     Prism.highlightAll();
