@@ -240,7 +240,6 @@ describe('Beautiful Testing 2', () => {
     cy.get('[data-testid^="slide-delete-btn-test-"]').first().click();
     cy.get('[data-testid^="slide-delete-btn-test-"]').first().click();
     cy.get('[data-testid^="slide-delete-btn-test-"]').first().click();
-    cy.get('[data-testid^="slide-delete-btn-test-"]').first().click();
 
     // All presentations deleted
     cy.get('[data-testid="delete-presentation-delete-slide"]').click();
