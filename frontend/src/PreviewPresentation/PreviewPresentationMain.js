@@ -19,7 +19,6 @@ const Wrapper = styled('div')({
 });
 
 const PreviewPresentationMain = () => {
-  Prism.highlightAll();
   const { id } = useParams();
   const { getSlidesForPresentation } = usePresentationListStore();
   const slides = getSlidesForPresentation(id);
@@ -56,6 +55,10 @@ const PreviewPresentationMain = () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [slides.length]); // Dependency on slides.length ensures updates if slide count changes
+
+  useEffect(() => {
+    Prism.highlightAll();
+  }, [currSlideNumber, id, slides.length]);
 
   return (
     <Wrapper ref={parentRef}>
