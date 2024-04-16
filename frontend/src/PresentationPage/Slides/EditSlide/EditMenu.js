@@ -35,7 +35,6 @@ const EditMenu = ({
 
   const handleAddTextOnSlide = () => {
     handleOpenCreateTextBox();
-    console.log('Clickes');
   };
 
   const handleAddImageOnSlide = () => {

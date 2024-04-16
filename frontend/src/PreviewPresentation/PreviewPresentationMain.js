@@ -14,9 +14,23 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-c';
 
+// Styled component for the page number
+const PageNumber = styled('div')({
+  position: 'absolute',
+  bottom: 10, // 10px from the bottom
+  right: 10, // 10px from the right
+  zIndex: 99999, // High z-index to ensure it's on top
+  color: '#f3f3f3', // Change as needed
+  background: 'rgba(0, 0, 0, 0.4)', // Semi-transparent background
+  padding: '2px 5px',
+  borderRadius: '4px',
+  fontSize: '1rem',
+});
+
 const Wrapper = styled('div')({
   height: '100vh',
   width: '100vw',
+  overflow: 'hidden',
   position: 'relative',
   backgroundColor: '#f1f1f1',
 });
@@ -116,6 +130,7 @@ const PreviewPresentationMain = () => {
             }
             return <></>;
           })}
+          <PageNumber>{index + 1}</PageNumber>
         </SlideContainer>
       ))}
     </Wrapper>
