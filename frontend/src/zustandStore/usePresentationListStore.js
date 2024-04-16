@@ -557,6 +557,75 @@ const usePresentationListStore = create(
         return { presentations: updatedPresentations };
       });
     },
+    updateElementInSlide: (
+      presentationId,
+      slideId,
+      elementId,
+      newProperties
+    ) => {
+      set((state) => {
+        const presentationIndex = state.presentations.findIndex(
+          (p) => p.id === presentationId
+        );
+        if (presentationIndex === -1) {
+          console.error('Presentation not found');
+          return;
+        }
+
+        const updatedPresentation = {
+          ...state.presentations[presentationIndex],
+        };
+        const slideIndex = updatedPresentation.slides.findIndex(
+          (slide) => slide.id === slideId
+        );
+        if (slideIndex === -1) {
+          console.error('Slide not found');
+          return;
+        }
+
+        const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
+        const elementsArray = updatedSlide.elements;
+        if (elementsArray.length === 0) {
+          console.error('No elements found');
+          return;
+        }
+
+        const lastElementObject = elementsArray[elementsArray.length - 1];
+        const lastTimeKey = Object.keys(lastElementObject).pop();
+        const lastTime = parseInt(lastTimeKey, 10);
+        const currentTime = Date.now();
+        const elapsedTime = currentTime - lastTime;
+
+        if (elapsedTime < 60000) {
+          const lastElements = lastElementObject[lastTimeKey];
+          const elementIndex = lastElements.findIndex(
+            (element) => element.id === elementId
+          );
+          if (elementIndex === -1) {
+            console.error('Element not found');
+            return;
+          }
+          lastElements[elementIndex] = {
+            ...lastElements[elementIndex],
+            ...newProperties,
+          };
+        } else {
+          const newElementObject = {
+            [currentTime]: [
+              ...lastElementObject[lastTimeKey],
+              { id: elementId, ...newProperties },
+            ],
+          };
+          updatedSlide.elements.push(newElementObject);
+        }
+
+        updatedPresentation.slides[slideIndex] = updatedSlide;
+        const updatedPresentations = [...state.presentations];
+        updatedPresentations[presentationIndex] = updatedPresentation;
+
+        return { ...state, presentations: updatedPresentations };
+      });
+    },
   }))
 );
 

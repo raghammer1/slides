@@ -4,6 +4,7 @@ import CustomModal from '../../../../components/CustomModal';
 import InputWithLabels from '../../../../components/InputLabel';
 import CustomPrimaryButton from '../../../../components/CustomePrimaryButton';
 import InputLabelRange from '../../../../components/InputLabelRange';
+import usePresentationListStore from '../../../../zustandStore/usePresentationListStore';
 
 const style = {
   position: 'absolute',
@@ -24,17 +25,22 @@ const TextBoxDoubleClick = ({
   selectedSlideId,
   element,
 }) => {
-  console.log(element);
   const [title, setTitle] = useState(element.text);
   const [fontSizeTextBox, setFontSizeTextBox] = useState(
     element.fontSize.replace('em', '')
   );
   const [colourTextBox, setColourTextBox] = useState(element.color);
 
-  const handlePresentationTitleCreateTextBox = () => {
-    setTitle('');
-    setColourTextBox('#000');
-    setFontSizeTextBox('1');
+  const updateElementInSlide = usePresentationListStore(
+    (state) => state.updateElementInSlide
+  );
+
+  const handleEditTextBoxHere = () => {
+    updateElementInSlide(presentationId, selectedSlideId, element.id, {
+      text: title,
+      fontSize: `${fontSizeTextBox}em`,
+      color: `${colourTextBox}`,
+    });
     handleCloseEditTextBox();
   };
 
@@ -73,7 +79,7 @@ const TextBoxDoubleClick = ({
       <CustomPrimaryButton
         label="Save"
         additionalStyle={{ marginTop: '30px' }}
-        onClick={handlePresentationTitleCreateTextBox}
+        onClick={handleEditTextBoxHere}
         dataTestid={'create-new-text-box-btn'}
       />
     </CustomModal>
