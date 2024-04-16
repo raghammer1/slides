@@ -158,7 +158,9 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: selectedSlide.bgCol,
+        backgroundImage: selectedSlide.bgCol
+          ? selectedSlide.bgCol
+          : `linear-gradient(${'to bottom right'}, ${'#999'}, ${'#999'})`,
         position: 'relative',
         overflow: 'hidden',
       }}

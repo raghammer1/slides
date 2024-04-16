@@ -120,6 +120,11 @@ const PreviewPresentationMain = () => {
     <Wrapper ref={parentRef}>
       {slides.map((slide, index) => (
         <SlideContainer
+          style={{
+            backgroundImage: slide.bgCol
+              ? slide.bgCol
+              : `linear-gradient(${'to bottom right'}, ${'#999'}, ${'#999'})`,
+          }}
           key={slide.id}
           isVisible={index === currSlideNumber && isVisible}
         >

@@ -46,7 +46,6 @@ const CreatePresentationModal = ({ open, handleClose }) => {
       name,
       slides: [
         {
-          bgCol: '#999',
           elements: [],
           id: randomIdSlides,
         },

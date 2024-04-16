@@ -18,7 +18,6 @@ const SlidesList = ({
   const handleAddNewSlide = () => {
     const newSlide = {
       id: uuidv4(),
-      bgCol: '#999',
       elements: [],
     };
     addSlide(presentationId, newSlide);
