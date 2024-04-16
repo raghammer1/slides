@@ -208,19 +208,40 @@ const usePresentationListStore = create(
 
         const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
 
-        // Check if the elements array is not empty
+        const currentTime = Date.now();
+        let timeStartChanger = state.timerStart;
+        // const elapsedTime = state.timerStart
+        //   ? currentTime - state.timerStart
+        //   : 0;
         if (updatedSlide.elements.length > 0) {
-          // Get the last element (which is an object) from the elements array
           const lastElementObject =
             updatedSlide.elements[updatedSlide.elements.length - 1];
-          // Assuming this object has a time key and an array as value
-          const timeKey = Object.keys(lastElementObject)[0]; // Get the first key, we don't care about the specific time
-          lastElementObject[timeKey].push(newElement); // Add the new element to the array of this time key
+
+          const lastTimeKey = Object.keys(lastElementObject)[0];
+
+          const elapsedTime = currentTime - parseInt(lastTimeKey);
+
+          if (elapsedTime < 60000) {
+            const timeKey = Object.keys(lastElementObject)[0];
+            lastElementObject[timeKey].push(newElement);
+          }
         } else {
-          const now = new Date();
-          // If there are no elements, create a new time object with a default time key
-          const newTimeKey = now; // Define a default time key, adjust as necessary
-          updatedSlide.elements.push({ [newTimeKey]: [newElement] }); // Initialize with newElement in an array
+          const newTimeKey = currentTime;
+
+          const newElementsArray =
+            updatedSlide.elements.length > 0
+              ? [
+                  ...updatedSlide.elements[updatedSlide.elements.length - 1][
+                    Object.keys(
+                      updatedSlide.elements[updatedSlide.elements.length - 1]
+                    )[0]
+                  ],
+                  newElement,
+                ]
+              : [newElement];
+
+          timeStartChanger = Date.now();
+          updatedSlide.elements.push({ [newTimeKey]: newElementsArray });
         }
 
         updatedPresentation.slides[slideIndex] = updatedSlide;
@@ -228,7 +249,11 @@ const usePresentationListStore = create(
         const updatedPresentations = [...state.presentations];
         updatedPresentations[presentationIndex] = updatedPresentation;
 
-        return { ...state, presentations: updatedPresentations };
+        return {
+          ...state,
+          presentations: updatedPresentations,
+          timerStart: timeStartChanger,
+        };
       });
     },
 
@@ -256,24 +281,41 @@ const usePresentationListStore = create(
 
         const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
 
-        // Check if the elements array is not empty
-        if (updatedSlide.elements.length > 0) {
-          const lastElementObject =
-            updatedSlide.elements[updatedSlide.elements.length - 1];
-          const timeKey = Object.keys(lastElementObject)[0]; // Get the first key of the last object
+        // Retrieve the last object and its timestamp
+        const lastElementObject =
+          updatedSlide.elements[updatedSlide.elements.length - 1];
+        const lastTimeKey = Object.keys(lastElementObject)[0];
+        const currentTime = Date.now();
+        const lastTime = parseInt(lastTimeKey, 10);
+        const elapsedTime = currentTime - lastTime;
 
-          // Map over the array of the last element object to update the specific element
-          lastElementObject[timeKey] = lastElementObject[timeKey].map(
+        if (elapsedTime < 60000) {
+          // Update in place if less than 1 minute has passed
+          lastElementObject[lastTimeKey] = lastElementObject[lastTimeKey].map(
             (element) => {
               if (element.id === elementId) {
-                return { ...element, top, left }; // Update the position of the targeted element
+                return { ...element, top, left };
               }
-              return element; // Return the element unchanged if not the target
+              return element;
             }
           );
         } else {
-          console.error('No elements to update');
-          return state; // Early return if no elements exist
+          // If more than 1 minute has passed, clone the last object and modify the target element
+          const elementsClone = lastElementObject[lastTimeKey].map(
+            (element) => {
+              if (element.id === elementId) {
+                return { ...element, top, left };
+              }
+              return element;
+            }
+          );
+
+          // Create a new timestamped object with the updated elements
+          const newTimeKey = currentTime.toString();
+          const newElementObject = { [newTimeKey]: elementsClone };
+
+          // Append this new object to the elements array
+          updatedSlide.elements.push(newElementObject);
         }
 
         updatedPresentation.slides[slideIndex] = updatedSlide;
@@ -309,24 +351,41 @@ const usePresentationListStore = create(
 
         const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
 
-        // Check if the elements array is not empty
-        if (updatedSlide.elements.length > 0) {
-          const lastElementObject =
-            updatedSlide.elements[updatedSlide.elements.length - 1];
-          const timeKey = Object.keys(lastElementObject)[0]; // Get the first key of the last object
+        // Retrieve the last object and its timestamp
+        const lastElementObject =
+          updatedSlide.elements[updatedSlide.elements.length - 1];
+        const lastTimeKey = Object.keys(lastElementObject)[0];
+        const currentTime = Date.now();
+        const lastTime = parseInt(lastTimeKey, 10);
+        const elapsedTime = currentTime - lastTime;
 
-          // Map over the array of the last element object to update the specific element
-          lastElementObject[timeKey] = lastElementObject[timeKey].map(
+        if (elapsedTime < 60000) {
+          // Update in place if less than 1 minute has passed
+          lastElementObject[lastTimeKey] = lastElementObject[lastTimeKey].map(
             (element) => {
               if (element.id === elementId) {
-                return { ...element, width, height }; // Update the position of the targeted element
+                return { ...element, width, height };
               }
-              return element; // Return the element unchanged if not the target
+              return element;
             }
           );
         } else {
-          console.error('No elements to update');
-          return state; // Early return if no elements exist
+          // If more than 1 minute has passed, clone the last object and modify the target element
+          const elementsClone = lastElementObject[lastTimeKey].map(
+            (element) => {
+              if (element.id === elementId) {
+                return { ...element, width, height };
+              }
+              return element;
+            }
+          );
+
+          // Create a new timestamped object with the updated elements
+          const newTimeKey = currentTime.toString();
+          const newElementObject = { [newTimeKey]: elementsClone };
+
+          // Append this new object to the elements array
+          updatedSlide.elements.push(newElementObject);
         }
 
         updatedPresentation.slides[slideIndex] = updatedSlide;
@@ -362,16 +421,31 @@ const usePresentationListStore = create(
 
         const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
 
-        // Assuming the structure of elements is [{ time: [{ id, ... }], ... }]
-        // We need to map through each "time" object's array and filter out the element
-        updatedSlide.elements = updatedSlide.elements.map((timeObject) => {
-          const timeKey = Object.keys(timeObject)[0]; // Extract the time key from the object
-          return {
-            [timeKey]: timeObject[timeKey].filter(
-              (element) => element.id !== elementId
-            ),
-          };
-        });
+        // Retrieve the last object and its timestamp
+        const lastElementObject =
+          updatedSlide.elements[updatedSlide.elements.length - 1];
+        const lastTimeKey = Object.keys(lastElementObject)[0];
+        const currentTime = Date.now();
+        const lastTime = parseInt(lastTimeKey, 10);
+        const elapsedTime = currentTime - lastTime;
+
+        if (elapsedTime < 60000) {
+          // Update in place if less than 1 minute has passed
+          lastElementObject[lastTimeKey] = lastElementObject[
+            lastTimeKey
+          ].filter((element) => element.id !== elementId);
+        } else {
+          // If more than 1 minute has passed, clone the last object without the deleted element and add to the array
+          const filteredElements = lastElementObject[lastTimeKey].filter(
+            (element) => element.id !== elementId
+          );
+          const newTimeKey = currentTime.toString();
+          const newElementObject = { [newTimeKey]: filteredElements };
+
+          // Append this new object to the elements array
+          updatedSlide.elements.push(newElementObject);
+        }
+
         updatedPresentation.slides[slideIndex] = updatedSlide;
 
         const updatedPresentations = [...state.presentations];
@@ -380,6 +454,7 @@ const usePresentationListStore = create(
         return { ...state, presentations: updatedPresentations };
       });
     },
+
     setSlidesForPresentation: (presentationId, newSlides) => {
       set((state) => {
         const presentationIndex = state.presentations.findIndex(
