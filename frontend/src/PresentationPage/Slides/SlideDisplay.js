@@ -169,6 +169,8 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
         if (element.type === 'textarea') {
           return (
             <TextBoxElementDisplay
+              presentationId={presentationId}
+              selectedSlideId={selectedSlideId}
               key={element.id}
               element={element}
               onDragStop={onDragStop}
