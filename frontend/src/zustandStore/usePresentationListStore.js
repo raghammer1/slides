@@ -454,6 +454,47 @@ const usePresentationListStore = create(
         return { ...state, presentations: updatedPresentations };
       });
     },
+    addElementToObject: (presentationId, slideId, newValue) => {
+      set((state) => {
+        console.log('Current state presentations:', state.presentations);
+        const presentationIndex = state.presentations.findIndex(
+          (p) => p.id === presentationId
+        );
+        if (presentationIndex === -1) {
+          console.error('Presentation not found');
+          return state;
+        }
+
+        const updatedPresentation = {
+          ...state.presentations[presentationIndex],
+        };
+        const slideIndex = updatedPresentation.slides.findIndex(
+          (slide) => slide.id === slideId
+        );
+        if (slideIndex === -1) {
+          console.error('Slide not found');
+          return state;
+        }
+
+        const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
+        const currentTime = Date.now().toString();
+        console.log(`Adding new element at time ${currentTime}`);
+
+        updatedSlide.elements = [
+          ...updatedSlide.elements,
+          { [currentTime]: newValue },
+        ];
+
+        updatedPresentation.slides[slideIndex] = updatedSlide;
+
+        const newState = state.presentations.map((pres, idx) =>
+          idx === presentationIndex ? updatedPresentation : pres
+        );
+        console.log('New state presentations:', newState);
+
+        return { presentations: newState };
+      });
+    },
 
     setSlidesForPresentation: (presentationId, newSlides) => {
       set((state) => {

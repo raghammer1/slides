@@ -34,6 +34,7 @@ const PreviewTheOlderVersion = ({
           presentationId={presentationId}
           selectedSlideId={selectedSlideId}
           selectedSlideHistory={selectedSlideHistory}
+          handleClosePreviewHandler={handleClosePreviewHandler}
         />
       </Box>
     </Modal>

@@ -4,11 +4,13 @@ import ImagePreview from '../../../../PreviewPresentation/PreviewElementDisplay/
 import VideoPreview from '../../../../PreviewPresentation/PreviewElementDisplay/VideoPreview';
 import CodePreview from '../../../../PreviewPresentation/PreviewElementDisplay/CodePreview';
 import CustomPrimaryButton from '../../../../components/CustomePrimaryButton';
+import usePresentationListStore from '../../../../zustandStore/usePresentationListStore';
 
 const SlidePreview = ({
   presentationId,
   selectedSlideId,
   selectedSlideHistory,
+  handleClosePreviewHandler,
 }) => {
   const key = Object.keys(selectedSlideHistory)[0];
   const value = selectedSlideHistory[key];
@@ -16,6 +18,15 @@ const SlidePreview = ({
 
   const size = { width: 800, height: 400 };
   console.log(value, 'VALUE');
+
+  const addElementToObject = usePresentationListStore(
+    (state) => state.addElementToObject
+  );
+
+  const handleSelectThisVersion = () => {
+    addElementToObject(presentationId, selectedSlideId, value);
+    handleClosePreviewHandler();
+  };
 
   return (
     <div>
@@ -52,7 +63,20 @@ const SlidePreview = ({
           return <></>;
         })}
       </div>
-      <CustomPrimaryButton />
+      <div>
+        <CustomPrimaryButton
+          label="Cancel"
+          additionalStyle={{ marginTop: '30px' }}
+          onClick={handleClosePreviewHandler}
+          dataTestid="login-button"
+        />
+        <CustomPrimaryButton
+          label="Confirm"
+          additionalStyle={{ marginTop: '30px' }}
+          onClick={handleSelectThisVersion}
+          dataTestid="login-button"
+        />
+      </div>
     </div>
   );
 };
