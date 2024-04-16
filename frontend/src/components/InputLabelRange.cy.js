@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from '@cypress/react'; // Import mount from @cypress/react
+import { mount } from '@cypress/react';
 import InputLabelRange from './InputLabelRange';
 
 describe('<InputLabelRange />', () => {
