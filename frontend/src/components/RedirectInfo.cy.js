@@ -9,7 +9,7 @@ describe('<RedirectInfo />', () => {
     // Defining test variables for text and handler
     const text = 'Already have an account?';
     const redirectText = 'Log in';
-    const redirectHandler = cy.spy().as('redirectHandlerSpy'); // Create a spy for the click handler
+    const redirectHandler = cy.spy().as('redirectHandlerSpy');
 
     // Mount the component with props
     mount(
@@ -48,7 +48,7 @@ describe('<RedirectInfo />', () => {
 
   // Test to check if additional styles are applied to the component
   it('applies additional styles', () => {
-    const additionalStyles = { backgroundColor: 'rgb(242, 242, 242)' }; // Define additional styles to apply
+    const additionalStyles = { backgroundColor: 'rgb(242, 242, 242)' };
     mount(
       <RedirectInfo
         text="Forgot your password?"
