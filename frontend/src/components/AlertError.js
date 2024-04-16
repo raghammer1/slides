@@ -78,6 +78,7 @@
 //     </AlertContext.Provider>
 //   );
 // };
+
 import React, { createContext, useContext, useState } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import SnackbarContent from '@mui/material/SnackbarContent';
@@ -129,8 +130,7 @@ export const AlertProvider = ({ children }) => {
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',
-        }}
-      >
+        }}>
         <StyledSnackbarContent
           bgColor={alertState.bgColor} // Pass bgColor as a prop to styled component
           message={<span id="client-snackbar">{alertState.message}</span>}
@@ -139,8 +139,7 @@ export const AlertProvider = ({ children }) => {
               key="close"
               aria-label="Close"
               color="inherit"
-              onClick={handleClose}
-            >
+              onClick={handleClose}>
               <CloseIcon style={{ color: '#fff' }} />
             </IconButton>,
           ]}
