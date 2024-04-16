@@ -93,7 +93,7 @@ const EditMenu = ({
         Add Code
       </MenuItem>
       <MenuItem
-        data-testid={'add-code-box-btn'}
+        data-testid={'goto-history-btn'}
         onClick={handleOpenSlideHistory}
       >
         History

@@ -1,6 +1,6 @@
 {
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/components/InputLabel.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/components/InputLabel.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/components/InputLabel.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/components/InputLabel.js",
     "statementMap": {
       "0": {
         "start": {
@@ -202,29 +202,29 @@
       "1": 1,
       "2": 1,
       "3": 1,
-      "4": 1106,
-      "5": 94,
-      "6": 1106
+      "4": 2196,
+      "5": 364,
+      "6": 2196
     },
     "f": {
-      "0": 1106,
-      "1": 94
+      "0": 2196,
+      "1": 364
     },
     "b": {
       "0": [
-        1106,
-        0
+        2158,
+        38
       ],
       "1": [
-        1106,
-        0
+        2158,
+        38
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "80bb8385a2b9aaad2619efd2ea161763995ca168"
+    "hash": "c1b69904465fc9c062f48656ffe311e2eecc36c4"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/authPages/loginPage/LoginPageInputs.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/authPages/loginPage/LoginPageInputs.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/authPages/loginPage/LoginPageInputs.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/authPages/loginPage/LoginPageInputs.js",
     "statementMap": {
       "0": {
         "start": {
@@ -276,17 +276,17 @@
     "branchMap": {},
     "s": {
       "0": 1,
-      "1": 0
+      "1": 94
     },
     "f": {
-      "0": 0
+      "0": 94
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "7196ca87ca0e129ba814be2e75171a59d5e24ced"
+    "hash": "64e94838f0fa1384c48d7e5451192be129261a40"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/components/CustomePrimaryButton.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/components/CustomePrimaryButton.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/components/CustomePrimaryButton.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/components/CustomePrimaryButton.js",
     "statementMap": {
       "0": {
         "start": {
@@ -411,26 +411,26 @@
     },
     "s": {
       "0": 1,
-      "1": 528
+      "1": 1686
     },
     "f": {
-      "0": 528
+      "0": 1686
     },
     "b": {
       "0": [
-        528,
+        1686,
         0
       ],
       "1": [
-        508,
-        20
+        1640,
+        46
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "383b003fcfb9f9c373e4074fccbcf03030a8dad6"
+    "hash": "d76963ca95f390a1373809559d193614e60f134c"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/components/RedirectInfo.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/components/RedirectInfo.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/components/RedirectInfo.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/components/RedirectInfo.js",
     "statementMap": {
       "0": {
         "start": {
@@ -530,22 +530,22 @@
     "s": {
       "0": 1,
       "1": 1,
-      "2": 258
+      "2": 352
     },
     "f": {
-      "0": 258
+      "0": 352
     },
     "b": {
       "0": [
-        258,
+        352,
         0
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "18a8ce49293e3498029050588c98af0ae5368134"
+    "hash": "7ddb109c1c6eeca2717cad6d89c9705ba985560e"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/authPages/loginPage/LoginPageFooter.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/authPages/loginPage/LoginPageFooter.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/authPages/loginPage/LoginPageFooter.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/authPages/loginPage/LoginPageFooter.js",
     "statementMap": {
       "0": {
         "start": {
@@ -776,32 +776,32 @@
     },
     "s": {
       "0": 1,
-      "1": 0,
-      "2": 0,
+      "1": 94,
+      "2": 94,
       "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0
+      "4": 94,
+      "5": 78,
+      "6": 94,
+      "7": 16,
+      "8": 94
     },
     "f": {
-      "0": 0,
+      "0": 94,
       "1": 0,
-      "2": 0,
-      "3": 0
+      "2": 78,
+      "3": 16
     },
     "b": {
       "0": [
-        0,
-        0
+        78,
+        16
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "742eb9a927225807d8c24ed06cb08e4bde9b8090"
+    "hash": "4d911e12946ff182e671cec7fef73208c29a6bc4"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/shared/validators.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/shared/validators.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/shared/validators.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/shared/validators.js",
     "statementMap": {
       "0": {
         "start": {
@@ -1386,9 +1386,9 @@
     },
     "s": {
       "0": 1,
-      "1": 0,
-      "2": 0,
-      "3": 0,
+      "1": 46,
+      "2": 46,
+      "3": 46,
       "4": 1,
       "5": 65,
       "6": 65,
@@ -1403,22 +1403,22 @@
       "15": 1,
       "16": 65,
       "17": 1,
-      "18": 65,
+      "18": 111,
       "19": 1,
-      "20": 65,
-      "21": 65
+      "20": 111,
+      "21": 111
     },
     "f": {
-      "0": 0,
+      "0": 46,
       "1": 65,
       "2": 65,
-      "3": 65,
-      "4": 65
+      "3": 111,
+      "4": 111
     },
     "b": {
       "0": [
-        0,
-        0
+        46,
+        14
       ],
       "1": [
         32,
@@ -1439,15 +1439,15 @@
         29
       ],
       "5": [
-        65,
-        19
+        111,
+        26
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "c3594e61dc507595d8f5f71644701a74c84f8d1a"
+    "hash": "9378527dad6c62d80c5efcbfa5ad28a14bbab51f"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/components/AuthBox.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/components/AuthBox.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/components/AuthBox.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/components/AuthBox.js",
     "statementMap": {
       "0": {
         "start": {
@@ -1510,17 +1510,17 @@
     "s": {
       "0": 1,
       "1": 1,
-      "2": 258
+      "2": 352
     },
     "f": {
-      "0": 258
+      "0": 352
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "7bc70b44f4bf6f9523e6d66681937392ef4ffb4b"
+    "hash": "fe2830186cec8c756bbd5df41e2144f76e45db9c"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/services/client.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/services/client.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/services/client.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/services/client.js",
     "statementMap": {
       "0": {
         "start": {
@@ -1704,29 +1704,29 @@
     "s": {
       "0": 1,
       "1": 1,
-      "2": 22,
-      "3": 22,
-      "4": 21,
-      "5": 21,
+      "2": 61,
+      "3": 61,
+      "4": 59,
+      "5": 59,
       "6": 0,
-      "7": 22,
+      "7": 61,
       "8": 0
     },
     "f": {
-      "0": 22,
+      "0": 61,
       "1": 0
     },
     "b": {
       "0": [
-        21,
-        1
+        59,
+        2
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "bd10e54d516874c49b7c6c20963598c20b668316"
+    "hash": "97d5f4e92f1d7aa49aa0526207922bfab442c49d"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/services/api.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/services/api.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/services/api.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/services/api.js",
     "statementMap": {
       "0": {
         "start": {
@@ -2179,55 +2179,55 @@
     },
     "s": {
       "0": 1,
-      "1": 0,
+      "1": 1,
       "2": 1,
       "3": 1,
       "4": 1,
       "5": 0,
       "6": 1,
-      "7": 14,
-      "8": 14,
-      "9": 14,
+      "7": 26,
+      "8": 26,
+      "9": 26,
       "10": 0,
-      "11": 14,
-      "12": 14,
-      "13": 14,
+      "11": 26,
+      "12": 26,
+      "13": 26,
       "14": 0,
       "15": 1,
-      "16": 7,
-      "17": 7,
-      "18": 7,
-      "19": 7,
-      "20": 0,
-      "21": 7,
-      "22": 7,
-      "23": 0
+      "16": 34,
+      "17": 34,
+      "18": 34,
+      "19": 34,
+      "20": 1,
+      "21": 33,
+      "22": 33,
+      "23": 1
     },
     "f": {
-      "0": 0,
+      "0": 1,
       "1": 1,
-      "2": 14,
-      "3": 7
+      "2": 26,
+      "3": 34
     },
     "b": {
       "0": [
         0,
-        14
+        26
       ],
       "1": [
-        14,
+        26,
         0
       ],
       "2": [
-        0,
-        7
+        1,
+        33
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "7cc758e6dcc80b0202b970224745add665d13fdf"
+    "hash": "bedeaa4e7e1fd60b0e3476e888a831b64c454291"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/zustandStore/useCurrentUserStore.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/zustandStore/useCurrentUserStore.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/zustandStore/useCurrentUserStore.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/zustandStore/useCurrentUserStore.js",
     "statementMap": {
       "0": {
         "start": {
@@ -2416,24 +2416,24 @@
     "s": {
       "0": 1,
       "1": 1,
-      "2": 1,
-      "3": 0,
+      "2": 2,
+      "3": 1,
       "4": 0,
       "5": 0
     },
     "f": {
       "0": 1,
-      "1": 1,
-      "2": 0,
+      "1": 2,
+      "2": 1,
       "3": 0,
       "4": 0
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "4c19352717c4d313185848ad96ee28b514ca436d"
+    "hash": "26174eaea9ecceecfe6303f9fecab2cb5ea89ab3"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/components/AlertError.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/components/AlertError.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/components/AlertError.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/components/AlertError.js",
     "statementMap": {
       "0": {
         "start": {
@@ -2835,46 +2835,46 @@
     "s": {
       "0": 1,
       "1": 1,
-      "2": 14,
+      "2": 30,
       "3": 1,
-      "4": 482,
+      "4": 914,
       "5": 1,
-      "6": 10,
-      "7": 10,
-      "8": 4,
-      "9": 10,
-      "10": 15,
-      "11": 15,
-      "12": 0,
-      "13": 0,
-      "14": 10
+      "6": 16,
+      "7": 16,
+      "8": 6,
+      "9": 16,
+      "10": 53,
+      "11": 52,
+      "12": 1,
+      "13": 1,
+      "14": 16
     },
     "f": {
-      "0": 14,
-      "1": 482,
-      "2": 10,
-      "3": 4,
-      "4": 15,
-      "5": 0
+      "0": 30,
+      "1": 914,
+      "2": 16,
+      "3": 6,
+      "4": 53,
+      "5": 1
     },
     "b": {
       "0": [
-        14,
+        30,
         0
       ],
       "1": [
         0
       ],
       "2": [
-        15,
-        0
+        52,
+        1
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "2da2432bfa4b221f4e26e0f43474aa5f8df32aa4"
+    "hash": "7456386c044c76d0459aec26bd0d8f619033fe8c"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/authPages/loginPage/Login.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/authPages/loginPage/Login.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/authPages/loginPage/Login.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/authPages/loginPage/Login.js",
     "statementMap": {
       "0": {
         "start": {
@@ -3313,22 +3313,22 @@
     },
     "s": {
       "0": 1,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0,
-      "9": 0,
-      "10": 0,
-      "11": 0,
-      "12": 0,
-      "13": 0,
-      "14": 0,
-      "15": 0,
-      "16": 0,
+      "1": 180,
+      "2": 180,
+      "3": 180,
+      "4": 180,
+      "5": 180,
+      "6": 180,
+      "7": 180,
+      "8": 46,
+      "9": 180,
+      "10": 1,
+      "11": 1,
+      "12": 1,
+      "13": 1,
+      "14": 1,
+      "15": 1,
+      "16": 1,
       "17": 0,
       "18": 0,
       "19": 0,
@@ -3336,12 +3336,12 @@
       "21": 0,
       "22": 0,
       "23": 0,
-      "24": 0
+      "24": 180
     },
     "f": {
-      "0": 0,
-      "1": 0,
-      "2": 0
+      "0": 180,
+      "1": 46,
+      "2": 1
     },
     "b": {
       "0": [
@@ -3358,10 +3358,10 @@
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "e5f754564dcfb595310dd03bd2668a979f418dad"
+    "hash": "e6519d90e03c04536813521a76a79366ee84b4f7"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/authPages/registerPage/RegisterPageInputs.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/authPages/registerPage/RegisterPageInputs.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/authPages/registerPage/RegisterPageInputs.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/authPages/registerPage/RegisterPageInputs.js",
     "statementMap": {
       "0": {
         "start": {
@@ -3431,10 +3431,10 @@
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "63737ac6edceaf0a100e268f4c53eb2b9da58576"
+    "hash": "c511a59afed5171359e83fef735d47080f2afe13"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/authPages/registerPage/RegisterPageFooter.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/authPages/registerPage/RegisterPageFooter.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/authPages/registerPage/RegisterPageFooter.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/authPages/registerPage/RegisterPageFooter.js",
     "statementMap": {
       "0": {
         "start": {
@@ -3687,10 +3687,10 @@
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "a05bceb0c44f4eada0d1b140a0a42545357c82ac"
+    "hash": "4820932f5745996218c784fc7ddb5c223c98377c"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/authPages/registerPage/RegisterPage.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/authPages/registerPage/RegisterPage.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/authPages/registerPage/RegisterPage.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/authPages/registerPage/RegisterPage.js",
     "statementMap": {
       "0": {
         "start": {
@@ -4269,10 +4269,10 @@
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "f2115ecacf68f01e3106c02f72d1afbefe5ed3e6"
+    "hash": "ae975accf750d145e9b25e4b82e405b8418ea4d0"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/zustandStore/usePresentationListStore.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/zustandStore/usePresentationListStore.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/zustandStore/usePresentationListStore.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/zustandStore/usePresentationListStore.js",
     "statementMap": {
       "0": {
         "start": {
@@ -9519,134 +9519,134 @@
       "0": 1,
       "1": 1,
       "2": 1,
-      "3": 16,
-      "4": 16,
-      "5": 16,
-      "6": 16,
-      "7": 7,
-      "8": 7,
-      "9": 7,
+      "3": 92,
+      "4": 92,
+      "5": 92,
+      "6": 92,
+      "7": 34,
+      "8": 34,
+      "9": 34,
       "10": 1,
       "11": 1,
-      "12": 5,
-      "13": 4,
-      "14": 4,
-      "15": 4,
-      "16": 4,
-      "17": 4,
+      "12": 29,
+      "13": 29,
+      "14": 29,
+      "15": 29,
+      "16": 29,
+      "17": 29,
       "18": 0,
       "19": 0,
       "20": 0,
       "21": 0,
       "22": 0,
-      "23": 4,
+      "23": 29,
       "24": 2,
       "25": 2,
       "26": 2,
       "27": 2,
-      "28": 0,
-      "29": 1,
-      "30": 1,
-      "31": 1,
-      "32": 2,
-      "33": 1,
+      "28": 1,
+      "29": 2,
+      "30": 2,
+      "31": 2,
+      "32": 3,
+      "33": 2,
       "34": 0,
       "35": 0,
       "36": 0,
-      "37": 4,
-      "38": 4,
-      "39": 4,
-      "40": 4,
+      "37": 8,
+      "38": 8,
+      "39": 8,
+      "40": 8,
       "41": 0,
       "42": 0,
-      "43": 4,
-      "44": 4,
-      "45": 5,
-      "46": 4,
-      "47": 4,
-      "48": 4,
-      "49": 4,
-      "50": 4,
-      "51": 0,
-      "52": 0,
-      "53": 0,
-      "54": 0,
+      "43": 8,
+      "44": 8,
+      "45": 36,
+      "46": 8,
+      "47": 8,
+      "48": 8,
+      "49": 8,
+      "50": 8,
+      "51": 8,
+      "52": 8,
+      "53": 8,
+      "54": 8,
       "55": 0,
       "56": 0,
-      "57": 0,
-      "58": 0,
-      "59": 0,
-      "60": 0,
-      "61": 0,
-      "62": 0,
-      "63": 0,
-      "64": 0,
-      "65": 182,
-      "66": 182,
-      "67": 182,
-      "68": 182,
-      "69": 122,
-      "70": 122,
-      "71": 122,
-      "72": 122,
-      "73": 4,
-      "74": 118,
-      "75": 130,
-      "76": 118,
-      "77": 0,
-      "78": 0,
-      "79": 0,
-      "80": 0,
-      "81": 0,
+      "57": 8,
+      "58": 8,
+      "59": 44,
+      "60": 36,
+      "61": 8,
+      "62": 8,
+      "63": 8,
+      "64": 8,
+      "65": 855,
+      "66": 855,
+      "67": 850,
+      "68": 855,
+      "69": 628,
+      "70": 628,
+      "71": 624,
+      "72": 628,
+      "73": 8,
+      "74": 620,
+      "75": 1849,
+      "76": 620,
+      "77": 6,
+      "78": 6,
+      "79": 6,
+      "80": 6,
+      "81": 6,
       "82": 0,
       "83": 0,
-      "84": 0,
-      "85": 0,
-      "86": 0,
-      "87": 0,
+      "84": 6,
+      "85": 6,
+      "86": 27,
+      "87": 6,
       "88": 0,
       "89": 0,
-      "90": 0,
-      "91": 0,
-      "92": 0,
-      "93": 0,
-      "94": 0,
-      "95": 0,
-      "96": 0,
-      "97": 0,
-      "98": 0,
-      "99": 0,
-      "100": 0,
-      "101": 0,
-      "102": 0,
-      "103": 0,
-      "104": 0,
-      "105": 0,
-      "106": 0,
-      "107": 0,
-      "108": 0,
-      "109": 0,
-      "110": 0,
-      "111": 0,
+      "90": 6,
+      "91": 6,
+      "92": 6,
+      "93": 6,
+      "94": 3,
+      "95": 3,
+      "96": 3,
+      "97": 3,
+      "98": 3,
+      "99": 3,
+      "100": 3,
+      "101": 3,
+      "102": 3,
+      "103": 3,
+      "104": 6,
+      "105": 6,
+      "106": 6,
+      "107": 6,
+      "108": 6,
+      "109": 6,
+      "110": 6,
+      "111": 6,
       "112": 0,
       "113": 0,
-      "114": 0,
-      "115": 0,
-      "116": 0,
-      "117": 0,
+      "114": 6,
+      "115": 6,
+      "116": 30,
+      "117": 6,
       "118": 0,
       "119": 0,
-      "120": 0,
-      "121": 0,
-      "122": 0,
-      "123": 0,
-      "124": 0,
-      "125": 0,
-      "126": 0,
-      "127": 0,
-      "128": 0,
-      "129": 0,
-      "130": 0,
+      "120": 6,
+      "121": 6,
+      "122": 6,
+      "123": 6,
+      "124": 6,
+      "125": 6,
+      "126": 6,
+      "127": 6,
+      "128": 8,
+      "129": 6,
+      "130": 2,
       "131": 0,
       "132": 0,
       "133": 0,
@@ -9654,10 +9654,10 @@
       "135": 0,
       "136": 0,
       "137": 0,
-      "138": 0,
-      "139": 0,
-      "140": 0,
-      "141": 0,
+      "138": 6,
+      "139": 6,
+      "140": 6,
+      "141": 6,
       "142": 0,
       "143": 0,
       "144": 0,
@@ -9692,36 +9692,36 @@
       "173": 0,
       "174": 0,
       "175": 0,
-      "176": 0,
-      "177": 0,
-      "178": 0,
-      "179": 0,
+      "176": 1,
+      "177": 1,
+      "178": 1,
+      "179": 1,
       "180": 0,
       "181": 0,
-      "182": 0,
-      "183": 0,
-      "184": 0,
-      "185": 0,
+      "182": 1,
+      "183": 1,
+      "184": 5,
+      "185": 1,
       "186": 0,
       "187": 0,
-      "188": 0,
-      "189": 0,
-      "190": 0,
-      "191": 0,
-      "192": 0,
-      "193": 0,
-      "194": 0,
-      "195": 0,
-      "196": 0,
+      "188": 1,
+      "189": 1,
+      "190": 1,
+      "191": 1,
+      "192": 1,
+      "193": 1,
+      "194": 1,
+      "195": 1,
+      "196": 4,
       "197": 0,
       "198": 0,
       "199": 0,
       "200": 0,
       "201": 0,
-      "202": 0,
-      "203": 0,
-      "204": 0,
-      "205": 0,
+      "202": 1,
+      "203": 1,
+      "204": 1,
+      "205": 1,
       "206": 0,
       "207": 0,
       "208": 0,
@@ -9757,52 +9757,52 @@
       "238": 0,
       "239": 0,
       "240": 1,
-      "241": 14,
-      "242": 14,
-      "243": 14
+      "241": 26,
+      "242": 26,
+      "243": 26
     },
     "f": {
       "0": 1,
       "1": 1,
-      "2": 16,
+      "2": 92,
       "3": 1,
-      "4": 5,
-      "5": 4,
+      "4": 29,
+      "5": 29,
       "6": 0,
-      "7": 4,
+      "7": 29,
       "8": 2,
       "9": 2,
       "10": 2,
-      "11": 0,
-      "12": 1,
-      "13": 1,
-      "14": 2,
+      "11": 1,
+      "12": 2,
+      "13": 2,
+      "14": 3,
       "15": 0,
       "16": 0,
       "17": 0,
-      "18": 4,
-      "19": 4,
-      "20": 4,
-      "21": 5,
-      "22": 0,
-      "23": 0,
-      "24": 0,
-      "25": 0,
-      "26": 0,
-      "27": 182,
-      "28": 182,
-      "29": 122,
-      "30": 122,
-      "31": 130,
-      "32": 0,
-      "33": 0,
-      "34": 0,
-      "35": 0,
-      "36": 0,
-      "37": 0,
-      "38": 0,
-      "39": 0,
-      "40": 0,
+      "18": 8,
+      "19": 8,
+      "20": 8,
+      "21": 36,
+      "22": 8,
+      "23": 8,
+      "24": 8,
+      "25": 44,
+      "26": 36,
+      "27": 855,
+      "28": 850,
+      "29": 628,
+      "30": 624,
+      "31": 1849,
+      "32": 6,
+      "33": 6,
+      "34": 6,
+      "35": 27,
+      "36": 6,
+      "37": 6,
+      "38": 6,
+      "39": 30,
+      "40": 8,
       "41": 0,
       "42": 0,
       "43": 0,
@@ -9810,11 +9810,11 @@
       "45": 0,
       "46": 0,
       "47": 0,
-      "48": 0,
-      "49": 0,
-      "50": 0,
-      "51": 0,
-      "52": 0,
+      "48": 1,
+      "49": 1,
+      "50": 1,
+      "51": 5,
+      "52": 4,
       "53": 0,
       "54": 0,
       "55": 0,
@@ -9825,15 +9825,15 @@
       "60": 0,
       "61": 0,
       "62": 0,
-      "63": 14
+      "63": 26
     },
     "b": {
       "0": [
-        7,
-        9
+        34,
+        58
       ],
       "1": [
-        4,
+        29,
         0
       ],
       "2": [
@@ -9850,63 +9850,63 @@
       ],
       "5": [
         0,
-        4
+        8
       ],
       "6": [
-        5,
+        36,
         0
       ],
       "7": [
         0,
-        0
+        8
       ],
       "8": [
-        177,
-        5
+        845,
+        10
       ],
       "9": [
-        4,
-        118
+        8,
+        620
       ],
       "10": [
-        118,
-        0
+        620,
+        24
       ],
       "11": [
         0,
-        0
+        6
       ],
       "12": [
         0,
-        0
+        6
       ],
       "13": [
-        0,
-        0
+        3,
+        3
       ],
       "14": [
-        0,
+        3,
         0
       ],
       "15": [
         0,
-        0
+        3
       ],
       "16": [
         0,
-        0
+        6
       ],
       "17": [
         0,
-        0
+        6
       ],
       "18": [
-        0,
+        6,
         0
       ],
       "19": [
-        0,
-        0
+        6,
+        2
       ],
       "20": [
         0,
@@ -9934,14 +9934,14 @@
       ],
       "26": [
         0,
-        0
+        1
       ],
       "27": [
         0,
-        0
+        1
       ],
       "28": [
-        0,
+        1,
         0
       ],
       "29": [
@@ -9961,19 +9961,19 @@
         0
       ],
       "33": [
-        8,
+        20,
         6
       ],
       "34": [
-        8,
+        20,
         6
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "26ecb690d710400eaa144789181f4a20161c12ed"
+    "hash": "9d23cc3f6589aa485e2ee07fa7f2befdebd1c1b5"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/dashboard/Fold/Fold.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/dashboard/Fold/Fold.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/dashboard/Fold/Fold.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/dashboard/Fold/Fold.js",
     "statementMap": {
       "0": {
         "start": {
@@ -10139,27 +10139,27 @@
     "branchMap": {},
     "s": {
       "0": 1,
-      "1": 16,
-      "2": 16,
-      "3": 16,
-      "4": 16,
-      "5": 16,
-      "6": 0,
-      "7": 0,
-      "8": 0,
-      "9": 0,
-      "10": 16
+      "1": 42,
+      "2": 42,
+      "3": 42,
+      "4": 42,
+      "5": 42,
+      "6": 1,
+      "7": 1,
+      "8": 1,
+      "9": 1,
+      "10": 42
     },
     "f": {
-      "0": 16,
-      "1": 0
+      "0": 42,
+      "1": 1
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "d359ea10cb94ac6e5eda7d4bb3875bb779a38b31"
+    "hash": "4bb02760bb51b6028920a1172d959097486f184b"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/components/CustomModal.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/components/CustomModal.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/components/CustomModal.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/components/CustomModal.js",
     "statementMap": {
       "0": {
         "start": {
@@ -10211,17 +10211,17 @@
     "branchMap": {},
     "s": {
       "0": 1,
-      "1": 196
+      "1": 1316
     },
     "f": {
-      "0": 196
+      "0": 1316
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "4594b459a966967ec386d5b715d6f9110ee5d764"
+    "hash": "6f97176bf555b11f77f2f3861e73b6317dde680f"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/dashboard/CreatePresentationModal.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/dashboard/CreatePresentationModal.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/dashboard/CreatePresentationModal.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/dashboard/CreatePresentationModal.js",
     "statementMap": {
       "0": {
         "start": {
@@ -10587,43 +10587,43 @@
     "s": {
       "0": 1,
       "1": 1,
-      "2": 150,
-      "3": 150,
-      "4": 150,
-      "5": 150,
-      "6": 150,
-      "7": 43,
-      "8": 150,
-      "9": 54,
-      "10": 150,
+      "2": 180,
+      "3": 180,
+      "4": 180,
+      "5": 180,
+      "6": 180,
+      "7": 49,
+      "8": 180,
+      "9": 84,
+      "10": 180,
       "11": 96,
-      "12": 150,
+      "12": 180,
       "13": 2,
       "14": 2,
       "15": 2,
       "16": 2,
       "17": 2,
       "18": 2,
-      "19": 150
+      "19": 180
     },
     "f": {
-      "0": 150,
-      "1": 43,
-      "2": 54,
+      "0": 180,
+      "1": 49,
+      "2": 84,
       "3": 96,
       "4": 2
     },
     "b": {
       "0": [
-        54,
+        84,
         96
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "1c1f8a102595c09ebeb0fa9e9eb6357edfb2d5c6"
+    "hash": "fbb9ae4b69f57532550341b7c8d2d8ed98985a2f"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/dashboard/PresentationList/PresentationCard.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/dashboard/PresentationList/PresentationCard.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/dashboard/PresentationList/PresentationCard.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/dashboard/PresentationList/PresentationCard.js",
     "statementMap": {
       "0": {
         "start": {
@@ -10750,22 +10750,22 @@
     "s": {
       "0": 1,
       "1": 1,
-      "2": 12,
-      "3": 12,
-      "4": 2,
-      "5": 2,
-      "6": 12
+      "2": 30,
+      "3": 30,
+      "4": 3,
+      "5": 3,
+      "6": 30
     },
     "f": {
-      "0": 12,
-      "1": 2
+      "0": 30,
+      "1": 3
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "589211a14e518c421736cce863a39f8c646fce32"
+    "hash": "2e9fb040e5c4ad6b36c1169304f1256bc436e87b"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/dashboard/PresentationList/PresentationList.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/dashboard/PresentationList/PresentationList.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/dashboard/PresentationList/PresentationList.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/dashboard/PresentationList/PresentationList.js",
     "statementMap": {
       "0": {
         "start": {
@@ -10916,23 +10916,23 @@
     "s": {
       "0": 1,
       "1": 1,
-      "2": 20,
-      "3": 26,
-      "4": 20,
-      "5": 20,
-      "6": 12
+      "2": 46,
+      "3": 63,
+      "4": 46,
+      "5": 46,
+      "6": 30
     },
     "f": {
-      "0": 20,
-      "1": 26,
-      "2": 12
+      "0": 46,
+      "1": 63,
+      "2": 30
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "aa749cda664cc5375d4098232107700398edc8cd"
+    "hash": "0ee2183698adb1843630eb66a146a64404b5c67d"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/dashboard/MainDashboard.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/dashboard/MainDashboard.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/dashboard/MainDashboard.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/dashboard/MainDashboard.js",
     "statementMap": {
       "0": {
         "start": {
@@ -11092,25 +11092,25 @@
     "branchMap": {},
     "s": {
       "0": 1,
-      "1": 12,
-      "2": 12,
-      "3": 12,
+      "1": 18,
+      "2": 18,
+      "3": 18,
       "4": 2,
-      "5": 12,
+      "5": 18,
       "6": 2,
-      "7": 12
+      "7": 18
     },
     "f": {
-      "0": 12,
+      "0": 18,
       "1": 2,
       "2": 2
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "9e1bea17d1661c7db6627d8b73ca3672769ab08b"
+    "hash": "18d511f879812d40be0518042916d293655e2ff0"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/dashboard/DashboardFooter.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/dashboard/DashboardFooter.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/dashboard/DashboardFooter.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/dashboard/DashboardFooter.js",
     "statementMap": {
       "0": {
         "start": {
@@ -11162,17 +11162,17 @@
     "branchMap": {},
     "s": {
       "0": 1,
-      "1": 4
+      "1": 10
     },
     "f": {
-      "0": 4
+      "0": 10
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "739c8a046019b7040b0b02e18f70068985206056"
+    "hash": "2d19394fb6ca7a02fffc3e701b4955fc2cbd85c4"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/dashboard/Dashboard.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/dashboard/Dashboard.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/dashboard/Dashboard.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/dashboard/Dashboard.js",
     "statementMap": {
       "0": {
         "start": {
@@ -11234,18 +11234,18 @@
     "branchMap": {},
     "s": {
       "0": 1,
-      "1": 4,
-      "2": 4
+      "1": 10,
+      "2": 10
     },
     "f": {
-      "0": 4
+      "0": 10
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "34c7d54ac177e25754cc488517851925ea58754f"
+    "hash": "988c573d8aed6e3d07fc5cdf25ee32b2cd956a01"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/ProtectedRoute.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/ProtectedRoute.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/ProtectedRoute.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/ProtectedRoute.js",
     "statementMap": {
       "0": {
         "start": {
@@ -11538,40 +11538,40 @@
     },
     "s": {
       "0": 1,
-      "1": 12,
-      "2": 12,
-      "3": 12,
-      "4": 12,
+      "1": 22,
+      "2": 22,
+      "3": 22,
+      "4": 22,
       "5": 0,
-      "6": 12,
-      "7": 2,
-      "8": 2,
-      "9": 2,
-      "10": 2,
-      "11": 12,
-      "12": 2,
-      "13": 10
+      "6": 22,
+      "7": 4,
+      "8": 4,
+      "9": 4,
+      "10": 4,
+      "11": 22,
+      "12": 4,
+      "13": 18
     },
     "f": {
-      "0": 12,
-      "1": 2,
-      "2": 2
+      "0": 22,
+      "1": 4,
+      "2": 4
     },
     "b": {
       "0": [
         0,
-        12
+        22
       ],
       "1": [
-        2,
-        10
+        4,
+        18
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "92cf0ed3a4d260a45e7b9a2ceb5ba242ef8191b1"
+    "hash": "187be10d0486a77fac3c7cc405a4f49f207eaff1"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/DeletePresentationModal.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/DeletePresentationModal.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/DeletePresentationModal.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/DeletePresentationModal.js",
     "statementMap": {
       "0": {
         "start": {
@@ -11671,22 +11671,22 @@
     "s": {
       "0": 1,
       "1": 1,
-      "2": 74
+      "2": 296
     },
     "f": {
-      "0": 74
+      "0": 296
     },
     "b": {
       "0": [
-        74,
+        296,
         0
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "f1cdeaa25f1b9ee3b9960aa6951bde3f332f9115"
+    "hash": "3fadcab94c3d4bc968f2cbab4c73ce00726d5b82"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/EditPresentationTitleModal.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/EditPresentationTitleModal.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/EditPresentationTitleModal.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/EditPresentationTitleModal.js",
     "statementMap": {
       "0": {
         "start": {
@@ -11749,17 +11749,17 @@
     "s": {
       "0": 1,
       "1": 1,
-      "2": 36
+      "2": 130
     },
     "f": {
-      "0": 36
+      "0": 130
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "c8831a88745bc05064f9cdb6f76e08dad953975f"
+    "hash": "5db817640e2f7fbf6de1fd17ae76a34e6a0451a0"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/SlidesList.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/SlidesList.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/SlidesList.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/SlidesList.js",
     "statementMap": {
       "0": {
         "start": {
@@ -12048,35 +12048,35 @@
     },
     "s": {
       "0": 1,
-      "1": 38,
-      "2": 61,
-      "3": 38,
-      "4": 4,
-      "5": 4,
-      "6": 38,
-      "7": 56,
-      "8": 1,
-      "9": 0
+      "1": 166,
+      "2": 286,
+      "3": 166,
+      "4": 8,
+      "5": 8,
+      "6": 166,
+      "7": 900,
+      "8": 10,
+      "9": 9
     },
     "f": {
-      "0": 38,
-      "1": 61,
-      "2": 4,
-      "3": 56,
-      "4": 1,
-      "5": 0
+      "0": 166,
+      "1": 286,
+      "2": 8,
+      "3": 900,
+      "4": 10,
+      "5": 9
     },
     "b": {
       "0": [
-        38,
-        18
+        166,
+        734
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "cd231dcf31e494156dba018ab88da8cb3f0634cf"
+    "hash": "fcc134668f179cf9b4db163cc12a424b98d5b5f3"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/components/InputLabelRange.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/components/InputLabelRange.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/components/InputLabelRange.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/components/InputLabelRange.js",
     "statementMap": {
       "0": {
         "start": {
@@ -12206,19 +12206,19 @@
       "2": 1,
       "3": 1,
       "4": 1,
-      "5": 0,
+      "5": 1306,
       "6": 0
     },
     "f": {
-      "0": 0,
+      "0": 1306,
       "1": 0
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "0d751544d2c33f3e5db5ea3de8223747aa677554"
+    "hash": "d7d45378d8b6007d6211391205821a13f2c12ecf"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/EditSlide/TextBoxModal.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/EditSlide/TextBoxModal.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/EditSlide/TextBoxModal.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/EditSlide/TextBoxModal.js",
     "statementMap": {
       "0": {
         "start": {
@@ -12455,33 +12455,33 @@
     "s": {
       "0": 1,
       "1": 1,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0,
-      "9": 0,
-      "10": 0,
-      "11": 0,
-      "12": 0,
-      "13": 0,
-      "14": 0,
-      "15": 0,
-      "16": 0,
-      "17": 0
+      "2": 74,
+      "3": 74,
+      "4": 74,
+      "5": 74,
+      "6": 74,
+      "7": 74,
+      "8": 74,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 1,
+      "13": 1,
+      "14": 1,
+      "15": 1,
+      "16": 1,
+      "17": 74
     },
     "f": {
-      "0": 0,
-      "1": 0
+      "0": 74,
+      "1": 1
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "e6be0ca352571c6a674f12d86b277b7beed6598d"
+    "hash": "24796ac9cc0532564aaa9b172f04445ff4ac6c12"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/shared/base64Image.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/shared/base64Image.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/shared/base64Image.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/shared/base64Image.js",
     "statementMap": {
       "0": {
         "start": {
@@ -12644,28 +12644,28 @@
     },
     "s": {
       "0": 1,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "5": 1,
+      "6": 1
     },
     "f": {
-      "0": 0,
-      "1": 0
+      "0": 1,
+      "1": 1
     },
     "b": {
       "0": [
-        0,
+        1,
         0
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "9205e731d2c208bc2d20917ffd2f2c482e34f582"
+    "hash": "cebca66ca60453d3aa896a56bbf2f015ee144312"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/EditSlide/ImageModal.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/EditSlide/ImageModal.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/EditSlide/ImageModal.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/EditSlide/ImageModal.js",
     "statementMap": {
       "0": {
         "start": {
@@ -13342,74 +13342,74 @@
       "0": 1,
       "1": 1,
       "2": 1,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0,
-      "9": 0,
-      "10": 0,
-      "11": 0,
-      "12": 0,
+      "3": 282,
+      "4": 282,
+      "5": 282,
+      "6": 282,
+      "7": 282,
+      "8": 282,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 1,
       "13": 0,
       "14": 0,
-      "15": 0,
-      "16": 0,
-      "17": 0,
-      "18": 0,
-      "19": 0,
-      "20": 0,
-      "21": 0,
-      "22": 0,
-      "23": 0,
-      "24": 0,
-      "25": 0,
-      "26": 0
+      "15": 282,
+      "16": 282,
+      "17": 2,
+      "18": 2,
+      "19": 2,
+      "20": 2,
+      "21": 2,
+      "22": 2,
+      "23": 2,
+      "24": 282,
+      "25": 1,
+      "26": 18
     },
     "f": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0
+      "0": 282,
+      "1": 1,
+      "2": 1,
+      "3": 2,
+      "4": 1,
+      "5": 18
     },
     "b": {
       "0": [
-        0,
+        1,
         0
       ],
       "1": [
-        0,
-        0
+        1,
+        1
       ],
       "2": [
-        0,
-        0
+        266,
+        16
       ],
       "3": [
-        0,
-        0
+        266,
+        222
       ],
       "4": [
-        0,
-        0
+        16,
+        2
       ],
       "5": [
-        0,
-        0
+        58,
+        224
       ],
       "6": [
-        0,
-        0
+        282,
+        224
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "f411256a2ba217e71e036277e45c989f3ef20cf2"
+    "hash": "50539ac658ea8cb03ce42d11544000f786aacbfa"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/EditSlide/VideoModal.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/EditSlide/VideoModal.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/EditSlide/VideoModal.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/EditSlide/VideoModal.js",
     "statementMap": {
       "0": {
         "start": {
@@ -13697,38 +13697,38 @@
     "s": {
       "0": 1,
       "1": 1,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0,
-      "9": 0,
-      "10": 0,
-      "11": 0,
-      "12": 0,
-      "13": 0,
-      "14": 0,
-      "15": 0,
-      "16": 0
+      "2": 208,
+      "3": 208,
+      "4": 208,
+      "5": 208,
+      "6": 208,
+      "7": 208,
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 1,
+      "13": 1,
+      "14": 208,
+      "15": 1,
+      "16": 208
     },
     "f": {
-      "0": 0,
-      "1": 0,
-      "2": 0
+      "0": 208,
+      "1": 1,
+      "2": 1
     },
     "b": {
       "0": [
-        0,
-        0
+        38,
+        170
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "73ca8d6725eeeff4f57ab742d9d6e4149860520a"
+    "hash": "b35150e896383dcc5196e4ee38a5d9bca75fc122"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/components/TextBoxWithLabel.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/components/TextBoxWithLabel.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/components/TextBoxWithLabel.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/components/TextBoxWithLabel.js",
     "statementMap": {
       "0": {
         "start": {
@@ -13894,25 +13894,25 @@
       "1": 1,
       "2": 1,
       "3": 1,
-      "4": 0,
-      "5": 0,
-      "6": 0
+      "4": 176,
+      "5": 80,
+      "6": 176
     },
     "f": {
-      "0": 0,
-      "1": 0
+      "0": 176,
+      "1": 80
     },
     "b": {
       "0": [
-        0,
+        176,
         0
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "aba4b77ff1ef9777b0a56a7972d1b61f4893c21a"
+    "hash": "0cca5b19316fb84ccb6605ffa623dd6043ebfec7"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/components/SelectWithLabel.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/components/SelectWithLabel.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/components/SelectWithLabel.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/components/SelectWithLabel.js",
     "statementMap": {
       "0": {
         "start": {
@@ -14032,21 +14032,21 @@
     "branchMap": {},
     "s": {
       "0": 1,
-      "1": 0,
+      "1": 176,
       "2": 0,
-      "3": 0
+      "3": 528
     },
     "f": {
-      "0": 0,
+      "0": 176,
       "1": 0,
-      "2": 0
+      "2": 528
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "0620db552f8abb9ec09b36375a865251e20dbff2"
+    "hash": "560bc338c20170f117ac8d80de49fbe590e084b5"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/EditSlide/CodeModal.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/EditSlide/CodeModal.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/EditSlide/CodeModal.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/EditSlide/CodeModal.js",
     "statementMap": {
       "0": {
         "start": {
@@ -14438,47 +14438,47 @@
     "s": {
       "0": 1,
       "1": 1,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0,
-      "9": 0,
-      "10": 0,
-      "11": 0,
-      "12": 0,
-      "13": 0,
-      "14": 0,
-      "15": 0,
-      "16": 0,
-      "17": 0,
-      "18": 0,
-      "19": 0,
-      "20": 0,
-      "21": 0,
-      "22": 0,
-      "23": 0,
-      "24": 0
+      "2": 388,
+      "3": 388,
+      "4": 388,
+      "5": 388,
+      "6": 388,
+      "7": 388,
+      "8": 98,
+      "9": 98,
+      "10": 222,
+      "11": 72,
+      "12": 26,
+      "13": 388,
+      "14": 98,
+      "15": 98,
+      "16": 388,
+      "17": 388,
+      "18": 2,
+      "19": 2,
+      "20": 2,
+      "21": 2,
+      "22": 2,
+      "23": 2,
+      "24": 388
     },
     "f": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0
+      "0": 388,
+      "1": 98,
+      "2": 98,
+      "3": 2
     },
     "b": {
       "0": [
-        0,
-        0
+        72,
+        150
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "ed86b9d1a607f2fe7fb3e8219f714d82ac826d6c"
+    "hash": "ffb338941ca53f69d9c63c953cb8477c5b8fb1a0"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PreviewPresentation/PreviewElementDisplay/TextBoxPreview.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PreviewPresentation/PreviewElementDisplay/TextBoxPreview.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PreviewPresentation/PreviewElementDisplay/TextBoxPreview.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PreviewPresentation/PreviewElementDisplay/TextBoxPreview.js",
     "statementMap": {
       "0": {
         "start": {
@@ -14559,10 +14559,10 @@
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "e6cb7ffe4f8503171e94e1485fbf47df63648b85"
+    "hash": "1a421a1991bf86e7da563fa2a0c3ebebb3150cb9"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PreviewPresentation/PreviewElementDisplay/ImagePreview.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PreviewPresentation/PreviewElementDisplay/ImagePreview.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PreviewPresentation/PreviewElementDisplay/ImagePreview.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PreviewPresentation/PreviewElementDisplay/ImagePreview.js",
     "statementMap": {
       "0": {
         "start": {
@@ -14643,10 +14643,10 @@
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "81791b0aa64dc8b1db7e4cc8e1517622689a5e5c"
+    "hash": "f8c7d74026daf845265246acc05db2007ba9ec8b"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PreviewPresentation/PreviewElementDisplay/VideoPreview.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PreviewPresentation/PreviewElementDisplay/VideoPreview.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PreviewPresentation/PreviewElementDisplay/VideoPreview.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PreviewPresentation/PreviewElementDisplay/VideoPreview.js",
     "statementMap": {
       "0": {
         "start": {
@@ -14889,10 +14889,10 @@
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "cf6dcd861f126ca35f136177ac3fabce9b46c6f9"
+    "hash": "1d4941ad4e20c5835e95c507b1f8d7f31fe46cab"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PreviewPresentation/PreviewElementDisplay/CodePreview.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PreviewPresentation/PreviewElementDisplay/CodePreview.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PreviewPresentation/PreviewElementDisplay/CodePreview.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PreviewPresentation/PreviewElementDisplay/CodePreview.js",
     "statementMap": {
       "0": {
         "start": {
@@ -14995,10 +14995,10 @@
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "1285cd67211ff7b267ced5697393d05033ef30d8"
+    "hash": "5a8c68859c7f21f9da1496fa15ed13038af9562e"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/EditSlide/SlideHistory/SlidePreview.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/EditSlide/SlideHistory/SlidePreview.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/EditSlide/SlideHistory/SlidePreview.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/EditSlide/SlideHistory/SlidePreview.js",
     "statementMap": {
       "0": {
         "start": {
@@ -15503,10 +15503,10 @@
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "9102cace02b366183bbcf0c93a8be9bd519c3f1b"
+    "hash": "e4826c6fdae348b042fc28feb889fc7e9ea2d14d"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/EditSlide/SlideHistory/PreviewTheOlderVersion.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/EditSlide/SlideHistory/PreviewTheOlderVersion.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/EditSlide/SlideHistory/PreviewTheOlderVersion.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/EditSlide/SlideHistory/PreviewTheOlderVersion.js",
     "statementMap": {
       "0": {
         "start": {
@@ -15569,17 +15569,17 @@
     "s": {
       "0": 1,
       "1": 1,
-      "2": 0
+      "2": 38
     },
     "f": {
-      "0": 0
+      "0": 38
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "845793174365cf3389ece1cd437d74802f200df2"
+    "hash": "3898be78b2b0303b49729d755f06b2d6c16d70fb"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/EditSlide/SlideHistory/SlideHistory.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/EditSlide/SlideHistory/SlideHistory.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/EditSlide/SlideHistory/SlideHistory.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/EditSlide/SlideHistory/SlideHistory.js",
     "statementMap": {
       "0": {
         "start": {
@@ -16320,73 +16320,73 @@
     },
     "s": {
       "0": 1,
-      "1": 0,
+      "1": 38,
       "2": 1,
       "3": 1,
-      "4": 0,
-      "5": 0,
-      "6": 0,
+      "4": 38,
+      "5": 38,
+      "6": 38,
       "7": 0,
-      "8": 0,
+      "8": 38,
       "9": 0,
-      "10": 0,
+      "10": 38,
       "11": 0,
-      "12": 0,
+      "12": 38,
       "13": 0,
       "14": 0,
       "15": 0,
-      "16": 0,
-      "17": 0,
-      "18": 0,
-      "19": 0,
-      "20": 0,
-      "21": 0,
+      "16": 38,
+      "17": 44,
+      "18": 38,
+      "19": 26,
+      "20": 26,
+      "21": 38,
       "22": 0,
       "23": 0,
       "24": 0,
-      "25": 0,
-      "26": 0,
-      "27": 0,
+      "25": 38,
+      "26": 26,
+      "27": 26,
       "28": 0
     },
     "f": {
-      "0": 0,
-      "1": 0,
+      "0": 38,
+      "1": 38,
       "2": 0,
       "3": 0,
       "4": 0,
       "5": 0,
-      "6": 0,
-      "7": 0,
+      "6": 44,
+      "7": 26,
       "8": 0,
-      "9": 0,
-      "10": 0,
+      "9": 26,
+      "10": 26,
       "11": 0
     },
     "b": {
       "0": [
         0,
-        0
+        38
       ],
       "1": [
         0,
         0
       ],
       "2": [
-        0,
-        0
+        26,
+        12
       ],
       "3": [
-        0,
-        0,
-        0
+        38,
+        38,
+        38
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "fa031fe31bcc292649795ef89bbde6351300280f"
+    "hash": "5644b8cf5bec2a6ece27df5c440e43020de09b3b"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/EditSlide/EditMenu.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/EditSlide/EditMenu.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/EditSlide/EditMenu.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/EditSlide/EditMenu.js",
     "statementMap": {
       "0": {
         "start": {
@@ -17236,73 +17236,73 @@
     "branchMap": {},
     "s": {
       "0": 1,
-      "1": 38,
-      "2": 38,
-      "3": 38,
-      "4": 0,
-      "5": 38,
-      "6": 0,
-      "7": 38,
-      "8": 38,
-      "9": 0,
-      "10": 38,
-      "11": 0,
-      "12": 38,
-      "13": 38,
-      "14": 0,
-      "15": 38,
-      "16": 0,
-      "17": 38,
-      "18": 38,
-      "19": 0,
-      "20": 38,
-      "21": 0,
-      "22": 38,
-      "23": 38,
+      "1": 190,
+      "2": 190,
+      "3": 190,
+      "4": 1,
+      "5": 190,
+      "6": 1,
+      "7": 190,
+      "8": 190,
+      "9": 2,
+      "10": 190,
+      "11": 2,
+      "12": 190,
+      "13": 190,
+      "14": 1,
+      "15": 190,
+      "16": 1,
+      "17": 190,
+      "18": 190,
+      "19": 2,
+      "20": 190,
+      "21": 2,
+      "22": 190,
+      "23": 190,
       "24": 0,
-      "25": 38,
+      "25": 190,
       "26": 0,
-      "27": 38,
+      "27": 190,
       "28": 0,
-      "29": 38,
-      "30": 0,
-      "31": 38,
-      "32": 0,
-      "33": 38,
-      "34": 0,
-      "35": 38,
-      "36": 0,
-      "37": 38,
+      "29": 190,
+      "30": 1,
+      "31": 190,
+      "32": 2,
+      "33": 190,
+      "34": 1,
+      "35": 190,
+      "36": 2,
+      "37": 190,
       "38": 0,
-      "39": 38,
-      "40": 0
+      "39": 190,
+      "40": 1
     },
     "f": {
-      "0": 38,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0,
+      "0": 190,
+      "1": 1,
+      "2": 1,
+      "3": 2,
+      "4": 2,
+      "5": 1,
+      "6": 1,
+      "7": 2,
+      "8": 2,
       "9": 0,
       "10": 0,
       "11": 0,
-      "12": 0,
-      "13": 0,
-      "14": 0,
-      "15": 0,
+      "12": 1,
+      "13": 2,
+      "14": 1,
+      "15": 2,
       "16": 0,
-      "17": 0
+      "17": 1
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "f9edd4aacb69a04543d29ccde85f50deca4616a3"
+    "hash": "34862450ac6a8137ae8147bdcb302c2324770f4f"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/ElementDisplays.js/VideoPlayer.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/ElementDisplays.js/VideoPlayer.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/ElementDisplays.js/VideoPlayer.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/ElementDisplays.js/VideoPlayer.js",
     "statementMap": {
       "0": {
         "start": {
@@ -17603,38 +17603,38 @@
     },
     "s": {
       "0": 1,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
+      "1": 32,
+      "2": 32,
+      "3": 32,
+      "4": 32,
+      "5": 32,
+      "6": 32,
       "7": 0,
       "8": 0,
       "9": 0
     },
     "f": {
-      "0": 0,
-      "1": 0,
+      "0": 32,
+      "1": 32,
       "2": 0,
       "3": 0,
       "4": 0
     },
     "b": {
       "0": [
-        0,
+        32,
         0
       ],
       "1": [
-        0,
+        32,
         0
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "019e59a6df3389eeb3487929b47abcbb30cd84e5"
+    "hash": "6b86ca8bde99d9e5a4b93a3046c21cf68e909b81"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/CornerBox.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/CornerBox.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/CornerBox.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/CornerBox.js",
     "statementMap": {
       "0": {
         "start": {
@@ -17696,18 +17696,18 @@
     "branchMap": {},
     "s": {
       "0": 1,
-      "1": 0,
-      "2": 0
+      "1": 64,
+      "2": 64
     },
     "f": {
-      "0": 0
+      "0": 64
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "e06955f8b4cd16afb38c8fa9b9e55ea0ec94df93"
+    "hash": "a149ff345513f168d8340a6fad8ac7caa63aa670"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/ElementDisplays.js/CodeElementDisplay.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/ElementDisplays.js/CodeElementDisplay.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/ElementDisplays.js/CodeElementDisplay.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/ElementDisplays.js/CodeElementDisplay.js",
     "statementMap": {
       "0": {
         "start": {
@@ -17885,13 +17885,13 @@
     "branchMap": {},
     "s": {
       "0": 1,
-      "1": 0,
+      "1": 28,
       "2": 0,
       "3": 0,
       "4": 0
     },
     "f": {
-      "0": 0,
+      "0": 28,
       "1": 0,
       "2": 0,
       "3": 0,
@@ -17899,10 +17899,10 @@
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "6b7aedb31678ab2c3bdd6015a672a8ac9b404385"
+    "hash": "758a54eacc288ca69954cc456d7189fc292be199"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/ElementDisplays.js/ImageElementDisplay.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/ElementDisplays.js/ImageElementDisplay.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/ElementDisplays.js/ImageElementDisplay.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/ElementDisplays.js/ImageElementDisplay.js",
     "statementMap": {
       "0": {
         "start": {
@@ -18056,23 +18056,23 @@
     "branchMap": {},
     "s": {
       "0": 1,
-      "1": 0,
-      "2": 0,
+      "1": 42,
+      "2": 2,
       "3": 0,
-      "4": 0
+      "4": 1
     },
     "f": {
-      "0": 0,
-      "1": 0,
+      "0": 42,
+      "1": 2,
       "2": 0,
-      "3": 0
+      "3": 1
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "898d79bcb5483e14d810e6a20d89113db2a46c14"
+    "hash": "9ef784a22470d5f364d134bbe5ae62825cabb93a"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/ElementDisplays.js/TextBoxElementDisplay.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/ElementDisplays.js/TextBoxElementDisplay.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/ElementDisplays.js/TextBoxElementDisplay.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/ElementDisplays.js/TextBoxElementDisplay.js",
     "statementMap": {
       "0": {
         "start": {
@@ -18260,25 +18260,25 @@
     "branchMap": {},
     "s": {
       "0": 1,
-      "1": 0,
-      "2": 0,
+      "1": 48,
+      "2": 4,
       "3": 0,
       "4": 0,
       "5": 0
     },
     "f": {
-      "0": 0,
-      "1": 0,
+      "0": 48,
+      "1": 4,
       "2": 0,
       "3": 0,
       "4": 0
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "81fb6337e746afb879e85d26d2e5336d4381d880"
+    "hash": "de690d38b26139bd30e15ad92fea4d9cb77a7e6d"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/SlideDisplay.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/SlideDisplay.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/SlideDisplay.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/SlideDisplay.js",
     "statementMap": {
       "0": {
         "start": {
@@ -19467,118 +19467,118 @@
     },
     "s": {
       "0": 1,
-      "1": 38,
-      "2": 61,
-      "3": 38,
-      "4": 38,
-      "5": 38,
-      "6": 0,
-      "7": 38,
-      "8": 13,
-      "9": 38,
+      "1": 178,
+      "2": 298,
+      "3": 178,
+      "4": 178,
+      "5": 178,
+      "6": 6,
+      "7": 178,
+      "8": 49,
+      "9": 178,
       "10": 0,
-      "11": 38,
-      "12": 0,
-      "13": 0,
-      "14": 0,
-      "15": 0,
-      "16": 0,
-      "17": 38,
+      "11": 178,
+      "12": 6,
+      "13": 6,
+      "14": 6,
+      "15": 6,
+      "16": 6,
+      "17": 178,
       "18": 0,
       "19": 0,
       "20": 0,
       "21": 0,
       "22": 0,
-      "23": 38,
-      "24": 0,
-      "25": 0,
+      "23": 178,
+      "24": 1,
+      "25": 1,
       "26": 0,
-      "27": 0,
-      "28": 38,
-      "29": 0,
-      "30": 0,
-      "31": 0,
-      "32": 0,
-      "33": 0,
-      "34": 0,
-      "35": 0,
-      "36": 0,
-      "37": 0,
-      "38": 0,
-      "39": 0,
-      "40": 38,
-      "41": 38,
-      "42": 0,
-      "43": 0,
-      "44": 0,
-      "45": 0,
-      "46": 38,
-      "47": 38,
-      "48": 0,
-      "49": 0,
-      "50": 0,
-      "51": 0,
-      "52": 0,
-      "53": 0,
+      "27": 1,
+      "28": 178,
+      "29": 150,
+      "30": 150,
+      "31": 134,
+      "32": 16,
+      "33": 16,
+      "34": 16,
+      "35": 16,
+      "36": 16,
+      "37": 16,
+      "38": 16,
+      "39": 64,
+      "40": 178,
+      "41": 178,
+      "42": 76,
+      "43": 76,
+      "44": 76,
+      "45": 76,
+      "46": 102,
+      "47": 178,
+      "48": 150,
+      "49": 48,
+      "50": 102,
+      "51": 42,
+      "52": 60,
+      "53": 32,
       "54": 0,
-      "55": 0,
-      "56": 0,
+      "55": 28,
+      "56": 28,
       "57": 0
     },
     "f": {
-      "0": 38,
-      "1": 61,
-      "2": 0,
-      "3": 13,
+      "0": 178,
+      "1": 298,
+      "2": 6,
+      "3": 49,
       "4": 0,
-      "5": 0,
+      "5": 6,
       "6": 0,
-      "7": 0,
-      "8": 0,
-      "9": 0,
-      "10": 38,
-      "11": 0,
+      "7": 1,
+      "8": 150,
+      "9": 64,
+      "10": 178,
+      "11": 150,
       "12": 0
     },
     "b": {
       "0": [
         0,
-        0
+        1
       ],
       "1": [
-        0,
-        0
+        134,
+        16
       ],
       "2": [
-        0,
-        0
+        150,
+        32
       ],
       "3": [
-        0,
-        38
+        76,
+        102
       ],
       "4": [
-        0,
-        0
+        48,
+        102
       ],
       "5": [
-        0,
-        0
+        42,
+        60
       ],
       "6": [
-        0,
-        0
+        32,
+        28
       ],
       "7": [
-        0,
+        28,
         0
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "0d387952764e05c78b6b0c042b130212ec21fd89"
+    "hash": "59690aa20a7ada37d62062f0ce865e703a42ca53"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/SlideControlArrows.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/SlideControlArrows.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/SlideControlArrows.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/SlideControlArrows.js",
     "statementMap": {
       "0": {
         "start": {
@@ -20279,74 +20279,74 @@
     },
     "s": {
       "0": 1,
-      "1": 38,
-      "2": 61,
-      "3": 38,
-      "4": 38,
-      "5": 38,
-      "6": 38,
-      "7": 0,
-      "8": 0,
-      "9": 0,
-      "10": 0,
-      "11": 38,
-      "12": 0,
-      "13": 0,
-      "14": 0,
-      "15": 0,
-      "16": 38,
-      "17": 21,
-      "18": 0,
-      "19": 0,
-      "20": 0,
-      "21": 0,
-      "22": 21,
-      "23": 21,
-      "24": 20,
-      "25": 38
+      "1": 166,
+      "2": 286,
+      "3": 166,
+      "4": 166,
+      "5": 166,
+      "6": 166,
+      "7": 4,
+      "8": 4,
+      "9": 15,
+      "10": 4,
+      "11": 166,
+      "12": 3,
+      "13": 3,
+      "14": 16,
+      "15": 3,
+      "16": 166,
+      "17": 86,
+      "18": 312,
+      "19": 1,
+      "20": 311,
+      "21": 2,
+      "22": 86,
+      "23": 86,
+      "24": 86,
+      "25": 166
     },
     "f": {
-      "0": 38,
-      "1": 61,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 21,
-      "7": 0,
-      "8": 20
+      "0": 166,
+      "1": 286,
+      "2": 4,
+      "3": 15,
+      "4": 3,
+      "5": 16,
+      "6": 86,
+      "7": 312,
+      "8": 86
     },
     "b": {
       "0": [
-        0,
+        4,
         0
       ],
       "1": [
-        0,
+        3,
         0
       ],
       "2": [
-        0,
-        0
+        1,
+        311
       ],
       "3": [
-        0,
-        0
+        312,
+        1
       ],
       "4": [
-        0,
-        0
+        2,
+        309
       ],
       "5": [
-        0,
-        0
+        311,
+        2
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "c15afd6f7fa3381165f5be45eb1f154bbaa14cb3"
+    "hash": "99785063d125c742c6bd6210e90775e90f312e67"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/SlidesMain.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/Slides/SlidesMain.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/SlidesMain.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/Slides/SlidesMain.js",
     "statementMap": {
       "0": {
         "start": {
@@ -21294,97 +21294,97 @@
     "s": {
       "0": 1,
       "1": 1,
-      "2": 38,
-      "3": 60,
-      "4": 38,
-      "5": 38,
-      "6": 38,
-      "7": 38,
-      "8": 0,
-      "9": 38,
+      "2": 166,
+      "3": 283,
+      "4": 166,
+      "5": 166,
+      "6": 166,
+      "7": 166,
+      "8": 1,
+      "9": 166,
       "10": 0,
-      "11": 38,
-      "12": 38,
-      "13": 17,
-      "14": 18,
+      "11": 166,
+      "12": 166,
+      "13": 47,
+      "14": 101,
       "15": 0,
-      "16": 38,
-      "17": 5,
-      "18": 5,
-      "19": 4,
-      "20": 4,
-      "21": 38,
-      "22": 38,
-      "23": 0,
-      "24": 0,
-      "25": 0,
-      "26": 0,
-      "27": 0,
-      "28": 0,
-      "29": 0,
-      "30": 0,
-      "31": 0,
-      "32": 0,
-      "33": 38,
-      "34": 38,
-      "35": 0,
-      "36": 0,
-      "37": 0,
-      "38": 0,
-      "39": 0,
-      "40": 38
+      "16": 166,
+      "17": 29,
+      "18": 29,
+      "19": 29,
+      "20": 29,
+      "21": 166,
+      "22": 166,
+      "23": 9,
+      "24": 9,
+      "25": 1,
+      "26": 1,
+      "27": 8,
+      "28": 6,
+      "29": 5,
+      "30": 1,
+      "31": 1,
+      "32": 8,
+      "33": 166,
+      "34": 166,
+      "35": 1,
+      "36": 1,
+      "37": 1,
+      "38": 1,
+      "39": 1,
+      "40": 166
     },
     "f": {
-      "0": 38,
-      "1": 60,
-      "2": 0,
+      "0": 166,
+      "1": 283,
+      "2": 1,
       "3": 0,
-      "4": 17,
-      "5": 18,
-      "6": 5,
-      "7": 4,
-      "8": 0,
-      "9": 0
+      "4": 47,
+      "5": 101,
+      "6": 29,
+      "7": 29,
+      "8": 9,
+      "9": 1
     },
     "b": {
       "0": [
         0,
-        17
+        47
       ],
       "1": [
-        17,
-        17
+        47,
+        47
       ],
       "2": [
         0,
         0
       ],
       "3": [
-        0,
-        0
+        1,
+        8
       ],
       "4": [
-        0,
-        0
+        6,
+        2
       ],
       "5": [
-        0,
-        0
+        5,
+        1
       ],
       "6": [
-        0,
-        0
+        6,
+        5
       ],
       "7": [
-        0,
+        1,
         0
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "2aba30068662ce83ed380a052585e72bac4711b5"
+    "hash": "8b2c7d2a396b48407f770fc0e21d12c58d561ea6"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/PresentationMainPage.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/PresentationMainPage.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/PresentationMainPage.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/PresentationMainPage.js",
     "statementMap": {
       "0": {
         "start": {
@@ -22028,60 +22028,60 @@
       "0": 1,
       "1": 1,
       "2": 1,
-      "3": 36,
-      "4": 36,
-      "5": 36,
-      "6": 36,
+      "3": 131,
+      "4": 130,
+      "5": 130,
+      "6": 130,
       "7": 1,
-      "8": 36,
+      "8": 130,
       "9": 0,
-      "10": 36,
-      "11": 36,
-      "12": 36,
+      "10": 130,
+      "11": 130,
+      "12": 130,
       "13": 0,
-      "14": 36,
+      "14": 130,
       "15": 0,
-      "16": 36,
-      "17": 36,
-      "18": 36,
-      "19": 36,
-      "20": 36,
+      "16": 130,
+      "17": 130,
+      "18": 130,
+      "19": 130,
+      "20": 130,
       "21": 1,
       "22": 1,
       "23": 1,
       "24": 1,
       "25": 1,
-      "26": 36,
-      "27": 0,
-      "28": 36,
+      "26": 130,
+      "27": 1,
+      "28": 130,
       "29": 0,
-      "30": 36,
+      "30": 130,
       "31": 0,
       "32": 0,
-      "33": 36,
+      "33": 130,
       "34": 0,
       "35": 0,
-      "36": 36
+      "36": 130
     },
     "f": {
-      "0": 36,
+      "0": 131,
       "1": 1,
       "2": 0,
       "3": 0,
       "4": 0,
-      "5": 36,
+      "5": 130,
       "6": 1,
-      "7": 0,
+      "7": 1,
       "8": 0,
       "9": 0,
       "10": 0
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "c3543a2fe35c7fc12f0d54c027fe79282e35bca1"
+    "hash": "c07886dd1ac7e9191ce12d45a5dfd66d79565172"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/ReArrangeSlides/ReArrangeSlideCard.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/ReArrangeSlides/ReArrangeSlideCard.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/ReArrangeSlides/ReArrangeSlideCard.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/ReArrangeSlides/ReArrangeSlideCard.js",
     "statementMap": {
       "0": {
         "start": {
@@ -22162,10 +22162,10 @@
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "944fabf39b78daab9cc4b01987491c6ea26fcf7d"
+    "hash": "3518244968bb678b6028760e511c2b5ae1020a96"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/ReArrangeSlides/ReArrangeMainPage.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PresentationPage/ReArrangeSlides/ReArrangeMainPage.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/ReArrangeSlides/ReArrangeMainPage.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PresentationPage/ReArrangeSlides/ReArrangeMainPage.js",
     "statementMap": {
       "0": {
         "start": {
@@ -22661,10 +22661,10 @@
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "99804b792a9428bb3ed7482c24f8b527bdfcd59e"
+    "hash": "73a40c75b439e6e29793be927f558eb12a0ef400"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PreviewPresentation/PreviewPresentationMain.js": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/PreviewPresentation/PreviewPresentationMain.js",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PreviewPresentation/PreviewPresentationMain.js": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/PreviewPresentation/PreviewPresentationMain.js",
     "statementMap": {
       "0": {
         "start": {
@@ -24113,10 +24113,10 @@
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "de4e1291aaf54628951d1d30b95907a3e0da501f"
+    "hash": "d88c9ac616af8737294bd46622d2864b06b13e21"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/App.jsx": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/App.jsx",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/App.jsx": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/App.jsx",
     "statementMap": {
       "0": {
         "start": {
@@ -24175,10 +24175,10 @@
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "d1a265ae92f61d5c82c2cc962ed95d8eb32ee880"
+    "hash": "3d58eb7e5e62de1e74dd776bf8b0e28876483b48"
   },
-  "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/index.jsx": {
-    "path": "/Users/raghammer/Desktop/COMP6080/ass4/presto/frontend/src/index.jsx",
+  "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/index.jsx": {
+    "path": "/Users/raghammer/Desktop/COMP6080/ass4/real_presto/presto/frontend/src/index.jsx",
     "statementMap": {
       "0": {
         "start": {
@@ -24210,6 +24210,6 @@
     "f": {},
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "5f879d4004de0576cb2cbc779246e3c157e7ed41"
+    "hash": "11c67ff5575f249afeed49abf9ffd2624b1361a2"
   }
 }
