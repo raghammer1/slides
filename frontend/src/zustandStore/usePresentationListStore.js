@@ -182,8 +182,10 @@ const usePresentationListStore = create(
       return slide || null;
       // return slide[0] || null;
     },
+
     addElementToSlide: (presentationId, slideId, newElement) => {
       set((state) => {
+        console.log('PRESENTATION FROM ZUSTAND', state.presentations);
         const presentationIndex = state.presentations.findIndex(
           (p) => p.id === presentationId
         );
@@ -205,7 +207,21 @@ const usePresentationListStore = create(
         }
 
         const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
-        updatedSlide.elements = [...updatedSlide.elements, newElement];
+
+        // Check if the elements array is not empty
+        if (updatedSlide.elements.length > 0) {
+          // Get the last element (which is an object) from the elements array
+          const lastElementObject =
+            updatedSlide.elements[updatedSlide.elements.length - 1];
+          // Assuming this object has a time key and an array as value
+          const timeKey = Object.keys(lastElementObject)[0]; // Get the first key, we don't care about the specific time
+          lastElementObject[timeKey].push(newElement); // Add the new element to the array of this time key
+        } else {
+          const now = new Date();
+          // If there are no elements, create a new time object with a default time key
+          const newTimeKey = now; // Define a default time key, adjust as necessary
+          updatedSlide.elements.push({ [newTimeKey]: [newElement] }); // Initialize with newElement in an array
+        }
 
         updatedPresentation.slides[slideIndex] = updatedSlide;
 
@@ -215,6 +231,7 @@ const usePresentationListStore = create(
         return { ...state, presentations: updatedPresentations };
       });
     },
+
     updateElementPosition: (presentationId, slideId, elementId, top, left) => {
       set((state) => {
         const presentationIndex = state.presentations.findIndex(
@@ -238,12 +255,26 @@ const usePresentationListStore = create(
         }
 
         const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
-        updatedSlide.elements = updatedSlide.elements.map((element) => {
-          if (element.id === elementId) {
-            return { ...element, top, left };
-          }
-          return element;
-        });
+
+        // Check if the elements array is not empty
+        if (updatedSlide.elements.length > 0) {
+          const lastElementObject =
+            updatedSlide.elements[updatedSlide.elements.length - 1];
+          const timeKey = Object.keys(lastElementObject)[0]; // Get the first key of the last object
+
+          // Map over the array of the last element object to update the specific element
+          lastElementObject[timeKey] = lastElementObject[timeKey].map(
+            (element) => {
+              if (element.id === elementId) {
+                return { ...element, top, left }; // Update the position of the targeted element
+              }
+              return element; // Return the element unchanged if not the target
+            }
+          );
+        } else {
+          console.error('No elements to update');
+          return state; // Early return if no elements exist
+        }
 
         updatedPresentation.slides[slideIndex] = updatedSlide;
 
@@ -253,6 +284,7 @@ const usePresentationListStore = create(
         return { ...state, presentations: updatedPresentations };
       });
     },
+
     updateElementSize: (presentationId, slideId, elementId, width, height) => {
       set((state) => {
         const presentationIndex = state.presentations.findIndex(
@@ -276,12 +308,26 @@ const usePresentationListStore = create(
         }
 
         const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
-        updatedSlide.elements = updatedSlide.elements.map((element) => {
-          if (element.id === elementId) {
-            return { ...element, width, height };
-          }
-          return element;
-        });
+
+        // Check if the elements array is not empty
+        if (updatedSlide.elements.length > 0) {
+          const lastElementObject =
+            updatedSlide.elements[updatedSlide.elements.length - 1];
+          const timeKey = Object.keys(lastElementObject)[0]; // Get the first key of the last object
+
+          // Map over the array of the last element object to update the specific element
+          lastElementObject[timeKey] = lastElementObject[timeKey].map(
+            (element) => {
+              if (element.id === elementId) {
+                return { ...element, width, height }; // Update the position of the targeted element
+              }
+              return element; // Return the element unchanged if not the target
+            }
+          );
+        } else {
+          console.error('No elements to update');
+          return state; // Early return if no elements exist
+        }
 
         updatedPresentation.slides[slideIndex] = updatedSlide;
 
@@ -291,6 +337,7 @@ const usePresentationListStore = create(
         return { ...state, presentations: updatedPresentations };
       });
     },
+
     deleteElementFromSlide: (presentationId, slideId, elementId) => {
       set((state) => {
         const presentationIndex = state.presentations.findIndex(
@@ -314,10 +361,17 @@ const usePresentationListStore = create(
         }
 
         const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
-        updatedSlide.elements = updatedSlide.elements.filter(
-          (element) => element.id !== elementId
-        );
 
+        // Assuming the structure of elements is [{ time: [{ id, ... }], ... }]
+        // We need to map through each "time" object's array and filter out the element
+        updatedSlide.elements = updatedSlide.elements.map((timeObject) => {
+          const timeKey = Object.keys(timeObject)[0]; // Extract the time key from the object
+          return {
+            [timeKey]: timeObject[timeKey].filter(
+              (element) => element.id !== elementId
+            ),
+          };
+        });
         updatedPresentation.slides[slideIndex] = updatedSlide;
 
         const updatedPresentations = [...state.presentations];

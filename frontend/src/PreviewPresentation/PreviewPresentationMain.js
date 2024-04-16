@@ -97,6 +97,24 @@ const PreviewPresentationMain = () => {
   useEffect(() => {
     Prism.highlightAll();
   }, [currSlideNumber, id, slides.length]);
+  // Check if there are elements and elements is not empty
+
+  const getElements = (selectedSlide) => {
+    if (selectedSlide?.elements?.length) {
+      // Access the last element in the array
+      const lastElementObj =
+        selectedSlide.elements[selectedSlide.elements.length - 1];
+
+      // Assuming we don't know the key name and there's only one key per object
+      const key = Object.keys(lastElementObj)[0]; // Get the key of the last object
+      const values = lastElementObj[key]; // Get the value using the key which is an array
+
+      // Now you can use 'values' which is the array associated with the last time key
+      return values; // Outputs the array of the last element object
+    } else {
+      return [];
+    }
+  };
 
   return (
     <Wrapper ref={parentRef}>
@@ -105,8 +123,7 @@ const PreviewPresentationMain = () => {
           key={slide.id}
           isVisible={index === currSlideNumber && isVisible}
         >
-          {slide.elements.map((element) => {
-            // Your element handling logic here
+          {getElements(slide).map((element) => {
             if (element.type === 'textarea') {
               return (
                 <TextBoxPreview

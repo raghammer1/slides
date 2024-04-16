@@ -129,6 +129,24 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
     [selectedElement]
   );
 
+  // Check if there are elements and elements is not empty
+  const getElements = () => {
+    if (selectedSlide?.elements?.length) {
+      // Access the last element in the array
+      const lastElementObj =
+        selectedSlide.elements[selectedSlide.elements.length - 1];
+
+      // Assuming we don't know the key name and there's only one key per object
+      const key = Object.keys(lastElementObj)[0]; // Get the key of the last object
+      const values = lastElementObj[key]; // Get the value using the key which is an array
+
+      // Now you can use 'values' which is the array associated with the last time key
+      return values; // Outputs the array of the last element object
+    } else {
+      return [];
+    }
+  };
+
   return (
     <div
       className="slideDisplaylolol"
@@ -143,7 +161,7 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
         overflow: 'hidden',
       }}
     >
-      {selectedSlide?.elements?.map((element) => {
+      {getElements().map((element) => {
         if (element.type === 'textarea') {
           return (
             <TextBoxElementDisplay
