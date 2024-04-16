@@ -457,7 +457,11 @@ const usePresentationListStore = create(
     addElementToObject: (presentationId, slideId, newValue) => {
       set((state) => {
         console.log('Current state presentations:', state.presentations);
-        const presentationIndex = state.presentations.findIndex(
+
+        // Clone presentations array to ensure a new reference is created
+        const presentationsCopy = [...state.presentations];
+
+        const presentationIndex = presentationsCopy.findIndex(
           (p) => p.id === presentationId
         );
         if (presentationIndex === -1) {
@@ -465,9 +469,12 @@ const usePresentationListStore = create(
           return state;
         }
 
+        // Deep clone the presentation to ensure a new reference
         const updatedPresentation = {
-          ...state.presentations[presentationIndex],
+          ...presentationsCopy[presentationIndex],
+          slides: [...presentationsCopy[presentationIndex].slides], // Clone slides array
         };
+
         const slideIndex = updatedPresentation.slides.findIndex(
           (slide) => slide.id === slideId
         );
@@ -476,23 +483,27 @@ const usePresentationListStore = create(
           return state;
         }
 
+        // Clone the slide to ensure a new reference and update its elements array
         const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
         const currentTime = Date.now().toString();
         console.log(`Adding new element at time ${currentTime}`);
 
+        // Add the new value in a way that creates a new elements array reference
         updatedSlide.elements = [
           ...updatedSlide.elements,
           { [currentTime]: newValue },
         ];
 
+        // Update the slide in the cloned slides array
         updatedPresentation.slides[slideIndex] = updatedSlide;
 
-        const newState = state.presentations.map((pres, idx) =>
-          idx === presentationIndex ? updatedPresentation : pres
-        );
-        console.log('New state presentations:', newState);
+        // Update the presentation in the cloned presentations array
+        presentationsCopy[presentationIndex] = updatedPresentation;
 
-        return { presentations: newState };
+        console.log('New state presentations:', presentationsCopy);
+
+        // Return the new state with the updated presentations array
+        return { presentations: presentationsCopy };
       });
     },
 
