@@ -114,7 +114,6 @@ const SlidesMain = ({ presentationId }) => {
         handleClose={handleClose}
         handlePresentationDelete={handlePresentationDelete}
       />
-      ;
     </div>
   );
 };

@@ -147,6 +147,8 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
     }
   };
 
+  console.log(selectedSlide, 'selectedSlide');
+
   return (
     <div
       className="slideDisplaylolol"
@@ -156,7 +158,7 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#999',
+        backgroundColor: selectedSlide.bgCol,
         position: 'relative',
         overflow: 'hidden',
       }}

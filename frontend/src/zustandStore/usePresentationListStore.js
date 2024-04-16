@@ -125,6 +125,8 @@ const usePresentationListStore = create(
             0
           ) + 1;
 
+        console.log(newSlide, 'newSlide');
+
         const updatedSlides = [
           ...updatedPresentation.slides,
           { ...newSlide, slideNumber: newSlideNumber },
@@ -531,6 +533,26 @@ const usePresentationListStore = create(
             return presentation;
           }
         );
+
+        return { presentations: updatedPresentations };
+      });
+    },
+    updateSlideBackgroundColor: (presentationId, slideId, newBgColor) => {
+      set((state) => {
+        const updatedPresentations = state.presentations.map((presentation) => {
+          if (presentation.id === presentationId) {
+            const updatedSlides = presentation.slides.map((slide) => {
+              if (slide.id === slideId) {
+                // Update the background color here
+                return { ...slide, bgCol: newBgColor };
+              }
+              return slide;
+            });
+
+            return { ...presentation, slides: updatedSlides };
+          }
+          return presentation;
+        });
 
         return { presentations: updatedPresentations };
       });
