@@ -1,7 +1,8 @@
 /* eslint-disable multiline-ternary */
-import React from 'react';
+import React, { useState } from 'react';
 import { styled, Menu } from '@mui/material';
 import usePresentationListStore from '../../../../zustandStore/usePresentationListStore';
+import PreviewTheOlderVersion from './PreviewTheOlderVersion';
 
 // Define a styled menu that behaves as a sliding panel
 const SlidePanel = styled(Menu)(({ theme, open }) => ({
@@ -38,6 +39,15 @@ const SlideHistory = ({
   selectedSlideId,
   setAnchorEl,
 }) => {
+  const [selectedSlideHistory, setSelectedSlideHistory] = useState({});
+
+  const [openPreviewHandler, setOpenPreviewHandler] = useState(false);
+  const handleOpenPreviewHandler = () => setOpenPreviewHandler(true);
+  const handleClosePreviewHandler = () => setOpenPreviewHandler(false);
+
+  const handlePreviewOldSlide = () => {
+    handleOpenPreviewHandler();
+  };
   // Ensure the panel closes when you expect it to
   const handleClose = () => {
     handleCloseCodeHandler();
@@ -58,34 +68,46 @@ const SlideHistory = ({
 
   const goToThisTimeHistory = (elementObj) => {
     console.log(elementObj);
+    handlePreviewOldSlide(elementObj);
+    setSelectedSlideHistory(elementObj);
   };
 
   return (
-    <SlidePanel
-      id="slide-history-panel"
-      anchorEl="right"
-      open={open}
-      onClose={handleClose}
-      keepMounted
-    >
-      <div>
-        <h1 style={{ marginLeft: '20px' }}>Slide History</h1>
-        {slide && slide.elements && slide.elements.length > 0 ? (
-          slide.elements.map((elementObj, index) =>
-            Object.entries(elementObj).map(([timeKey, elements]) => (
-              <Wrapper
-                key={`${timeKey}-${index}`}
-                onClick={() => goToThisTimeHistory(elementObj)}
-              >
-                <div>Go To Time: {formatDate(timeKey)}</div>
-              </Wrapper>
-            ))
-          )
-        ) : (
-          <p>No history available for this slide.</p>
-        )}
-      </div>
-    </SlidePanel>
+    <div>
+      <SlidePanel
+        id="slide-history-panel"
+        anchorEl="right"
+        open={open}
+        onClose={handleClose}
+        keepMounted
+      >
+        <div>
+          <h1 style={{ marginLeft: '20px' }}>Slide History</h1>
+          {slide && slide.elements && slide.elements.length > 0 ? (
+            slide.elements.map((elementObj, index) =>
+              Object.entries(elementObj).map(([timeKey, elements]) => (
+                <Wrapper
+                  key={`${timeKey}-${index}`}
+                  onClick={() => goToThisTimeHistory(elementObj)}
+                >
+                  <div>Go To Time: {formatDate(timeKey)}</div>
+                </Wrapper>
+              ))
+            )
+          ) : (
+            <p>No history available for this slide.</p>
+          )}
+        </div>
+      </SlidePanel>
+      <PreviewTheOlderVersion
+        open={openPreviewHandler}
+        handleClosePreviewHandler={handleClosePreviewHandler}
+        presentationId={presentationId}
+        selectedSlideId={selectedSlideId}
+        setAnchorEl={setAnchorEl}
+        selectedSlideHistory={selectedSlideHistory}
+      />
+    </div>
   );
 };
 
