@@ -14,6 +14,7 @@ describe('Beautiful Testing', () => {
 
   it('allows a user to register', () => {
     cy.visit('http://localhost:3000/register');
+    cy.viewport(1500, 600);
 
     cy.get('[data-testid="Email-address-data"]').type(`${uniqueEmail}`);
     cy.get('[data-testid="Username-data"]').type('userNew');

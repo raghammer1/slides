@@ -1,6 +1,7 @@
 describe('Login Functionality Error test user not registered', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/login');
+    cy.viewport(1500, 600);
     cy.intercept('POST', '**/auth/login', {
       statusCode: 400,
       body: {
