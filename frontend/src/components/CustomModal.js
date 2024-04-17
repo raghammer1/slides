@@ -7,7 +7,7 @@ const modalStyle = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: '400px',
+  width: '370px',
   bgcolor: 'background.paper',
   borderRadius: '12px',
   overflow: 'hidden',
