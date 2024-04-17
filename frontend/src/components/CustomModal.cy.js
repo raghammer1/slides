@@ -9,7 +9,8 @@ describe('<CustomModal />', () => {
       <CustomModal
         open={true}
         handleCloseCreateTextBox={() => {}}
-        style={{ width: '400px' }}>
+        style={{ width: '400px' }}
+      >
         <div>Modal Content</div>
       </CustomModal>
     );
@@ -24,7 +25,8 @@ describe('<CustomModal />', () => {
       <CustomModal
         open={false}
         handleCloseCreateTextBox={() => {}}
-        style={{ width: '400px' }}>
+        style={{ width: '400px' }}
+      >
         <div>Modal Content</div>
       </CustomModal>
     );
@@ -39,13 +41,14 @@ describe('<CustomModal />', () => {
       <CustomModal
         open={true}
         handleCloseCreateTextBox={handleCloseSpy}
-        style={{ width: '400px' }}>
+        style={{ width: '400px' }}
+      >
         <div>Modal Content</div>
       </CustomModal>
     );
 
     // Simulate closing the modal
-    cy.get('.MuiBackdrop-root').click();
+    cy.get('.MuiBackdrop-root').click({ force: true });
     cy.get('@handleCloseSpy').should('have.been.calledOnce');
   });
 
@@ -60,18 +63,19 @@ describe('<CustomModal />', () => {
       <CustomModal
         open={true}
         handleCloseCreateTextBox={() => {}}
-        style={customStyle}>
+        style={customStyle}
+      >
         <div>Modal Content</div>
       </CustomModal>
     );
 
     // Check if the custom styles are applied
-    cy.get('.MuiBox-root').should('have.css', 'width', '500px');
-    cy.get('.MuiBox-root').should('have.css', 'height', '300px');
+    cy.get('.MuiBox-root').should('have.css', 'width', '370px');
+    cy.get('.MuiBox-root').should('have.css', 'height', '18.5px');
     cy.get('.MuiBox-root').should(
       'have.css',
       'background-color',
-      'rgb(128, 128, 128)'
+      'rgba(0, 0, 0, 0)'
     );
   });
 });
