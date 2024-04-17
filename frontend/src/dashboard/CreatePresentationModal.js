@@ -22,6 +22,8 @@ const style = {
 const CreatePresentationModal = ({ open, handleClose }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  // const [thumbnail, setThumbnail] = useState('');
+
   const [isFormValid, setIsFormValid] = useState(false);
   const { showAlert } = useAlert();
   const { addPresentation } = usePresentationListStore();
@@ -48,6 +50,8 @@ const CreatePresentationModal = ({ open, handleClose }) => {
     const newPresentation = {
       id: presentationId,
       name,
+      // thumbnail,
+      description,
       slides: [
         {
           elements: [],

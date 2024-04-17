@@ -29,7 +29,7 @@ const DashboardFooter = () => {
 
   return (
     <div style={getFooterStyle()}>
-      <p>© {new Date().getFullYear()} Raghav & Vansh .Co </p>
+      <p>© {new Date().getFullYear()} Raghav & Vansh Co. </p>
     </div>
   );
 };
