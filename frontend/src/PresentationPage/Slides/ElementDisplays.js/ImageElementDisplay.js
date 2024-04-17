@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { Rnd } from 'react-rnd';
-import ImageBoxDoubleClick from './DoubleClickHandlers.js/ImageBoxDoubleClick';
+import ImageBoxDoubleClick from './DoubleClickHandlers/ImageBoxDoubleClick';
 const ImageElementDisplay = ({
   selectedSlideId,
   presentationId,

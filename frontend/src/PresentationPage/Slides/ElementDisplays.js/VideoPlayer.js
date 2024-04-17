@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { Rnd } from 'react-rnd';
-import VideoDoubleClick from './DoubleClickHandlers.js/VideoDoubleClick';
+import VideoDoubleClick from './DoubleClickHandlers/VideoDoubleClick';
 
 const VideoPlayer = ({
   style,

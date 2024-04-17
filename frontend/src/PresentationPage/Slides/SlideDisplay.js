@@ -242,6 +242,8 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
               onResizeStop={onResizeStop}
               handleDeleteElement={handleDeleteElement}
               renderCornerBoxes={renderCornerBoxes}
+              presentationId={presentationId}
+              selectedSlideId={selectedSlideId}
             />
           );
         } else {

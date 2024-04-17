@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Rnd } from 'react-rnd';
-import TextBoxDoubleClick from './DoubleClickHandlers.js/TextBoxDoubleClick';
+import TextBoxDoubleClick from './DoubleClickHandlers/TextBoxDoubleClick';
 
 const TextBoxElementDisplay = ({
   selectedSlideId,
