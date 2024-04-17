@@ -6,7 +6,6 @@ import CustomPrimaryButton from '../components/CustomePrimaryButton';
 import { v4 as uuidv4 } from 'uuid';
 import usePresentationListStore from '../zustandStore/usePresentationListStore';
 import { useAlert } from '../components/AlertError';
-// import { useNavigate } from 'react-router-dom';
 
 const style = {
   position: 'absolute',
@@ -22,9 +21,9 @@ const style = {
 
 const CreatePresentationModal = ({ open, handleClose }) => {
   const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
   const { showAlert } = useAlert();
-  // const navigate = useNavigate(); // Initialize navigate for routing
   const { addPresentation } = usePresentationListStore();
 
   useEffect(() => {
@@ -72,6 +71,13 @@ const CreatePresentationModal = ({ open, handleClose }) => {
         dataTestId={'create-presentation-name-test'}
         label="Presentation Name"
       />
+      <InputWithLabels
+        value={description}
+        setValue={setDescription}
+        label="Description"
+        placeholder="Enter description"
+        dataTestId={'create-presentation-description-input'}
+      />
       <>
         <Tooltip title={!isFormValid ? getNotFormValid() : getFormValid()}>
           <div>
@@ -84,7 +90,7 @@ const CreatePresentationModal = ({ open, handleClose }) => {
             />
             <CustomPrimaryButton
               label="Cancel"
-              additionalStyle={{ marginTop: '10px', backgroundColor: 'grey' }}
+              additionalStyle={{ marginTop: '10px', backgroundColor: 'red' }}
               onClick={handleCancel}
               dataTestid={'cancel-presentation-button'}
             />
