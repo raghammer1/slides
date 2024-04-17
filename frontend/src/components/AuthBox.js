@@ -4,7 +4,7 @@ import { styled } from '@mui/system';
 
 const BoxWrapper = styled('div')({
   width: '100%',
-  height: '98vh',
+  height: '100vh',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
