@@ -7,6 +7,7 @@ const Wrapper = styled('div')({
   alignItems: 'center',
   gap: '10px',
   width: '100%',
+  marginTop: '30px',
 });
 
 const SliderLabel = styled('label')({
@@ -14,16 +15,19 @@ const SliderLabel = styled('label')({
   textTransform: 'uppercase',
   fontWeight: '600',
   fontSize: '16px',
+  margin: '0',
 });
 
 const SliderInput = styled('input')({
   width: '100%',
   cursor: 'pointer',
+  margin: '0',
 });
 
 const SliderValue = styled('span')({
   color: '#dcddde',
   fontSize: '16px',
+  margin: '0',
 });
 
 const InputLabelRange = ({
