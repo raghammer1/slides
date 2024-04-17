@@ -45,6 +45,7 @@ const TextBoxModal = ({
       width: sizeTextBoxWidth,
       fontSize: `${fontSizeTextBox}em`,
       color: `${colourTextBox}`,
+      fonFamily: 'Arial',
     };
     addElementToSlide(presentationId, selectedSlideId, element);
     setTitle('');
