@@ -65,7 +65,6 @@ const SlideHistory = ({
   };
 
   const goToThisTimeHistory = (elementObj) => {
-    console.log(elementObj);
     handlePreviewOldSlide(elementObj);
     setSelectedSlideHistory(elementObj);
   };

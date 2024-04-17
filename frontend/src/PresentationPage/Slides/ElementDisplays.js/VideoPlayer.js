@@ -35,12 +35,10 @@ const VideoPlayer = ({
     if (clickTimeout) {
       clearTimeout(clickTimeout);
       setClickTimeout(null);
-      console.log('Double clicked:', element.id);
       handleEditTextBoxSelected();
     } else {
       const timeout = setTimeout(() => {
         setClickTimeout(null);
-        console.log('Single clicked:', element.id);
       }, 500);
       setClickTimeout(timeout);
     }

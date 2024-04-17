@@ -108,7 +108,6 @@ const PresentationDetail = () => {
   const [description, setDescription] = useState(`${presentation.description}`);
 
   const handlePresentationDelete = () => {
-    console.log('delete');
     setOpen(false);
     deleteOnePresentation(id);
     showAlert('Presentation Successfully Deleted', 'tomato');

@@ -17,8 +17,6 @@ const presentationsChangeLogger = (config) => (set, get, api) =>
 
       const newState = get();
       if (currentState.presentations !== newState.presentations) {
-        console.log('presentations changed:', newState.presentations);
-
         const updatedData = {
           store: {
             presentations: newState.presentations,
@@ -88,7 +86,6 @@ const usePresentationListStore = create(
 
     clearPresentations: () => set({ presentations: [] }),
     deleteOnePresentation: (id) => {
-      console.log(`Deleting presentation with ID: ${id}`);
       set((state) => {
         const updatedPresentations = state.presentations.filter(
           (presentation) => presentation.id !== id
@@ -122,8 +119,6 @@ const usePresentationListStore = create(
             (max, slide) => Math.max(max, slide.slideNumber || 0),
             0
           ) + 1;
-
-        console.log(newSlide, 'newSlide');
 
         const updatedSlides = [
           ...updatedPresentation.slides,
@@ -184,7 +179,6 @@ const usePresentationListStore = create(
 
     addElementToSlide: (presentationId, slideId, newElement) => {
       set((state) => {
-        console.log('PRESENTATION FROM ZUSTAND', state.presentations);
         const presentationIndex = state.presentations.findIndex(
           (p) => p.id === presentationId
         );
@@ -439,8 +433,6 @@ const usePresentationListStore = create(
     },
     addElementToObject: (presentationId, slideId, newValue) => {
       set((state) => {
-        console.log('Current state presentations:', state.presentations);
-
         const presentationsCopy = [...state.presentations];
 
         const presentationIndex = presentationsCopy.findIndex(
@@ -466,7 +458,6 @@ const usePresentationListStore = create(
 
         const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
         const currentTime = Date.now().toString();
-        console.log(`Adding new element at time ${currentTime}`);
 
         updatedSlide.elements = [
           ...updatedSlide.elements,
@@ -476,8 +467,6 @@ const usePresentationListStore = create(
         updatedPresentation.slides[slideIndex] = updatedSlide;
 
         presentationsCopy[presentationIndex] = updatedPresentation;
-
-        console.log('New state presentations:', presentationsCopy);
 
         return { presentations: presentationsCopy, version: state.version + 1 };
       });
@@ -613,12 +602,6 @@ export const initializeStore = async () => {
       ? initialStore.store.presentations
       : [],
   });
-
-  console.log(
-    `${
-      initialStore.store.presentations ? initialStore.store.presentations : {}
-    }`
-  );
 };
 
 export default usePresentationListStore;

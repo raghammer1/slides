@@ -123,7 +123,6 @@ const SlideDisplay = ({
 
   const renderCornerBoxes = useCallback(
     (element) => {
-      console.log(selectedElement);
       if (selectedElement === null || selectedElement.id !== element.id) {
         return null;
       }
@@ -142,8 +141,6 @@ const SlideDisplay = ({
           left: 0 + elementWidthPx - 10,
         }, // Bottom-right
       ];
-
-      console.log(corners, 'corners I AM CORNER HEY HEY');
 
       return corners.map((style, index) => (
         <CornerBox key={index} style={style} />

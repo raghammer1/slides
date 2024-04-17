@@ -34,7 +34,6 @@ export const getStore = async () => {
 export const setStore = async (data) => {
   try {
     const token = localStorage.getItem('token');
-    console.log('DATA', data);
 
     if (!token) {
       throw new Error('No token found');

@@ -25,7 +25,6 @@ const Wrapper = styled('div')((props) => ({
 const PresentationCard = ({ presentation }) => {
   const nav = useNavigate();
   const handleOpenPresentation = () => {
-    console.log(presentation);
     nav(`/presentation/${presentation.id}`);
   };
 

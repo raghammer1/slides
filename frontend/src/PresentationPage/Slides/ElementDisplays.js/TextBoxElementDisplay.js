@@ -28,20 +28,15 @@ const TextBoxElementDisplay = ({
     if (clickTimeout) {
       clearTimeout(clickTimeout);
       setClickTimeout(null);
-      console.log('Double clicked:', element.id);
       handleEditTextBoxSelected();
     } else {
       const timeout = setTimeout(() => {
         setClickTimeout(null);
-        console.log('Single clicked:', element.id);
-
         handleSelectedElement(element);
       }, 500);
       setClickTimeout(timeout);
     }
   }, [clickTimeout, handleSelectedElement, element]);
-
-  console.log(element.top, element.left, 'HEY THERE LOLOLOLOOLOLOL');
 
   return (
     <>

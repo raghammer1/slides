@@ -64,7 +64,6 @@ const SlidesMain = ({
 
     return () => {
       stopTimer();
-      console.log(`Elapsed Time: ${getElapsedTime()}ms`);
     };
   }, [selectedSlideId, startTimer, stopTimer, getElapsedTime, version]);
 
@@ -87,7 +86,6 @@ const SlidesMain = ({
   const { deleteOnePresentation } = usePresentationListStore();
 
   const handlePresentationDelete = () => {
-    console.log('delete');
     setOpen(false);
     deleteOnePresentation(presentationId);
     showAlert('Presentation Successfully Deleted', 'tomato');
