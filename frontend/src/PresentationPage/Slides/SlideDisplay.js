@@ -1,16 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Typography } from '@mui/material';
 import EditMenu from './EditSlide/EditMenu';
-import VideoPlayer from './ElementDisplays.js/VideoPlayer';
 import CornerBox from './CornerBox';
 import 'prismjs/themes/prism-okaidia.css';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-c';
-import CodeElementDisplay from './ElementDisplays.js/CodeElementDisplay';
-import ImageElementDisplay from './ElementDisplays.js/ImageElementDisplay';
-import TextBoxElementDisplay from './ElementDisplays.js/TextBoxElementDisplay';
 import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 import {
   setContainerHeight,
@@ -24,6 +20,7 @@ import ImageModal from './EditSlide/ImageModal';
 import CodeModal from './EditSlide/CodeModal';
 import SlideHistory from './EditSlide/SlideHistory/SlideHistory';
 import SlideChangeColourModal from './EditSlide/SlideChangeColourModal';
+import GetElement from './GetElement';
 
 const SlideDisplay = ({
   presentationId,
@@ -31,9 +28,6 @@ const SlideDisplay = ({
   isScreenLessThan1000,
   isScreenLessThan700,
 }) => {
-  // let containerWidth = 1000;
-  // let containerHeight = 500;
-
   if (isScreenLessThan700) {
     setContainerWidth(400);
     setContainerHeight(200);
@@ -74,15 +68,8 @@ const SlideDisplay = ({
     setAnchorEl(event.currentTarget);
   };
 
-  // const [rerender, setRerender] = useState(false);
-  // useEffect(() => {
-  //   console.log('Version changed:', version);
-  //   setRerender((prev) => !prev); // Toggle to force rerender
-  // }, [version]);
-
   useEffect(() => {
     Prism.highlightAll();
-    console.log(version, 'version');
   }, [selectedSlide]);
 
   const handleSelectedElement = (element) => {
@@ -97,14 +84,7 @@ const SlideDisplay = ({
       `${(d.x / containerWidth) * 100}`,
       `${(d.y / containerHeight) * 100}`
     );
-    console.log(
-      `${(d.x / containerWidth) * 100}`,
-      `${(d.y / containerHeight) * 100}`,
-      'IHWRYUOWUYERGIUEWYRGYIUEWGRUWEGIURGUY',
-      d.x,
-      d.y,
-      d
-    );
+
     setSelectedElement({
       ...element,
       top: `${(d.y / containerHeight) * 100}`,
@@ -177,19 +157,15 @@ const SlideDisplay = ({
     [selectedElement]
   );
 
-  // Check if there are elements and elements is not empty
   const getElements = () => {
     if (selectedSlide?.elements?.length) {
-      // Access the last element in the array
       const lastElementObj =
         selectedSlide.elements[selectedSlide.elements.length - 1];
 
-      // Assuming we don't know the key name and there's only one key per object
-      const key = Object.keys(lastElementObj)[0]; // Get the key of the last object
-      const values = lastElementObj[key]; // Get the value using the key which is an array
+      const key = Object.keys(lastElementObj)[0];
+      const values = lastElementObj[key];
 
-      // Now you can use 'values' which is the array associated with the last time key
-      return values; // Outputs the array of the last element object
+      return values;
     } else {
       return [];
     }
@@ -274,74 +250,19 @@ const SlideDisplay = ({
       }}
     >
       {getElements().map((element) => {
-        if (element.type === 'textarea') {
-          return (
-            <TextBoxElementDisplay
-              presentationId={presentationId}
-              selectedSlideId={selectedSlideId}
-              key={element.id}
-              element={element}
-              onDragStop={onDragStop}
-              onResizeStop={onResizeStop}
-              handleDeleteElement={handleDeleteElement}
-              renderCornerBoxes={renderCornerBoxes}
-              handleSelectedElement={handleSelectedElement}
-            />
-          );
-        } else if (element.type === 'image') {
-          return (
-            <ImageElementDisplay
-              presentationId={presentationId}
-              selectedSlideId={selectedSlideId}
-              key={element.id}
-              element={element}
-              onDragStop={onDragStop}
-              onResizeStop={onResizeStop}
-              handleDeleteElement={handleDeleteElement}
-              renderCornerBoxes={renderCornerBoxes}
-              handleSelectedElement={handleSelectedElement}
-            />
-          );
-        } else if (element.type === 'video') {
-          return (
-            <VideoPlayer
-              style={{
-                position: 'absolute',
-                top: `${element.top}`,
-                left: `${element.left}`,
-                width: '100%',
-                height: '100%',
-                padding: '10px',
-                backgroundColor: '#000',
-              }}
-              onDragStop={onDragStop}
-              onResizeStop={onResizeStop}
-              handleDeleteElement={handleDeleteElement}
-              renderCornerBoxes={renderCornerBoxes}
-              key={element.id}
-              element={element}
-              onClick={() => handleSelectedElement(element)}
-              presentationId={presentationId}
-              selectedSlideId={selectedSlideId}
-            />
-          );
-        }
-        if (element.type === 'code') {
-          return (
-            <CodeElementDisplay
-              key={element.id}
-              element={element}
-              onDragStop={onDragStop}
-              onResizeStop={onResizeStop}
-              handleDeleteElement={handleDeleteElement}
-              renderCornerBoxes={renderCornerBoxes}
-              presentationId={presentationId}
-              selectedSlideId={selectedSlideId}
-            />
-          );
-        } else {
-          return <></>;
-        }
+        return (
+          <GetElement
+            key={element.id}
+            element={element}
+            presentationId={presentationId}
+            handleDeleteElement={handleDeleteElement}
+            selectedSlideId={selectedSlideId}
+            onDragStop={onDragStop}
+            onResizeStop={onResizeStop}
+            renderCornerBoxes={renderCornerBoxes}
+            handleSelectedElement={handleSelectedElement}
+          />
+        );
       })}
 
       <Typography
