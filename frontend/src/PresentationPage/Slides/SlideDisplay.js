@@ -198,6 +198,8 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
         } else if (element.type === 'image') {
           return (
             <ImageElementDisplay
+              presentationId={presentationId}
+              selectedSlideId={selectedSlideId}
               key={element.id}
               element={element}
               onDragStop={onDragStop}
