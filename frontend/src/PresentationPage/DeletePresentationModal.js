@@ -27,7 +27,9 @@ const DeletePresentationModal = ({
       handleCloseCreateTextBox={handleClose}
       style={style}
     >
-      <Typography>Are you sure you want to delete this presentation</Typography>
+      <Typography>
+        Are you sure? you want to delete this presentation
+      </Typography>
       <CustomPrimaryButton
         label="Close"
         additionalStyle={{ marginTop: '30px' }}

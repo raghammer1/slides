@@ -99,12 +99,10 @@ const usePresentationListStore = create(
         };
       });
     },
-    updatePresentationTitle: (id, newTitle) =>
+    updatePresentationTitle: (id, edits) =>
       set((state) => ({
         presentations: state.presentations.map((presentation) =>
-          presentation.id === id
-            ? { ...presentation, name: newTitle }
-            : presentation
+          presentation.id === id ? { ...presentation, ...edits } : presentation
         ),
       })),
     addSlide: (presentationId, newSlide) => {
@@ -506,7 +504,7 @@ const usePresentationListStore = create(
         console.log('New state presentations:', presentationsCopy);
 
         // Return the new state with the updated presentations array
-        return { presentations: presentationsCopy };
+        return { presentations: presentationsCopy, version: state.version + 1 };
       });
     },
 

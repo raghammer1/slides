@@ -21,6 +21,10 @@ const EditPresentationTitleModal = ({
   handlePresentationEdit,
   title,
   setTitle,
+  thumbnail,
+  setThumbnail,
+  description,
+  setDescription,
 }) => {
   return (
     <CustomModal
@@ -34,6 +38,20 @@ const EditPresentationTitleModal = ({
         type="Title"
         placeholder="Enter Title"
         label="Title"
+      />
+      <InputWithLabels
+        value={thumbnail}
+        setValue={setThumbnail}
+        type="Thumbnail"
+        placeholder="Enter Thumbnail"
+        label="Thumbnail"
+      />
+      <InputWithLabels
+        value={description}
+        setValue={setDescription}
+        type="Description"
+        placeholder="Enter Description"
+        label="Description"
       />
       <CustomPrimaryButton
         label="Edit Now"

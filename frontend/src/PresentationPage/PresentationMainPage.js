@@ -100,6 +100,8 @@ const PresentationDetail = () => {
   const presentation = presentations.find((p) => p.id === id);
 
   const [title, setTitle] = useState(`${presentation.name}`);
+  const [thumbnail, setThumbnail] = useState(`${presentation.thumbnail}`);
+  const [description, setDescription] = useState(`${presentation.description}`);
 
   const handlePresentationDelete = () => {
     console.log('delete');
@@ -118,9 +120,13 @@ const PresentationDetail = () => {
   };
 
   const handlePresentationTitleEdit = useCallback(() => {
-    updatePresentationTitle(presentation.id, title);
+    updatePresentationTitle(presentation.id, {
+      name: title,
+      thumbnail,
+      description,
+    });
     handleCloseEdit();
-  }, [title]);
+  }, [title, thumbnail, description]);
 
   const handleOpenSlideshow = () => {
     const previewUrl = `${window.location.origin}/preview/${id}/0`;
@@ -193,6 +199,10 @@ const PresentationDetail = () => {
         handlePresentationEdit={handlePresentationTitleEdit}
         title={title}
         setTitle={setTitle}
+        thumbnail={thumbnail}
+        setThumbnail={setThumbnail}
+        setDescription={setDescription}
+        description={description}
       />
     </div>
   );
