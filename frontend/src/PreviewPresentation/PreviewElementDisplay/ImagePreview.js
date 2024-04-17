@@ -1,9 +1,8 @@
 import React from 'react';
-import { containerWidth, containerHeight } from '../../shared/globals';
 
 const ImagePreview = ({ element, size }) => {
-  const topStyle = `${(element.left / containerHeight) * size.height}px`;
-  const leftStyle = `${(element.top / containerWidth) * size.width}px`;
+  const topStyle = `${element.left}%`;
+  const leftStyle = `${element.top}%`;
 
   return (
     <img

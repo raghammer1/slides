@@ -1,9 +1,9 @@
 import React from 'react';
-import { containerWidth, containerHeight } from '../../shared/globals';
+// import { containerWidth, containerHeight } from '../../shared/globals';
 
 const VideoPreview = ({ element, size }) => {
-  const topStyle = `${(element.left / containerHeight) * size.height}px`;
-  const leftStyle = `${(element.top / containerWidth) * size.width}px`;
+  const topStyle = `${element.left}%`;
+  const leftStyle = `${element.top}%`;
 
   const extractVideoID = (url) => {
     const regex =

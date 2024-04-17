@@ -1,9 +1,9 @@
 import React from 'react';
-import { containerWidth, containerHeight } from '../../shared/globals';
+// import { containerWidth, containerHeight } from '../../shared/globals';
 
 const CodePreview = ({ element, size }) => {
-  const topStyle = `${(element.left / containerHeight) * size.height}px`;
-  const leftStyle = `${(element.top / containerWidth) * size.width}px`;
+  const topStyle = `${element.left}%`;
+  const leftStyle = `${element.top}%`;
   const widthStyle = `${element.width}%`; // adjust according to your data structure
   const heightStyle = `${element.height}%`; // adjust according to your data structure
 

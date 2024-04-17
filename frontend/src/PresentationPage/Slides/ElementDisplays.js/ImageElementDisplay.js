@@ -1,6 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import { Rnd } from 'react-rnd';
 import ImageBoxDoubleClick from './DoubleClickHandlers/ImageBoxDoubleClick';
+import { containerWidth, containerHeight } from '../../../shared/globals';
+
 const ImageElementDisplay = ({
   selectedSlideId,
   presentationId,
@@ -44,8 +46,8 @@ const ImageElementDisplay = ({
     <>
       <Rnd
         default={{
-          x: element.top,
-          y: element.left,
+          x: (element.top / 100) * containerWidth,
+          y: (element.left / 100) * containerHeight,
           width: `${element.width}%`,
           height: `${element.height}%`,
         }}
@@ -66,8 +68,6 @@ const ImageElementDisplay = ({
             alt={element.alt}
             style={{
               position: 'absolute',
-              top: element.top,
-              left: element.left,
               height: '100%',
               width: '100%',
               resize: 'none',

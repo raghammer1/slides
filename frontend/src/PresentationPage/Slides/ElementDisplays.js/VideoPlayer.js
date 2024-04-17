@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { Rnd } from 'react-rnd';
 import VideoDoubleClick from './DoubleClickHandlers/VideoDoubleClick';
+import { containerWidth, containerHeight } from '../../../shared/globals';
 
 const VideoPlayer = ({
   style,
@@ -55,8 +56,8 @@ const VideoPlayer = ({
     <>
       <Rnd
         default={{
-          x: element.top,
-          y: element.left,
+          x: (element.top / 100) * containerWidth,
+          y: (element.left / 100) * containerHeight,
           width: `${element.width}%`,
           height: `${element.height}%`,
         }}

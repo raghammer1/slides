@@ -1,6 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import { Rnd } from 'react-rnd';
 import CodeBoxDoubleClick from './DoubleClickHandlers/CodeBoxDoubleClick';
+import { containerWidth, containerHeight } from '../../../shared/globals';
+
 const CodeElementDisplay = ({
   element,
   onDragStop,
@@ -42,8 +44,8 @@ const CodeElementDisplay = ({
     <>
       <Rnd
         default={{
-          x: element.top,
-          y: element.left,
+          x: (element.top / 100) * containerWidth,
+          y: (element.left / 100) * containerHeight,
           width: `${element.width}%`,
           height: `${element.height}%`,
         }}
@@ -79,8 +81,6 @@ const CodeElementDisplay = ({
                 fontFamily:
                   'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
                 position: 'absolute',
-                top: 0,
-                left: 0,
                 zIndex: 1,
                 color: 'transparent',
                 background: 'none',
