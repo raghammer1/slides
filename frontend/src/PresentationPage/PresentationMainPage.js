@@ -64,9 +64,14 @@ const PresentationDetail = () => {
   const [isNarrowScreen, setIsNarrowScreen] = useState(
     window.innerWidth < 1430
   );
+
+  const [isScreenLessThan1000, setIsScreenLessThan1000] = useState(
+    window.innerWidth < 1000
+  );
   useEffect(() => {
     const handleResize = () => {
       setIsNarrowScreen(window.innerWidth < 1430);
+      setIsScreenLessThan1000(window.innerWidth < 1000);
     };
 
     window.addEventListener('resize', handleResize);
@@ -165,6 +170,7 @@ const PresentationDetail = () => {
       </Wrapper2>
       <div>
         <SlidesMain
+          isScreenLessThan1000={isScreenLessThan1000}
           isNarrowScreen={isNarrowScreen}
           presentationId={presentation.id}
         />

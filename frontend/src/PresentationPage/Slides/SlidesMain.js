@@ -20,7 +20,11 @@ const Wrapper = styled('div')({
   },
 });
 
-const SlidesMain = ({ presentationId, isNarrowScreen }) => {
+const SlidesMain = ({
+  presentationId,
+  isNarrowScreen,
+  isScreenLessThan1000,
+}) => {
   const {
     slides,
     deleteSlide,
@@ -110,6 +114,7 @@ const SlidesMain = ({ presentationId, isNarrowScreen }) => {
           handleDeleteSlide={handleDeleteSlide}
         />
         <SlideDisplay
+          isScreenLessThan1000={isScreenLessThan1000}
           presentationId={presentationId}
           selectedSlideId={selectedSlideId}
         />

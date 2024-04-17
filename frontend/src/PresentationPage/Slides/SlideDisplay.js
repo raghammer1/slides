@@ -12,10 +12,28 @@ import CodeElementDisplay from './ElementDisplays.js/CodeElementDisplay';
 import ImageElementDisplay from './ElementDisplays.js/ImageElementDisplay';
 import TextBoxElementDisplay from './ElementDisplays.js/TextBoxElementDisplay';
 import usePresentationListStore from '../../zustandStore/usePresentationListStore';
+import {
+  setContainerHeight,
+  setContainerWidth,
+  containerWidth,
+  containerHeight,
+} from '../../shared/globals';
 
-const SlideDisplay = ({ presentationId, selectedSlideId }) => {
-  // const containerWidth = 1000;
-  // const containerHeight = 500;
+const SlideDisplay = ({
+  presentationId,
+  selectedSlideId,
+  isScreenLessThan1000,
+}) => {
+  // let containerWidth = 1000;
+  // let containerHeight = 500;
+
+  if (isScreenLessThan1000) {
+    setContainerWidth(700);
+    setContainerHeight(350);
+  } else {
+    setContainerWidth(1000);
+    setContainerHeight(500);
+  }
 
   const version = usePresentationListStore((state) => state.version);
 
@@ -78,8 +96,8 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
 
   const onResizeStop = (e, direction, ref, delta, position, element) => {
     const newSize = {
-      width: `${(ref.offsetWidth / 1000) * 100}`,
-      height: `${(ref.offsetHeight / 500) * 100}`,
+      width: `${(ref.offsetWidth / containerWidth) * 100}`,
+      height: `${(ref.offsetHeight / containerHeight) * 100}`,
     };
     const newPosition = {
       top: `${position.y}`,
@@ -117,8 +135,6 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
         return null;
       }
 
-      const containerWidth = 1000;
-      const containerHeight = 500;
       const elementWidthPx =
         (parseInt(selectedElement.width) / 100) * containerWidth;
       const elementHeightPx =
@@ -168,8 +184,8 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
       key={version}
       className="slideDisplaylolol"
       style={{
-        width: '1000px',
-        height: '500px',
+        width: `${containerWidth}px`,
+        height: `${containerHeight}px`,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
