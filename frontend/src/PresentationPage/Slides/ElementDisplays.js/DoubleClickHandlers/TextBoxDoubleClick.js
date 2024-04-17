@@ -4,6 +4,7 @@ import InputWithLabels from '../../../../components/InputLabel';
 import CustomPrimaryButton from '../../../../components/CustomePrimaryButton';
 import InputLabelRange from '../../../../components/InputLabelRange';
 import usePresentationListStore from '../../../../zustandStore/usePresentationListStore';
+import SelectWithLabel from '../../../../components/SelectWithLabel';
 
 const style = {
   position: 'absolute',
@@ -34,11 +35,14 @@ const TextBoxDoubleClick = ({
     (state) => state.updateElementInSlide
   );
 
+  const [fontFamily, setFontFamily] = useState(element.fontFamily || 'Arial');
+
   const handleEditTextBoxHere = () => {
     updateElementInSlide(presentationId, selectedSlideId, element.id, {
       text: title,
       fontSize: `${fontSizeTextBox}em`,
       color: `${colourTextBox}`,
+      fontFamily,
     });
     handleCloseEditTextBox();
   };
@@ -73,6 +77,19 @@ const TextBoxDoubleClick = ({
         max={'10'}
         min={'0'}
         sign={'em'}
+      />
+
+      <SelectWithLabel
+        label="Font Family"
+        value={fontFamily}
+        setValue={setFontFamily}
+        options={[
+          { value: 'Arial', label: 'Arial' },
+          { value: 'Verdana', label: 'Verdana' },
+          { value: 'Times New Roman', label: 'Times New Roman' },
+          { value: 'Georgia', label: 'Georgia' },
+          { value: 'Courier New', label: 'Courier New' },
+        ]}
       />
 
       <CustomPrimaryButton

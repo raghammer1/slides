@@ -70,6 +70,7 @@ const TextBoxElementDisplay = ({
               height: '100%',
               width: '100%',
               fontSize: element.fontSize,
+              fontFamily: element.fontFamily,
               color: element.color,
               resize: 'none',
               overflow: 'hidden',
