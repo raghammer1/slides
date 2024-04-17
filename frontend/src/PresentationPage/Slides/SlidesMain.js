@@ -15,9 +15,12 @@ const Wrapper = styled('div')({
   alignItems: 'center',
   justifyContent: 'space-between',
   padding: '30px',
+  '@media (max-width: 1430px)': {
+    flexDirection: 'column',
+  },
 });
 
-const SlidesMain = ({ presentationId }) => {
+const SlidesMain = ({ presentationId, isNarrowScreen }) => {
   const {
     slides,
     deleteSlide,
@@ -100,6 +103,7 @@ const SlidesMain = ({ presentationId }) => {
     >
       <Wrapper>
         <SlidesList
+          isNarrowScreen={isNarrowScreen}
           presentationId={presentationId}
           setSelectedSlide={setSelectedSlide}
           selectedSlideId={selectedSlideId}

@@ -9,6 +9,7 @@ const SlidesList = ({
   presentationId,
   setSelectedSlide,
   handleDeleteSlide,
+  isNarrowScreen,
 }) => {
   const { slides, addSlide } = usePresentationListStore((state) => ({
     slides: state.getSlidesForPresentation(presentationId),
@@ -22,6 +23,25 @@ const SlidesList = ({
     };
     addSlide(presentationId, newSlide);
   };
+
+  if (isNarrowScreen) {
+    return (
+      <div
+        onClick={handleAddNewSlide}
+        style={{
+          cursor: 'pointer',
+          padding: '10px',
+          margin: '5px',
+          border: '1px solid #ccc',
+          borderRadius: '5px',
+          backgroundColor: '#f0f0f0',
+        }}
+        data-testid={'add-slide-button'}
+      >
+        Add Slide +
+      </div>
+    );
+  }
 
   return (
     <div style={{ overflow: 'auto', height: '500px' }}>

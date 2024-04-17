@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import usePresentationListStore from '../zustandStore/usePresentationListStore';
 import CustomPrimaryButton from '../components/CustomePrimaryButton';
@@ -14,6 +14,17 @@ const Wrapper = styled('div')({
   alignItems: 'center',
   gap: '30px',
   marginTop: '15px',
+});
+
+const Wrapper2 = styled('div')({
+  width: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  flexDirection: 'row',
+  justifyContent: 'space-around',
+  '@media (max-width: 1430px)': {
+    flexDirection: 'column',
+  },
 });
 
 const StyledTypography = styled(Typography)`
@@ -49,6 +60,20 @@ const StyledTypography = styled(Typography)`
 const PresentationDetail = () => {
   const { id } = useParams();
   const nav = useNavigate();
+
+  const [isNarrowScreen, setIsNarrowScreen] = useState(
+    window.innerWidth < 1430
+  );
+  useEffect(() => {
+    const handleResize = () => {
+      setIsNarrowScreen(window.innerWidth < 1430);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -101,15 +126,7 @@ const PresentationDetail = () => {
         alignItems: 'center',
       }}
     >
-      <div
-        style={{
-          width: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          flexDirection: 'row',
-          justifyContent: 'space-around',
-        }}
-      >
+      <Wrapper2>
         <StyledTypography
           sx={{
             fontSize: '32px',
@@ -122,32 +139,35 @@ const PresentationDetail = () => {
         <Wrapper>
           <CustomPrimaryButton
             label="Delete"
-            additionalStyle={{ width: '200px' }}
+            additionalStyle={{ width: '170px' }}
             onClick={handleOpen}
             dataTestid={`presentation-delete-${presentation.id}`}
           />
           <CustomPrimaryButton
             label="Back"
-            additionalStyle={{ width: '200px' }}
+            additionalStyle={{ width: '170px' }}
             onClick={handleGoBack}
             dataTestid={`presentation-go-back-${presentation.id}`}
           />
           <CustomPrimaryButton
             label="Re Arrange Slides"
-            additionalStyle={{ width: '200px' }}
+            additionalStyle={{ width: '170px' }}
             onClick={handleReArrangeSlides}
             dataTestid={`presentation-re-arrange-page-${presentation.id}`}
           />
           <CustomPrimaryButton
             label="Slideshow"
-            additionalStyle={{ width: '200px' }}
+            additionalStyle={{ width: '170px' }}
             onClick={handleOpenSlideshow}
             dataTestid={`presentation-re-arrange-page-${presentation.id}`}
           />
         </Wrapper>
-      </div>
+      </Wrapper2>
       <div>
-        <SlidesMain presentationId={presentation.id} />
+        <SlidesMain
+          isNarrowScreen={isNarrowScreen}
+          presentationId={presentation.id}
+        />
       </div>
       <DeletePresentationModal
         open={open}
