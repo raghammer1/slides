@@ -18,13 +18,14 @@ const DashboardFooter = () => {
     color: '#333',
     textAlign: 'center',
     padding:
-      windowWidth > 1024 ? '20px 0' : windowWidth > 768 ? '15px 0' : '10px 0',
+      windowWidth > 1024 ? '10px 0' : windowWidth > 768 ? '8px 0' : '5px 0',
     position: 'fixed',
     left: '0',
     bottom: '0',
     width: '100%',
     borderTop: '1px solid #e7e7e7',
-    fontSize: windowWidth > 1024 ? '16px' : windowWidth > 768 ? '14px' : '12px',
+    fontSize: windowWidth > 1024 ? '14px' : windowWidth > 768 ? '12px' : '10px',
+    height: '25px',
   });
 
   return (
