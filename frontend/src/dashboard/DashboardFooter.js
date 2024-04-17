@@ -22,7 +22,6 @@ const DashboardFooter = () => {
     width: '100%',
     borderTop: '1px solid #e7e7e7',
     fontSize: windowWidth > 1024 ? '14px' : windowWidth > 768 ? '12px' : '10px',
-    height: '25px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
