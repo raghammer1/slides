@@ -23,7 +23,6 @@ const TextBoxModal = ({
   handleCloseCreateTextBox,
   presentationId,
   selectedSlideId,
-  setAnchorEl,
 }) => {
   const [title, setTitle] = useState('');
   const [sizeTextBoxWidth, setSizeTextBoxWidth] = useState('50');
@@ -52,7 +51,6 @@ const TextBoxModal = ({
     setColourTextBox('#000');
     setFontSizeTextBox('1');
     handleCloseCreateTextBox();
-    setAnchorEl(null);
   };
 
   return (
@@ -65,7 +63,7 @@ const TextBoxModal = ({
         dataTestId={'title-text-box-test'}
         value={title}
         setValue={setTitle}
-        type="Title"
+        type="text"
         placeholder="Enter Title"
         label="Title"
       />
@@ -73,7 +71,7 @@ const TextBoxModal = ({
       <InputWithLabels
         value={colourTextBox}
         setValue={setColourTextBox}
-        type="Font Colour"
+        type="text"
         placeholder="Enter Font Colour"
         label="Font Colour"
       />

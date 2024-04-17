@@ -18,6 +18,12 @@ import {
   containerWidth,
   containerHeight,
 } from '../../shared/globals';
+import TextBoxModal from './EditSlide/TextBoxModal';
+import VideoModal from './EditSlide/VideoModal';
+import ImageModal from './EditSlide/ImageModal';
+import CodeModal from './EditSlide/CodeModal';
+import SlideHistory from './EditSlide/SlideHistory/SlideHistory';
+import SlideChangeColourModal from './EditSlide/SlideChangeColourModal';
 
 const SlideDisplay = ({
   presentationId,
@@ -191,6 +197,65 @@ const SlideDisplay = ({
 
   console.log(selectedSlide, 'selectedSlide');
 
+  const [openCreateTextBox, setOpenCreateTextBox] = useState(false);
+  const handleOpenCreateTextBox = () => setOpenCreateTextBox(true);
+  const handleCloseCreateTextBox = () => {
+    setOpenCreateTextBox(false);
+  };
+
+  const [openImageHandler, setOpenImageHandler] = useState(false);
+  const handleOpenImageHandler = () => setOpenImageHandler(true);
+  const handleCloseImageHandler = () => {
+    setOpenImageHandler(false);
+  };
+
+  const [openVideoHandler, setOpenVideoHandler] = useState(false);
+  const handleOpenVideoHandler = () => setOpenVideoHandler(true);
+  const handleCloseVideoHandler = () => {
+    setOpenVideoHandler(false);
+  };
+
+  const [openCodeHandler, setOpenCodeHandler] = useState(false);
+  const handleOpenCodeHandler = () => setOpenCodeHandler(true);
+  const handleCloseCodeHandler = () => {
+    setOpenCodeHandler(false);
+  };
+
+  const [OpenSlideHistoryHandler, setOpenSlideHistoryHandler] = useState(false);
+  const handleOpenSlideHistoryHandler = () => setOpenSlideHistoryHandler(true);
+  const handleCloseSlideHistoryHandler = () => {
+    setOpenSlideHistoryHandler(false);
+  };
+
+  const [OpenSlideColourPalette, setOpenSlideColourPalette] = useState(false);
+  const handleOpenColourPaletteHandler = () => setOpenSlideColourPalette(true);
+  const handleCloseSlideColourPalette = () => {
+    setOpenSlideColourPalette(false);
+  };
+  const handleAddTextOnSlide = () => {
+    setAnchorEl(null);
+    setTimeout(handleOpenCreateTextBox(), 100);
+  };
+
+  const handleAddImageOnSlide = () => {
+    handleOpenImageHandler();
+  };
+
+  const handleAddVideoOnSlide = () => {
+    handleOpenVideoHandler();
+  };
+
+  const handleAddCodeOnSlide = () => {
+    handleOpenCodeHandler();
+  };
+
+  const handleOpenSlideHistory = () => {
+    handleOpenSlideHistoryHandler();
+  };
+
+  const handleOpenColourPalette = () => {
+    handleOpenColourPaletteHandler();
+  };
   return (
     <div
       key={version}
@@ -316,6 +381,54 @@ const SlideDisplay = ({
         setAnchorEl={setAnchorEl}
         presentationId={presentationId}
         selectedSlideId={selectedSlideId}
+        handleAddTextOnSlide={handleAddTextOnSlide}
+        handleAddImageOnSlide={handleAddImageOnSlide}
+        handleAddVideoOnSlide={handleAddVideoOnSlide}
+        handleAddCodeOnSlide={handleAddCodeOnSlide}
+        handleOpenSlideHistory={handleOpenSlideHistory}
+        handleOpenColourPalette={handleOpenColourPalette}
+      />
+      <TextBoxModal
+        open={openCreateTextBox}
+        handleCloseCreateTextBox={handleCloseCreateTextBox}
+        presentationId={presentationId}
+        selectedSlideId={selectedSlideId}
+        setAnchorEl={setAnchorEl}
+      />
+      <ImageModal
+        open={openImageHandler}
+        handleCloseImageHandler={handleCloseImageHandler}
+        presentationId={presentationId}
+        selectedSlideId={selectedSlideId}
+        setAnchorEl={setAnchorEl}
+      />
+      <VideoModal
+        open={openVideoHandler}
+        handleCloseVideoHandler={handleCloseVideoHandler}
+        presentationId={presentationId}
+        selectedSlideId={selectedSlideId}
+        setAnchorEl={setAnchorEl}
+      />
+      <CodeModal
+        open={openCodeHandler}
+        handleCloseCodeHandler={handleCloseCodeHandler}
+        presentationId={presentationId}
+        selectedSlideId={selectedSlideId}
+        setAnchorEl={setAnchorEl}
+      />
+      <SlideHistory
+        open={OpenSlideHistoryHandler}
+        handleCloseCodeHandler={handleCloseSlideHistoryHandler}
+        presentationId={presentationId}
+        selectedSlideId={selectedSlideId}
+        setAnchorEl={setAnchorEl}
+      />
+      <SlideChangeColourModal
+        open={OpenSlideColourPalette}
+        handleCloseSlideColourPalette={handleCloseSlideColourPalette}
+        presentationId={presentationId}
+        selectedSlideId={selectedSlideId}
+        setAnchorEl={setAnchorEl}
       />
     </div>
   );
