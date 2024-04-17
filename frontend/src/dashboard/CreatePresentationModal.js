@@ -22,7 +22,7 @@ const style = {
 const CreatePresentationModal = ({ open, handleClose }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  // const [thumbnail, setThumbnail] = useState('');
+  const [thumbnail, setThumbnail] = useState('');
 
   const [isFormValid, setIsFormValid] = useState(false);
   const { showAlert } = useAlert();
@@ -50,7 +50,7 @@ const CreatePresentationModal = ({ open, handleClose }) => {
     const newPresentation = {
       id: presentationId,
       name,
-      // thumbnail,
+      thumbnail,
       description,
       slides: [
         {
@@ -66,7 +66,11 @@ const CreatePresentationModal = ({ open, handleClose }) => {
   };
 
   return (
-    <CustomModal open={open} handleClose={handleClose} style={style}>
+    <CustomModal
+      open={open}
+      handleCloseCreateTextBox={handleClose}
+      style={style}
+    >
       <InputWithLabels
         value={name}
         setValue={setName}
@@ -81,6 +85,13 @@ const CreatePresentationModal = ({ open, handleClose }) => {
         label="Description"
         placeholder="Enter description"
         dataTestId={'create-presentation-description-input'}
+      />
+      <InputWithLabels
+        value={thumbnail}
+        setValue={setThumbnail}
+        label="thumbnail"
+        placeholder="Enter thumbnail"
+        dataTestId={'create-presentation-thumbnail-input'}
       />
       <>
         <Tooltip title={!isFormValid ? getNotFormValid() : getFormValid()}>

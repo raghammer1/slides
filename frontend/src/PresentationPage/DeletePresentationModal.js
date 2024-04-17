@@ -22,7 +22,11 @@ const DeletePresentationModal = ({
   dataTestid,
 }) => {
   return (
-    <CustomModal open={open} handleClose={handleClose} style={style}>
+    <CustomModal
+      open={open}
+      handleCloseCreateTextBox={handleClose}
+      style={style}
+    >
       <Typography>Are you sure you want to delete this presentation</Typography>
       <CustomPrimaryButton
         label="Close"
