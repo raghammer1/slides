@@ -14,6 +14,7 @@ const TextBoxPreview = ({ element, size }) => {
         width: `${element.width}%`,
         height: `${element.height}%`,
         fontSize: element.fontSize,
+        fontFamily: element.fontFamily,
         color: element.color,
         resize: 'none',
         overflow: 'hidden',
