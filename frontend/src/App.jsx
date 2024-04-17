@@ -6,6 +6,8 @@ import Dashboard from './dashboard/Dashboard.js';
 import ProtectedRoute from './ProtectedRoute.js';
 import PresentationMainPage from './PresentationPage/PresentationMainPage.js';
 import { AlertProvider } from './components/AlertError.js';
+import ReArrangeMainPage from './PresentationPage/ReArrangeSlides/ReArrangeMainPage.js';
+import PreviewPresentationMain from './PreviewPresentation/PreviewPresentationMain.js';
 
 const App = () => {
   return (
@@ -32,6 +34,15 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="/presentation/:id/rearrange"
+              element={
+                <ProtectedRoute>
+                  <ReArrangeMainPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/preview/:id" element={<PreviewPresentationMain />} />
           </Routes>
         </BrowserRouter>
       </AlertProvider>

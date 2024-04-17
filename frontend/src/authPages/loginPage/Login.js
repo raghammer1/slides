@@ -8,7 +8,7 @@ import { login } from '../../services/api';
 import { useNavigate } from 'react-router-dom';
 import useCurrentUserStore from '../../zustandStore/useCurrentUserStore';
 import { useAlert } from '../../components/AlertError';
-
+// STILL SEPARATE
 const Login = () => {
   const [mail, setMail] = useState('');
   const [password, setPassword] = useState('');

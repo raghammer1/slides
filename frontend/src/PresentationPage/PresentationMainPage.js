@@ -78,10 +78,21 @@ const PresentationDetail = () => {
     nav('/dashboard');
   };
 
+  const handleReArrangeSlides = () => {
+    nav(`/presentation/${presentation.id}/rearrange`);
+  };
+
   const handlePresentationTitleEdit = useCallback(() => {
     updatePresentationTitle(presentation.id, title);
     handleCloseEdit();
   }, [title]);
+
+  const handleOpenSlideshow = () => {
+    // Construct the URL for the '/preview' route
+    const previewUrl = `${window.location.origin}/preview/${id}`;
+    // Open the new tab with the '/preview' route
+    window.open(previewUrl, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <div
@@ -122,6 +133,18 @@ const PresentationDetail = () => {
             additionalStyle={{ width: '200px' }}
             onClick={handleGoBack}
             dataTestid={`presentation-go-back-${presentation.id}`}
+          />
+          <CustomPrimaryButton
+            label="Re Arrange Slides"
+            additionalStyle={{ width: '200px' }}
+            onClick={handleReArrangeSlides}
+            dataTestid={`presentation-re-arrange-page-${presentation.id}`}
+          />
+          <CustomPrimaryButton
+            label="Slideshow"
+            additionalStyle={{ width: '200px' }}
+            onClick={handleOpenSlideshow}
+            dataTestid={`presentation-re-arrange-page-${presentation.id}`}
           />
         </Wrapper>
       </div>

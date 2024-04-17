@@ -4,6 +4,7 @@ import TextBoxModal from './TextBoxModal';
 import ImageModal from './ImageModal';
 import VideoModal from './VideoModal';
 import CodeModal from './CodeModal';
+import SlideHistory from './SlideHistory/SlideHistory';
 
 const EditMenu = ({
   anchorEl,
@@ -29,13 +30,17 @@ const EditMenu = ({
   const handleOpenCodeHandler = () => setOpenCodeHandler(true);
   const handleCloseCodeHandler = () => setOpenCodeHandler(false);
 
+  const [OpenSlideHistoryHandler, setOpenSlideHistoryHandler] = useState(false);
+  const handleOpenSlideHistoryHandler = () => setOpenSlideHistoryHandler(true);
+  const handleCloseSlideHistoryHandler = () =>
+    setOpenSlideHistoryHandler(false);
+
   const handleClose = () => {
     setAnchorEl(null);
   };
 
   const handleAddTextOnSlide = () => {
     handleOpenCreateTextBox();
-    console.log('Clickes');
   };
 
   const handleAddImageOnSlide = () => {
@@ -48,6 +53,10 @@ const EditMenu = ({
 
   const handleAddCodeOnSlide = () => {
     handleOpenCodeHandler();
+  };
+
+  const handleOpenSlideHistory = () => {
+    handleOpenSlideHistoryHandler();
   };
 
   return (
@@ -83,6 +92,12 @@ const EditMenu = ({
       <MenuItem data-testid={'add-code-box-btn'} onClick={handleAddCodeOnSlide}>
         Add Code
       </MenuItem>
+      <MenuItem
+        data-testid={'goto-history-btn'}
+        onClick={handleOpenSlideHistory}
+      >
+        History
+      </MenuItem>
       <TextBoxModal
         open={openCreateTextBox}
         handleCloseCreateTextBox={handleCloseCreateTextBox}
@@ -107,6 +122,13 @@ const EditMenu = ({
       <CodeModal
         open={openCodeHandler}
         handleCloseCodeHandler={handleCloseCodeHandler}
+        presentationId={presentationId}
+        selectedSlideId={selectedSlideId}
+        setAnchorEl={setAnchorEl}
+      />
+      <SlideHistory
+        open={OpenSlideHistoryHandler}
+        handleCloseCodeHandler={handleCloseSlideHistoryHandler}
         presentationId={presentationId}
         selectedSlideId={selectedSlideId}
         setAnchorEl={setAnchorEl}

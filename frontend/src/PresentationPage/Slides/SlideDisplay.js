@@ -14,6 +14,9 @@ import TextBoxElementDisplay from './ElementDisplays.js/TextBoxElementDisplay';
 import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 
 const SlideDisplay = ({ presentationId, selectedSlideId }) => {
+  // const containerWidth = 1000;
+  // const containerHeight = 500;
+
   const {
     selectedSlide,
     updateElementPosition,
@@ -75,6 +78,13 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
       newSize.width,
       newSize.height
     );
+    updateElementPosition(
+      presentationId,
+      selectedSlideId,
+      element.id,
+      `${newPosition.left}`,
+      `${newPosition.top}`
+    );
     setSelectedElement({ ...element, ...newSize, ...newPosition });
   };
 
@@ -102,7 +112,7 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
 
       const corners = [
         { top: 0, left: 0 }, // Top-left
-        { top: 0, left: 0 + elementWidthPx - 10 }, // Top-right
+        { top: 0, left: 0 + elementWidthPx - 10 }, // Top-right-
         { top: 0 + elementHeightPx - 10, left: 0 }, // Bottom-left
         {
           top: 0 + elementHeightPx - 10,
@@ -119,6 +129,24 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
     [selectedElement]
   );
 
+  // Check if there are elements and elements is not empty
+  const getElements = () => {
+    if (selectedSlide?.elements?.length) {
+      // Access the last element in the array
+      const lastElementObj =
+        selectedSlide.elements[selectedSlide.elements.length - 1];
+
+      // Assuming we don't know the key name and there's only one key per object
+      const key = Object.keys(lastElementObj)[0]; // Get the key of the last object
+      const values = lastElementObj[key]; // Get the value using the key which is an array
+
+      // Now you can use 'values' which is the array associated with the last time key
+      return values; // Outputs the array of the last element object
+    } else {
+      return [];
+    }
+  };
+
   return (
     <div
       className="slideDisplaylolol"
@@ -133,7 +161,7 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
         overflow: 'hidden',
       }}
     >
-      {selectedSlide?.elements?.map((element) => {
+      {getElements().map((element) => {
         if (element.type === 'textarea') {
           return (
             <TextBoxElementDisplay
