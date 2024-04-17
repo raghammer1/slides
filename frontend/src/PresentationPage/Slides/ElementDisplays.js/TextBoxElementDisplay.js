@@ -68,8 +68,6 @@ const TextBoxElementDisplay = ({
             defaultValue={element.text}
             style={{
               position: 'absolute',
-              // top: `${element.top}%`,
-              // left: `${element.left}%`,
               height: '100%',
               width: '100%',
               fontSize: element.fontSize,
@@ -79,6 +77,7 @@ const TextBoxElementDisplay = ({
               overflow: 'hidden',
               border: '2px solid #999',
               cursor: 'default',
+              backgroundColor: 'transparent',
             }}
             readOnly
           />

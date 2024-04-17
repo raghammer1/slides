@@ -20,6 +20,7 @@ const TextBoxPreview = ({ element, size }) => {
         overflow: 'hidden',
         border: 'none',
         cursor: 'default',
+        backgroundColor: 'transparent',
       }}
       readOnly
     />
