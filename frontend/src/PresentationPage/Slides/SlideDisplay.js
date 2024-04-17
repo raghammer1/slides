@@ -23,11 +23,15 @@ const SlideDisplay = ({
   presentationId,
   selectedSlideId,
   isScreenLessThan1000,
+  isScreenLessThan700,
 }) => {
   // let containerWidth = 1000;
   // let containerHeight = 500;
 
-  if (isScreenLessThan1000) {
+  if (isScreenLessThan700) {
+    setContainerWidth(400);
+    setContainerHeight(200);
+  } else if (isScreenLessThan1000) {
     setContainerWidth(700);
     setContainerHeight(350);
   } else {

@@ -24,6 +24,7 @@ const SlidesMain = ({
   presentationId,
   isNarrowScreen,
   isScreenLessThan1000,
+  isScreenLessThan700,
 }) => {
   const {
     slides,
@@ -115,6 +116,7 @@ const SlidesMain = ({
         />
         <SlideDisplay
           isScreenLessThan1000={isScreenLessThan1000}
+          isScreenLessThan700={isScreenLessThan700}
           presentationId={presentationId}
           selectedSlideId={selectedSlideId}
         />
