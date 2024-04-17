@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Tooltip } from '@mui/material';
 import CustomPrimaryButton from '../../components/CustomePrimaryButton';
@@ -18,6 +18,20 @@ const RegisterPageFooter = ({ handleRegister, isFormValid }) => {
   const getFormValid = () => {
     return 'Press to register';
   };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter' && isFormValid) {
+      handleRegister();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keypress', handleKeyPress);
+
+    return () => {
+      document.removeEventListener('keypress', handleKeyPress);
+    };
+  }, [isFormValid, handleRegister]);
 
   return (
     <>
