@@ -228,6 +228,8 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
               key={element.id}
               element={element}
               onClick={() => handleSelectedElement(element)}
+              presentationId={presentationId}
+              selectedSlideId={selectedSlideId}
             />
           );
         }

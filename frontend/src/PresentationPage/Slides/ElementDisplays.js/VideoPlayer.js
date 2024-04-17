@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { Rnd } from 'react-rnd';
+import VideoDoubleClick from './DoubleClickHandlers.js/VideoDoubleClick';
 
 const VideoPlayer = ({
   style,
@@ -8,6 +9,8 @@ const VideoPlayer = ({
   onResizeStop,
   handleDeleteElement,
   renderCornerBoxes,
+  selectedSlideId,
+  presentationId,
 }) => {
   const extractVideoID = (url) => {
     const regex =
@@ -16,37 +19,75 @@ const VideoPlayer = ({
     return match ? match[1] : null;
   };
 
+  const [clickTimeout, setClickTimeout] = useState(null);
+
+  const [openEditTextBox, setOpenEditTextBox] = useState(false);
+  const handleOpenEditTextBox = () => setOpenEditTextBox(true);
+  const handleCloseEditTextBox = () => {
+    setOpenEditTextBox(false);
+  };
+  const handleEditTextBoxSelected = () => {
+    handleOpenEditTextBox();
+  };
+
+  const handleClick = useCallback(() => {
+    if (clickTimeout) {
+      clearTimeout(clickTimeout);
+      setClickTimeout(null);
+      console.log('Double clicked:', element.id);
+      handleEditTextBoxSelected();
+      // Perform your double-click action here
+    } else {
+      const timeout = setTimeout(() => {
+        setClickTimeout(null);
+        console.log('Single clicked:', element.id);
+        // Perform your single-click action here
+        // handleSelectedElement(element);
+      }, 500); // 500ms for double click interval
+      setClickTimeout(timeout);
+    }
+  }, [clickTimeout, element]);
+
   const videoSrc = `https://www.youtube.com/embed/${extractVideoID(
     element.src
   )}?autoplay=${element.autoplay ? '1' : '0'}&mute=1`;
   return (
-    <Rnd
-      default={{
-        x: element.top,
-        y: element.left,
-        width: `${element.width}%`,
-        height: `${element.height}%`,
-      }}
-      className={element.id}
-      bounds="parent"
-      key={element.id}
-      onDragStop={(e, d) => onDragStop(e, d, element)}
-      onResizeStop={(e, direction, ref, delta, position) =>
-        onResizeStop(e, direction, ref, delta, position, element)
-      }
-      onContextMenu={(e) => handleDeleteElement(element.id, e)}
-    >
-      <div style={style}>
-        <iframe
-          width={style.width}
-          height={style.height}
-          src={videoSrc}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
-      </div>
-      {renderCornerBoxes(element)}
-    </Rnd>
+    <>
+      <Rnd
+        default={{
+          x: element.top,
+          y: element.left,
+          width: `${element.width}%`,
+          height: `${element.height}%`,
+        }}
+        className={element.id}
+        bounds="parent"
+        key={element.id}
+        onDragStop={(e, d) => onDragStop(e, d, element)}
+        onResizeStop={(e, direction, ref, delta, position) =>
+          onResizeStop(e, direction, ref, delta, position, element)
+        }
+        onContextMenu={(e) => handleDeleteElement(element.id, e)}
+      >
+        <div style={style} onClick={handleClick}>
+          <iframe
+            width={style.width}
+            height={style.height}
+            src={videoSrc}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+        {renderCornerBoxes(element)}
+      </Rnd>
+      <VideoDoubleClick
+        open={openEditTextBox}
+        handleCloseEditTextBox={handleCloseEditTextBox}
+        presentationId={presentationId}
+        selectedSlideId={selectedSlideId}
+        element={element}
+      />
+    </>
   );
 };
 
