@@ -64,11 +64,11 @@ const SlideDisplay = ({
     setAnchorEl(event.currentTarget);
   };
 
-  const [rerender, setRerender] = useState(false);
-  useEffect(() => {
-    console.log('Version changed:', version);
-    setRerender((prev) => !prev); // Toggle to force rerender
-  }, [version]);
+  // const [rerender, setRerender] = useState(false);
+  // useEffect(() => {
+  //   console.log('Version changed:', version);
+  //   setRerender((prev) => !prev); // Toggle to force rerender
+  // }, [version]);
 
   useEffect(() => {
     Prism.highlightAll();
@@ -80,18 +80,26 @@ const SlideDisplay = ({
   };
 
   const onDragStop = (e, d, element) => {
-    const top = '0';
-    const left = '0';
-    console.log('IENNFUHEWFIUWEBFU TOP LEFT  NEW', top, left, rerender);
-
     updateElementPosition(
       presentationId,
       selectedSlideId,
       element.id,
-      `${d.x}`,
-      `${d.y}`
+      `${(d.x / containerWidth) * 100}`,
+      `${(d.y / containerHeight) * 100}`
     );
-    setSelectedElement({ ...element, top: `${d.x}`, left: `${d.y}` });
+    console.log(
+      `${(d.x / containerWidth) * 100}`,
+      `${(d.y / containerHeight) * 100}`,
+      'IHWRYUOWUYERGIUEWYRGYIUEWGRUWEGIURGUY',
+      d.x,
+      d.y,
+      d
+    );
+    setSelectedElement({
+      ...element,
+      top: `${(d.y / containerHeight) * 100}`,
+      left: `${(d.x / containerWidth) * 100}`,
+    });
   };
 
   const onResizeStop = (e, direction, ref, delta, position, element) => {
@@ -100,8 +108,8 @@ const SlideDisplay = ({
       height: `${(ref.offsetHeight / containerHeight) * 100}`,
     };
     const newPosition = {
-      top: `${position.y}`,
-      left: `${position.x}`,
+      top: `${(position.y / containerHeight) * 100}`,
+      left: `${(position.x / containerWidth) * 100}`,
     };
     updateElementSize(
       presentationId,
@@ -114,8 +122,8 @@ const SlideDisplay = ({
       presentationId,
       selectedSlideId,
       element.id,
-      `${newPosition.left}`,
-      `${newPosition.top}`
+      newPosition.left,
+      newPosition.top
     );
     setSelectedElement({ ...element, ...newSize, ...newPosition });
   };

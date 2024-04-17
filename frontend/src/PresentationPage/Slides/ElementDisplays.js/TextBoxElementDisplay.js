@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Rnd } from 'react-rnd';
 import TextBoxDoubleClick from './DoubleClickHandlers/TextBoxDoubleClick';
+import { containerWidth, containerHeight } from '../../../shared/globals';
 
 const TextBoxElementDisplay = ({
   selectedSlideId,
@@ -41,12 +42,14 @@ const TextBoxElementDisplay = ({
     }
   }, [clickTimeout, handleSelectedElement, element]);
 
+  console.log(element.top, element.left, 'HEY THERE LOLOLOLOOLOLOL');
+
   return (
     <>
       <Rnd
         default={{
-          x: element.top,
-          y: element.left,
+          x: (element.top / 100) * containerWidth,
+          y: (element.left / 100) * containerHeight,
           width: `${element.width}%`,
           height: `${element.height}%`,
         }}
@@ -65,8 +68,8 @@ const TextBoxElementDisplay = ({
             defaultValue={element.text}
             style={{
               position: 'absolute',
-              top: element.top,
-              left: element.left,
+              // top: `${element.top}%`,
+              // left: `${element.left}%`,
               height: '100%',
               width: '100%',
               fontSize: element.fontSize,
