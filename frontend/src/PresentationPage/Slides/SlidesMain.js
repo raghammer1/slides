@@ -60,11 +60,9 @@ const SlidesMain = ({
   }, [slides, selectedSlide, setSelectedSlide, version]);
 
   useEffect(() => {
-    // When a slide is selected, start the timer
     startTimer();
 
     return () => {
-      // When the slide changes or the component unmounts, stop the timer
       stopTimer();
       console.log(`Elapsed Time: ${getElapsedTime()}ms`);
     };
@@ -72,7 +70,6 @@ const SlidesMain = ({
 
   const nav = useNavigate();
   const handleDeleteSlide = (slide) => {
-    // e.stopPropagation();
     if (slides.length === 1) {
       handleOpen();
       return;

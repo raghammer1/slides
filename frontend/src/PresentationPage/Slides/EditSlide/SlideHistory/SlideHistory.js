@@ -4,19 +4,18 @@ import { styled, Menu } from '@mui/material';
 import usePresentationListStore from '../../../../zustandStore/usePresentationListStore';
 import PreviewTheOlderVersion from './PreviewTheOlderVersion';
 
-// Define a styled menu that behaves as a sliding panel
 const SlidePanel = styled(Menu)(({ theme, open }) => ({
   '& .MuiPaper-root': {
     position: 'fixed',
     width: '30%',
     height: '100vh',
-    right: open ? 0 : '-30%', // Slide in from the right
+    right: open ? 0 : '-30%',
     top: 0,
     transition: theme.transitions.create('right', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    zIndex: 1200, // Make sure it's on top of other content
+    zIndex: 1200,
   },
 }));
 
@@ -48,7 +47,7 @@ const SlideHistory = ({
   const handlePreviewOldSlide = () => {
     handleOpenPreviewHandler();
   };
-  // Ensure the panel closes when you expect it to
+
   const handleClose = () => {
     handleCloseCodeHandler();
     if (setAnchorEl) {
@@ -60,10 +59,9 @@ const SlideHistory = ({
     state.getSlideFromPresentationById(presentationId, selectedSlideId)
   );
 
-  // Function to convert timestamp to human-readable date
   const formatDate = (timestamp) => {
     const date = new Date(parseInt(timestamp));
-    return date.toLocaleString(); // Converts to local date string
+    return date.toLocaleString();
   };
 
   const goToThisTimeHistory = (elementObj) => {

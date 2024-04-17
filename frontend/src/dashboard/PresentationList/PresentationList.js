@@ -42,4 +42,3 @@ const PresentationList = ({ searchInput }) => {
 };
 
 export default PresentationList;
-// se

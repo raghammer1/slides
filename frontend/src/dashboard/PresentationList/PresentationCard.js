@@ -8,7 +8,7 @@ const Wrapper = styled('div')((props) => ({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: props.bgColor || '#333', // default to #333 if no bgColor is provided
+  backgroundColor: props.bgColor || '#333',
   backgroundImage: props.bgImage ? `url(${props.bgImage})` : 'none',
   backgroundSize: 'cover',
   backgroundPosition: 'center',
@@ -37,9 +37,8 @@ const PresentationCard = ({ presentation }) => {
     });
   }, [presentation.thumbnail]);
 
-  // Determine background style based on the thumbnail URL
   const backgroundStyle = {
-    bgColor: isValid ? undefined : '#333', // If no thumbnail, use #999
+    bgColor: isValid ? undefined : '#333',
     bgImage: presentation.thumbnail,
     color: isValid ? '#333' : '#fff',
   };
@@ -48,7 +47,7 @@ const PresentationCard = ({ presentation }) => {
     <Wrapper
       data-testid={`presentation-card-${presentation.id}`}
       onClick={handleOpenPresentation}
-      {...backgroundStyle} // spread the background style props
+      {...backgroundStyle}
     >
       <div
         style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '5px' }}

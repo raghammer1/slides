@@ -42,7 +42,7 @@ const Input = styled('input')({
 });
 
 const Fold = ({ handleOpen, setSearchInput, searchInput }) => {
-  const [localInput, setLocalInput] = useState(searchInput); // Local state for handling input
+  const [localInput, setLocalInput] = useState(searchInput);
   const { clearCurrentUser } = useCurrentUserStore();
   const { clearPresentations } = usePresentationListStore();
   const nav = useNavigate();

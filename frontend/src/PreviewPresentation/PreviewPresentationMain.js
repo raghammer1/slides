@@ -83,7 +83,7 @@ const PreviewPresentationMain = () => {
           setCurrSlideNumber(newSlideNumber);
           setIsVisible(true);
           nav(`/preview/${id}/${newSlideNumber}`);
-        }, 500); // match the timeout with your transition duration
+        }, 500);
       }
     };
 

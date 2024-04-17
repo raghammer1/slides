@@ -7,7 +7,6 @@ import { styled } from '@mui/system';
 
 const AlertContext = createContext();
 
-// Create a styled component for SnackbarContent
 const StyledSnackbarContent = styled(SnackbarContent)(({ theme, bgColor }) => ({
   backgroundColor: bgColor || theme.palette.primary.main,
 }));
@@ -52,7 +51,7 @@ export const AlertProvider = ({ children }) => {
         }}
       >
         <StyledSnackbarContent
-          bgColor={alertState.bgColor} // Pass bgColor as a prop to styled component
+          bgColor={alertState.bgColor}
           message={<span id="client-snackbar">{alertState.message}</span>}
           action={[
             <IconButton

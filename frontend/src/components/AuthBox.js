@@ -1,4 +1,3 @@
-//
 import React from 'react';
 import Box from '@mui/material/Box';
 import { styled } from '@mui/system';
@@ -26,7 +25,8 @@ const AuthBox = (props) => {
           flexDirection: 'column',
           padding: '25px',
         }}
-        data-testid="box">
+        data-testid="box"
+      >
         {props.children}
       </Box>
     </BoxWrapper>

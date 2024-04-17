@@ -36,7 +36,6 @@ export const setStore = async (data) => {
     const token = localStorage.getItem('token');
     console.log('DATA', data);
 
-    // Ensure token exists before proceeding
     if (!token) {
       throw new Error('No token found');
     }
@@ -52,27 +51,3 @@ export const setStore = async (data) => {
     return { error: true, message: e.message };
   }
 };
-
-// STORE SCHEMA
-/**
- * @typedef {Object} Store
- * @property {Object} Presentations - The name of the user.
- */
-
-// WE ARE CHECKING THIS AS THIS WILL TELL US IF THE ROUTE THAT IS BEING ACCESSED BY THE USER
-// IS BEING DONE WHEN THEY HAVE A VALID TOKEN ELSE THEY WON'T BE ABLE TO ACCESS THE PATH
-// ONLY NEEDED ON AUTHORIZED ROUTES HENCE !
-// !IMPORTANT CODE DO NOT DELETE
-// const checkResponseCode = (exception) => {
-//   const responseCode = exception?.response?.status;
-
-//   if (responseCode) (responseCode === 401 || responseCode === 403) && logout();
-// };
-// const logout = () => {
-//   localStorage.clear();
-//   window.location.pathname = '/login';
-// };
-
-// await setStore( { hoooo: 'WOW' } );
-// const oldData = await getStore();
-// console.log(oldData, 'STORE');
