@@ -88,7 +88,7 @@ const PresentationDetail = () => {
   }, [title]);
 
   const handleOpenSlideshow = () => {
-    // Construct the URL for the '/preview' route
+    // Construct the URL for the '/preview' router
     const previewUrl = `${window.location.origin}/preview/${id}/0`;
     // Open the new tab with the '/preview' route
     window.open(previewUrl, '_blank', 'noopener,noreferrer');
