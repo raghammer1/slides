@@ -9,7 +9,7 @@ const Wrapper = styled('div')({
   alignItems: 'center',
   backgroundColor: '#333',
   color: '#fff',
-  width: 'calc(25% - 20px)',
+  width: '300px',
   height: '120px',
   marginTop: '10px',
 });
@@ -25,8 +25,7 @@ const PresentationCard = ({ presentation }) => {
   return (
     <Wrapper
       data-testid={`presentation-card-${presentation.id}`}
-      onClick={handleOpenPresentation}
-    >
+      onClick={handleOpenPresentation}>
       {presentation.name}
     </Wrapper>
   );
