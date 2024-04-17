@@ -21,9 +21,11 @@ const style = {
 
 const CreatePresentationModal = ({ open, handleClose }) => {
   const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  // const [thumbnail, setThumbnail] = useState('');
+
   const [isFormValid, setIsFormValid] = useState(false);
   const { showAlert } = useAlert();
-
   const { addPresentation } = usePresentationListStore();
 
   useEffect(() => {
@@ -38,12 +40,18 @@ const CreatePresentationModal = ({ open, handleClose }) => {
     return 'Create New Presentation';
   };
 
+  const handleCancel = () => {
+    handleClose();
+  };
+
   const handleCreatePresentationFunction = () => {
     const presentationId = uuidv4();
     const randomIdSlides = uuidv4();
     const newPresentation = {
       id: presentationId,
       name,
+      // thumbnail,
+      description,
       slides: [
         {
           elements: [],
@@ -54,7 +62,6 @@ const CreatePresentationModal = ({ open, handleClose }) => {
 
     addPresentation(newPresentation);
     showAlert(`'${name}' Presentation Created`, 'green');
-
     handleClose();
   };
 
@@ -68,6 +75,13 @@ const CreatePresentationModal = ({ open, handleClose }) => {
         dataTestId={'create-presentation-name-test'}
         label="Presentation Name"
       />
+      <InputWithLabels
+        value={description}
+        setValue={setDescription}
+        label="Description"
+        placeholder="Enter description"
+        dataTestId={'create-presentation-description-input'}
+      />
       <>
         <Tooltip title={!isFormValid ? getNotFormValid() : getFormValid()}>
           <div>
@@ -77,6 +91,12 @@ const CreatePresentationModal = ({ open, handleClose }) => {
               disabled={!isFormValid}
               onClick={handleCreatePresentationFunction}
               dataTestid={'create-presentation-name-test-button'}
+            />
+            <CustomPrimaryButton
+              label="Cancel"
+              additionalStyle={{ marginTop: '10px', backgroundColor: 'red' }}
+              onClick={handleCancel}
+              dataTestid={'cancel-presentation-button'}
             />
           </div>
         </Tooltip>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Fold from './Fold/Fold';
 import MainDashboard from './MainDashboard';
 import DashboardFooter from './DashboardFooter';
@@ -10,10 +10,14 @@ const Dashboard = () => {
     padding: 0,
   });
 
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <Wrapper>
-      <Fold />
-      <MainDashboard />
+      <Fold handleOpen={handleOpen} />
+      <MainDashboard handleClose={handleClose} open={open} />
       <DashboardFooter />
     </Wrapper>
   );

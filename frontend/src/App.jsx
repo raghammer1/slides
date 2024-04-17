@@ -42,7 +42,10 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
-            <Route path="/preview/:id" element={<PreviewPresentationMain />} />
+            <Route
+              path="/preview/:id/:slideNumberURL"
+              element={<PreviewPresentationMain />}
+            />
           </Routes>
         </BrowserRouter>
       </AlertProvider>

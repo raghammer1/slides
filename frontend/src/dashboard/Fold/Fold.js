@@ -5,7 +5,7 @@ import CustomPrimaryButton from '../../components/CustomePrimaryButton';
 import useCurrentUserStore from '../../zustandStore/useCurrentUserStore';
 import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 
-const Fold = () => {
+const Fold = ({ handleOpen }) => {
   const NavWrapper = styled('div')({
     height: '40px',
     backgroundColor: '#333',
@@ -35,8 +35,10 @@ const Fold = () => {
   return (
     <NavWrapper>
       <CustomPrimaryButton
-        label={'HI'}
-        additionalStyle={{ width: '100px', height: '30px' }}
+        label={'New Presentation'}
+        additionalStyle={{ width: '200px', height: '30px' }}
+        onClick={handleOpen}
+        dataTestid="newPresentationButton"
       />
       <CustomPrimaryButton
         label={'Logout'}
