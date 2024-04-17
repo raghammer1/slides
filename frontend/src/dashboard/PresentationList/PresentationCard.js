@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Wrapper = styled('div')({
   display: 'flex',
-  // flexDirection: 'row',
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
@@ -15,7 +14,7 @@ const Wrapper = styled('div')({
   marginTop: '10px',
   padding: '10px',
   textAlign: 'center',
-  cursor: 'pointer', // Makes it clear that the card is clickable
+  cursor: 'pointer',
   overflow: 'hidden',
 });
 
@@ -27,11 +26,6 @@ const PresentationCard = ({ presentation }) => {
   };
 
   return (
-    // <Wrapper
-    //   data-testid={`presentation-card-${presentation.id}`}
-    //   onClick={handleOpenPresentation}>
-    //   {presentation.name}, {presentation.slides.length}
-    // </Wrapper>
     <Wrapper
       data-testid={`presentation-card-${presentation.id}`}
       onClick={handleOpenPresentation}>
