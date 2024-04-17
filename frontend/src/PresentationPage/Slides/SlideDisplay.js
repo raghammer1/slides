@@ -17,20 +17,27 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
   // const containerWidth = 1000;
   // const containerHeight = 500;
 
+  const version = usePresentationListStore((state) => state.version);
+
   const {
     selectedSlide,
     updateElementPosition,
     updateElementSize,
     deleteElementFromSlide,
-  } = usePresentationListStore((store) => ({
-    selectedSlide: store.getSlideFromPresentationById(
-      presentationId,
-      selectedSlideId
-    ),
-    updateElementPosition: store.updateElementPosition,
-    updateElementSize: store.updateElementSize,
-    deleteElementFromSlide: store.deleteElementFromSlide,
-  }));
+  } = usePresentationListStore(
+    useCallback(
+      (store) => ({
+        selectedSlide: store.getSlideFromPresentationById(
+          presentationId,
+          selectedSlideId
+        ),
+        updateElementPosition: store.updateElementPosition,
+        updateElementSize: store.updateElementSize,
+        deleteElementFromSlide: store.deleteElementFromSlide,
+      }),
+      [presentationId, selectedSlideId, version]
+    )
+  );
 
   const [selectedElement, setSelectedElement] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -39,8 +46,15 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
     setAnchorEl(event.currentTarget);
   };
 
+  const [rerender, setRerender] = useState(false);
+  useEffect(() => {
+    console.log('Version changed:', version);
+    setRerender((prev) => !prev); // Toggle to force rerender
+  }, [version]);
+
   useEffect(() => {
     Prism.highlightAll();
+    console.log(version, 'version');
   }, [selectedSlide]);
 
   const handleSelectedElement = (element) => {
@@ -50,7 +64,7 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
   const onDragStop = (e, d, element) => {
     const top = '0';
     const left = '0';
-    console.log('IENNFUHEWFIUWEBFU TOP LEFT  NEW', top, left);
+    console.log('IENNFUHEWFIUWEBFU TOP LEFT  NEW', top, left, rerender);
 
     updateElementPosition(
       presentationId,
@@ -147,8 +161,11 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
     }
   };
 
+  console.log(selectedSlide, 'selectedSlide');
+
   return (
     <div
+      key={version}
       className="slideDisplaylolol"
       style={{
         width: '1000px',
@@ -156,7 +173,9 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#999',
+        backgroundImage: selectedSlide.bgCol
+          ? selectedSlide.bgCol
+          : `linear-gradient(${'to bottom right'}, ${'#999'}, ${'#999'})`,
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -165,6 +184,8 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
         if (element.type === 'textarea') {
           return (
             <TextBoxElementDisplay
+              presentationId={presentationId}
+              selectedSlideId={selectedSlideId}
               key={element.id}
               element={element}
               onDragStop={onDragStop}
@@ -177,6 +198,8 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
         } else if (element.type === 'image') {
           return (
             <ImageElementDisplay
+              presentationId={presentationId}
+              selectedSlideId={selectedSlideId}
               key={element.id}
               element={element}
               onDragStop={onDragStop}
@@ -205,6 +228,8 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
               key={element.id}
               element={element}
               onClick={() => handleSelectedElement(element)}
+              presentationId={presentationId}
+              selectedSlideId={selectedSlideId}
             />
           );
         }
@@ -217,6 +242,8 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
               onResizeStop={onResizeStop}
               handleDeleteElement={handleDeleteElement}
               renderCornerBoxes={renderCornerBoxes}
+              presentationId={presentationId}
+              selectedSlideId={selectedSlideId}
             />
           );
         } else {

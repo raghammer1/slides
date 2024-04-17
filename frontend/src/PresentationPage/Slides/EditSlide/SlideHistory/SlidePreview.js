@@ -22,6 +22,14 @@ const SlidePreview = ({
   const addElementToObject = usePresentationListStore(
     (state) => state.addElementToObject
   );
+  const getSlideFromPresentationById = usePresentationListStore(
+    (state) => state.getSlideFromPresentationById
+  );
+
+  const gradient = getSlideFromPresentationById(
+    presentationId,
+    selectedSlideId
+  );
 
   const handleSelectThisVersion = () => {
     addElementToObject(presentationId, selectedSlideId, value);
@@ -38,7 +46,9 @@ const SlidePreview = ({
           width: '800px',
           height: '400px',
           position: 'relative',
-          backgroundColor: '#f2f2f2',
+          backgroundImage: gradient.bgCol
+            ? gradient.bgCol
+            : `linear-gradient(${'to bottom right'}, ${'#999'}, ${'#999'})`,
           overflow: 'hidden',
         }}
       >

@@ -46,6 +46,7 @@ const CreatePresentationModal = ({ open, handleClose }) => {
       name,
       slides: [
         {
+          elements: [],
           id: randomIdSlides,
         },
       ],

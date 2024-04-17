@@ -14,7 +14,7 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
-// import { SortableItem } from './SortableItem';
+
 import ReArrangeSlideCard from './ReArrangeSlideCard';
 import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 import { styled } from '@mui/system';

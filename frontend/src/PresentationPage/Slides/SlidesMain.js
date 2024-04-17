@@ -18,14 +18,21 @@ const Wrapper = styled('div')({
 });
 
 const SlidesMain = ({ presentationId }) => {
-  const { slides, deleteSlide, startTimer, stopTimer, getElapsedTime } =
-    usePresentationListStore((state) => ({
-      slides: state.getSlidesForPresentation(presentationId),
-      deleteSlide: state.deleteSlide,
-      startTimer: state.startTimer,
-      stopTimer: state.stopTimer,
-      getElapsedTime: state.getElapsedTime,
-    }));
+  const {
+    slides,
+    deleteSlide,
+    startTimer,
+    stopTimer,
+    getElapsedTime,
+    version,
+  } = usePresentationListStore((state) => ({
+    slides: state.getSlidesForPresentation(presentationId),
+    deleteSlide: state.deleteSlide,
+    startTimer: state.startTimer,
+    stopTimer: state.stopTimer,
+    getElapsedTime: state.getElapsedTime,
+    version: state.version,
+  }));
 
   const [selectedSlide, setSelectedSlide] = useState(slides[0]);
   const selectedSlideId = selectedSlide.id;
@@ -42,7 +49,7 @@ const SlidesMain = ({ presentationId }) => {
     ) {
       setSelectedSlide(slides[0] || null);
     }
-  }, [slides, selectedSlide, setSelectedSlide]);
+  }, [slides, selectedSlide, setSelectedSlide, version]);
 
   useEffect(() => {
     // When a slide is selected, start the timer
@@ -53,7 +60,7 @@ const SlidesMain = ({ presentationId }) => {
       stopTimer();
       console.log(`Elapsed Time: ${getElapsedTime()}ms`);
     };
-  }, [selectedSlideId, startTimer, stopTimer, getElapsedTime]);
+  }, [selectedSlideId, startTimer, stopTimer, getElapsedTime, version]);
 
   const nav = useNavigate();
   const handleDeleteSlide = (e, slide) => {
@@ -114,7 +121,6 @@ const SlidesMain = ({ presentationId }) => {
         handleClose={handleClose}
         handlePresentationDelete={handlePresentationDelete}
       />
-      ;
     </div>
   );
 };

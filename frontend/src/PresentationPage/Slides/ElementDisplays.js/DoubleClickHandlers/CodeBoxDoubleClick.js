@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import CustomModal from '../../../components/CustomModal';
-import CustomPrimaryButton from '../../../components/CustomePrimaryButton';
-import { v4 as uuidv4 } from 'uuid';
-import InputLabelRange from '../../../components/InputLabelRange';
-import TextBoxWithLabel from '../../../components/TextBoxWithLabel';
 import 'prismjs/themes/prism-okaidia.css';
 import Prism from 'prismjs';
-import SelectWithLabel from '../../../components/SelectWithLabel';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-c';
-import InputWithLabels from '../../../components/InputLabel';
-import usePresentationListStore from '../../../zustandStore/usePresentationListStore';
+import CustomModal from '../../../../components/CustomModal';
+import SelectWithLabel from '../../../../components/SelectWithLabel';
+import TextBoxWithLabel from '../../../../components/TextBoxWithLabel';
+import InputWithLabels from '../../../../components/InputLabel';
+import CustomPrimaryButton from '../../../../components/CustomePrimaryButton';
+import usePresentationListStore from '../../../../zustandStore/usePresentationListStore';
 
 const style = {
   position: 'absolute',
@@ -25,17 +23,17 @@ const style = {
   p: 4,
 };
 
-const CodeModal = ({
+const CodeBoxDoubleClick = ({
   open,
   handleCloseCodeHandler,
   presentationId,
   selectedSlideId,
-  setAnchorEl,
+  element,
 }) => {
-  const [code, setCode] = useState('');
-  const [sizeTextBoxWidth, setSizeTextBoxWidth] = useState('50');
-  const [sizeTextBoxHeight, setSizeTextBoxHeight] = useState('50');
-  const [fontSizeTextBox, setFontSizeTextBox] = useState('1');
+  const [code, setCode] = useState(element.text);
+  const [fontSizeTextBox, setFontSizeTextBox] = useState(
+    element.fontSize.replace('em', '')
+  );
   const [language, setLanguage] = useState('javascript');
 
   const detectLanguage = (codeSnippet) => {
@@ -61,25 +59,17 @@ const CodeModal = ({
     Prism.highlightAll();
   }, [code, language]);
 
-  const { addElementToSlide } = usePresentationListStore();
+  const updateElementInSlide = usePresentationListStore(
+    (state) => state.updateElementInSlide
+  );
 
-  const handlePresentationcodeCreateTextBox = () => {
-    const idElements = uuidv4();
-    const element = {
-      id: idElements,
-      type: 'code',
+  const handleEditCode = () => {
+    updateElementInSlide(presentationId, selectedSlideId, element.id, {
       text: code,
-      top: '0',
-      left: '0',
-      height: sizeTextBoxHeight,
-      width: sizeTextBoxWidth,
       fontSize: `${fontSizeTextBox}em`,
       language,
-    };
-    addElementToSlide(presentationId, selectedSlideId, element);
-    setCode('');
+    });
     handleCloseCodeHandler();
-    setAnchorEl(null);
   };
 
   return (
@@ -140,30 +130,13 @@ const CodeModal = ({
         label="Font Size"
       />
 
-      <InputLabelRange
-        value={sizeTextBoxWidth}
-        setValue={setSizeTextBoxWidth}
-        label={'Width'}
-        max={'100'}
-        min={'0'}
-        sign={'%'}
-        customeStyle={{ marginTop: '20px' }}
-      />
-      <InputLabelRange
-        value={sizeTextBoxHeight}
-        setValue={setSizeTextBoxHeight}
-        label="Height"
-        max={'100'}
-        min={'0'}
-        sign={'%'}
-      />
       <CustomPrimaryButton
         dataTestid={'create-new-code-box-btn'}
         label="Create Now"
         additionalStyle={{ marginTop: '30px' }}
-        onClick={handlePresentationcodeCreateTextBox}
+        onClick={handleEditCode}
       />
     </CustomModal>
   );
 };
-export default CodeModal;
+export default CodeBoxDoubleClick;

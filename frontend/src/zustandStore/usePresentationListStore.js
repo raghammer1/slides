@@ -36,6 +36,7 @@ const usePresentationListStore = create(
     presentations: [],
     timerStart: null,
     elapsedTime: 0,
+    version: 0,
 
     // Method to start the timer
     startTimer: () => {
@@ -124,6 +125,8 @@ const usePresentationListStore = create(
             (max, slide) => Math.max(max, slide.slideNumber || 0),
             0
           ) + 1;
+
+        console.log(newSlide, 'newSlide');
 
         const updatedSlides = [
           ...updatedPresentation.slides,
@@ -533,6 +536,99 @@ const usePresentationListStore = create(
         );
 
         return { presentations: updatedPresentations };
+      });
+    },
+    updateSlideBackgroundColor: (presentationId, slideId, newBgColor) => {
+      set((state) => {
+        const updatedPresentations = state.presentations.map((presentation) => {
+          if (presentation.id === presentationId) {
+            const updatedSlides = presentation.slides.map((slide) => {
+              if (slide.id === slideId) {
+                // Update the background color here
+                return { ...slide, bgCol: newBgColor };
+              }
+              return slide;
+            });
+
+            return { ...presentation, slides: updatedSlides };
+          }
+          return presentation;
+        });
+
+        return { presentations: updatedPresentations };
+      });
+    },
+    updateElementInSlide: (
+      presentationId,
+      slideId,
+      elementId,
+      newProperties
+    ) => {
+      set((state) => {
+        const presentationIndex = state.presentations.findIndex(
+          (p) => p.id === presentationId
+        );
+        if (presentationIndex === -1) {
+          console.error('Presentation not found');
+          return;
+        }
+
+        const updatedPresentation = {
+          ...state.presentations[presentationIndex],
+        };
+        const slideIndex = updatedPresentation.slides.findIndex(
+          (slide) => slide.id === slideId
+        );
+        if (slideIndex === -1) {
+          console.error('Slide not found');
+          return;
+        }
+
+        const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
+        const elementsArray = updatedSlide.elements;
+        if (elementsArray.length === 0) {
+          console.error('No elements found');
+          return;
+        }
+
+        const lastElementObject = elementsArray[elementsArray.length - 1];
+        const lastTimeKey = Object.keys(lastElementObject).pop();
+        const lastTime = parseInt(lastTimeKey, 10);
+        const currentTime = Date.now();
+        const elapsedTime = currentTime - lastTime;
+
+        if (elapsedTime < 60000) {
+          const lastElements = lastElementObject[lastTimeKey];
+          const elementIndex = lastElements.findIndex(
+            (element) => element.id === elementId
+          );
+          if (elementIndex === -1) {
+            console.error('Element not found');
+            return;
+          }
+          lastElements[elementIndex] = {
+            ...lastElements[elementIndex],
+            ...newProperties,
+          };
+        } else {
+          const newElementObject = {
+            [currentTime]: [
+              ...lastElementObject[lastTimeKey],
+              { id: elementId, ...newProperties },
+            ],
+          };
+          updatedSlide.elements.push(newElementObject);
+        }
+
+        updatedPresentation.slides[slideIndex] = updatedSlide;
+        const updatedPresentations = [...state.presentations];
+        updatedPresentations[presentationIndex] = updatedPresentation;
+
+        return {
+          ...state,
+          presentations: updatedPresentations,
+          version: state.version + 1,
+        };
       });
     },
   }))
