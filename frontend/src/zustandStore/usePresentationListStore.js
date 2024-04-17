@@ -99,12 +99,10 @@ const usePresentationListStore = create(
         };
       });
     },
-    updatePresentationTitle: (id, newTitle) =>
+    updatePresentationTitle: (id, edits) =>
       set((state) => ({
         presentations: state.presentations.map((presentation) =>
-          presentation.id === id
-            ? { ...presentation, name: newTitle }
-            : presentation
+          presentation.id === id ? { ...presentation, ...edits } : presentation
         ),
       })),
     addSlide: (presentationId, newSlide) => {
