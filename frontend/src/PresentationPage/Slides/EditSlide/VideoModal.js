@@ -90,7 +90,7 @@ const VideoModal = ({
         sign={'%'}
       />
       <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
-        <h3>AutoPlay</h3>
+        <h3 style={{ color: '#A6D8FF' }}>AutoPlay</h3>
         <input
           data-testid={'autoplay-checkbox-btn'}
           type="checkbox"

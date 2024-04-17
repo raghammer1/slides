@@ -3,11 +3,70 @@ import { v4 as uuidv4 } from 'uuid';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import usePresentationListStore from '../../zustandStore/usePresentationListStore';
+import styled from '@emotion/styled';
+
+const SlideContainer = styled.div`
+  overflow: auto;
+  height: 500px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f7f7f7;
+  border-radius: 8px;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+`;
+
+const SlideButton = styled.div`
+  cursor: pointer;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  background-color: ${({ isSelected }) => (isSelected ? '#aaf0d1' : '#ffffff')};
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    border-color: #888;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: ${({ isSelected }) =>
+      isSelected ? '#92cbb2' : '#f9f9f9'};
+  }
+
+  transition: all 0.3s ease;
+`;
+
+const AddSlideButton = styled(SlideButton)`
+  justify-content: center;
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+
+  &:hover {
+    background-color: #45a045;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  }
+`;
 
 const SlidesList = ({
   selectedSlideId,
   presentationId,
   setSelectedSlide,
+  selectedSlide,
   handleDeleteSlide,
   isNarrowScreen,
 }) => {
@@ -26,72 +85,56 @@ const SlidesList = ({
 
   if (isNarrowScreen) {
     return (
-      <div
-        onClick={handleAddNewSlide}
-        style={{
-          cursor: 'pointer',
-          padding: '10px',
-          margin: '5px',
-          border: '1px solid #ccc',
-          borderRadius: '5px',
-          backgroundColor: '#f0f0f0',
-        }}
-        data-testid={'add-slide-button'}
-      >
-        Add Slide +
-      </div>
+      <>
+        <AddSlideButton
+          onClick={handleAddNewSlide}
+          data-testid={'add-slide-button'}
+        >
+          Add Slide +
+        </AddSlideButton>
+        <IconButton
+          data-testid={`slide-delete-btn-test-${selectedSlide.id}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleDeleteSlide(selectedSlide);
+          }}
+          size="small"
+        >
+          <DeleteIcon fontSize="small" />
+        </IconButton>
+      </>
     );
   }
 
   return (
-    <div style={{ overflow: 'auto', height: '500px' }}>
+    <SlideContainer>
       {slides.map((slide) => (
-        <div
+        <SlideButton
           key={slide.id}
           onClick={() => setSelectedSlide(slide)}
-          style={{
-            cursor: 'pointer',
-            padding: '10px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            margin: '5px',
-            border: '1px solid #ccc',
-            borderRadius: '5px',
-            backgroundColor:
-              slide.id === selectedSlideId ? '#aaf0d1' : '#f0f0f0',
-            width: '250px',
-          }}
+          isSelected={slide.id === selectedSlideId}
           data-testid={`data-test-slide-${slide.id}`}
         >
-          <span>
-            Slide {slide.slideNumber} - {slide.id}
-          </span>
+          <span style={{ marginLeft: '10px' }}>Slide {slide.slideNumber}</span>
           <IconButton
             data-testid={`slide-delete-btn-test-${slide.id}`}
-            onClick={(e) => handleDeleteSlide(e, slide)}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleDeleteSlide(slide);
+            }}
             size="small"
           >
             <DeleteIcon fontSize="small" />
           </IconButton>
-        </div>
+        </SlideButton>
       ))}
-      <div
+      <AddSlideButton
         onClick={handleAddNewSlide}
-        style={{
-          cursor: 'pointer',
-          padding: '10px',
-          margin: '5px',
-          border: '1px solid #ccc',
-          borderRadius: '5px',
-          backgroundColor: '#f0f0f0',
-          width: '250px',
-        }}
         data-testid={'add-slide-button'}
       >
         Add Slide +
-      </div>
-    </div>
+      </AddSlideButton>
+    </SlideContainer>
   );
 };
 

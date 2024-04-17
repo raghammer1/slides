@@ -71,8 +71,8 @@ const SlidesMain = ({
   }, [selectedSlideId, startTimer, stopTimer, getElapsedTime, version]);
 
   const nav = useNavigate();
-  const handleDeleteSlide = (e, slide) => {
-    e.stopPropagation();
+  const handleDeleteSlide = (slide) => {
+    // e.stopPropagation();
     if (slides.length === 1) {
       handleOpen();
       return;
@@ -108,6 +108,7 @@ const SlidesMain = ({
     >
       <Wrapper>
         <SlidesList
+          selectedSlide={selectedSlide}
           isNarrowScreen={isNarrowScreen}
           presentationId={presentationId}
           setSelectedSlide={setSelectedSlide}
