@@ -12,10 +12,32 @@ import CodeElementDisplay from './ElementDisplays.js/CodeElementDisplay';
 import ImageElementDisplay from './ElementDisplays.js/ImageElementDisplay';
 import TextBoxElementDisplay from './ElementDisplays.js/TextBoxElementDisplay';
 import usePresentationListStore from '../../zustandStore/usePresentationListStore';
+import {
+  setContainerHeight,
+  setContainerWidth,
+  containerWidth,
+  containerHeight,
+} from '../../shared/globals';
 
-const SlideDisplay = ({ presentationId, selectedSlideId }) => {
-  // const containerWidth = 1000;
-  // const containerHeight = 500;
+const SlideDisplay = ({
+  presentationId,
+  selectedSlideId,
+  isScreenLessThan1000,
+  isScreenLessThan700,
+}) => {
+  // let containerWidth = 1000;
+  // let containerHeight = 500;
+
+  if (isScreenLessThan700) {
+    setContainerWidth(400);
+    setContainerHeight(200);
+  } else if (isScreenLessThan1000) {
+    setContainerWidth(700);
+    setContainerHeight(350);
+  } else {
+    setContainerWidth(1000);
+    setContainerHeight(500);
+  }
 
   const version = usePresentationListStore((state) => state.version);
 
@@ -46,11 +68,11 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const [rerender, setRerender] = useState(false);
-  useEffect(() => {
-    console.log('Version changed:', version);
-    setRerender((prev) => !prev); // Toggle to force rerender
-  }, [version]);
+  // const [rerender, setRerender] = useState(false);
+  // useEffect(() => {
+  //   console.log('Version changed:', version);
+  //   setRerender((prev) => !prev); // Toggle to force rerender
+  // }, [version]);
 
   useEffect(() => {
     Prism.highlightAll();
@@ -62,28 +84,36 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
   };
 
   const onDragStop = (e, d, element) => {
-    const top = '0';
-    const left = '0';
-    console.log('IENNFUHEWFIUWEBFU TOP LEFT  NEW', top, left, rerender);
-
     updateElementPosition(
       presentationId,
       selectedSlideId,
       element.id,
-      `${d.x}`,
-      `${d.y}`
+      `${(d.x / containerWidth) * 100}`,
+      `${(d.y / containerHeight) * 100}`
     );
-    setSelectedElement({ ...element, top: `${d.x}`, left: `${d.y}` });
+    console.log(
+      `${(d.x / containerWidth) * 100}`,
+      `${(d.y / containerHeight) * 100}`,
+      'IHWRYUOWUYERGIUEWYRGYIUEWGRUWEGIURGUY',
+      d.x,
+      d.y,
+      d
+    );
+    setSelectedElement({
+      ...element,
+      top: `${(d.y / containerHeight) * 100}`,
+      left: `${(d.x / containerWidth) * 100}`,
+    });
   };
 
   const onResizeStop = (e, direction, ref, delta, position, element) => {
     const newSize = {
-      width: `${(ref.offsetWidth / 1000) * 100}`,
-      height: `${(ref.offsetHeight / 500) * 100}`,
+      width: `${(ref.offsetWidth / containerWidth) * 100}`,
+      height: `${(ref.offsetHeight / containerHeight) * 100}`,
     };
     const newPosition = {
-      top: `${position.y}`,
-      left: `${position.x}`,
+      top: `${(position.y / containerHeight) * 100}`,
+      left: `${(position.x / containerWidth) * 100}`,
     };
     updateElementSize(
       presentationId,
@@ -96,8 +126,8 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
       presentationId,
       selectedSlideId,
       element.id,
-      `${newPosition.left}`,
-      `${newPosition.top}`
+      newPosition.left,
+      newPosition.top
     );
     setSelectedElement({ ...element, ...newSize, ...newPosition });
   };
@@ -117,8 +147,6 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
         return null;
       }
 
-      const containerWidth = 1000;
-      const containerHeight = 500;
       const elementWidthPx =
         (parseInt(selectedElement.width) / 100) * containerWidth;
       const elementHeightPx =
@@ -168,8 +196,8 @@ const SlideDisplay = ({ presentationId, selectedSlideId }) => {
       key={version}
       className="slideDisplaylolol"
       style={{
-        width: '1000px',
-        height: '500px',
+        width: `${containerWidth}px`,
+        height: `${containerHeight}px`,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',

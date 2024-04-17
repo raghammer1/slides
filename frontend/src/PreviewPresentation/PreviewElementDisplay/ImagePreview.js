@@ -1,8 +1,8 @@
 import React from 'react';
 
 const ImagePreview = ({ element, size }) => {
-  const topStyle = `${(element.left / 500) * size.height}px`;
-  const leftStyle = `${(element.top / 1000) * size.width}px`;
+  const topStyle = `${element.left}%`;
+  const leftStyle = `${element.top}%`;
 
   return (
     <img
