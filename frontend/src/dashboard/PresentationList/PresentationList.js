@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   overflow: auto;
   padding: 20px;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
   align-content: flex-start;
 `;
 
