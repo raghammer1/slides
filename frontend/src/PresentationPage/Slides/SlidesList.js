@@ -164,6 +164,7 @@ const SlidesList = ({
   selectedSlideId,
   presentationId,
   setSelectedSlide,
+  selectedSlide,
   handleDeleteSlide,
   isNarrowScreen,
 }) => {
@@ -182,12 +183,24 @@ const SlidesList = ({
 
   if (isNarrowScreen) {
     return (
-      <AddSlideButton
-        onClick={handleAddNewSlide}
-        data-testid={'add-slide-button'}
-      >
-        Add Slide +
-      </AddSlideButton>
+      <>
+        <AddSlideButton
+          onClick={handleAddNewSlide}
+          data-testid={'add-slide-button'}
+        >
+          Add Slide +
+        </AddSlideButton>
+        <IconButton
+          data-testid={`slide-delete-btn-test-${selectedSlide.id}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleDeleteSlide(selectedSlide);
+          }}
+          size="small"
+        >
+          <DeleteIcon fontSize="small" />
+        </IconButton>
+      </>
     );
   }
 
@@ -200,9 +213,7 @@ const SlidesList = ({
           isSelected={slide.id === selectedSlideId}
           data-testid={`data-test-slide-${slide.id}`}
         >
-          <span>
-            Slide {slide.slideNumber} - {slide.id}
-          </span>
+          <span style={{ marginLeft: '10px' }}>Slide {slide.slideNumber}</span>
           <IconButton
             data-testid={`slide-delete-btn-test-${slide.id}`}
             onClick={(e) => {
