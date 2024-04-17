@@ -36,6 +36,7 @@ const usePresentationListStore = create(
     presentations: [],
     timerStart: null,
     elapsedTime: 0,
+    version: 0,
 
     // Method to start the timer
     startTimer: () => {
@@ -623,7 +624,11 @@ const usePresentationListStore = create(
         const updatedPresentations = [...state.presentations];
         updatedPresentations[presentationIndex] = updatedPresentation;
 
-        return { ...state, presentations: updatedPresentations };
+        return {
+          ...state,
+          presentations: updatedPresentations,
+          version: state.version + 1,
+        };
       });
     },
   }))
