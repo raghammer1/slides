@@ -14,13 +14,8 @@ import {
   containerWidth,
   containerHeight,
 } from '../../shared/globals';
-import TextBoxModal from './EditSlide/TextBoxModal';
-import VideoModal from './EditSlide/VideoModal';
-import ImageModal from './EditSlide/ImageModal';
-import CodeModal from './EditSlide/CodeModal';
-import SlideHistory from './EditSlide/SlideHistory/SlideHistory';
-import SlideChangeColourModal from './EditSlide/SlideChangeColourModal';
 import GetElement from './GetElement';
+import ModalManager from './ModalManager';
 
 const SlideDisplay = ({
   presentationId,
@@ -171,8 +166,6 @@ const SlideDisplay = ({
     }
   };
 
-  console.log(selectedSlide, 'selectedSlide');
-
   const [openCreateTextBox, setOpenCreateTextBox] = useState(false);
   const handleOpenCreateTextBox = () => setOpenCreateTextBox(true);
   const handleCloseCreateTextBox = () => {
@@ -210,26 +203,31 @@ const SlideDisplay = ({
   };
   const handleAddTextOnSlide = () => {
     setAnchorEl(null);
-    setTimeout(handleOpenCreateTextBox(), 100);
+    handleOpenCreateTextBox();
   };
 
   const handleAddImageOnSlide = () => {
+    setAnchorEl(null);
     handleOpenImageHandler();
   };
 
   const handleAddVideoOnSlide = () => {
+    setAnchorEl(null);
     handleOpenVideoHandler();
   };
 
   const handleAddCodeOnSlide = () => {
+    setAnchorEl(null);
     handleOpenCodeHandler();
   };
 
   const handleOpenSlideHistory = () => {
+    setAnchorEl(null);
     handleOpenSlideHistoryHandler();
   };
 
   const handleOpenColourPalette = () => {
+    setAnchorEl(null);
     handleOpenColourPaletteHandler();
   };
   return (
@@ -309,43 +307,18 @@ const SlideDisplay = ({
         handleOpenSlideHistory={handleOpenSlideHistory}
         handleOpenColourPalette={handleOpenColourPalette}
       />
-      <TextBoxModal
-        open={openCreateTextBox}
+      <ModalManager
+        openCreateTextBox={openCreateTextBox}
         handleCloseCreateTextBox={handleCloseCreateTextBox}
-        presentationId={presentationId}
-        selectedSlideId={selectedSlideId}
-        setAnchorEl={setAnchorEl}
-      />
-      <ImageModal
-        open={openImageHandler}
+        openImageHandler={openImageHandler}
         handleCloseImageHandler={handleCloseImageHandler}
-        presentationId={presentationId}
-        selectedSlideId={selectedSlideId}
-        setAnchorEl={setAnchorEl}
-      />
-      <VideoModal
-        open={openVideoHandler}
+        openVideoHandler={openVideoHandler}
         handleCloseVideoHandler={handleCloseVideoHandler}
-        presentationId={presentationId}
-        selectedSlideId={selectedSlideId}
-        setAnchorEl={setAnchorEl}
-      />
-      <CodeModal
-        open={openCodeHandler}
+        openCodeHandler={openCodeHandler}
         handleCloseCodeHandler={handleCloseCodeHandler}
-        presentationId={presentationId}
-        selectedSlideId={selectedSlideId}
-        setAnchorEl={setAnchorEl}
-      />
-      <SlideHistory
-        open={OpenSlideHistoryHandler}
-        handleCloseCodeHandler={handleCloseSlideHistoryHandler}
-        presentationId={presentationId}
-        selectedSlideId={selectedSlideId}
-        setAnchorEl={setAnchorEl}
-      />
-      <SlideChangeColourModal
-        open={OpenSlideColourPalette}
+        OpenSlideHistoryHandler={OpenSlideHistoryHandler}
+        handleCloseSlideHistoryHandler={handleCloseSlideHistoryHandler}
+        OpenSlideColourPalette={OpenSlideColourPalette}
         handleCloseSlideColourPalette={handleCloseSlideColourPalette}
         presentationId={presentationId}
         selectedSlideId={selectedSlideId}

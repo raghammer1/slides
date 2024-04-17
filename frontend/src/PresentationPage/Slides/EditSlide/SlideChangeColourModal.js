@@ -47,7 +47,7 @@ const SlideChangeColourModal = ({
   return (
     <CustomModal
       open={open}
-      handleCloseSlideColourPalette={handleCloseSlideColourPalette}
+      handleCloseCreateTextBox={handleCloseSlideColourPalette}
       style={style}
     >
       <h2>Set Slide Background Color</h2>
