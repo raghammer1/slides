@@ -506,7 +506,7 @@ const usePresentationListStore = create(
         console.log('New state presentations:', presentationsCopy);
 
         // Return the new state with the updated presentations array
-        return { presentations: presentationsCopy };
+        return { presentations: presentationsCopy, version: state.version + 1 };
       });
     },
 
