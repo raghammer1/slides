@@ -26,36 +26,40 @@ const Wrapper2 = styled('div')({
     flexDirection: 'column',
   },
 });
+const StyledTypography = styled(Typography)(({ theme }) => ({
+  position: 'relative',
+  fontSize: '32px',
+  fontWeight: '600',
+  background: 'linear-gradient(to right, #66D3B1, #3EB489)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  textAlign: 'center',
+  padding: '10px 0',
+  margin: '20px 0',
+  cursor: 'pointer',
+  transition: 'transform 0.3s ease-in-out',
 
-const StyledTypography = styled(Typography)`
-  position: relative;
-  font-size: 32px;
-  text-align: center;
+  '&:hover': {
+    transform: 'scale(1.05)',
+  },
 
-  &:hover::before {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: black;
-    animation: lineAnimation 0.5s forwards;
-  }
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    width: '100%',
+    height: '3px',
+    bottom: '-3px',
+    left: '0',
+    background: 'linear-gradient(to right, #000, #9999)',
+    transition: 'transform 0.3s ease-in-out',
+    transformOrigin: 'left',
+    transform: 'scaleX(0)',
+  },
 
-  @keyframes lineAnimation {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-`;
+  '&:hover::before': {
+    transform: 'scaleX(1)',
+  },
+}));
 
 const PresentationDetail = () => {
   const { id } = useParams();
@@ -155,25 +159,45 @@ const PresentationDetail = () => {
         <Wrapper>
           <CustomPrimaryButton
             label="Delete"
-            additionalStyle={{ width: '170px' }}
+            additionalStyle={{
+              width: '170px',
+              background: 'linear-gradient(45deg, #66bb6a 30%, #26a69a 90%)',
+              boxShadow: '0 3px 5px 2px rgba(102, 187, 106, .3)',
+              color: 'white',
+            }}
             onClick={handleOpen}
             dataTestid={`presentation-delete-${presentation.id}`}
           />
           <CustomPrimaryButton
             label="Back"
-            additionalStyle={{ width: '170px' }}
+            additionalStyle={{
+              width: '170px',
+              background: 'linear-gradient(45deg, #66bb6a 30%, #26a69a 90%)',
+              boxShadow: '0 3px 5px 2px rgba(102, 187, 106, .3)',
+              color: 'white',
+            }}
             onClick={handleGoBack}
             dataTestid={`presentation-go-back-${presentation.id}`}
           />
           <CustomPrimaryButton
             label="Re Arrange Slides"
-            additionalStyle={{ width: '170px' }}
+            additionalStyle={{
+              width: '170px',
+              background: 'linear-gradient(45deg, #66bb6a 30%, #26a69a 90%)',
+              boxShadow: '0 3px 5px 2px rgba(102, 187, 106, .3)',
+              color: 'white',
+            }}
             onClick={handleReArrangeSlides}
             dataTestid={`presentation-re-arrange-page-${presentation.id}`}
           />
           <CustomPrimaryButton
             label="Slideshow"
-            additionalStyle={{ width: '170px' }}
+            additionalStyle={{
+              width: '170px',
+              background: 'linear-gradient(45deg, #66bb6a 30%, #26a69a 90%)',
+              boxShadow: '0 3px 5px 2px rgba(102, 187, 106, .3)',
+              color: 'white',
+            }}
             onClick={handleOpenSlideshow}
             dataTestid={`presentation-re-arrange-page-${presentation.id}`}
           />
