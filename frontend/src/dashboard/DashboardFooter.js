@@ -16,9 +16,6 @@ const DashboardFooter = () => {
   const getFooterStyle = () => ({
     backgroundColor: '#f0f0f0',
     color: '#333',
-    textAlign: 'center',
-    padding:
-      windowWidth > 1024 ? '10px 0' : windowWidth > 768 ? '8px 0' : '5px 0',
     position: 'fixed',
     left: '0',
     bottom: '0',
@@ -26,11 +23,14 @@ const DashboardFooter = () => {
     borderTop: '1px solid #e7e7e7',
     fontSize: windowWidth > 1024 ? '14px' : windowWidth > 768 ? '12px' : '10px',
     height: '25px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   });
 
   return (
     <div style={getFooterStyle()}>
-      <p>© {new Date().getFullYear()} Raghav & Vansh </p>
+      <p>© {new Date().getFullYear()} Raghav & Vansh</p>
     </div>
   );
 };
