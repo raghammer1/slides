@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { isValidImage } from '../../shared/isImageValid';
 
 const Wrapper = styled('div')((props) => ({
   display: 'flex',
@@ -11,7 +12,7 @@ const Wrapper = styled('div')((props) => ({
   backgroundImage: props.bgImage ? `url(${props.bgImage})` : 'none',
   backgroundSize: 'cover',
   backgroundPosition: 'center',
-  color: '#fff',
+  color: props.color,
   width: '300px',
   height: '150px',
   marginTop: '10px',
@@ -28,10 +29,19 @@ const PresentationCard = ({ presentation }) => {
     nav(`/presentation/${presentation.id}`);
   };
 
+  const [isValid, setIsValid] = useState(false);
+
+  useEffect(() => {
+    isValidImage(presentation.thumbnail).then((isValid) => {
+      setIsValid(isValid);
+    });
+  }, [presentation.thumbnail]);
+
   // Determine background style based on the thumbnail URL
   const backgroundStyle = {
-    bgColor: presentation.thumbnail ? undefined : '#333', // If no thumbnail, use #999
+    bgColor: isValid ? undefined : '#333', // If no thumbnail, use #999
     bgImage: presentation.thumbnail,
+    color: isValid ? '#333' : '#fff',
   };
 
   return (
@@ -48,7 +58,7 @@ const PresentationCard = ({ presentation }) => {
       <div style={{ fontSize: '14px', marginBottom: '5px' }}>
         Slides: {presentation.slides.length}
       </div>
-      <div style={{ fontSize: '12px', color: '#ccc' }}>
+      <div style={{ fontSize: '12px' }}>
         {presentation.description || 'No description provided'}
       </div>
     </Wrapper>
