@@ -24,6 +24,7 @@ const Input = styled('input')({
   color: '#dcddde',
   background: '#35393f',
   margin: 0,
+  marginTop: '-10px',
   fontSize: '16px',
   padding: '0 5px',
 });
