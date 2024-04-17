@@ -38,6 +38,7 @@ const InputWithLabels = ({
   dataTestId,
 }) => {
   const handleValueChange = (event) => {
+    event.stopPropagation();
     setValue(event.target.value);
   };
 
