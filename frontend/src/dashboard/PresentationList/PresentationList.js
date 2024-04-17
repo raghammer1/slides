@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   padding: 20px;
   align-items: flex-start;
   justify-content: flex-start;
+  align-content: flex-start;
 `;
 
 const PresentationList = () => {
