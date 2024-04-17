@@ -16,16 +16,25 @@ const Wrapper = styled.div`
   align-content: flex-start;
 `;
 
-const PresentationList = () => {
+const PresentationList = ({ searchInput }) => {
   const { presentations } = usePresentationListStore((state) => ({
     presentations: state.presentations,
   }));
+
+  const filteredPresentations = presentations.filter((presentation) =>
+    presentation.name.toLowerCase().includes(searchInput.toLowerCase())
+  );
+
+  console.log(
+    searchInput,
+    'searchInputsearchInputsearchInputsearchInputsearchInputsearchInput'
+  );
 
   console.log(presentations, 'Presentation Debug Info');
 
   return (
     <Wrapper>
-      {presentations.map((presentation) => (
+      {filteredPresentations.map((presentation) => (
         <PresentationCard key={presentation.id} presentation={presentation} />
       ))}
     </Wrapper>

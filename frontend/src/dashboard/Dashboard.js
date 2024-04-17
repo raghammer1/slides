@@ -14,10 +14,20 @@ const Dashboard = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const [searchInput, setSearchInput] = useState('');
+
   return (
     <Wrapper>
-      <Fold handleOpen={handleOpen} />
-      <MainDashboard handleClose={handleClose} open={open} />
+      <Fold
+        handleOpen={handleOpen}
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+      />
+      <MainDashboard
+        handleClose={handleClose}
+        open={open}
+        searchInput={searchInput}
+      />
       <DashboardFooter />
     </Wrapper>
   );

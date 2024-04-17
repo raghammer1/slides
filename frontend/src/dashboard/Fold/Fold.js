@@ -1,30 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/system';
-import { useNavigate } from 'react-router-dom';
+import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
 import CustomPrimaryButton from '../../components/CustomePrimaryButton';
 import useCurrentUserStore from '../../zustandStore/useCurrentUserStore';
 import usePresentationListStore from '../../zustandStore/usePresentationListStore';
+import { useNavigate } from 'react-router-dom';
 
-const Fold = ({ handleOpen }) => {
-  const NavWrapper = styled('div')({
-    height: '40px',
-    backgroundColor: '#333',
-    display: 'flex',
-    flexDirection: 'row',
-    gap: '10px',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'sticky',
-    top: 0,
-    zIndex: 1000,
-  });
+const NavWrapper = styled('div')({
+  height: '50px',
+  backgroundColor: '#333',
+  backgroundImage: 'linear-gradient(315deg, #333 0%, #0d7377 74%)',
+  display: 'flex',
+  flexDirection: 'row',
+  gap: '10px',
+  justifyContent: 'space-around',
+  alignItems: 'center',
+  position: 'sticky',
+  top: 0,
+  zIndex: 1000,
+  padding: '0 20px',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+});
 
+const InputWrapper = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  backgroundColor: 'rgba(255, 255, 255, 0.8)',
+  borderRadius: '4px',
+  boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.2)',
+});
+
+const Input = styled('input')({
+  padding: '8px 12px',
+  border: 'none',
+  outline: 'none',
+  width: '200px',
+  fontFamily: 'Arial, sans-serif',
+  fontSize: '14px',
+  backgroundColor: 'transparent',
+});
+
+const Fold = ({ handleOpen, setSearchInput, searchInput }) => {
+  const [localInput, setLocalInput] = useState(searchInput); // Local state for handling input
   const { clearCurrentUser } = useCurrentUserStore();
   const { clearPresentations } = usePresentationListStore();
-
   const nav = useNavigate();
 
-  //! CLEAR ANY AND ALL ZU-STAND STORE SLICES
   const LogoutUser = () => {
     localStorage.clear();
     clearCurrentUser();
@@ -32,21 +54,40 @@ const Fold = ({ handleOpen }) => {
     nav('/login');
   };
 
+  const handleSearchClick = () => {
+    setSearchInput(localInput);
+  };
+
   return (
     <NavWrapper>
       <CustomPrimaryButton
         label={'New Presentation'}
-        additionalStyle={{ width: '200px', height: '30px' }}
+        additionalStyle={{ width: '200px', height: '35px' }}
         onClick={handleOpen}
         dataTestid="newPresentationButton"
       />
+      <InputWrapper>
+        <Input
+          value={localInput}
+          onChange={(e) => setLocalInput(e.target.value)}
+          placeholder="Search..."
+          data-testid="searchInput"
+        />
+        <IconButton
+          onClick={handleSearchClick}
+          style={{ color: 'gray', padding: '5px' }}
+        >
+          <SearchIcon />
+        </IconButton>
+      </InputWrapper>
       <CustomPrimaryButton
         label={'Logout'}
-        additionalStyle={{ width: '100px', height: '30px' }}
+        additionalStyle={{ width: '100px', height: '35px' }}
         onClick={LogoutUser}
         dataTestid={'logout-btn'}
       />
     </NavWrapper>
   );
 };
+
 export default Fold;

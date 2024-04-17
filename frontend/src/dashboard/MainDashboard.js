@@ -3,7 +3,7 @@ import { styled } from '@mui/system';
 import CreatePresentationModal from './CreatePresentationModal';
 import PresentationList from './PresentationList/PresentationList';
 
-const MainDashboard = ({ open, handleClose }) => {
+const MainDashboard = ({ open, handleClose, searchInput }) => {
   const Wrapper = styled('div')({
     height: '89vh',
     display: 'flex',
@@ -13,7 +13,7 @@ const MainDashboard = ({ open, handleClose }) => {
 
   return (
     <Wrapper>
-      <PresentationList />
+      <PresentationList searchInput={searchInput} />
       <CreatePresentationModal open={open} handleClose={handleClose} />
     </Wrapper>
   );
