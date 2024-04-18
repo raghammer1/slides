@@ -65,7 +65,6 @@ const SlideDisplay = ({
   // Function to handle click event and set the anchor element
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
-    console.log('AnchorEl set in handleClick:', anchorEl);
   };
 
   useEffect(() => {
@@ -250,8 +249,6 @@ const SlideDisplay = ({
     handleOpenColourPaletteHandler();
   };
 
-  // Debug: Log the value right before passing it to EditMenu
-  console.log('AnchorEl before passing to EditMenu:', anchorEl);
   return (
     <div
       key={version}
@@ -267,7 +264,8 @@ const SlideDisplay = ({
           : `linear-gradient(${'to bottom right'}, ${'#999'}, ${'#999'})`,
         position: 'relative',
         overflow: 'hidden',
-      }}>
+      }}
+    >
       {getElements().map((element) => {
         return (
           <GetElement
@@ -294,7 +292,8 @@ const SlideDisplay = ({
           padding: '5px 10px',
           borderRadius: '5px',
         }}
-        data-testid={'slide-number-for-current-slide'}>
+        data-testid={'slide-number-for-current-slide'}
+      >
         {selectedSlide?.slideNumber}
       </Typography>
 
@@ -310,7 +309,8 @@ const SlideDisplay = ({
           cursor: 'pointer',
         }}
         data-testid={'edit-btn'}
-        onClick={handleClick}>
+        onClick={handleClick}
+      >
         Edit
       </Typography>
 
