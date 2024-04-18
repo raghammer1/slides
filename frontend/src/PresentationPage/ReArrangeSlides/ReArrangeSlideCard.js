@@ -1,8 +1,6 @@
-/* eslint-disable space-before-function-paren */
 import React from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-// import styled from 'styled-components';
 import TextBoxPreview from '../../PreviewPresentation/PreviewElementDisplay/TextBoxPreview';
 import ImagePreview from '../../PreviewPresentation/PreviewElementDisplay/ImagePreview';
 import VideoPreview from '../../PreviewPresentation/PreviewElementDisplay/VideoPreview';
@@ -10,7 +8,7 @@ import { Typography } from '@mui/material';
 import CodePreview from '../../PreviewPresentation/PreviewElementDisplay/CodePreview';
 import { styled } from '@mui/system';
 
-function ReArrangeSlideCard({ id, slide }) {
+const ReArrangeSlideCard = ({ id, slide }) => {
   const Card = styled('div')({
     width: '300px',
     height: '150px',
@@ -76,6 +74,6 @@ function ReArrangeSlideCard({ id, slide }) {
       <Typography>Slide: {slide.slideNumber}</Typography>
     </div>
   );
-}
+};
 
 export default ReArrangeSlideCard;
