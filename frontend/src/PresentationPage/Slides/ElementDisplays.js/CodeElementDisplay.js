@@ -3,6 +3,7 @@ import { Rnd } from 'react-rnd';
 import CodeBoxDoubleClick from './DoubleClickHandlers/CodeBoxDoubleClick';
 import { containerWidth, containerHeight } from '../../../shared/globals';
 
+// Component for displaying a code element
 const CodeElementDisplay = ({
   element,
   onDragStop,
@@ -12,8 +13,10 @@ const CodeElementDisplay = ({
   selectedSlideId,
   presentationId,
 }) => {
+  // State for handling double-click timeout
   const [clickTimeout, setClickTimeout] = useState(null);
 
+  // State for controlling edit text box modal
   const [openEditTextBox, setOpenEditTextBox] = useState(false);
   const handleOpenEditTextBox = () => setOpenEditTextBox(true);
   const handleCloseEditTextBox = () => {
@@ -23,7 +26,9 @@ const CodeElementDisplay = ({
     handleOpenEditTextBox();
   };
 
+  // Function to handle click events
   const handleClick = useCallback(() => {
+    // Logic for handling double-click
     if (clickTimeout) {
       clearTimeout(clickTimeout);
       setClickTimeout(null);
@@ -52,20 +57,17 @@ const CodeElementDisplay = ({
         onResizeStop={(e, direction, ref, delta, position) =>
           onResizeStop(e, direction, ref, delta, position, element)
         }
-        onContextMenu={(e) => handleDeleteElement(element.id, e)}
-      >
+        onContextMenu={(e) => handleDeleteElement(element.id, e)}>
         <div
           key={element.id}
           onClick={handleClick}
-          style={{ position: 'relative', width: '100%', height: '100%' }}
-        >
+          style={{ position: 'relative', width: '100%', height: '100%' }}>
           <div
             style={{
               position: 'relative',
               width: '100%',
               height: '100%',
-            }}
-          >
+            }}>
             <textarea
               defaultValue={element.text}
               onChange={(e) => {
@@ -99,12 +101,10 @@ const CodeElementDisplay = ({
                 overflowY: 'auto',
                 zIndex: 0,
                 pointerEvents: 'none',
-              }}
-            >
+              }}>
               <code
                 style={{ fontSize: element.fontSize }}
-                className={`language-${element.language}`}
-              >
+                className={`language-${element.language}`}>
                 {element.text}
               </code>
             </pre>

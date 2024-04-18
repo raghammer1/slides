@@ -3,6 +3,7 @@ import usePresentationListStore from '../../zustandStore/usePresentationListStor
 import PresentationCard from './PresentationCard';
 import styled from '@emotion/styled';
 
+// Wrapper for presentation list that applies a flex layout.
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
@@ -16,11 +17,13 @@ const Wrapper = styled.div`
   align-content: flex-start;
 `;
 
+// PresentationList component filters and displays a list of presentation cards.
 const PresentationList = ({ searchInput }) => {
   const { presentations } = usePresentationListStore((state) => ({
     presentations: state.presentations,
   }));
 
+  // Filters presentations based on the search input.
   const filteredPresentations = presentations.filter((presentation) =>
     presentation.name.toLowerCase().includes(searchInput.toLowerCase())
   );

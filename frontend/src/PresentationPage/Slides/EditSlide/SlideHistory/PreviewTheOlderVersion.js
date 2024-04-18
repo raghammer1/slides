@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal, Box } from '@mui/material';
 import SlidePreview from './SlidePreview';
 
+// Styling for the modal box that displays the slide preview.
 const style = {
   position: 'absolute',
   top: '50%',
@@ -13,6 +14,7 @@ const style = {
   p: 4,
 };
 
+// Modal component to preview older versions of a slide.
 const PreviewTheOlderVersion = ({
   open,
   handleClosePreviewHandler,
@@ -26,8 +28,7 @@ const PreviewTheOlderVersion = ({
       open={open}
       onClose={handleClosePreviewHandler}
       aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
+      aria-describedby="modal-modal-description">
       <Box sx={style}>
         <SlidePreview
           presentationId={presentationId}

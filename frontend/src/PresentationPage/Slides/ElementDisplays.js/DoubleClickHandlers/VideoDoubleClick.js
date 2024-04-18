@@ -16,6 +16,7 @@ const style = {
   p: 4,
 };
 
+// Modal component for editing an existing video element.
 const VideoDoubleClick = ({
   open,
   handleCloseEditTextBox,
@@ -23,17 +24,19 @@ const VideoDoubleClick = ({
   selectedSlideId,
   element,
 }) => {
-  const [videoUrl, setVideoUrl] = useState(element.src);
-  const [autoplay, setAutoplay] = useState(element.autoplay);
+  const [videoUrl, setVideoUrl] = useState(element.src); // Initial video URL of the video element.
+  const [autoplay, setAutoplay] = useState(element.autoplay); // Initial autoplay setting of the video element.
 
   const updateElementInSlide = usePresentationListStore(
     (state) => state.updateElementInSlide
   );
 
+  // Function to handle changes in autoplay setting.
   const handleAutoplayChange = (event) => {
     setAutoplay(event.target.checked);
   };
 
+  // Function to save the edited video element.
   const handleSaveVidEdit = () => {
     updateElementInSlide(presentationId, selectedSlideId, element.id, {
       src: videoUrl,
@@ -46,8 +49,7 @@ const VideoDoubleClick = ({
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleCloseEditTextBox}
-      style={style}
-    >
+      style={style}>
       <InputWithLabels
         dataTestId={'title-video-url-box-test'}
         value={videoUrl}

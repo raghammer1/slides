@@ -3,6 +3,7 @@ import { Rnd } from 'react-rnd';
 import TextBoxDoubleClick from './DoubleClickHandlers/TextBoxDoubleClick';
 import { containerWidth, containerHeight } from '../../../shared/globals';
 
+// Component for displaying a text box element
 const TextBoxElementDisplay = ({
   selectedSlideId,
   presentationId,
@@ -13,8 +14,10 @@ const TextBoxElementDisplay = ({
   handleSelectedElement,
   renderCornerBoxes,
 }) => {
+  // State for handling double-click timeout
   const [clickTimeout, setClickTimeout] = useState(null);
 
+  // State for controlling edit text box modal
   const [openEditTextBox, setOpenEditTextBox] = useState(false);
   const handleOpenEditTextBox = () => setOpenEditTextBox(true);
   const handleCloseEditTextBox = () => {
@@ -24,7 +27,9 @@ const TextBoxElementDisplay = ({
     handleOpenEditTextBox();
   };
 
+  // Function to handle click events
   const handleClick = useCallback(() => {
+    // Logic for handling double-click
     if (clickTimeout) {
       clearTimeout(clickTimeout);
       setClickTimeout(null);
@@ -55,8 +60,7 @@ const TextBoxElementDisplay = ({
         onResizeStop={(e, direction, ref, delta, position) =>
           onResizeStop(e, direction, ref, delta, position, element)
         }
-        onContextMenu={(e) => handleDeleteElement(element.id, e)}
-      >
+        onContextMenu={(e) => handleDeleteElement(element.id, e)}>
         <div key={element.id} onClick={handleClick}>
           <textarea
             defaultValue={element.text}

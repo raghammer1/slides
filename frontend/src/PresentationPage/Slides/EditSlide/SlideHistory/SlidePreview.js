@@ -6,17 +6,24 @@ import CodePreview from '../../../../PreviewPresentation/PreviewElementDisplay/C
 import CustomPrimaryButton from '../../../../components/CustomePrimaryButton';
 import usePresentationListStore from '../../../../zustandStore/usePresentationListStore';
 
+/**
+ * Component for previewing and potentially reverting to older versions of slides.
+ * Allows user to confirm if they wish to revert to the selected version of the slide.
+ */
 const SlidePreview = ({
   presentationId,
   selectedSlideId,
   selectedSlideHistory,
   handleClosePreviewHandler,
 }) => {
+  // Extract the first key from selectedSlideHistory to identify the snapshot.
   const key = Object.keys(selectedSlideHistory)[0];
   const value = selectedSlideHistory[key];
 
+  // Define size of the preview elements.
   const size = { width: 800, height: 400 };
 
+  // Get methods from Zustand store.
   const addElementToObject = usePresentationListStore(
     (state) => state.addElementToObject
   );
@@ -24,11 +31,13 @@ const SlidePreview = ({
     (state) => state.getSlideFromPresentationById
   );
 
+  // Retrieve current background style or fallback gradient.
   const gradient = getSlideFromPresentationById(
     presentationId,
     selectedSlideId
   );
 
+  // Handles selection of this version to replace the current slide.
   const handleSelectThisVersion = () => {
     addElementToObject(presentationId, selectedSlideId, value);
     handleClosePreviewHandler();
@@ -48,8 +57,7 @@ const SlidePreview = ({
             ? gradient.bgCol
             : `linear-gradient(${'to bottom right'}, ${'#999'}, ${'#999'})`,
           overflow: 'hidden',
-        }}
-      >
+        }}>
         {value.map((element) => {
           if (element.type === 'textarea') {
             return (

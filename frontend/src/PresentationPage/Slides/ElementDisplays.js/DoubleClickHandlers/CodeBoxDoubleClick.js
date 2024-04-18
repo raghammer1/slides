@@ -11,6 +11,7 @@ import InputWithLabels from '../../../../components/InputLabel';
 import CustomPrimaryButton from '../../../../components/CustomePrimaryButton';
 import usePresentationListStore from '../../../../zustandStore/usePresentationListStore';
 
+// Custom styling for this element.
 const style = {
   position: 'absolute',
   top: '50%',
@@ -23,6 +24,7 @@ const style = {
   p: 4,
 };
 
+// Modal component for editing an existing code block.
 const CodeBoxDoubleClick = ({
   open,
   handleCloseCodeHandler,
@@ -30,12 +32,13 @@ const CodeBoxDoubleClick = ({
   selectedSlideId,
   element,
 }) => {
-  const [code, setCode] = useState(element.text);
+  const [code, setCode] = useState(element.text); // Initial code from the element
   const [fontSizeTextBox, setFontSizeTextBox] = useState(
     element.fontSize.replace('em', '')
-  );
-  const [language, setLanguage] = useState('javascript');
+  ); // Initial font size.
+  const [language, setLanguage] = useState('javascript'); // Default language setting.
 
+  // Function to detect programming language based on code syntax.
   const detectLanguage = (codeSnippet) => {
     const patterns = {
       javascript:
@@ -55,29 +58,29 @@ const CodeBoxDoubleClick = ({
   };
 
   useEffect(() => {
-    setLanguage(detectLanguage(code));
-    Prism.highlightAll();
+    setLanguage(detectLanguage(code)); // Detect language every time code changes.
+    Prism.highlightAll(); // Trigger syntax highlighting.
   }, [code, language]);
 
   const updateElementInSlide = usePresentationListStore(
     (state) => state.updateElementInSlide
   );
 
+  // Function to handle saving the edited code.
   const handleEditCode = () => {
     updateElementInSlide(presentationId, selectedSlideId, element.id, {
       text: code,
       fontSize: `${fontSizeTextBox}em`,
       language,
     });
-    handleCloseCodeHandler();
+    handleCloseCodeHandler(); // Close the modal after saving.
   };
 
   return (
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleCloseCodeHandler}
-      style={style}
-    >
+      style={style}>
       <div style={{ width: '100px', height: '100px' }}>
         <pre
           aria-hidden="true"
@@ -98,8 +101,7 @@ const CodeBoxDoubleClick = ({
             height: '100px',
             fontFamily:
               'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
-          }}
-        >
+          }}>
           <code className={`language-${language}`}>{code}</code>
         </pre>
       </div>

@@ -19,6 +19,7 @@ import InputLabelRange from '../../../components/InputLabelRange';
 import { imageEncoder } from '../../../shared/base64Image';
 import usePresentationListStore from '../../../zustandStore/usePresentationListStore';
 
+// Modal component for adding images to a slide.
 const ImagePreview = styled('img')({
   maxWidth: '100%',
   maxHeight: '200px',
@@ -53,6 +54,7 @@ const ImageModal = ({
   const [sizeTextBoxWidth, setSizeTextBoxWidth] = useState('50');
   const [sizeTextBoxHeight, setSizeTextBoxHeight] = useState('50');
 
+  // Handles file selection and converts it to a base64 encoded string.
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file && file.type.startsWith('image/')) {
@@ -67,6 +69,7 @@ const ImageModal = ({
 
   const { addElementToSlide } = usePresentationListStore();
 
+  // Function to submit the image to the slide.
   const handlePresentationTitleCreateImage = () => {
     const idElements = uuidv4();
     const element = {
@@ -90,8 +93,7 @@ const ImageModal = ({
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleCloseImageHandler}
-      style={style}
-    >
+      style={style}>
       <InputWithLabels
         dataTestId={'image-box-alt-test'}
         value={imageAlt}
@@ -110,8 +112,7 @@ const ImageModal = ({
           aria-label="imageInputType"
           name="imageInputType"
           value={imageInputType}
-          onChange={(event) => setImageInputType(event.target.value)}
-        >
+          onChange={(event) => setImageInputType(event.target.value)}>
           <FormControlLabel value="url" control={<Radio />} label="URL" />
           <FormControlLabel value="upload" control={<Radio />} label="Upload" />
         </RadioGroup>
@@ -140,8 +141,7 @@ const ImageModal = ({
             <Button
               data-testid={'image-box-upload-test-btn'}
               variant="contained"
-              component="label"
-            >
+              component="label">
               Upload File
               <input
                 data-testid={'image-box-upload-test'}
@@ -192,8 +192,7 @@ const ImageModal = ({
           selectedFile === null
             ? 'Give a valid url or image file, also give alt'
             : 'submit image'
-        }
-      >
+        }>
         <div>
           <CustomPrimaryButton
             disabled={selectedFile === null || imageAlt === null}

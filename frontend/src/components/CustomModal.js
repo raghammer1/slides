@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal } from '@mui/material';
 import { Box } from '@mui/system';
 
+// Custom styled modal for various pop-up functionalities within the application.
 const modalStyle = {
   position: 'absolute',
   top: '50%',
@@ -31,14 +32,14 @@ const modalStyle = {
   },
 };
 
+// Modal component providing a customizable pop-up with animation.
 const CustomModal = ({ open, handleCloseCreateTextBox, children }) => {
   return (
     <Modal
       open={open}
       onClose={handleCloseCreateTextBox}
       aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
+      aria-describedby="modal-modal-description">
       <Box sx={modalStyle}>{children}</Box>
     </Modal>
   );

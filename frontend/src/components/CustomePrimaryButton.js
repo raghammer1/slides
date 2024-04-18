@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 
+// Custom styled button for primary actions within the application.
 const CustomPrimaryButton = ({
   label,
   additionalStyle,

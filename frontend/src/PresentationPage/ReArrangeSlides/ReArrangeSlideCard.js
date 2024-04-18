@@ -23,10 +23,10 @@ const ReArrangeSlideCard = ({ id, slide }) => {
   });
 
   const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id: id.toString() });
+    useSortable({ id: id.toString() }); // Hooks into DnD Kit's sortable functionality.
 
   const style = {
-    transform: CSS.Transform.toString(transform),
+    transform: CSS.Transform.toString(transform), // Applies CSS transformations for drag motion.
     transition,
   };
 

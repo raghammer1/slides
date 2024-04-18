@@ -4,6 +4,7 @@ import { styled, Menu } from '@mui/material';
 import usePresentationListStore from '../../../../zustandStore/usePresentationListStore';
 import PreviewTheOlderVersion from './PreviewTheOlderVersion';
 
+// Styled component for a sliding panel, typically used for showing slide history.
 const SlidePanel = styled(Menu)(({ theme, open }) => ({
   '& .MuiPaper-root': {
     position: 'fixed',
@@ -19,18 +20,19 @@ const SlidePanel = styled(Menu)(({ theme, open }) => ({
   },
 }));
 
+// Wrapper component with hover effect styling for individual history entries.
 const Wrapper = styled('div')({
   width: '100%',
   padding: '10px',
   marginBottom: '5px',
   backgroundColor: '#f9f9f9',
   paddingLeft: '20px',
-
   '&:hover': {
     cursor: 'pointer',
   },
 });
 
+// Component that displays a history of changes made to a slide.
 const SlideHistory = ({
   open,
   handleCloseCodeHandler,
@@ -39,7 +41,6 @@ const SlideHistory = ({
   setAnchorEl,
 }) => {
   const [selectedSlideHistory, setSelectedSlideHistory] = useState({});
-
   const [openPreviewHandler, setOpenPreviewHandler] = useState(false);
   const handleOpenPreviewHandler = () => setOpenPreviewHandler(true);
   const handleClosePreviewHandler = () => setOpenPreviewHandler(false);
@@ -55,15 +56,18 @@ const SlideHistory = ({
     }
   };
 
+  // Fetch slide data from the store.
   const slide = usePresentationListStore((state) =>
     state.getSlideFromPresentationById(presentationId, selectedSlideId)
   );
 
+  // Helper function to format timestamps.
   const formatDate = (timestamp) => {
     const date = new Date(parseInt(timestamp));
     return date.toLocaleString();
   };
 
+  // Function to select a particular historical state for preview.
   const goToThisTimeHistory = (elementObj) => {
     handlePreviewOldSlide(elementObj);
     setSelectedSlideHistory(elementObj);
@@ -76,8 +80,7 @@ const SlideHistory = ({
         anchorEl="right"
         open={open}
         onClose={handleClose}
-        keepMounted
-      >
+        keepMounted>
         <div>
           <h1 style={{ marginLeft: '20px' }}>Slide History</h1>
           {slide && slide.elements && slide.elements.length > 0 ? (
@@ -85,8 +88,7 @@ const SlideHistory = ({
               Object.entries(elementObj).map(([timeKey, elements]) => (
                 <Wrapper
                   key={`${timeKey}-${index}`}
-                  onClick={() => goToThisTimeHistory(elementObj)}
-                >
+                  onClick={() => goToThisTimeHistory(elementObj)}>
                   <div>Go To Time: {formatDate(timeKey)}</div>
                 </Wrapper>
               ))

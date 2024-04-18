@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import InputLabelRange from '../../../components/InputLabelRange';
 import usePresentationListStore from '../../../zustandStore/usePresentationListStore';
 
+//  Custom Styling for this element.
 const style = {
   position: 'absolute',
   top: '50%',
@@ -18,24 +19,28 @@ const style = {
   p: 4,
 };
 
+// Modal for creating text boxes on a presentation slide.
 const TextBoxModal = ({
   open,
   handleCloseCreateTextBox,
   presentationId,
   selectedSlideId,
 }) => {
+  // Local state for managing text box properties
   const [title, setTitle] = useState('');
   const [sizeTextBoxWidth, setSizeTextBoxWidth] = useState('50');
   const [sizeTextBoxHeight, setSizeTextBoxHeight] = useState('50');
   const [fontSizeTextBox, setFontSizeTextBox] = useState('1');
   const [colourTextBox, setColourTextBox] = useState('#000');
 
+  // Access the store to use the addElementToSlide action
   const { addElementToSlide } = usePresentationListStore();
 
+  // Function to handle the creation of a new text box
   const handlePresentationTitleCreateTextBox = () => {
     const idElements = uuidv4();
     const element = {
-      id: idElements,
+      id: idElements, // Generate a unique ID for the new element
       type: 'textarea',
       text: title,
       top: '0',
@@ -46,19 +51,18 @@ const TextBoxModal = ({
       color: `${colourTextBox}`,
       fonFamily: 'Arial',
     };
-    addElementToSlide(presentationId, selectedSlideId, element);
-    setTitle('');
-    setColourTextBox('#000');
-    setFontSizeTextBox('1');
-    handleCloseCreateTextBox();
+    addElementToSlide(presentationId, selectedSlideId, element); // Add the new text box to the slide
+    setTitle(''); // Reset the title state
+    setColourTextBox('#000'); // Reset the color state
+    setFontSizeTextBox('1'); // Reset the font size state
+    handleCloseCreateTextBox(); // Close the modal
   };
 
   return (
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleCloseCreateTextBox}
-      style={style}
-    >
+      style={style}>
       <InputWithLabels
         dataTestId={'title-text-box-test'}
         value={title}

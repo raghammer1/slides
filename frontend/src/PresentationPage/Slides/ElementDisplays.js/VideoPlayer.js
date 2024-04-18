@@ -3,6 +3,7 @@ import { Rnd } from 'react-rnd';
 import VideoDoubleClick from './DoubleClickHandlers/VideoDoubleClick';
 import { containerWidth, containerHeight } from '../../../shared/globals';
 
+// Component for rendering a video player element
 const VideoPlayer = ({
   style,
   element,
@@ -13,6 +14,7 @@ const VideoPlayer = ({
   selectedSlideId,
   presentationId,
 }) => {
+  // Function to extract YouTube video ID from URL
   const extractVideoID = (url) => {
     const regex =
       /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^/\n\s]+\/\s*[^/\n\s]+\/|(?:v|e(?:mbed)?)\/|\S+?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
@@ -20,8 +22,10 @@ const VideoPlayer = ({
     return match ? match[1] : null;
   };
 
+  // State for handling double-click timeout
   const [clickTimeout, setClickTimeout] = useState(null);
 
+  // State for controlling edit text box modal
   const [openEditTextBox, setOpenEditTextBox] = useState(false);
   const handleOpenEditTextBox = () => setOpenEditTextBox(true);
   const handleCloseEditTextBox = () => {
@@ -31,7 +35,9 @@ const VideoPlayer = ({
     handleOpenEditTextBox();
   };
 
+  // Function to handle click events
   const handleClick = useCallback(() => {
+    // Logic for handling double-click
     if (clickTimeout) {
       clearTimeout(clickTimeout);
       setClickTimeout(null);
@@ -44,6 +50,7 @@ const VideoPlayer = ({
     }
   }, [clickTimeout, element]);
 
+  // Construct video source URL with autoplay and mute parameters
   const videoSrc = `https://www.youtube.com/embed/${extractVideoID(
     element.src
   )}?autoplay=${element.autoplay ? '1' : '0'}&mute=1`;
@@ -63,16 +70,14 @@ const VideoPlayer = ({
         onResizeStop={(e, direction, ref, delta, position) =>
           onResizeStop(e, direction, ref, delta, position, element)
         }
-        onContextMenu={(e) => handleDeleteElement(element.id, e)}
-      >
+        onContextMenu={(e) => handleDeleteElement(element.id, e)}>
         <div style={style} onClick={handleClick}>
           <iframe
             width={style.width}
             height={style.height}
             src={videoSrc}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+            allowFullScreen></iframe>
         </div>
         {renderCornerBoxes(element)}
       </Rnd>
