@@ -1,6 +1,8 @@
 import React from 'react';
 
+// Displays a readonly textarea with text content
 const TextBoxPreview = ({ element, size }) => {
+  // Dynamic positioning and sizing based on element properties
   const topStyle = `${element.left}%`;
   const leftStyle = `${element.top}%`;
 
