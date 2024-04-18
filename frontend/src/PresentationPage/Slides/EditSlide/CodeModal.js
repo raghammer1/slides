@@ -13,6 +13,7 @@ import 'prismjs/components/prism-c';
 import InputWithLabels from '../../../components/InputLabel';
 import usePresentationListStore from '../../../zustandStore/usePresentationListStore';
 
+// Custom styling for the element.
 const style = {
   position: 'absolute',
   top: '50%',
@@ -25,6 +26,7 @@ const style = {
   p: 4,
 };
 
+// Modal for creating code snippets within a presentation slide.
 const CodeModal = ({
   open,
   handleCloseCodeHandler,
@@ -38,6 +40,7 @@ const CodeModal = ({
   const [fontSizeTextBox, setFontSizeTextBox] = useState('1');
   const [language, setLanguage] = useState('javascript');
 
+  // Automatically detect coding language based on code content.
   const detectLanguage = (codeSnippet) => {
     const patterns = {
       javascript:
@@ -52,8 +55,7 @@ const CodeModal = ({
         return language;
       }
     }
-
-    return 'javascript';
+    return 'javascript'; // Default to JavaScript if no match found.
   };
 
   useEffect(() => {
@@ -63,6 +65,7 @@ const CodeModal = ({
 
   const { addElementToSlide } = usePresentationListStore();
 
+  // Create a new code box on the slide.
   const handlePresentationcodeCreateTextBox = () => {
     const idElements = uuidv4();
     const element = {
@@ -86,8 +89,7 @@ const CodeModal = ({
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleCloseCodeHandler}
-      style={style}
-    >
+      style={style}>
       <div style={{ width: '100px', height: '100px' }}>
         <pre
           aria-hidden="true"
@@ -108,8 +110,7 @@ const CodeModal = ({
             height: '100px',
             fontFamily:
               'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
-          }}
-        >
+          }}>
           <code className={`language-${language}`}>{code}</code>
         </pre>
       </div>

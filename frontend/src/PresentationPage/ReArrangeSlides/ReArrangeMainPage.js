@@ -14,12 +14,12 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
-
 import ReArrangeSlideCard from './ReArrangeSlideCard';
 import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 import { styled } from '@mui/system';
 import CustomPrimaryButton from '../../components/CustomePrimaryButton';
 
+// Styled wrapper for the re-arrange slides page, aligning content centrally with significant gap.
 const Wrapper = styled('div')({
   display: 'flex',
   alignContent: 'flex-start',
@@ -27,16 +27,18 @@ const Wrapper = styled('div')({
   gap: '300px',
 });
 
+// Main component for re-arranging slides within a presentation.
 const ReArrangeMainPage = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // Retrieves the current presentation ID from the URL.
   const nav = useNavigate();
   const { zustandSlides, setSlidesForPresentation } = usePresentationListStore(
     (state) => ({
-      zustandSlides: state.getSlidesForPresentation(id),
+      zustandSlides: state.getSlidesForPresentation(id), // Fetches slides for the specified presentation.
       setSlidesForPresentation: state.setSlidesForPresentation,
     })
   );
 
+  // Local state to manage slides.
   const [slides, setSlides] = useState(zustandSlides);
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -45,9 +47,9 @@ const ReArrangeMainPage = () => {
     })
   );
 
+  // Handles drag and drop events for slide re-arrangement.
   const handleDragEnd = (event) => {
     const { active, over } = event;
-
     if (active.id !== over.id) {
       const oldIndex = slides.findIndex((slide) => slide.id === active.id);
       const newIndex = slides.findIndex((slide) => slide.id === over.id);
@@ -55,6 +57,7 @@ const ReArrangeMainPage = () => {
     }
   };
 
+  // Commits changes to the presentation store and navigates to the presentation view.
   const handleGoToSlideFunction = () => {
     setSlidesForPresentation(id, slides);
     nav(`/presentation/${id}`);
@@ -66,12 +69,10 @@ const ReArrangeMainPage = () => {
         <DndContext
           sensors={sensors}
           collisionDetection={closestCenter}
-          onDragEnd={handleDragEnd}
-        >
+          onDragEnd={handleDragEnd}>
           <SortableContext
             items={slides.map((slide) => slide.id)}
-            strategy={verticalListSortingStrategy}
-          >
+            strategy={verticalListSortingStrategy}>
             {slides.map((slide) => (
               <ReArrangeSlideCard key={slide.id} id={slide.id} slide={slide} />
             ))}

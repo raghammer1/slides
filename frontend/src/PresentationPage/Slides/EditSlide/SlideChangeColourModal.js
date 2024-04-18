@@ -38,15 +38,16 @@ const GradientDirectionSelector = styled.div`
   }
 `;
 
+// Modal for changing the background color of a slide using a color picker.
 const SlideChangeColourModal = ({
   open,
   handleCloseSlideColourPalette,
   presentationId,
   selectedSlideId,
 }) => {
-  const [color1, setColor1] = useState('#ffffff');
-  const [color2, setColor2] = useState('#000000');
-  const [gradientDirection, setGradientDirection] = useState('to bottom');
+  const [color1, setColor1] = useState('#ffffff'); // Initial color state.
+  const [color2, setColor2] = useState('#000000'); // Initial secondary color state.
+  const [gradientDirection, setGradientDirection] = useState('to bottom'); // Direction of the gradient.
 
   const handleColor1Change = (color) => {
     setColor1(color.hex);
@@ -60,6 +61,7 @@ const SlideChangeColourModal = ({
     (state) => state.updateSlideBackgroundColor
   );
 
+  // Function to apply the selected colors as a gradient background to the slide.
   const applyGradient = () => {
     const gradient = `linear-gradient(${gradientDirection}, ${color1}, ${color2})`;
     updateSlideBackgroundColor(presentationId, selectedSlideId, gradient);
@@ -75,8 +77,7 @@ const SlideChangeColourModal = ({
         backgroundColor: 'transparent',
         boxShadow: 'none',
         height: '1000px',
-      }}
-    >
+      }}>
       <Title>Set Slide Background Color</Title>
       <ColorPickerContainer>
         <SketchPicker color={color1} onChangeComplete={handleColor1Change} />
@@ -87,8 +88,7 @@ const SlideChangeColourModal = ({
         <select
           id="gradient-direction"
           value={gradientDirection}
-          onChange={(e) => setGradientDirection(e.target.value)}
-        >
+          onChange={(e) => setGradientDirection(e.target.value)}>
           <option value="to bottom">Top to Bottom</option>
           <option value="to right">Left to Right</option>
           <option value="to bottom right">

@@ -4,6 +4,7 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import styled from 'styled-components';
 
+// Styled card component for displaying an individual slide during re-arrangement.
 const Card = styled.div`
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -21,12 +22,13 @@ const Card = styled.div`
   font-weight: bold;
   color: #333;
 `;
+// Individual slide card component for re-arrangement interface.
 function ReArrangeSlideCard({ id, slide }) {
   const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id: id.toString() });
+    useSortable({ id: id.toString() }); // Hooks into DnD Kit's sortable functionality.
 
   const style = {
-    transform: CSS.Transform.toString(transform),
+    transform: CSS.Transform.toString(transform), // Applies CSS transformations for drag motion.
     transition,
   };
 
