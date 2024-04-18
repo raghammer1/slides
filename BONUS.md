@@ -5,3 +5,4 @@
 5. Also to lower the issue presented in part 3 the presentation card tile will flip to show the details of slide number, title and description.
 6. Used ZuStand instead of React-Redux to learn the new and upcoming technology.
 7. Buttons will be disabled with a tip on hover so that user knows exactly the requirements of the website.
+8. Showing Alert notification to showcase actions that users are taking without any apparent changes on the UI.
