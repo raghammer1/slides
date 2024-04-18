@@ -9,9 +9,11 @@ import { styled } from '@mui/system';
 const AlertContext = createContext();
 
 // Styled component for SnackbarContent with dynamic background color.
-const StyledSnackbarContent = styled(SnackbarContent)(({ theme, bgColor }) => ({
-  backgroundColor: bgColor || theme.palette.primary.main,
-}));
+const StyledSnackbarContent = styled(SnackbarContent)(
+  ({ theme, bgcolor2 }) => ({
+    backgroundColor: bgcolor2 || theme.palette.primary.main,
+  })
+);
 
 // Hook to use the alert system within any component.
 export const useAlert = () => useContext(AlertContext);
@@ -21,15 +23,15 @@ export const AlertProvider = ({ children }) => {
   const [alertState, setAlertState] = useState({
     open: false,
     message: '',
-    bgColor: 'default',
+    bgColor2: 'default',
   });
 
   // Function to show alerts.
-  const showAlert = (message, bgColor = 'default') => {
+  const showAlert = (message, bgColor2 = 'default') => {
     setAlertState({
       open: true,
       message,
-      bgColor,
+      bgColor2,
     });
   };
 
@@ -57,7 +59,7 @@ export const AlertProvider = ({ children }) => {
         }}
       >
         <StyledSnackbarContent
-          bgColor={alertState.bgColor}
+          bgcolor2={alertState.bgColor2}
           message={<span id="client-snackbar">{alertState.message}</span>}
           action={[
             <IconButton

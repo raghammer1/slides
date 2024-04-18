@@ -4,6 +4,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 import styled from '@emotion/styled';
+import { useAlert } from '../../components/AlertError';
 
 // Styled component for the slide container
 const SlideContainer = styled.div`
@@ -79,13 +80,15 @@ const SlidesList = ({
     addSlide: state.addSlide,
   }));
 
-  // Function to handle adding a new slide
+  const { showAlert } = useAlert();
+
   const handleAddNewSlide = () => {
     const newSlide = {
       id: uuidv4(), // Generate a unique ID for the new slide
       elements: [], // Initialize with no elements
     };
-    addSlide(presentationId, newSlide); // Add the new slide to the presentation
+    showAlert('Slide successfully added', 'green');
+    addSlide(presentationId, newSlide);
   };
 
   // Render differently based on screen width
@@ -103,7 +106,9 @@ const SlidesList = ({
             e.stopPropagation();
             handleDeleteSlide(selectedSlide);
           }}
-          size="small">
+          size="small"
+        >
+          <p>Delete</p>
           <DeleteIcon fontSize="small" />
         </IconButton>
       </>
