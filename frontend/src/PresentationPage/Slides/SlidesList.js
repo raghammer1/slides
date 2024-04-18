@@ -4,6 +4,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 import styled from '@emotion/styled';
+import { useAlert } from '../../components/AlertError';
 
 const SlideContainer = styled.div`
   overflow: auto;
@@ -75,11 +76,14 @@ const SlidesList = ({
     addSlide: state.addSlide,
   }));
 
+  const { showAlert } = useAlert();
+
   const handleAddNewSlide = () => {
     const newSlide = {
       id: uuidv4(),
       elements: [],
     };
+    showAlert('Slide successfully added', 'green');
     addSlide(presentationId, newSlide);
   };
 
@@ -100,6 +104,7 @@ const SlidesList = ({
           }}
           size="small"
         >
+          <p>Delete</p>
           <DeleteIcon fontSize="small" />
         </IconButton>
       </>

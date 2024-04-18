@@ -80,6 +80,7 @@ const SlidesMain = ({
         setSelectedSlide(slides[slide.slideNumber - 2]);
       }
     }
+    showAlert('Slide successfully deleted', 'tomato');
     deleteSlide(presentationId, slide.id);
   };
 

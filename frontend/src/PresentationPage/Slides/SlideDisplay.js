@@ -263,8 +263,8 @@ const SlideDisplay = ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundImage: selectedSlide.bgCol
-          ? selectedSlide.bgCol
+        backgroundImage: selectedSlide?.bgCol
+          ? selectedSlide?.bgCol
           : `linear-gradient(${'to bottom right'}, ${'#999'}, ${'#999'})`,
         position: 'relative',
         overflow: 'hidden',
