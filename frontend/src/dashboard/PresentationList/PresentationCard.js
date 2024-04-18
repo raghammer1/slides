@@ -20,6 +20,7 @@ const Wrapper = styled('div')((props) => ({
   textAlign: 'center',
   cursor: 'pointer',
   overflow: 'hidden',
+  borderRadius: '9px',
 }));
 
 const PresentationCard = ({ presentation }) => {
@@ -49,14 +50,28 @@ const PresentationCard = ({ presentation }) => {
       {...backgroundStyle}
     >
       <div
-        style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '5px' }}
+        style={{
+          fontSize: '28px',
+          fontWeight: 'bold',
+          marginBottom: '5px',
+          fontFamily: 'Arial',
+        }}
       >
         {presentation.name}
       </div>
-      <div style={{ fontSize: '14px', marginBottom: '5px' }}>
+      <div
+        style={{
+          fontSize: '18px',
+          marginBottom: '5px',
+          fontWeight: '600',
+          fontFamily: 'Tahoma',
+        }}
+      >
         Slides: {presentation.slides.length}
       </div>
-      <div style={{ fontSize: '12px' }}>
+      <div
+        style={{ fontSize: '16px', fontFamily: 'Verdana', fontWeight: '400' }}
+      >
         {presentation.description || 'No description provided'}
       </div>
     </Wrapper>

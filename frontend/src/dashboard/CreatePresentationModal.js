@@ -95,17 +95,20 @@ const CreatePresentationModal = ({ open, handleClose }) => {
       />
       <>
         <Tooltip title={!isFormValid ? getNotFormValid() : getFormValid()}>
-          <div>
+          <div style={{ display: 'flex', gap: '20px' }}>
             <CustomPrimaryButton
               label="Create"
-              additionalStyle={{ marginTop: '30px' }}
+              additionalStyle={{ marginTop: '20px' }}
               disabled={!isFormValid}
               onClick={handleCreatePresentationFunction}
               dataTestid={'create-presentation-name-test-button'}
             />
             <CustomPrimaryButton
               label="Cancel"
-              additionalStyle={{ marginTop: '10px', backgroundColor: 'red' }}
+              additionalStyle={{
+                marginTop: '20px',
+                backgroundColor: '#8B0000',
+              }}
               onClick={handleCancel}
               dataTestid={'cancel-presentation-button'}
             />
