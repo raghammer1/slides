@@ -28,21 +28,15 @@ const TextBoxElementDisplay = ({
     if (clickTimeout) {
       clearTimeout(clickTimeout);
       setClickTimeout(null);
-      console.log('Double clicked:', element.id);
       handleEditTextBoxSelected();
-      // Perform your double-click action here
     } else {
       const timeout = setTimeout(() => {
         setClickTimeout(null);
-        console.log('Single clicked:', element.id);
-        // Perform your single-click action here
         handleSelectedElement(element);
-      }, 500); // 500ms for double click interval
+      }, 500);
       setClickTimeout(timeout);
     }
   }, [clickTimeout, handleSelectedElement, element]);
-
-  console.log(element.top, element.left, 'HEY THERE LOLOLOLOOLOLOL');
 
   return (
     <>
@@ -75,7 +69,7 @@ const TextBoxElementDisplay = ({
               color: element.color,
               resize: 'none',
               overflow: 'hidden',
-              border: '2px solid #999',
+              border: '0.2px solid #999',
               cursor: 'default',
               backgroundColor: 'transparent',
             }}

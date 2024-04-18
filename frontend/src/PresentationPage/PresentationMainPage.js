@@ -9,12 +9,16 @@ import EditPresentationTitleModal from './EditPresentationTitleModal';
 import SlidesMain from './Slides/SlidesMain';
 import { useAlert } from '../components/AlertError';
 
-const Wrapper = styled('div')({
+const Wrapper = styled('div')(() => ({
   display: 'flex',
   alignItems: 'center',
   gap: '30px',
   marginTop: '15px',
-});
+  '@media (max-width: 600px)': {
+    flexDirection: 'column',
+    gap: '15px',
+  },
+}));
 
 const Wrapper2 = styled('div')({
   width: '100%',
@@ -24,9 +28,19 @@ const Wrapper2 = styled('div')({
   justifyContent: 'space-around',
   '@media (max-width: 1430px)': {
     flexDirection: 'column',
+    gap: '20px',
+  },
+  '@media (max-width: 600px)': {
+    gap: '10px',
+  },
+  '@media (max-width: 400px)': {
+    padding: '0 10px',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 });
-const StyledTypography = styled(Typography)(({ theme }) => ({
+
+const StyledTypography = styled(Typography)(() => ({
   position: 'relative',
   fontSize: '32px',
   fontWeight: '600',
@@ -38,11 +52,9 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
   margin: '20px 0',
   cursor: 'pointer',
   transition: 'transform 0.3s ease-in-out',
-
   '&:hover': {
     transform: 'scale(1.05)',
   },
-
   '&::before': {
     content: '""',
     position: 'absolute',
@@ -50,14 +62,29 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
     height: '3px',
     bottom: '-3px',
     left: '0',
-    background: 'linear-gradient(to right, #000, #9999)',
+    background: 'linear-gradient(to right, #000, #999)',
     transition: 'transform 0.3s ease-in-out',
     transformOrigin: 'left',
     transform: 'scaleX(0)',
   },
-
   '&:hover::before': {
     transform: 'scaleX(1)',
+  },
+  '@media (max-width: 400px)': {
+    fontSize: '24px', // Smaller font size for small screens
+  },
+}));
+
+const CustomPrimaryButtonStyle = styled(CustomPrimaryButton)(() => ({
+  width: '170px',
+  height: '35px',
+  background: 'linear-gradient(45deg, #66bb6a 30%, #26a69a 90%)',
+  boxShadow: '0 3px 5px 2px rgba(102, 187, 106, .3)',
+  color: 'white',
+  fontSize: '14px', // Default font size
+  '@media (max-width: 400px)': {
+    width: '100%', // Full width on small screens
+    fontSize: '12px', // Smaller font size
   },
 }));
 
@@ -108,7 +135,6 @@ const PresentationDetail = () => {
   const [description, setDescription] = useState(`${presentation.description}`);
 
   const handlePresentationDelete = () => {
-    console.log('delete');
     setOpen(false);
     deleteOnePresentation(id);
     showAlert('Presentation Successfully Deleted', 'tomato');
@@ -157,7 +183,7 @@ const PresentationDetail = () => {
           <b>Title -</b> {presentation.name}
         </StyledTypography>
         <Wrapper>
-          <CustomPrimaryButton
+          <CustomPrimaryButtonStyle
             label="Delete"
             additionalStyle={{
               width: '170px',
@@ -168,7 +194,7 @@ const PresentationDetail = () => {
             onClick={handleOpen}
             dataTestid={`presentation-delete-${presentation.id}`}
           />
-          <CustomPrimaryButton
+          <CustomPrimaryButtonStyle
             label="Back"
             additionalStyle={{
               width: '170px',
@@ -179,7 +205,7 @@ const PresentationDetail = () => {
             onClick={handleGoBack}
             dataTestid={`presentation-go-back-${presentation.id}`}
           />
-          <CustomPrimaryButton
+          <CustomPrimaryButtonStyle
             label="Re Arrange Slides"
             additionalStyle={{
               width: '170px',
@@ -190,7 +216,7 @@ const PresentationDetail = () => {
             onClick={handleReArrangeSlides}
             dataTestid={`presentation-re-arrange-page-${presentation.id}`}
           />
-          <CustomPrimaryButton
+          <CustomPrimaryButtonStyle
             label="Slideshow"
             additionalStyle={{
               width: '170px',

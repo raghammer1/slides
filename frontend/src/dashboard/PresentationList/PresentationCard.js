@@ -8,7 +8,7 @@ const Wrapper = styled('div')((props) => ({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: props.bgColor || '#333', // default to #333 if no bgColor is provided
+  backgroundColor: props.bgColor || '#333',
   backgroundImage: props.bgImage ? `url(${props.bgImage})` : 'none',
   backgroundSize: 'cover',
   backgroundPosition: 'center',
@@ -20,12 +20,12 @@ const Wrapper = styled('div')((props) => ({
   textAlign: 'center',
   cursor: 'pointer',
   overflow: 'hidden',
+  borderRadius: '9px',
 }));
 
 const PresentationCard = ({ presentation }) => {
   const nav = useNavigate();
   const handleOpenPresentation = () => {
-    console.log(presentation);
     nav(`/presentation/${presentation.id}`);
   };
 
@@ -37,9 +37,8 @@ const PresentationCard = ({ presentation }) => {
     });
   }, [presentation.thumbnail]);
 
-  // Determine background style based on the thumbnail URL
   const backgroundStyle = {
-    bgColor: isValid ? undefined : '#333', // If no thumbnail, use #999
+    bgColor: isValid ? undefined : '#333',
     bgImage: presentation.thumbnail,
     color: isValid ? '#333' : '#fff',
   };
@@ -48,17 +47,31 @@ const PresentationCard = ({ presentation }) => {
     <Wrapper
       data-testid={`presentation-card-${presentation.id}`}
       onClick={handleOpenPresentation}
-      {...backgroundStyle} // spread the background style props
+      {...backgroundStyle}
     >
       <div
-        style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '5px' }}
+        style={{
+          fontSize: '28px',
+          fontWeight: 'bold',
+          marginBottom: '5px',
+          fontFamily: 'Arial',
+        }}
       >
         {presentation.name}
       </div>
-      <div style={{ fontSize: '14px', marginBottom: '5px' }}>
+      <div
+        style={{
+          fontSize: '18px',
+          marginBottom: '5px',
+          fontWeight: '600',
+          fontFamily: 'Tahoma',
+        }}
+      >
         Slides: {presentation.slides.length}
       </div>
-      <div style={{ fontSize: '12px' }}>
+      <div
+        style={{ fontSize: '16px', fontFamily: 'Verdana', fontWeight: '400' }}
+      >
         {presentation.description || 'No description provided'}
       </div>
     </Wrapper>

@@ -60,19 +60,15 @@ const SlidesMain = ({
   }, [slides, selectedSlide, setSelectedSlide, version]);
 
   useEffect(() => {
-    // When a slide is selected, start the timer
     startTimer();
 
     return () => {
-      // When the slide changes or the component unmounts, stop the timer
       stopTimer();
-      console.log(`Elapsed Time: ${getElapsedTime()}ms`);
     };
   }, [selectedSlideId, startTimer, stopTimer, getElapsedTime, version]);
 
   const nav = useNavigate();
   const handleDeleteSlide = (slide) => {
-    // e.stopPropagation();
     if (slides.length === 1) {
       handleOpen();
       return;
@@ -90,7 +86,6 @@ const SlidesMain = ({
   const { deleteOnePresentation } = usePresentationListStore();
 
   const handlePresentationDelete = () => {
-    console.log('delete');
     setOpen(false);
     deleteOnePresentation(presentationId);
     showAlert('Presentation Successfully Deleted', 'tomato');

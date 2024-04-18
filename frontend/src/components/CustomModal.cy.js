@@ -69,7 +69,7 @@ describe('<CustomModal />', () => {
     );
 
     // Check if the custom styles are applied
-    cy.get('.MuiBox-root').should('have.css', 'width', '370px');
+    cy.get('.MuiBox-root').should('have.css', 'width', '300px');
     cy.get('.MuiBox-root').should('have.css', 'height', '18.5px');
     cy.get('.MuiBox-root').should(
       'have.css',

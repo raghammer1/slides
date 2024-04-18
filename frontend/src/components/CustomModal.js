@@ -8,9 +8,11 @@ const modalStyle = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: '370px',
+  maxHeight: '500px',
+  height: 'auto',
+  overflow: 'auto',
   bgcolor: 'background.paper',
   borderRadius: '12px',
-  overflow: 'hidden',
   boxShadow: '0 4px 20px rgba(0, 123, 255, 0.25)',
   p: 4,
   background: 'linear-gradient(to bottom, #005a4f 0%, #013220 100%)',
@@ -24,6 +26,9 @@ const modalStyle = {
     },
   },
   animation: 'fadeIn 0.2s ease-in-out',
+  '@media (max-width: 650px)': {
+    width: '300px',
+  },
 };
 
 const CustomModal = ({ open, handleCloseCreateTextBox, children }) => {

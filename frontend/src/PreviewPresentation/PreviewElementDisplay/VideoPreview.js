@@ -1,5 +1,4 @@
 import React from 'react';
-// import { containerWidth, containerHeight } from '../../shared/globals';
 
 const VideoPreview = ({ element, size }) => {
   const topStyle = `${element.left}%`;

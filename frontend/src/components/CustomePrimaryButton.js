@@ -20,7 +20,7 @@ const CustomPrimaryButton = ({
         width: '100%',
         height: '40px',
         '&:disabled': {
-          color: '#555',
+          color: '#666',
         },
       }}
       style={additionalStyle || {}}

@@ -1,16 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Typography } from '@mui/material';
 import EditMenu from './EditSlide/EditMenu';
-import VideoPlayer from './ElementDisplays.js/VideoPlayer';
 import CornerBox from './CornerBox';
 import 'prismjs/themes/prism-okaidia.css';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-c';
-import CodeElementDisplay from './ElementDisplays.js/CodeElementDisplay';
-import ImageElementDisplay from './ElementDisplays.js/ImageElementDisplay';
-import TextBoxElementDisplay from './ElementDisplays.js/TextBoxElementDisplay';
 import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 import {
   setContainerHeight,
@@ -18,12 +14,8 @@ import {
   containerWidth,
   containerHeight,
 } from '../../shared/globals';
-import TextBoxModal from './EditSlide/TextBoxModal';
-import VideoModal from './EditSlide/VideoModal';
-import ImageModal from './EditSlide/ImageModal';
-import CodeModal from './EditSlide/CodeModal';
-import SlideHistory from './EditSlide/SlideHistory/SlideHistory';
-import SlideChangeColourModal from './EditSlide/SlideChangeColourModal';
+import GetElement from './GetElement';
+import ModalManager from './ModalManager';
 
 const SlideDisplay = ({
   presentationId,
@@ -31,9 +23,6 @@ const SlideDisplay = ({
   isScreenLessThan1000,
   isScreenLessThan700,
 }) => {
-  // let containerWidth = 1000;
-  // let containerHeight = 500;
-
   if (isScreenLessThan700) {
     setContainerWidth(400);
     setContainerHeight(200);
@@ -72,17 +61,11 @@ const SlideDisplay = ({
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+    console.log('AnchorEl set in handleClick:', anchorEl);
   };
-
-  // const [rerender, setRerender] = useState(false);
-  // useEffect(() => {
-  //   console.log('Version changed:', version);
-  //   setRerender((prev) => !prev); // Toggle to force rerender
-  // }, [version]);
 
   useEffect(() => {
     Prism.highlightAll();
-    console.log(version, 'version');
   }, [selectedSlide]);
 
   const handleSelectedElement = (element) => {
@@ -97,14 +80,7 @@ const SlideDisplay = ({
       `${(d.x / containerWidth) * 100}`,
       `${(d.y / containerHeight) * 100}`
     );
-    console.log(
-      `${(d.x / containerWidth) * 100}`,
-      `${(d.y / containerHeight) * 100}`,
-      'IHWRYUOWUYERGIUEWYRGYIUEWGRUWEGIURGUY',
-      d.x,
-      d.y,
-      d
-    );
+
     setSelectedElement({
       ...element,
       top: `${(d.y / containerHeight) * 100}`,
@@ -148,7 +124,6 @@ const SlideDisplay = ({
 
   const renderCornerBoxes = useCallback(
     (element) => {
-      console.log(selectedElement);
       if (selectedElement === null || selectedElement.id !== element.id) {
         return null;
       }
@@ -168,8 +143,6 @@ const SlideDisplay = ({
         }, // Bottom-right
       ];
 
-      console.log(corners, 'corners I AM CORNER HEY HEY');
-
       return corners.map((style, index) => (
         <CornerBox key={index} style={style} />
       ));
@@ -177,25 +150,19 @@ const SlideDisplay = ({
     [selectedElement]
   );
 
-  // Check if there are elements and elements is not empty
   const getElements = () => {
     if (selectedSlide?.elements?.length) {
-      // Access the last element in the array
       const lastElementObj =
         selectedSlide.elements[selectedSlide.elements.length - 1];
 
-      // Assuming we don't know the key name and there's only one key per object
-      const key = Object.keys(lastElementObj)[0]; // Get the key of the last object
-      const values = lastElementObj[key]; // Get the value using the key which is an array
+      const key = Object.keys(lastElementObj)[0];
+      const values = lastElementObj[key];
 
-      // Now you can use 'values' which is the array associated with the last time key
-      return values; // Outputs the array of the last element object
+      return values;
     } else {
       return [];
     }
   };
-
-  console.log(selectedSlide, 'selectedSlide');
 
   const [openCreateTextBox, setOpenCreateTextBox] = useState(false);
   const handleOpenCreateTextBox = () => setOpenCreateTextBox(true);
@@ -234,28 +201,36 @@ const SlideDisplay = ({
   };
   const handleAddTextOnSlide = () => {
     setAnchorEl(null);
-    setTimeout(handleOpenCreateTextBox(), 100);
+    handleOpenCreateTextBox();
   };
 
   const handleAddImageOnSlide = () => {
+    setAnchorEl(null);
     handleOpenImageHandler();
   };
 
   const handleAddVideoOnSlide = () => {
+    setAnchorEl(null);
     handleOpenVideoHandler();
   };
 
   const handleAddCodeOnSlide = () => {
+    setAnchorEl(null);
     handleOpenCodeHandler();
   };
 
   const handleOpenSlideHistory = () => {
+    setAnchorEl(null);
     handleOpenSlideHistoryHandler();
   };
 
   const handleOpenColourPalette = () => {
+    setAnchorEl(null);
     handleOpenColourPaletteHandler();
   };
+
+  // Debug: Log the value right before passing it to EditMenu
+  console.log('AnchorEl before passing to EditMenu:', anchorEl);
   return (
     <div
       key={version}
@@ -274,74 +249,19 @@ const SlideDisplay = ({
       }}
     >
       {getElements().map((element) => {
-        if (element.type === 'textarea') {
-          return (
-            <TextBoxElementDisplay
-              presentationId={presentationId}
-              selectedSlideId={selectedSlideId}
-              key={element.id}
-              element={element}
-              onDragStop={onDragStop}
-              onResizeStop={onResizeStop}
-              handleDeleteElement={handleDeleteElement}
-              renderCornerBoxes={renderCornerBoxes}
-              handleSelectedElement={handleSelectedElement}
-            />
-          );
-        } else if (element.type === 'image') {
-          return (
-            <ImageElementDisplay
-              presentationId={presentationId}
-              selectedSlideId={selectedSlideId}
-              key={element.id}
-              element={element}
-              onDragStop={onDragStop}
-              onResizeStop={onResizeStop}
-              handleDeleteElement={handleDeleteElement}
-              renderCornerBoxes={renderCornerBoxes}
-              handleSelectedElement={handleSelectedElement}
-            />
-          );
-        } else if (element.type === 'video') {
-          return (
-            <VideoPlayer
-              style={{
-                position: 'absolute',
-                top: `${element.top}`,
-                left: `${element.left}`,
-                width: '100%',
-                height: '100%',
-                padding: '10px',
-                backgroundColor: '#000',
-              }}
-              onDragStop={onDragStop}
-              onResizeStop={onResizeStop}
-              handleDeleteElement={handleDeleteElement}
-              renderCornerBoxes={renderCornerBoxes}
-              key={element.id}
-              element={element}
-              onClick={() => handleSelectedElement(element)}
-              presentationId={presentationId}
-              selectedSlideId={selectedSlideId}
-            />
-          );
-        }
-        if (element.type === 'code') {
-          return (
-            <CodeElementDisplay
-              key={element.id}
-              element={element}
-              onDragStop={onDragStop}
-              onResizeStop={onResizeStop}
-              handleDeleteElement={handleDeleteElement}
-              renderCornerBoxes={renderCornerBoxes}
-              presentationId={presentationId}
-              selectedSlideId={selectedSlideId}
-            />
-          );
-        } else {
-          return <></>;
-        }
+        return (
+          <GetElement
+            key={element.id}
+            element={element}
+            presentationId={presentationId}
+            handleDeleteElement={handleDeleteElement}
+            selectedSlideId={selectedSlideId}
+            onDragStop={onDragStop}
+            onResizeStop={onResizeStop}
+            renderCornerBoxes={renderCornerBoxes}
+            handleSelectedElement={handleSelectedElement}
+          />
+        );
       })}
 
       <Typography
@@ -388,43 +308,18 @@ const SlideDisplay = ({
         handleOpenSlideHistory={handleOpenSlideHistory}
         handleOpenColourPalette={handleOpenColourPalette}
       />
-      <TextBoxModal
-        open={openCreateTextBox}
+      <ModalManager
+        openCreateTextBox={openCreateTextBox}
         handleCloseCreateTextBox={handleCloseCreateTextBox}
-        presentationId={presentationId}
-        selectedSlideId={selectedSlideId}
-        setAnchorEl={setAnchorEl}
-      />
-      <ImageModal
-        open={openImageHandler}
+        openImageHandler={openImageHandler}
         handleCloseImageHandler={handleCloseImageHandler}
-        presentationId={presentationId}
-        selectedSlideId={selectedSlideId}
-        setAnchorEl={setAnchorEl}
-      />
-      <VideoModal
-        open={openVideoHandler}
+        openVideoHandler={openVideoHandler}
         handleCloseVideoHandler={handleCloseVideoHandler}
-        presentationId={presentationId}
-        selectedSlideId={selectedSlideId}
-        setAnchorEl={setAnchorEl}
-      />
-      <CodeModal
-        open={openCodeHandler}
+        openCodeHandler={openCodeHandler}
         handleCloseCodeHandler={handleCloseCodeHandler}
-        presentationId={presentationId}
-        selectedSlideId={selectedSlideId}
-        setAnchorEl={setAnchorEl}
-      />
-      <SlideHistory
-        open={OpenSlideHistoryHandler}
-        handleCloseCodeHandler={handleCloseSlideHistoryHandler}
-        presentationId={presentationId}
-        selectedSlideId={selectedSlideId}
-        setAnchorEl={setAnchorEl}
-      />
-      <SlideChangeColourModal
-        open={OpenSlideColourPalette}
+        OpenSlideHistoryHandler={OpenSlideHistoryHandler}
+        handleCloseSlideHistoryHandler={handleCloseSlideHistoryHandler}
+        OpenSlideColourPalette={OpenSlideColourPalette}
         handleCloseSlideColourPalette={handleCloseSlideColourPalette}
         presentationId={presentationId}
         selectedSlideId={selectedSlideId}

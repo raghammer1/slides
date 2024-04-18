@@ -14,10 +14,8 @@ const SlidePreview = ({
 }) => {
   const key = Object.keys(selectedSlideHistory)[0];
   const value = selectedSlideHistory[key];
-  console.log(value);
 
   const size = { width: 800, height: 400 };
-  console.log(value, 'VALUE');
 
   const addElementToObject = usePresentationListStore(
     (state) => state.addElementToObject

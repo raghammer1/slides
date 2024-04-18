@@ -3,18 +3,40 @@ import { SketchPicker } from 'react-color';
 import CustomModal from '../../../components/CustomModal';
 import CustomPrimaryButton from '../../../components/CustomePrimaryButton';
 import usePresentationListStore from '../../../zustandStore/usePresentationListStore';
+import styled from 'styled-components';
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: '#555',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+const Title = styled.h2`
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 20px;
+`;
+
+const ColorPickerContainer = styled.div`
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #444; // Slightly darker background for better contrast
+  border-radius: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25); // Soft inset shadow for depth
+`;
+
+const GradientDirectionSelector = styled.div`
+  margin-top: 20px;
+  margin-bottom: 20px;
+  label {
+    color: #fff;
+    margin-right: 10px;
+  }
+  select {
+    padding: 8px;
+    border-radius: 4px;
+    background-color: #eee;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+`;
 
 const SlideChangeColourModal = ({
   open,
@@ -47,16 +69,20 @@ const SlideChangeColourModal = ({
   return (
     <CustomModal
       open={open}
-      handleCloseSlideColourPalette={handleCloseSlideColourPalette}
-      style={style}
+      handleCloseCreateTextBox={handleCloseSlideColourPalette}
+      style={{
+        padding: 0,
+        backgroundColor: 'transparent',
+        boxShadow: 'none',
+        height: '1000px',
+      }}
     >
-      <h2>Set Slide Background Color</h2>
-      <div style={{ display: 'flex' }}>
+      <Title>Set Slide Background Color</Title>
+      <ColorPickerContainer>
         <SketchPicker color={color1} onChangeComplete={handleColor1Change} />
         <SketchPicker color={color2} onChangeComplete={handleColor2Change} />
-      </div>
-
-      <div>
+      </ColorPickerContainer>
+      <GradientDirectionSelector>
         <label htmlFor="gradient-direction">Choose Gradient Direction:</label>
         <select
           id="gradient-direction"
@@ -72,15 +98,10 @@ const SlideChangeColourModal = ({
             Diagonal (Bottom Left to Top Right)
           </option>
         </select>
-      </div>
-
+      </GradientDirectionSelector>
       <CustomPrimaryButton
         label="Set Gradient Background"
         onClick={applyGradient}
-      />
-      <CustomPrimaryButton
-        label="Cancel"
-        onClick={handleCloseSlideColourPalette}
       />
     </CustomModal>
   );

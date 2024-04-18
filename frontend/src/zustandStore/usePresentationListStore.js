@@ -17,8 +17,6 @@ const presentationsChangeLogger = (config) => (set, get, api) =>
 
       const newState = get();
       if (currentState.presentations !== newState.presentations) {
-        console.log('presentations changed:', newState.presentations);
-
         const updatedData = {
           store: {
             presentations: newState.presentations,
@@ -38,11 +36,10 @@ const usePresentationListStore = create(
     elapsedTime: 0,
     version: 0,
 
-    // Method to start the timer
     startTimer: () => {
       set({ timerStart: Date.now() });
     },
-    // Method to stop the timer and calculate elapsed time
+
     stopTimer: () => {
       const startTime = get().timerStart;
       if (startTime) {
@@ -50,20 +47,20 @@ const usePresentationListStore = create(
         const elapsed = endTime - startTime;
         set({
           elapsedTime: elapsed,
-          timerStart: null, // Reset timer start
+          timerStart: null,
         });
       }
     },
-    // Calculate the elapsed time dynamically
+
     calculateCurrentElapsedTime: () => {
       const startTime = get().timerStart;
       if (startTime) {
         const endTime = Date.now();
         return endTime - startTime;
       }
-      return 0; // Return 0 if the timer has not been started
+      return 0;
     },
-    // Get the current elapsed time
+
     getElapsedTime: () => get().elapsedTime,
 
     addPresentation: (newPresentation) => {
@@ -89,7 +86,6 @@ const usePresentationListStore = create(
 
     clearPresentations: () => set({ presentations: [] }),
     deleteOnePresentation: (id) => {
-      console.log(`Deleting presentation with ID: ${id}`);
       set((state) => {
         const updatedPresentations = state.presentations.filter(
           (presentation) => presentation.id !== id
@@ -123,8 +119,6 @@ const usePresentationListStore = create(
             (max, slide) => Math.max(max, slide.slideNumber || 0),
             0
           ) + 1;
-
-        console.log(newSlide, 'newSlide');
 
         const updatedSlides = [
           ...updatedPresentation.slides,
@@ -181,12 +175,83 @@ const usePresentationListStore = create(
 
       const slide = presentation.slides.find((s) => s.id === slideId);
       return slide || null;
-      // return slide[0] || null;
     },
 
+    // addElementToSlide: (presentationId, slideId, newElement) => {
+    //   set((state) => {
+    //     const presentationIndex = state.presentations.findIndex(
+    //       (p) => p.id === presentationId
+    //     );
+    //     if (presentationIndex === -1) {
+    //       console.error('Presentation not found');
+    //       return state;
+    //     }
+
+    //     const updatedPresentation = {
+    //       ...state.presentations[presentationIndex],
+    //     };
+
+    //     const slideIndex = updatedPresentation.slides.findIndex(
+    //       (slide) => slide.id === slideId
+    //     );
+    //     if (slideIndex === -1) {
+    //       console.error('Slide not found');
+    //       return state;
+    //     }
+
+    //     const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
+
+    //     const currentTime = Date.now();
+    //     let timeStartChanger = state.timerStart;
+
+    //     if (updatedSlide.elements.length > 0) {
+    //       const lastElementObject =
+    //         updatedSlide.elements[updatedSlide.elements.length - 1];
+
+    //       const lastTimeKey = Object.keys(lastElementObject)[0];
+
+    //       const elapsedTime = currentTime - parseInt(lastTimeKey);
+
+    //       if (elapsedTime < 60000) {
+    //         const timeKey = Object.keys(lastElementObject)[0];
+    //         lastElementObject[timeKey].push(newElement);
+    //       }
+    //     } else {
+    //       const newTimeKey = currentTime;
+
+    //       const newElementsArray =
+    //         updatedSlide.elements.length > 0
+    //           ? [
+    //               ...updatedSlide.elements[updatedSlide.elements.length - 1][
+    //                 Object.keys(
+    //                   updatedSlide.elements[updatedSlide.elements.length - 1]
+    //                 )[0]
+    //               ],
+    //               newElement,
+    //             ]
+    //           : [newElement];
+
+    //       timeStartChanger = Date.now();
+    //       updatedSlide.elements.push({ [newTimeKey]: newElementsArray });
+    //     }
+
+    //     updatedPresentation.slides[slideIndex] = updatedSlide;
+
+    //     const updatedPresentations = [...state.presentations];
+    //     updatedPresentations[presentationIndex] = updatedPresentation;
+
+    //     console.log(state.presentations, 'IJFWIBUHEWRUWRUHEWRGUV');
+
+    //     return {
+    //       ...state,
+    //       presentations: updatedPresentations,
+    //       timerStart: timeStartChanger,
+    //       version: state.version + 1,
+    //     };
+    //   });
+    // },
     addElementToSlide: (presentationId, slideId, newElement) => {
       set((state) => {
-        console.log('PRESENTATION FROM ZUSTAND', state.presentations);
         const presentationIndex = state.presentations.findIndex(
           (p) => p.id === presentationId
         );
@@ -198,7 +263,6 @@ const usePresentationListStore = create(
         const updatedPresentation = {
           ...state.presentations[presentationIndex],
         };
-
         const slideIndex = updatedPresentation.slides.findIndex(
           (slide) => slide.id === slideId
         );
@@ -208,56 +272,38 @@ const usePresentationListStore = create(
         }
 
         const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
-
         const currentTime = Date.now();
-        let timeStartChanger = state.timerStart;
-        // const elapsedTime = state.timerStart
-        //   ? currentTime - state.timerStart
-        //   : 0;
+
         if (updatedSlide.elements.length > 0) {
-          const lastElementObject =
+          const lastElement =
             updatedSlide.elements[updatedSlide.elements.length - 1];
-
-          const lastTimeKey = Object.keys(lastElementObject)[0];
-
+          const lastTimeKey = Object.keys(lastElement)[0];
           const elapsedTime = currentTime - parseInt(lastTimeKey);
 
           if (elapsedTime < 60000) {
-            const timeKey = Object.keys(lastElementObject)[0];
-            lastElementObject[timeKey].push(newElement);
+            // Less than 1 minute since the last element was added
+            lastElement[lastTimeKey].push(newElement);
+          } else {
+            // More than 1 minute since the last element, create a new timestamp key
+            const newElementsArray = [...lastElement[lastTimeKey], newElement];
+            updatedSlide.elements.push({ [currentTime]: newElementsArray });
           }
         } else {
-          const newTimeKey = currentTime;
-
-          const newElementsArray =
-            updatedSlide.elements.length > 0
-              ? [
-                  ...updatedSlide.elements[updatedSlide.elements.length - 1][
-                    Object.keys(
-                      updatedSlide.elements[updatedSlide.elements.length - 1]
-                    )[0]
-                  ],
-                  newElement,
-                ]
-              : [newElement];
-
-          timeStartChanger = Date.now();
-          updatedSlide.elements.push({ [newTimeKey]: newElementsArray });
+          // No elements present, start with the new element at the current time
+          updatedSlide.elements.push({ [currentTime]: [newElement] });
         }
 
         updatedPresentation.slides[slideIndex] = updatedSlide;
-
         const updatedPresentations = [...state.presentations];
         updatedPresentations[presentationIndex] = updatedPresentation;
 
         return {
           ...state,
           presentations: updatedPresentations,
-          timerStart: timeStartChanger,
+          version: state.version + 1,
         };
       });
     },
-
     updateElementPosition: (presentationId, slideId, elementId, top, left) => {
       set((state) => {
         const presentationIndex = state.presentations.findIndex(
@@ -282,7 +328,6 @@ const usePresentationListStore = create(
 
         const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
 
-        // Retrieve the last object and its timestamp
         const lastElementObject =
           updatedSlide.elements[updatedSlide.elements.length - 1];
         const lastTimeKey = Object.keys(lastElementObject)[0];
@@ -291,7 +336,6 @@ const usePresentationListStore = create(
         const elapsedTime = currentTime - lastTime;
 
         if (elapsedTime < 60000) {
-          // Update in place if less than 1 minute has passed
           lastElementObject[lastTimeKey] = lastElementObject[lastTimeKey].map(
             (element) => {
               if (element.id === elementId) {
@@ -301,7 +345,6 @@ const usePresentationListStore = create(
             }
           );
         } else {
-          // If more than 1 minute has passed, clone the last object and modify the target element
           const elementsClone = lastElementObject[lastTimeKey].map(
             (element) => {
               if (element.id === elementId) {
@@ -311,11 +354,9 @@ const usePresentationListStore = create(
             }
           );
 
-          // Create a new timestamped object with the updated elements
           const newTimeKey = currentTime.toString();
           const newElementObject = { [newTimeKey]: elementsClone };
 
-          // Append this new object to the elements array
           updatedSlide.elements.push(newElementObject);
         }
 
@@ -352,7 +393,6 @@ const usePresentationListStore = create(
 
         const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
 
-        // Retrieve the last object and its timestamp
         const lastElementObject =
           updatedSlide.elements[updatedSlide.elements.length - 1];
         const lastTimeKey = Object.keys(lastElementObject)[0];
@@ -361,7 +401,6 @@ const usePresentationListStore = create(
         const elapsedTime = currentTime - lastTime;
 
         if (elapsedTime < 60000) {
-          // Update in place if less than 1 minute has passed
           lastElementObject[lastTimeKey] = lastElementObject[lastTimeKey].map(
             (element) => {
               if (element.id === elementId) {
@@ -371,7 +410,6 @@ const usePresentationListStore = create(
             }
           );
         } else {
-          // If more than 1 minute has passed, clone the last object and modify the target element
           const elementsClone = lastElementObject[lastTimeKey].map(
             (element) => {
               if (element.id === elementId) {
@@ -381,11 +419,9 @@ const usePresentationListStore = create(
             }
           );
 
-          // Create a new timestamped object with the updated elements
           const newTimeKey = currentTime.toString();
           const newElementObject = { [newTimeKey]: elementsClone };
 
-          // Append this new object to the elements array
           updatedSlide.elements.push(newElementObject);
         }
 
@@ -422,7 +458,6 @@ const usePresentationListStore = create(
 
         const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
 
-        // Retrieve the last object and its timestamp
         const lastElementObject =
           updatedSlide.elements[updatedSlide.elements.length - 1];
         const lastTimeKey = Object.keys(lastElementObject)[0];
@@ -431,19 +466,16 @@ const usePresentationListStore = create(
         const elapsedTime = currentTime - lastTime;
 
         if (elapsedTime < 60000) {
-          // Update in place if less than 1 minute has passed
           lastElementObject[lastTimeKey] = lastElementObject[
             lastTimeKey
           ].filter((element) => element.id !== elementId);
         } else {
-          // If more than 1 minute has passed, clone the last object without the deleted element and add to the array
           const filteredElements = lastElementObject[lastTimeKey].filter(
             (element) => element.id !== elementId
           );
           const newTimeKey = currentTime.toString();
           const newElementObject = { [newTimeKey]: filteredElements };
 
-          // Append this new object to the elements array
           updatedSlide.elements.push(newElementObject);
         }
 
@@ -457,9 +489,6 @@ const usePresentationListStore = create(
     },
     addElementToObject: (presentationId, slideId, newValue) => {
       set((state) => {
-        console.log('Current state presentations:', state.presentations);
-
-        // Clone presentations array to ensure a new reference is created
         const presentationsCopy = [...state.presentations];
 
         const presentationIndex = presentationsCopy.findIndex(
@@ -470,10 +499,9 @@ const usePresentationListStore = create(
           return state;
         }
 
-        // Deep clone the presentation to ensure a new reference
         const updatedPresentation = {
           ...presentationsCopy[presentationIndex],
-          slides: [...presentationsCopy[presentationIndex].slides], // Clone slides array
+          slides: [...presentationsCopy[presentationIndex].slides],
         };
 
         const slideIndex = updatedPresentation.slides.findIndex(
@@ -484,26 +512,18 @@ const usePresentationListStore = create(
           return state;
         }
 
-        // Clone the slide to ensure a new reference and update its elements array
         const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
         const currentTime = Date.now().toString();
-        console.log(`Adding new element at time ${currentTime}`);
 
-        // Add the new value in a way that creates a new elements array reference
         updatedSlide.elements = [
           ...updatedSlide.elements,
           { [currentTime]: newValue },
         ];
 
-        // Update the slide in the cloned slides array
         updatedPresentation.slides[slideIndex] = updatedSlide;
 
-        // Update the presentation in the cloned presentations array
         presentationsCopy[presentationIndex] = updatedPresentation;
 
-        console.log('New state presentations:', presentationsCopy);
-
-        // Return the new state with the updated presentations array
         return { presentations: presentationsCopy, version: state.version + 1 };
       });
     },
@@ -542,7 +562,6 @@ const usePresentationListStore = create(
           if (presentation.id === presentationId) {
             const updatedSlides = presentation.slides.map((slide) => {
               if (slide.id === slideId) {
-                // Update the background color here
                 return { ...slide, bgCol: newBgColor };
               }
               return slide;
@@ -639,12 +658,6 @@ export const initializeStore = async () => {
       ? initialStore.store.presentations
       : [],
   });
-
-  console.log(
-    `${
-      initialStore.store.presentations ? initialStore.store.presentations : {}
-    }`
-  );
 };
 
 export default usePresentationListStore;

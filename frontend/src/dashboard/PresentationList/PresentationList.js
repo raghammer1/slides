@@ -25,13 +25,6 @@ const PresentationList = ({ searchInput }) => {
     presentation.name.toLowerCase().includes(searchInput.toLowerCase())
   );
 
-  console.log(
-    searchInput,
-    'searchInputsearchInputsearchInputsearchInputsearchInputsearchInput'
-  );
-
-  console.log(presentations, 'Presentation Debug Info');
-
   return (
     <Wrapper>
       {filteredPresentations.map((presentation) => (
@@ -42,4 +35,3 @@ const PresentationList = ({ searchInput }) => {
 };
 
 export default PresentationList;
-// se

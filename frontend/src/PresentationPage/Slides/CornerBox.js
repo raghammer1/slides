@@ -1,7 +1,5 @@
 import React from 'react';
 const CornerBox = ({ style }) => {
-  console.log(style, 'style');
-
   return (
     <div
       style={{
