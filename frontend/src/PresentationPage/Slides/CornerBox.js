@@ -1,4 +1,5 @@
 import React from 'react';
+// Component for rendering a small red box with absolute positioning
 const CornerBox = ({ style }) => {
   return (
     <div

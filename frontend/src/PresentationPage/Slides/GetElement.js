@@ -4,6 +4,7 @@ import ImageElementDisplay from './ElementDisplays.js/ImageElementDisplay';
 import VideoPlayer from './ElementDisplays.js/VideoPlayer';
 import CodeElementDisplay from './ElementDisplays.js/CodeElementDisplay';
 
+// Component for rendering different types of elements based on their type
 const GetElement = ({
   element,
   presentationId,
@@ -14,6 +15,7 @@ const GetElement = ({
   renderCornerBoxes,
   handleSelectedElement,
 }) => {
+  // Conditional rendering based on element type
   if (element.type === 'textarea') {
     return (
       <TextBoxElementDisplay

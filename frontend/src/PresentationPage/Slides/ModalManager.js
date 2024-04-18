@@ -6,7 +6,9 @@ import CodeModal from './EditSlide/CodeModal';
 import SlideHistory from './EditSlide/SlideHistory/SlideHistory';
 import SlideChangeColourModal from './EditSlide/SlideChangeColourModal';
 
+// Component for managing the opening and closing of modals
 const ModalManager = ({
+  // Props for managing modal states and actions
   openCreateTextBox,
   handleCloseCreateTextBox,
   openImageHandler,
@@ -23,6 +25,7 @@ const ModalManager = ({
   selectedSlideId,
   setAnchorEl,
 }) => {
+  // Component logic for managing modals
   return (
     <>
       <TextBoxModal

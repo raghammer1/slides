@@ -17,12 +17,15 @@ import {
 import GetElement from './GetElement';
 import ModalManager from './ModalManager';
 
+// Component for rendering and managing slide display and interactions
 const SlideDisplay = ({
+  // Props for controlling slide display and interactions
   presentationId,
   selectedSlideId,
   isScreenLessThan1000,
   isScreenLessThan700,
 }) => {
+  // Component logic for rendering and handling slide interactions
   if (isScreenLessThan700) {
     setContainerWidth(400);
     setContainerHeight(200);
@@ -59,6 +62,7 @@ const SlideDisplay = ({
   const [selectedElement, setSelectedElement] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
 
+  // Function to handle click event and set the anchor element
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
     console.log('AnchorEl set in handleClick:', anchorEl);
@@ -68,11 +72,15 @@ const SlideDisplay = ({
     Prism.highlightAll();
   }, [selectedSlide]);
 
+  // Function to handle selecting an element
+
   const handleSelectedElement = (element) => {
     setSelectedElement(element);
   };
 
+  // Function to handle stopping the drag event of an element
   const onDragStop = (e, d, element) => {
+    // Update the element position
     updateElementPosition(
       presentationId,
       selectedSlideId,
@@ -81,6 +89,7 @@ const SlideDisplay = ({
       `${(d.y / containerHeight) * 100}`
     );
 
+    // Update the selected element with new position
     setSelectedElement({
       ...element,
       top: `${(d.y / containerHeight) * 100}`,
@@ -88,7 +97,9 @@ const SlideDisplay = ({
     });
   };
 
+  // Function to handle stopping the resize event of an element
   const onResizeStop = (e, direction, ref, delta, position, element) => {
+    // Calculate new size and position
     const newSize = {
       width: `${(ref.offsetWidth / containerWidth) * 100}`,
       height: `${(ref.offsetHeight / containerHeight) * 100}`,
@@ -97,6 +108,7 @@ const SlideDisplay = ({
       top: `${(position.y / containerHeight) * 100}`,
       left: `${(position.x / containerWidth) * 100}`,
     };
+    // Update element size and position
     updateElementSize(
       presentationId,
       selectedSlideId,
@@ -111,28 +123,34 @@ const SlideDisplay = ({
       newPosition.left,
       newPosition.top
     );
+    // Update selected element with new size and position
     setSelectedElement({ ...element, ...newSize, ...newPosition });
   };
 
+  // Function to handle deleting an element from the slide
   const handleDeleteElement = (elementId, e) => {
     e.preventDefault();
+    // Check if the selected element is being deleted
     if (selectedElement?.id === elementId) {
       setSelectedElement(null);
     }
+    // Delete the element from the slide
     deleteElementFromSlide(presentationId, selectedSlideId, elementId);
   };
 
+  // Function to render corner boxes around selected element
   const renderCornerBoxes = useCallback(
     (element) => {
+      // Check if an element is selected
       if (selectedElement === null || selectedElement.id !== element.id) {
         return null;
       }
-
       const elementWidthPx =
         (parseInt(selectedElement.width) / 100) * containerWidth;
       const elementHeightPx =
         (parseInt(selectedElement.height) / 100) * containerHeight;
 
+      // Calculate corner positions based on element size
       const corners = [
         { top: 0, left: 0 }, // Top-left
         { top: 0, left: 0 + elementWidthPx - 10 }, // Top-right-
@@ -143,6 +161,7 @@ const SlideDisplay = ({
         }, // Bottom-right
       ];
 
+      // Render corner boxes
       return corners.map((style, index) => (
         <CornerBox key={index} style={style} />
       ));
@@ -150,11 +169,14 @@ const SlideDisplay = ({
     [selectedElement]
   );
 
+  // Function to get elements of the selected slide
   const getElements = () => {
+    // Check if the selected slide has elements
     if (selectedSlide?.elements?.length) {
       const lastElementObj =
         selectedSlide.elements[selectedSlide.elements.length - 1];
 
+      // Extract element key and values
       const key = Object.keys(lastElementObj)[0];
       const values = lastElementObj[key];
 
@@ -246,8 +268,7 @@ const SlideDisplay = ({
           : `linear-gradient(${'to bottom right'}, ${'#999'}, ${'#999'})`,
         position: 'relative',
         overflow: 'hidden',
-      }}
-    >
+      }}>
       {getElements().map((element) => {
         return (
           <GetElement
@@ -274,8 +295,7 @@ const SlideDisplay = ({
           padding: '5px 10px',
           borderRadius: '5px',
         }}
-        data-testid={'slide-number-for-current-slide'}
-      >
+        data-testid={'slide-number-for-current-slide'}>
         {selectedSlide?.slideNumber}
       </Typography>
 
@@ -291,8 +311,7 @@ const SlideDisplay = ({
           cursor: 'pointer',
         }}
         data-testid={'edit-btn'}
-        onClick={handleClick}
-      >
+        onClick={handleClick}>
         Edit
       </Typography>
 
