@@ -9,20 +9,21 @@ import { useNavigate } from 'react-router-dom';
 import useCurrentUserStore from '../../zustandStore/useCurrentUserStore';
 import { useAlert } from '../../components/AlertError';
 
+// Main login component which manages the login state and orchestrates the login process.
 const Login = () => {
   const [mail, setMail] = useState('');
   const [password, setPassword] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
   const { showAlert } = useAlert();
-
   const { setCurrentUser } = useCurrentUserStore();
-
   const nav = useNavigate();
 
+  // Validates the login form every time mail or password changes.
   useEffect(() => {
     setIsFormValid(validateLoginForm({ mail, password }));
   }, [mail, password, setIsFormValid]);
 
+  // Asynchronously logs in the user, manages local storage of token, and handles navigation and error alerts.
   const handleLoginFunction = useCallback(async () => {
     try {
       const response = await login({ email: mail, password });

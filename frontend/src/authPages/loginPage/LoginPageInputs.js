@@ -1,6 +1,7 @@
 import React from 'react';
 import InputWithLabels from '../../components/InputLabel';
 
+// Component to render input fields for email and password.
 const LoginPageInputs = ({ mail, setMail, password, setPassword }) => {
   return (
     <>
