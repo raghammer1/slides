@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from '@cypress/react';
+import { mount } from '@cypress/react18';
 import RedirectInfo from './RedirectInfo';
 
 // Describe block defines the test suite for the RedirectInfo component
