@@ -16,6 +16,7 @@ import {
 } from '@mui/material';
 import styled from '@emotion/styled';
 
+// Custom styling for this element.
 const style = {
   position: 'absolute',
   top: '50%',
@@ -34,6 +35,7 @@ const ImagePreview = styled('img')({
   borderRadius: '5px',
 });
 
+// Modal component for editing an existing image element.
 const ImageBoxDoubleClick = ({
   open,
   handleCloseEditTextBox,
@@ -41,16 +43,14 @@ const ImageBoxDoubleClick = ({
   selectedSlideId,
   element,
 }) => {
-  const [imageAlt, setImageAlt] = useState(element.alt);
-
+  const [imageAlt, setImageAlt] = useState(element.alt); // Initial alt text of the image.
   const updateElementInSlide = usePresentationListStore(
     (state) => state.updateElementInSlide
   );
+  const [imageInputType, setImageInputType] = useState('url'); // Default input type for image source.
+  const [selectedFile, setSelectedFile] = useState(element.src); // Initial source of the image (URL or file).
 
-  const [imageInputType, setImageInputType] = useState('url');
-
-  const [selectedFile, setSelectedFile] = useState(element.src);
-
+  // Function to handle file selection and encoding to base64 format.
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file && file.type.startsWith('image/')) {
@@ -63,6 +63,7 @@ const ImageBoxDoubleClick = ({
     }
   };
 
+  // Function to save the edited image element.
   const handleEditTextBoxHere = () => {
     updateElementInSlide(presentationId, selectedSlideId, element.id, {
       alt: imageAlt,
@@ -75,8 +76,7 @@ const ImageBoxDoubleClick = ({
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleCloseEditTextBox}
-      style={style}
-    >
+      style={style}>
       <InputWithLabels
         dataTestId={'imageAlt-text-box-test'}
         value={imageAlt}
@@ -95,8 +95,7 @@ const ImageBoxDoubleClick = ({
           aria-label="imageInputType"
           name="imageInputType"
           value={imageInputType}
-          onChange={(event) => setImageInputType(event.target.value)}
-        >
+          onChange={(event) => setImageInputType(event.target.value)}>
           <FormControlLabel value="url" control={<Radio />} label="URL" />
           <FormControlLabel value="upload" control={<Radio />} label="Upload" />
         </RadioGroup>
@@ -126,8 +125,7 @@ const ImageBoxDoubleClick = ({
             <Button
               data-testid={'image-box-upload-test-btn'}
               variant="contained"
-              component="label"
-            >
+              component="label">
               Upload File
               <input
                 data-testid={'image-box-upload-test'}

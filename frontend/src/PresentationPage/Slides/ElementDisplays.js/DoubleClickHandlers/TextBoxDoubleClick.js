@@ -18,6 +18,7 @@ const style = {
   p: 4,
 };
 
+// Modal component for editing an existing text box element.
 const TextBoxDoubleClick = ({
   open,
   handleCloseEditTextBox,
@@ -25,11 +26,13 @@ const TextBoxDoubleClick = ({
   selectedSlideId,
   element,
 }) => {
-  const [title, setTitle] = useState(element.text);
+  const [title, setTitle] = useState(element.text); // Initial text content of the text box.
   const [fontSizeTextBox, setFontSizeTextBox] = useState(
     element.fontSize.replace('em', '')
-  );
+  ); // Initial font size of the text box.
+
   const [colourTextBox, setColourTextBox] = useState(element.color);
+  // Initial font color of the text box.
 
   const updateElementInSlide = usePresentationListStore(
     (state) => state.updateElementInSlide
@@ -37,6 +40,7 @@ const TextBoxDoubleClick = ({
 
   const [fontFamily, setFontFamily] = useState(element.fontFamily || 'Arial');
 
+  // Function to save the edited text box element.
   const handleEditTextBoxHere = () => {
     updateElementInSlide(presentationId, selectedSlideId, element.id, {
       text: title,
@@ -51,8 +55,7 @@ const TextBoxDoubleClick = ({
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleCloseEditTextBox}
-      style={style}
-    >
+      style={style}>
       <InputWithLabels
         dataTestId={'title-text-box-test'}
         value={title}
