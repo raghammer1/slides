@@ -59,6 +59,8 @@ import { getStore, setStore } from '../services/api';
  *    @property {Select} language the language the code was written in (This properly is auto-detected)
  */
 
+//* This is a middleware function which updates the state of the backend
+//* Whenever there is a change detected to the presentations array in Zustand
 const presentationsChangeLogger = (config) => (set, get, api) =>
   config(
     async (nextState, ...args) => {
@@ -80,39 +82,11 @@ const presentationsChangeLogger = (config) => (set, get, api) =>
     api
   );
 
+//* This the Zustand store
 const usePresentationListStore = create(
   presentationsChangeLogger((set, get) => ({
     presentations: [],
-    timerStart: null,
-    elapsedTime: 0,
     version: 0,
-
-    startTimer: () => {
-      set({ timerStart: Date.now() });
-    },
-
-    stopTimer: () => {
-      const startTime = get().timerStart;
-      if (startTime) {
-        const endTime = Date.now();
-        const elapsed = endTime - startTime;
-        set({
-          elapsedTime: elapsed,
-          timerStart: null,
-        });
-      }
-    },
-
-    calculateCurrentElapsedTime: () => {
-      const startTime = get().timerStart;
-      if (startTime) {
-        const endTime = Date.now();
-        return endTime - startTime;
-      }
-      return 0;
-    },
-
-    getElapsedTime: () => get().elapsedTime,
 
     addPresentation: (newPresentation) => {
       set((state) => {

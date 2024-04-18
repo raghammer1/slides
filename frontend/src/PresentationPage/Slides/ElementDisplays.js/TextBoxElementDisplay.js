@@ -74,7 +74,7 @@ const TextBoxElementDisplay = ({
               color: element.color,
               resize: 'none',
               overflow: 'hidden',
-              border: '0.2px solid #999',
+              border: '0.2px solid #555',
               cursor: 'default',
               backgroundColor: 'transparent',
             }}

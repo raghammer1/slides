@@ -28,21 +28,13 @@ const SlidesMain = ({
   isScreenLessThan1000,
   isScreenLessThan700,
 }) => {
-  const {
-    slides,
-    deleteSlide,
-    startTimer,
-    stopTimer,
-    getElapsedTime,
-    version,
-  } = usePresentationListStore((state) => ({
-    slides: state.getSlidesForPresentation(presentationId),
-    deleteSlide: state.deleteSlide,
-    startTimer: state.startTimer,
-    stopTimer: state.stopTimer,
-    getElapsedTime: state.getElapsedTime,
-    version: state.version,
-  }));
+  const { slides, deleteSlide, version } = usePresentationListStore(
+    (state) => ({
+      slides: state.getSlidesForPresentation(presentationId),
+      deleteSlide: state.deleteSlide,
+      version: state.version,
+    })
+  );
 
   const [selectedSlide, setSelectedSlide] = useState(slides[0]);
   const selectedSlideId = selectedSlide.id;
@@ -60,14 +52,6 @@ const SlidesMain = ({
       setSelectedSlide(slides[0] || null);
     }
   }, [slides, selectedSlide, setSelectedSlide, version]);
-
-  useEffect(() => {
-    startTimer();
-
-    return () => {
-      stopTimer();
-    };
-  }, [selectedSlideId, startTimer, stopTimer, getElapsedTime, version]);
 
   const nav = useNavigate();
   const handleDeleteSlide = (slide) => {
