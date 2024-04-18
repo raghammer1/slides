@@ -1,4 +1,4 @@
-HOW TO RUN TESTING:
+# HOW TO RUN TESTING:
 
 # step 1
 
@@ -22,9 +22,9 @@ Generate the Coverage Report
 After tests complete, generate your coverage report:
 npm run test:coverage
 
-# END TESTING
+# END HOW TO RUN TESTING
 
-# Beautiful testing 2 Route:
+# Beautiful testing Route 2:
 
 1. User goes to register page and registers
 2. User creates 2 new presentations in the dashboard
@@ -43,3 +43,5 @@ npm run test:coverage
 15. User then adds another image in the presentation and deletes it using right click
 16. User then deletes all the slides hence deleting the presentation
 17. User back on the dashboard
+
+# COMMENTS FOR COMPONENT TESTING
