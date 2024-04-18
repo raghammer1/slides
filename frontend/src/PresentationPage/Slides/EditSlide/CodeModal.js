@@ -12,6 +12,7 @@ import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-c';
 import InputWithLabels from '../../../components/InputLabel';
 import usePresentationListStore from '../../../zustandStore/usePresentationListStore';
+import { Typography } from '@mui/material';
 
 // Custom styling for the element.
 const style = {
@@ -91,22 +92,24 @@ const CodeModal = ({
       handleCloseCreateTextBox={handleCloseCodeHandler}
       style={style}
     >
+      <Typography style={{ fontSize: '24px', color: '#fff' }}>
+        Set Code
+      </Typography>
       <div style={{ width: '100px', height: '100px' }}>
         <pre
           aria-hidden="true"
           style={{
             position: 'absolute',
-            top: '0',
             left: '0',
             right: '0',
             border: 'none',
-            margin: '0',
+            marginTop: '10px',
             padding: '10px',
             pointerEvents: 'none',
             color: 'transparent',
             overflowY: 'scroll',
             fontSize: '16px',
-            width: '300px',
+            width: '410px',
             overflow: 'auto',
             height: '100px',
             fontFamily:
@@ -116,17 +119,19 @@ const CodeModal = ({
           <code className={`language-${language}`}>{code}</code>
         </pre>
       </div>
-      <SelectWithLabel
-        label="Language"
-        value={language}
-        setValue={setLanguage}
-        disabled={true}
-        options={[
-          { value: 'javascript', label: 'JavaScript' },
-          { value: 'python', label: 'Python' },
-          { value: 'c', label: 'C' },
-        ]}
-      />
+      <div style={{ marginTop: '50px' }}>
+        <SelectWithLabel
+          label="Language"
+          value={language}
+          setValue={setLanguage}
+          disabled={true}
+          options={[
+            { value: 'javascript', label: 'JavaScript' },
+            { value: 'python', label: 'Python' },
+            { value: 'c', label: 'C' },
+          ]}
+        />
+      </div>
       <TextBoxWithLabel
         dataTestId={'main-code-box-test'}
         value={code}

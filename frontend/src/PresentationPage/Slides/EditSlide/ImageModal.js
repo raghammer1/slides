@@ -95,6 +95,9 @@ const ImageModal = ({
       handleCloseCreateTextBox={handleCloseImageHandler}
       style={style}
     >
+      <Typography style={{ fontSize: '24px', color: '#fff' }}>
+        Set Image
+      </Typography>
       <InputWithLabels
         dataTestId={'image-box-alt-test'}
         value={imageAlt}

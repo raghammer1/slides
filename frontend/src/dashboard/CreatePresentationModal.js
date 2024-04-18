@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CustomModal from '../components/CustomModal';
 import InputWithLabels from '../components/InputLabel';
-import { Tooltip } from '@mui/material';
+import { Tooltip, Typography } from '@mui/material';
 import CustomPrimaryButton from '../components/CustomePrimaryButton';
 import { v4 as uuidv4 } from 'uuid';
 import usePresentationListStore from '../zustandStore/usePresentationListStore';
@@ -77,6 +77,9 @@ const CreatePresentationModal = ({ open, handleClose }) => {
       handleCloseCreateTextBox={handleClose}
       style={style}
     >
+      <Typography style={{ fontSize: '24px', color: '#fff' }}>
+        Create Presentation
+      </Typography>
       <InputWithLabels
         value={name}
         setValue={setName}

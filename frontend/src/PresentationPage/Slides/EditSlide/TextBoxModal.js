@@ -5,6 +5,7 @@ import CustomPrimaryButton from '../../../components/CustomePrimaryButton';
 import { v4 as uuidv4 } from 'uuid';
 import InputLabelRange from '../../../components/InputLabelRange';
 import usePresentationListStore from '../../../zustandStore/usePresentationListStore';
+import { Typography } from '@mui/material';
 
 //  Custom Styling for this element.
 const style = {
@@ -64,6 +65,9 @@ const TextBoxModal = ({
       handleCloseCreateTextBox={handleCloseCreateTextBox}
       style={style}
     >
+      <Typography style={{ fontSize: '24px', color: '#fff' }}>
+        Create Text-Box
+      </Typography>
       <InputWithLabels
         dataTestId={'title-text-box-test'}
         value={title}

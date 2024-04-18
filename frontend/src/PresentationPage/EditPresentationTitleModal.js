@@ -2,6 +2,7 @@ import React from 'react';
 import CustomModal from '../components/CustomModal';
 import InputWithLabels from '../components/InputLabel';
 import CustomPrimaryButton from '../components/CustomePrimaryButton';
+import { Typography } from '@mui/material';
 
 // Similar style as the delete modal for consistency
 const style = {
@@ -34,6 +35,9 @@ const EditPresentationTitleModal = ({
       handleCloseCreateTextBox={handleClose}
       style={style}
     >
+      <Typography style={{ fontSize: '24px', color: '#fff' }}>
+        Presentation Settings
+      </Typography>
       <InputWithLabels
         value={title}
         setValue={setTitle}

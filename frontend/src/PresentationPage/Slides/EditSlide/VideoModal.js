@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CustomModal from '../../../components/CustomModal';
-import { Tooltip } from '@mui/material';
+import { Tooltip, Typography } from '@mui/material';
 import InputWithLabels from '../../../components/InputLabel';
 import { v4 as uuidv4 } from 'uuid';
 import CustomPrimaryButton from '../../../components/CustomePrimaryButton';
@@ -67,6 +67,9 @@ const VideoModal = ({
       handleCloseCreateTextBox={handleCloseVideoHandler}
       style={style}
     >
+      <Typography style={{ fontSize: '24px', color: '#fff' }}>
+        Set Video
+      </Typography>
       <InputWithLabels
         dataTestId={'title-video-url-box-test'}
         value={videoUrl}
