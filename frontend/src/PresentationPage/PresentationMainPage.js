@@ -8,6 +8,7 @@ import styled from '@emotion/styled';
 import EditPresentationTitleModal from './EditPresentationTitleModal';
 import SlidesMain from './Slides/SlidesMain';
 import { useAlert } from '../components/AlertError';
+import AppFooter from '../components/AppFooter';
 
 // Styled component for general layout of the detail page.
 const Wrapper = styled('div')(() => ({
@@ -181,8 +182,19 @@ const PresentationDetail = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+        height: '100vh',
       }}
     >
+      <div
+        style={{
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'right',
+          marginRight: '50px',
+        }}
+      >
+        <AppFooter />
+      </div>
       <Wrapper2>
         <StyledTypography
           sx={{
