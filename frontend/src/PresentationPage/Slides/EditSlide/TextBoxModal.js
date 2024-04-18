@@ -62,7 +62,8 @@ const TextBoxModal = ({
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleCloseCreateTextBox}
-      style={style}>
+      style={style}
+    >
       <InputWithLabels
         dataTestId={'title-text-box-test'}
         value={title}

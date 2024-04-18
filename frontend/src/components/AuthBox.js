@@ -27,7 +27,8 @@ const AuthBox = (props) => {
           flexDirection: 'column',
           padding: '25px',
         }}
-        data-testid="box">
+        data-testid="box"
+      >
         {props.children}
       </Box>
     </BoxWrapper>

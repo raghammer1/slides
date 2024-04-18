@@ -57,7 +57,8 @@ const SlidePreview = ({
             ? gradient.bgCol
             : `linear-gradient(${'to bottom right'}, ${'#999'}, ${'#999'})`,
           overflow: 'hidden',
-        }}>
+        }}
+      >
         {value.map((element) => {
           if (element.type === 'textarea') {
             return (

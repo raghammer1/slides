@@ -93,7 +93,8 @@ const ImageModal = ({
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleCloseImageHandler}
-      style={style}>
+      style={style}
+    >
       <InputWithLabels
         dataTestId={'image-box-alt-test'}
         value={imageAlt}
@@ -112,7 +113,8 @@ const ImageModal = ({
           aria-label="imageInputType"
           name="imageInputType"
           value={imageInputType}
-          onChange={(event) => setImageInputType(event.target.value)}>
+          onChange={(event) => setImageInputType(event.target.value)}
+        >
           <FormControlLabel value="url" control={<Radio />} label="URL" />
           <FormControlLabel value="upload" control={<Radio />} label="Upload" />
         </RadioGroup>
@@ -141,7 +143,8 @@ const ImageModal = ({
             <Button
               data-testid={'image-box-upload-test-btn'}
               variant="contained"
-              component="label">
+              component="label"
+            >
               Upload File
               <input
                 data-testid={'image-box-upload-test'}
@@ -192,7 +195,8 @@ const ImageModal = ({
           selectedFile === null
             ? 'Give a valid url or image file, also give alt'
             : 'submit image'
-        }>
+        }
+      >
         <div>
           <CustomPrimaryButton
             disabled={selectedFile === null || imageAlt === null}

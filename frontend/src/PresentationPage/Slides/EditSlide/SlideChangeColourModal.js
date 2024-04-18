@@ -77,7 +77,8 @@ const SlideChangeColourModal = ({
         backgroundColor: 'transparent',
         boxShadow: 'none',
         height: '1000px',
-      }}>
+      }}
+    >
       <Title>Set Slide Background Color</Title>
       <ColorPickerContainer>
         <SketchPicker color={color1} onChangeComplete={handleColor1Change} />
@@ -88,7 +89,8 @@ const SlideChangeColourModal = ({
         <select
           id="gradient-direction"
           value={gradientDirection}
-          onChange={(e) => setGradientDirection(e.target.value)}>
+          onChange={(e) => setGradientDirection(e.target.value)}
+        >
           <option value="to bottom">Top to Bottom</option>
           <option value="to right">Left to Right</option>
           <option value="to bottom right">

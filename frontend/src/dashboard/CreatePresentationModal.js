@@ -75,7 +75,8 @@ const CreatePresentationModal = ({ open, handleClose }) => {
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleClose}
-      style={style}>
+      style={style}
+    >
       <InputWithLabels
         value={name}
         setValue={setName}

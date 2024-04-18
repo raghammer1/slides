@@ -77,10 +77,12 @@ const ReArrangeMainPage = () => {
         <DndContext
           sensors={sensors}
           collisionDetection={closestCenter}
-          onDragEnd={handleDragEnd}>
+          onDragEnd={handleDragEnd}
+        >
           <SortableContext
             items={slides.map((slide) => slide.id)}
-            strategy={verticalListSortingStrategy}>
+            strategy={verticalListSortingStrategy}
+          >
             {slides.map((slide) => (
               <ReArrangeSlideCard key={slide.id} id={slide.id} slide={slide} />
             ))}

@@ -70,14 +70,16 @@ const VideoPlayer = ({
         onResizeStop={(e, direction, ref, delta, position) =>
           onResizeStop(e, direction, ref, delta, position, element)
         }
-        onContextMenu={(e) => handleDeleteElement(element.id, e)}>
+        onContextMenu={(e) => handleDeleteElement(element.id, e)}
+      >
         <div style={style} onClick={handleClick}>
           <iframe
             width={style.width}
             height={style.height}
             src={videoSrc}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen></iframe>
+            allowFullScreen
+          ></iframe>
         </div>
         {renderCornerBoxes(element)}
       </Rnd>

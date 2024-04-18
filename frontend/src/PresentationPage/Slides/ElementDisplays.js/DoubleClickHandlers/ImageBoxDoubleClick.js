@@ -76,7 +76,8 @@ const ImageBoxDoubleClick = ({
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleCloseEditTextBox}
-      style={style}>
+      style={style}
+    >
       <InputWithLabels
         dataTestId={'imageAlt-text-box-test'}
         value={imageAlt}
@@ -95,7 +96,8 @@ const ImageBoxDoubleClick = ({
           aria-label="imageInputType"
           name="imageInputType"
           value={imageInputType}
-          onChange={(event) => setImageInputType(event.target.value)}>
+          onChange={(event) => setImageInputType(event.target.value)}
+        >
           <FormControlLabel value="url" control={<Radio />} label="URL" />
           <FormControlLabel value="upload" control={<Radio />} label="Upload" />
         </RadioGroup>
@@ -125,7 +127,8 @@ const ImageBoxDoubleClick = ({
             <Button
               data-testid={'image-box-upload-test-btn'}
               variant="contained"
-              component="label">
+              component="label"
+            >
               Upload File
               <input
                 data-testid={'image-box-upload-test'}

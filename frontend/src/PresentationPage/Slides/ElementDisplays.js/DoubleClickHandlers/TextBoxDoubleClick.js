@@ -55,7 +55,8 @@ const TextBoxDoubleClick = ({
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleCloseEditTextBox}
-      style={style}>
+      style={style}
+    >
       <InputWithLabels
         dataTestId={'title-text-box-test'}
         value={title}

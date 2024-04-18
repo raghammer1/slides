@@ -28,7 +28,8 @@ const PreviewTheOlderVersion = ({
       open={open}
       onClose={handleClosePreviewHandler}
       aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description">
+      aria-describedby="modal-modal-description"
+    >
       <Box sx={style}>
         <SlidePreview
           presentationId={presentationId}

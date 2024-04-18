@@ -49,7 +49,8 @@ const VideoDoubleClick = ({
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleCloseEditTextBox}
-      style={style}>
+      style={style}
+    >
       <InputWithLabels
         dataTestId={'title-video-url-box-test'}
         value={videoUrl}

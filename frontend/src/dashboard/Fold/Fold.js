@@ -114,7 +114,8 @@ const Fold = ({ handleOpen, setSearchInput, searchInput }) => {
         />
         <IconButton
           onClick={handleSearchClick}
-          style={{ color: 'gray', padding: '5px' }}>
+          style={{ color: 'gray', padding: '5px' }}
+        >
           <SearchIconStyled />
         </IconButton>
       </InputWrapper>

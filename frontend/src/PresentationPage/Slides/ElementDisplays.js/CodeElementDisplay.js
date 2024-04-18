@@ -57,17 +57,20 @@ const CodeElementDisplay = ({
         onResizeStop={(e, direction, ref, delta, position) =>
           onResizeStop(e, direction, ref, delta, position, element)
         }
-        onContextMenu={(e) => handleDeleteElement(element.id, e)}>
+        onContextMenu={(e) => handleDeleteElement(element.id, e)}
+      >
         <div
           key={element.id}
           onClick={handleClick}
-          style={{ position: 'relative', width: '100%', height: '100%' }}>
+          style={{ position: 'relative', width: '100%', height: '100%' }}
+        >
           <div
             style={{
               position: 'relative',
               width: '100%',
               height: '100%',
-            }}>
+            }}
+          >
             <textarea
               defaultValue={element.text}
               onChange={(e) => {
@@ -101,10 +104,12 @@ const CodeElementDisplay = ({
                 overflowY: 'auto',
                 zIndex: 0,
                 pointerEvents: 'none',
-              }}>
+              }}
+            >
               <code
                 style={{ fontSize: element.fontSize }}
-                className={`language-${element.language}`}>
+                className={`language-${element.language}`}
+              >
                 {element.text}
               </code>
             </pre>

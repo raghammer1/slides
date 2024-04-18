@@ -34,12 +34,14 @@ const EditMenu = ({
       onClose={handleClose}
       MenuListProps={{
         'aria-labelledby': 'edit-slide-button', // Accessibility feature for better screen reader support.
-      }}>
+      }}
+    >
       <MenuItem
         data-testid={'add-text-box-btn'}
         onClick={() => {
           handleAddTextOnSlide();
-        }}>
+        }}
+      >
         Add Text
       </MenuItem>
       <MenuItem
@@ -47,7 +49,8 @@ const EditMenu = ({
         onClick={() => {
           setAnchorEl(null); // Close the menu before executing the action.
           handleAddImageOnSlide();
-        }}>
+        }}
+      >
         Add Image
       </MenuItem>
       <MenuItem
@@ -55,7 +58,8 @@ const EditMenu = ({
         onClick={() => {
           setAnchorEl(null); // Close the menu before executing the action.
           handleAddVideoOnSlide();
-        }}>
+        }}
+      >
         Add Video
       </MenuItem>
       <MenuItem
@@ -63,7 +67,8 @@ const EditMenu = ({
         onClick={() => {
           setAnchorEl(null); // Close the menu before executing the action.
           handleAddCodeOnSlide();
-        }}>
+        }}
+      >
         Add Code
       </MenuItem>
       <MenuItem
@@ -71,7 +76,8 @@ const EditMenu = ({
         onClick={() => {
           setAnchorEl(null); // Close the menu before executing the action.
           handleOpenSlideHistory();
-        }}>
+        }}
+      >
         History
       </MenuItem>
       <MenuItem
@@ -79,7 +85,8 @@ const EditMenu = ({
         onClick={() => {
           setAnchorEl(null); // Close the menu before executing the action.
           handleOpenColourPalette();
-        }}>
+        }}
+      >
         Color Changer
       </MenuItem>
     </Menu>

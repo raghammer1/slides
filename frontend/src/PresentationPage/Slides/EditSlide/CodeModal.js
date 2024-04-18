@@ -89,7 +89,8 @@ const CodeModal = ({
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleCloseCodeHandler}
-      style={style}>
+      style={style}
+    >
       <div style={{ width: '100px', height: '100px' }}>
         <pre
           aria-hidden="true"
@@ -110,7 +111,8 @@ const CodeModal = ({
             height: '100px',
             fontFamily:
               'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
-          }}>
+          }}
+        >
           <code className={`language-${language}`}>{code}</code>
         </pre>
       </div>

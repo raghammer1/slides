@@ -54,7 +54,8 @@ export const AlertProvider = ({ children }) => {
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',
-        }}>
+        }}
+      >
         <StyledSnackbarContent
           bgColor={alertState.bgColor}
           message={<span id="client-snackbar">{alertState.message}</span>}
@@ -63,7 +64,8 @@ export const AlertProvider = ({ children }) => {
               key="close"
               aria-label="Close"
               color="inherit"
-              onClick={handleClose}>
+              onClick={handleClose}
+            >
               <CloseIcon style={{ color: '#fff' }} />
             </IconButton>,
           ]}

@@ -65,7 +65,8 @@ const VideoModal = ({
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleCloseVideoHandler}
-      style={style}>
+      style={style}
+    >
       <InputWithLabels
         dataTestId={'title-video-url-box-test'}
         value={videoUrl}

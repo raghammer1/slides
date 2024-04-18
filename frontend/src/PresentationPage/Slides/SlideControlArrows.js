@@ -73,19 +73,22 @@ const SlideControlArrows = ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-      }}>
+      }}
+    >
       <IconButton
         data-testid={'btn-go-left'}
         onClick={handlePrev}
         disabled={!canNavigatePrev}
-        aria-label="previous slide">
+        aria-label="previous slide"
+      >
         <ArrowBackIosIcon />
       </IconButton>
       <IconButton
         data-testid={'btn-go-right'}
         onClick={handleNext}
         disabled={!canNavigateNext}
-        aria-label="next slide">
+        aria-label="next slide"
+      >
         <ArrowForwardIosIcon />
       </IconButton>
     </Box>

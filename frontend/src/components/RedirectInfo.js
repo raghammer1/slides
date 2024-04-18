@@ -22,7 +22,8 @@ const RedirectInfo = ({
       sx={{ color: '#72767d' }}
       style={additionalStyles || {}}
       variant="subtitle2"
-      data-testid="typography-text">
+      data-testid="typography-text"
+    >
       {text}
       <RedirectText onClick={redirectHandler}>{redirectText}</RedirectText>
     </Typography>

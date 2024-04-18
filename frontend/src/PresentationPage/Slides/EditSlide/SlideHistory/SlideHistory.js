@@ -80,7 +80,8 @@ const SlideHistory = ({
         anchorEl="right"
         open={open}
         onClose={handleClose}
-        keepMounted>
+        keepMounted
+      >
         <div>
           <h1 style={{ marginLeft: '20px' }}>Slide History</h1>
           {slide && slide.elements && slide.elements.length > 0 ? (
@@ -88,7 +89,8 @@ const SlideHistory = ({
               Object.entries(elementObj).map(([timeKey, elements]) => (
                 <Wrapper
                   key={`${timeKey}-${index}`}
-                  onClick={() => goToThisTimeHistory(elementObj)}>
+                  onClick={() => goToThisTimeHistory(elementObj)}
+                >
                   <div>Go To Time: {formatDate(timeKey)}</div>
                 </Wrapper>
               ))

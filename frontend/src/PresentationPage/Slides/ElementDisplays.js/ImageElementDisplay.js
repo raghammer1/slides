@@ -61,7 +61,8 @@ const ImageElementDisplay = ({
         onResizeStop={(e, direction, ref, delta, position) =>
           onResizeStop(e, direction, ref, delta, position, element)
         }
-        onContextMenu={(e) => handleDeleteElement(element.id, e)}>
+        onContextMenu={(e) => handleDeleteElement(element.id, e)}
+      >
         <div key={element.id} onClick={handleClick}>
           <img
             draggable="false"

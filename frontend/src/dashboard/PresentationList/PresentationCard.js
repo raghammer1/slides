@@ -86,19 +86,22 @@ const PresentationCard = ({ presentation }) => {
   return (
     <FlipCard
       onClick={handleOpenPresentation}
-      data-testid={`presentation-card-${presentation.id}`}>
+      data-testid={`presentation-card-${presentation.id}`}
+    >
       <Card>
         <CardFront
           bgColor={isValid ? undefined : '#333'}
           bgImage={isValid ? `url(${presentation.thumbnail})` : undefined}
-          {...backgroundStyle}>
+          {...backgroundStyle}
+        >
           <div
             style={{
               fontSize: '22px',
               fontWeight: 'bold',
               marginBottom: '5px',
               fontFamily: 'Arial',
-            }}>
+            }}
+          >
             {presentation.name}
           </div>
         </CardFront>
@@ -109,7 +112,8 @@ const PresentationCard = ({ presentation }) => {
               fontWeight: 'bold',
               marginBottom: '5px',
               fontFamily: 'Arial',
-            }}>
+            }}
+          >
             {presentation.name}
           </div>
           <div
@@ -117,7 +121,8 @@ const PresentationCard = ({ presentation }) => {
               fontSize: '18px',
               fontWeight: '600',
               fontFamily: 'Tahoma',
-            }}>
+            }}
+          >
             Slides: {presentation.slides.length}
           </div>
           <div
@@ -125,7 +130,8 @@ const PresentationCard = ({ presentation }) => {
               fontSize: '16px',
               fontWeight: '400',
               fontFamily: 'Verdana',
-            }}>
+            }}
+          >
             {presentation.description || 'No description provided'}
           </div>
         </CardBack>
