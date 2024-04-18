@@ -229,6 +229,136 @@ const usePresentationListStore = create(
         };
       });
     },
+    updateElementPosition: (presentationId, slideId, elementId, top, left) => {
+      set((state) => {
+        const presentationIndex = state.presentations.findIndex(
+          (p) => p.id === presentationId
+        );
+        if (presentationIndex === -1) {
+          console.error('Presentation not found');
+          return state;
+        }
+
+        const updatedPresentation = {
+          ...state.presentations[presentationIndex],
+        };
+
+        const slideIndex = updatedPresentation.slides.findIndex(
+          (slide) => slide.id === slideId
+        );
+        if (slideIndex === -1) {
+          console.error('Slide not found');
+          return state;
+        }
+
+        const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
+
+        const lastElementObject =
+          updatedSlide.elements[updatedSlide.elements.length - 1];
+        const lastTimeKey = Object.keys(lastElementObject)[0];
+        const currentTime = Date.now();
+        const lastTime = parseInt(lastTimeKey, 10);
+        const elapsedTime = currentTime - lastTime;
+
+        if (elapsedTime < 60000) {
+          lastElementObject[lastTimeKey] = lastElementObject[lastTimeKey].map(
+            (element) => {
+              if (element.id === elementId) {
+                return { ...element, top, left };
+              }
+              return element;
+            }
+          );
+        } else {
+          const elementsClone = lastElementObject[lastTimeKey].map(
+            (element) => {
+              if (element.id === elementId) {
+                return { ...element, top, left };
+              }
+              return element;
+            }
+          );
+
+          const newTimeKey = currentTime.toString();
+          const newElementObject = { [newTimeKey]: elementsClone };
+
+          updatedSlide.elements.push(newElementObject);
+        }
+
+        updatedPresentation.slides[slideIndex] = updatedSlide;
+
+        const updatedPresentations = [...state.presentations];
+        updatedPresentations[presentationIndex] = updatedPresentation;
+
+        return { ...state, presentations: updatedPresentations };
+      });
+    },
+
+    updateElementSize: (presentationId, slideId, elementId, width, height) => {
+      set((state) => {
+        const presentationIndex = state.presentations.findIndex(
+          (p) => p.id === presentationId
+        );
+        if (presentationIndex === -1) {
+          console.error('Presentation not found');
+          return state;
+        }
+
+        const updatedPresentation = {
+          ...state.presentations[presentationIndex],
+        };
+
+        const slideIndex = updatedPresentation.slides.findIndex(
+          (slide) => slide.id === slideId
+        );
+        if (slideIndex === -1) {
+          console.error('Slide not found');
+          return state;
+        }
+
+        const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
+
+        const lastElementObject =
+          updatedSlide.elements[updatedSlide.elements.length - 1];
+        const lastTimeKey = Object.keys(lastElementObject)[0];
+        const currentTime = Date.now();
+        const lastTime = parseInt(lastTimeKey, 10);
+        const elapsedTime = currentTime - lastTime;
+
+        if (elapsedTime < 60000) {
+          lastElementObject[lastTimeKey] = lastElementObject[lastTimeKey].map(
+            (element) => {
+              if (element.id === elementId) {
+                return { ...element, width, height };
+              }
+              return element;
+            }
+          );
+        } else {
+          const elementsClone = lastElementObject[lastTimeKey].map(
+            (element) => {
+              if (element.id === elementId) {
+                return { ...element, width, height };
+              }
+              return element;
+            }
+          );
+
+          const newTimeKey = currentTime.toString();
+          const newElementObject = { [newTimeKey]: elementsClone };
+
+          updatedSlide.elements.push(newElementObject);
+        }
+
+        updatedPresentation.slides[slideIndex] = updatedSlide;
+
+        const updatedPresentations = [...state.presentations];
+        updatedPresentations[presentationIndex] = updatedPresentation;
+
+        return { ...state, presentations: updatedPresentations };
+      });
+    },
+
     deleteElementFromSlide: (presentationId, slideId, elementId) => {
       set((state) => {
         const presentationIndex = state.presentations.findIndex(
