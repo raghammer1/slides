@@ -16,7 +16,7 @@ const Card = styled('div')((props) => ({
   width: '100%',
   height: '100%',
   position: 'relative',
-  backgroundColor: props.bgColor || '#333',
+  backgroundColor: props.bgColor2 || '#333',
   backgroundImage: props.bgImage ? `url(${props.bgImage})` : 'none',
   textAlign: 'center',
   transition: 'transform 0.6s',
@@ -40,7 +40,7 @@ const CardSide = styled('div')({
 
 // CardFront styled component representing the front of the flip card.
 const CardFront = styled(CardSide)((props) => ({
-  backgroundColor: props.bgColor || '#333',
+  backgroundColor: props.bgColor2 || '#333',
   backgroundImage: props.bgImage ? `url(${props.bgImage})` : 'none',
   color: props.color,
   backgroundSize: 'cover',
@@ -78,7 +78,7 @@ const PresentationCard = ({ presentation }) => {
 
   // Dynamic styles based on thumbnail validity.
   const backgroundStyle = {
-    bgColor: isValid ? undefined : '#333',
+    bgColor2: isValid ? undefined : '#333',
     bgImage: presentation.thumbnail,
     color: isValid ? '#333' : '#fff',
   };
@@ -90,7 +90,7 @@ const PresentationCard = ({ presentation }) => {
     >
       <Card>
         <CardFront
-          bgColor={isValid ? undefined : '#333'}
+          bgColor2={isValid ? undefined : '#333'}
           bgImage={isValid ? `url(${presentation.thumbnail})` : undefined}
           {...backgroundStyle}
         >
