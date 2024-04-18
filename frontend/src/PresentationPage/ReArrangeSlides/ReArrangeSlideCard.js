@@ -2,25 +2,23 @@
 import React from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import styled from 'styled-components';
+// import styled from 'styled-components';
+import TextBoxPreview from '../../PreviewPresentation/PreviewElementDisplay/TextBoxPreview';
+import ImagePreview from '../../PreviewPresentation/PreviewElementDisplay/ImagePreview';
+import VideoPreview from '../../PreviewPresentation/PreviewElementDisplay/VideoPreview';
+import { Typography } from '@mui/material';
+import CodePreview from '../../PreviewPresentation/PreviewElementDisplay/CodePreview';
+import { styled } from '@mui/system';
 
-const Card = styled.div`
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 15px;
-  margin: 10px;
-  width: 200px;
-  height: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
-`;
+const Card = styled('div')({
+  width: '300px',
+  height: '150px',
+  position: 'relative',
+  overflow: 'hidden',
+  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+  border: '2px #333 solid',
+});
+
 function ReArrangeSlideCard({ id, slide }) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: id.toString() });
@@ -30,9 +28,48 @@ function ReArrangeSlideCard({ id, slide }) {
     transition,
   };
 
+  const getElements = (selectedSlide) => {
+    if (selectedSlide?.elements?.length) {
+      const lastElementObj =
+        selectedSlide.elements[selectedSlide.elements.length - 1];
+      const key = Object.keys(lastElementObj)[0];
+      return lastElementObj[key];
+    }
+    return [];
+  };
+
+  const size = { width: 200, height: 100 };
+
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      <Card>Slide {slide.slideNumber}</Card>
+    <div
+      ref={setNodeRef}
+      style={{ ...style, marginBottom: '20px' }}
+      {...attributes}
+      {...listeners}
+    >
+      <Card>
+        {getElements(slide).map((element) => {
+          if (element.type === 'textarea') {
+            return (
+              <TextBoxPreview key={element.id} element={element} size={size} />
+            );
+          } else if (element.type === 'image') {
+            return (
+              <ImagePreview key={element.id} element={element} size={size} />
+            );
+          } else if (element.type === 'video') {
+            return (
+              <VideoPreview key={element.id} element={element} size={size} />
+            );
+          } else if (element.type === 'code') {
+            return (
+              <CodePreview key={element.id} element={element} size={size} />
+            );
+          }
+          return null;
+        })}
+      </Card>
+      <Typography>Slide: {slide.slideNumber}</Typography>
     </div>
   );
 }
