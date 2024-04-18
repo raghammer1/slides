@@ -69,7 +69,6 @@
     "@babel/preset-react": "^7.24.1",
     "@cypress/code-coverage": "^3.12.33",
     "@cypress/instrument-cra": "^1.4.0",
-    "@cypress/react": "^8.0.0",
     "@cypress/webpack-dev-server": "^3.7.4",
     "@cypress/webpack-preprocessor": "^6.0.1",
     "@testing-library/react": "^14.2.2",
