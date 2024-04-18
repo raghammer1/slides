@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'cypress/react18';
-import CustomModal from './CustomModal';
+import CustomModal from '../../src/components/CustomModal';
 
 describe('<CustomModal />', () => {
   it('renders the modal when open is true', () => {
@@ -8,8 +8,7 @@ describe('<CustomModal />', () => {
       <CustomModal
         open={true}
         handleCloseCreateTextBox={() => {}}
-        style={{ width: '400px' }}
-      >
+        style={{ width: '400px' }}>
         <div>Modal Content</div>
       </CustomModal>
     );
@@ -24,8 +23,7 @@ describe('<CustomModal />', () => {
       <CustomModal
         open={false}
         handleCloseCreateTextBox={() => {}}
-        style={{ width: '400px' }}
-      >
+        style={{ width: '400px' }}>
         <div>Modal Content</div>
       </CustomModal>
     );
@@ -40,8 +38,7 @@ describe('<CustomModal />', () => {
       <CustomModal
         open={true}
         handleCloseCreateTextBox={handleCloseSpy}
-        style={{ width: '400px' }}
-      >
+        style={{ width: '400px' }}>
         <div>Modal Content</div>
       </CustomModal>
     );
@@ -62,8 +59,7 @@ describe('<CustomModal />', () => {
       <CustomModal
         open={true}
         handleCloseCreateTextBox={() => {}}
-        style={customStyle}
-      >
+        style={customStyle}>
         <div>Modal Content</div>
       </CustomModal>
     );

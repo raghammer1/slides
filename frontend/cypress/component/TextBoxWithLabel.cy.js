@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'cypress/react18';
-import TextBoxWithLabel from './TextBoxWithLabel';
+import TextBoxWithLabel from '../../src/components/TextBoxWithLabel';
 
 describe('<TextBoxWithLabel />', () => {
   it('updates the value when typing stops', () => {

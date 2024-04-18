@@ -41,8 +41,10 @@
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "cypress:open": "cypress open",
     "buildWeb": "webpack --mode production",
-    "test": "cypress run",
-    "test:coverage": "npx nyc report --reporter=text-summary && npx nyc report --reporter=lcov"
+    "test:coverage": "npx nyc report --reporter=text-summary && npx nyc report --reporter=lcov",
+    "test:e2e": "cypress run --spec 'cypress/e2e/*.cy.js'",
+    "test:component": "cypress run --component --spec 'cypress/component/*.cy.js'",
+    "test": "npm run test:e2e && npm run test:component"
   },
   "eslintConfig": {
     "extends": [

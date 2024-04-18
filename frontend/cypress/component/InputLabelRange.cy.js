@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'cypress/react18';
-import InputLabelRange from './InputLabelRange';
+import InputLabelRange from '../../src/components/InputLabelRange';
 
 describe('<InputLabelRange />', () => {
   it('renders', () => {
