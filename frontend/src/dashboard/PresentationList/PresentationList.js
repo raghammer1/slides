@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import { Tooltip } from '@mui/material';
 import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 import CustomPrimaryButton from '../../components/CustomePrimaryButton';
+import { useAlert } from '../../components/AlertError';
 
 // Wrapper for presentation list that applies a flex layout.
 const Wrapper = styled.div`
@@ -34,7 +35,9 @@ const PresentationList = ({ presentations, searchInput }) => {
   const handleOpenConfirmDialog = () => setOpenConfirmDialog(true);
   const handleCloseConfirmDialog = () => setOpenConfirmDialog(false);
 
+  const { showAlert } = useAlert();
   const handleDeleteConfirm = () => {
+    showAlert('Presentations successfully deleted', 'tomato');
     clearPresentations();
     handleCloseConfirmDialog();
   };
