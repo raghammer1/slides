@@ -60,7 +60,6 @@ const SlideDisplay = ({
   // Function to handle click event and set the anchor element
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
-    console.log('AnchorEl set in handleClick:', anchorEl);
   };
 
   useEffect(() => {
@@ -75,13 +74,10 @@ const SlideDisplay = ({
   // Function to handle stopping the drag event of an element
   const onDragStop = (e, d, element) => {
     // Update the element position
-    updateElementPosition(
-      presentationId,
-      selectedSlideId,
-      element.id,
-      `${(d.x / containerWidth) * 100}`,
-      `${(d.y / containerHeight) * 100}`
-    );
+    updateElementInSlide(presentationId, selectedSlideId, element.id, {
+      top: `${(d.x / containerWidth) * 100}`,
+      left: `${(d.y / containerHeight) * 100}`,
+    });
 
     // Update the selected element with new position.
     setSelectedElement({
@@ -103,20 +99,12 @@ const SlideDisplay = ({
       left: `${(position.x / containerWidth) * 100}`,
     };
     // Update element size and position
-    updateElementSize(
-      presentationId,
-      selectedSlideId,
-      element.id,
-      newSize.width,
-      newSize.height
-    );
-    updateElementPosition(
-      presentationId,
-      selectedSlideId,
-      element.id,
-      newPosition.left,
-      newPosition.top
-    );
+    updateElementInSlide(presentationId, selectedSlideId, element.id, {
+      top: newPosition.left,
+      left: newPosition.top,
+      width: newSize.width,
+      height: newSize.height,
+    });
     // Update selected element with new size and position
     setSelectedElement({ ...element, ...newSize, ...newPosition });
   };
@@ -245,8 +233,6 @@ const SlideDisplay = ({
     handleOpenColourPaletteHandler();
   };
 
-  // Debug: Log the value right before passing it to EditMenu
-  console.log('AnchorEl before passing to EditMenu:', anchorEl);
   return (
     <div
       key={version}
