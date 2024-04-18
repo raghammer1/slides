@@ -10,8 +10,8 @@ const AlertContext = createContext();
 
 // Styled component for SnackbarContent with dynamic background color.
 const StyledSnackbarContent = styled(SnackbarContent)(
-  ({ theme, bgColor2 }) => ({
-    backgroundColor: bgColor2 || theme.palette.primary.main,
+  ({ theme, bgcolor2 }) => ({
+    backgroundColor: bgcolor2 || theme.palette.primary.main,
   })
 );
 
@@ -59,7 +59,7 @@ export const AlertProvider = ({ children }) => {
         }}
       >
         <StyledSnackbarContent
-          bgColor2={alertState.bgColor2}
+          bgcolor2={alertState.bgColor2}
           message={<span id="client-snackbar">{alertState.message}</span>}
           action={[
             <IconButton
