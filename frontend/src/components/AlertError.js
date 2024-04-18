@@ -43,7 +43,7 @@ export const AlertProvider = ({ children }) => {
       {children}
       <Snackbar
         open={alertState.open}
-        autoHideDuration={6000}
+        autoHideDuration={3000}
         onClose={handleClose}
         anchorOrigin={{
           vertical: 'top',
