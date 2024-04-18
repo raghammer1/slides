@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'cypress/react18';
-import CustomPrimaryButton from './CustomePrimaryButton';
+import CustomPrimaryButton from '../../src/components/CustomePrimaryButton';
 
 // Start describing the test suite for CustomPrimaryButton
 describe('<CustomPrimaryButton />', () => {

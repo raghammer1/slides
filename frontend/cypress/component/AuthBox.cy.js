@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'cypress/react18';
-import AuthBox from './AuthBox';
+import AuthBox from '../../src/components/AuthBox';
 
 describe('<AuthBox />', () => {
   it('renders', () => {

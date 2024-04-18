@@ -1,6 +1,6 @@
 import React from 'react';
-import InputWithLabels from './InputLabel';
-import RegisterPageInputs from '../authPages/registerPage/RegisterPageInputs';
+import InputWithLabels from '../../src/components/InputLabel';
+import RegisterPageInputs from '../../src/authPages/registerPage/RegisterPageInputs';
 
 describe('<InputWithLabels />', () => {
   it('renders', () => {
