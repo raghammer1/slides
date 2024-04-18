@@ -10,6 +10,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
+import { Tooltip } from '@mui/material';
 
 // MainDashboard component that orchestrates the presentation of lists and modal forms within the dashboard.
 const MainDashboard = ({ open, handleClose, searchInput }) => {
@@ -49,15 +50,23 @@ const MainDashboard = ({ open, handleClose, searchInput }) => {
             marginTop: '20px',
           }}
         >
-          <CustomPrimaryButton
-            label={'Delete All Presentations'}
-            disabled={presentations.length === 0}
-            additionalStyle={{
-              width: '250px',
-              height: '35px',
-            }}
-            onClick={handleOpenConfirmDialog}
-          />
+          <Tooltip
+            title={
+              presentations.length === 0 ? 'No presentation to delete' : ''
+            }
+          >
+            <div>
+              <CustomPrimaryButton
+                label={'Delete All Presentations'}
+                disabled={presentations.length === 0}
+                additionalStyle={{
+                  width: '250px',
+                  height: '35px',
+                }}
+                onClick={handleOpenConfirmDialog}
+              />
+            </div>
+          </Tooltip>
         </div>
         <PresentationList
           presentations={presentations}
