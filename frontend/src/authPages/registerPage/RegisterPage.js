@@ -9,25 +9,25 @@ import useCurrentUserStore from '../../zustandStore/useCurrentUserStore';
 import { useNavigate } from 'react-router-dom';
 import { useAlert } from '../../components/AlertError';
 
+// Main registration component handling state and interaction logic for user registration.
 const RegisterPage = () => {
   const [mail, setMail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [checkPassword, setCheckPassword] = useState('');
   const { showAlert } = useAlert();
-
   const [isFormValid, setIsFormValid] = useState(true);
-
   const { setCurrentUser } = useCurrentUserStore();
-
   const nav = useNavigate();
 
+  // Validates the registration form on input changes.
   useEffect(() => {
     setIsFormValid(
       validateRegisterForm({ mail, username, password, checkPassword })
     );
   }, [mail, password, username, checkPassword, setIsFormValid]);
 
+  // Handles user registration and manages local storage of token, user session, and navigation.
   const handleRegister = useCallback(async () => {
     try {
       const response = await register({
@@ -35,19 +35,16 @@ const RegisterPage = () => {
         password,
         name: username,
       });
-
       if (response?.status === 200) {
         const token = response.data.token;
         localStorage.setItem('token', token);
         setCurrentUser({ name: username, email: mail });
-
         showAlert(
           `${
             username.charAt(0).toUpperCase() + username.slice(1)
           } Successfully registered`,
           'green'
         );
-
         nav('/dashboard');
       }
     } catch (error) {

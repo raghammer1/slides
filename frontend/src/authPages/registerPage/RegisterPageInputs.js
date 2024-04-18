@@ -1,6 +1,7 @@
 import React from 'react';
 import InputWithLabels from '../../components/InputLabel';
 
+// Component rendering input fields for registration form.
 const RegisterPageInputs = (props) => {
   const {
     mail,

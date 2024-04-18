@@ -4,13 +4,16 @@ import { Tooltip } from '@mui/material';
 import CustomPrimaryButton from '../../components/CustomePrimaryButton';
 import RedirectInfo from '../../components/RedirectInfo';
 
+// Footer component for the registration page, handling input validation feedback and navigation.
 const RegisterPageFooter = ({ handleRegister, isFormValid }) => {
   const nav = useNavigate();
 
+  // Navigates to the login page when prompted.
   const handlePushToLoginPage = () => {
     nav('/login');
   };
 
+  // Provides dynamic tooltip feedback based on the form's validity.
   const getNotFormValid = () => {
     return isFormValid.message;
   };
@@ -19,15 +22,16 @@ const RegisterPageFooter = ({ handleRegister, isFormValid }) => {
     return 'Press to register';
   };
 
+  // Invokes registration on 'Enter' press if form is valid.
   const handleKeyPress = (event) => {
     if (event.key === 'Enter' && isFormValid) {
       handleRegister();
     }
   };
 
+  // Attaches and removes the keypress event listener.
   useEffect(() => {
     document.addEventListener('keypress', handleKeyPress);
-
     return () => {
       document.removeEventListener('keypress', handleKeyPress);
     };
