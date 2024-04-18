@@ -123,7 +123,8 @@ const PreviewPresentationMain = () => {
               : 'linear-gradient(to bottom right, #999, #999)',
           }}
           key={slide.id}
-          isVisible={index === currSlideNumber && isVisible}>
+          isVisible={index === currSlideNumber && isVisible}
+        >
           {getElements(slide).map((element) => {
             if (element.type === 'textarea') {
               return (

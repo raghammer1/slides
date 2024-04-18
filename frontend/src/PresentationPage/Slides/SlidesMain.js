@@ -102,7 +102,8 @@ const SlidesMain = ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-      }}>
+      }}
+    >
       <Wrapper>
         <SlidesList
           selectedSlide={selectedSlide}

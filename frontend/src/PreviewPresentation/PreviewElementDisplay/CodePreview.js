@@ -16,7 +16,8 @@ const CodePreview = ({ element, size }) => {
         height: heightStyle,
         top: topStyle,
         left: leftStyle,
-      }}>
+      }}
+    >
       {/* Textarea for capturing code but not meant for user interaction */}
       <textarea
         defaultValue={element.text}
@@ -51,10 +52,12 @@ const CodePreview = ({ element, size }) => {
           overflowY: 'auto',
           zIndex: 0,
           pointerEvents: 'none',
-        }}>
+        }}
+      >
         <code
           style={{ fontSize: element.fontSize }}
-          className={`language-${element.language}`}>
+          className={`language-${element.language}`}
+        >
           {element.text}
         </code>
       </pre>

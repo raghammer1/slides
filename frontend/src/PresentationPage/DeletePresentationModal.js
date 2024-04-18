@@ -27,7 +27,8 @@ const DeletePresentationModal = ({
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleClose}
-      style={style}>
+      style={style}
+    >
       <Typography>
         Are you sure? you want to delete this presentation
       </Typography>

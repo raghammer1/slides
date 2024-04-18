@@ -26,13 +26,15 @@ const VideoPreview = ({ element, size }) => {
         width: `${element.width}%`,
         height: `${element.height}%`,
         border: 'none',
-      }}>
+      }}
+    >
       <iframe
         width="100%"
         height="100%"
         src={videoSrc}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen></iframe>
+        allowFullScreen
+      ></iframe>
     </div>
   );
 };

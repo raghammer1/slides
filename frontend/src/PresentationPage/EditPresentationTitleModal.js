@@ -32,7 +32,8 @@ const EditPresentationTitleModal = ({
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleClose}
-      style={style}>
+      style={style}
+    >
       <InputWithLabels
         value={title}
         setValue={setTitle}

@@ -97,7 +97,8 @@ const SlidesList = ({
       <>
         <AddSlideButton
           onClick={handleAddNewSlide}
-          data-testid={'add-slide-button'}>
+          data-testid={'add-slide-button'}
+        >
           Add Slide +
         </AddSlideButton>
         <IconButton
@@ -122,7 +123,8 @@ const SlidesList = ({
           key={slide.id}
           onClick={() => setSelectedSlide(slide)}
           isSelected={slide.id === selectedSlideId}
-          data-testid={`data-test-slide-${slide.id}`}>
+          data-testid={`data-test-slide-${slide.id}`}
+        >
           <span style={{ marginLeft: '10px' }}>Slide {slide.slideNumber}</span>
           <IconButton
             data-testid={`slide-delete-btn-test-${slide.id}`}
@@ -130,14 +132,16 @@ const SlidesList = ({
               e.stopPropagation();
               handleDeleteSlide(slide);
             }}
-            size="small">
+            size="small"
+          >
             <DeleteIcon fontSize="small" />
           </IconButton>
         </SlideButton>
       ))}
       <AddSlideButton
         onClick={handleAddNewSlide}
-        data-testid={'add-slide-button'}>
+        data-testid={'add-slide-button'}
+      >
         Add Slide +
       </AddSlideButton>
     </SlideContainer>

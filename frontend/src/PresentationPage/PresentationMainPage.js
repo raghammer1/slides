@@ -181,14 +181,16 @@ const PresentationDetail = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-      }}>
+      }}
+    >
       <Wrapper2>
         <StyledTypography
           sx={{
             fontSize: '32px',
             textAlign: 'center',
           }}
-          onClick={handleOpenEdit}>
+          onClick={handleOpenEdit}
+        >
           <b>Title -</b> {presentation.name}
         </StyledTypography>
         <Wrapper>
