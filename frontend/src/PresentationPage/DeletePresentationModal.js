@@ -29,20 +29,22 @@ const DeletePresentationModal = ({
       handleCloseCreateTextBox={handleClose}
       style={style}
     >
-      <Typography>
+      <Typography style={{ color: '#fff' }}>
         Are you sure? you want to delete this presentation
       </Typography>
-      <CustomPrimaryButton
-        label="Close"
-        additionalStyle={{ marginTop: '30px' }}
-        onClick={handleClose}
-      />
-      <CustomPrimaryButton
-        label="Delete"
-        additionalStyle={{ marginTop: '30px' }}
-        onClick={handlePresentationDelete}
-        dataTestid={dataTestid || ''}
-      />
+      <div style={{ display: 'flex', gap: '10px' }}>
+        <CustomPrimaryButton
+          label="Close"
+          additionalStyle={{ marginTop: '30px' }}
+          onClick={handleClose}
+        />
+        <CustomPrimaryButton
+          label="Delete"
+          additionalStyle={{ marginTop: '30px' }}
+          onClick={handlePresentationDelete}
+          dataTestid={dataTestid || ''}
+        />
+      </div>
     </CustomModal>
   );
 };

@@ -120,6 +120,7 @@ const CodeModal = ({
         label="Language"
         value={language}
         setValue={setLanguage}
+        disabled={true}
         options={[
           { value: 'javascript', label: 'JavaScript' },
           { value: 'python', label: 'Python' },
