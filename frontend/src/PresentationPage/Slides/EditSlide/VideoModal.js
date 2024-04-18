@@ -8,6 +8,7 @@ import CustomPrimaryButton from '../../../components/CustomePrimaryButton';
 import InputLabelRange from '../../../components/InputLabelRange';
 import usePresentationListStore from '../../../zustandStore/usePresentationListStore';
 
+//  Custom Styling for this element.
 const style = {
   position: 'absolute',
   top: '50%',
@@ -20,6 +21,7 @@ const style = {
   p: 4,
 };
 
+// Modal for adding video elements to a slide.
 const VideoModal = ({
   open,
   handleCloseVideoHandler,
@@ -27,16 +29,17 @@ const VideoModal = ({
   selectedSlideId,
   setAnchorEl,
 }) => {
-  const [videoUrl, setVideoUrl] = useState(null);
-  const [autoplay, setAutoplay] = useState(false);
+  const [videoUrl, setVideoUrl] = useState(null); // State for the video URL.
+  const [autoplay, setAutoplay] = useState(false); // State for autoplay option.
 
-  const [sizeTextBoxWidth, setSizeTextBoxWidth] = useState('50');
-  const [sizeTextBoxHeight, setSizeTextBoxHeight] = useState('50');
+  const [sizeTextBoxWidth, setSizeTextBoxWidth] = useState('50'); // Width of the video element.
+  const [sizeTextBoxHeight, setSizeTextBoxHeight] = useState('50'); // Height of the video element.
 
-  const { addElementToSlide } = usePresentationListStore();
+  const { addElementToSlide } = usePresentationListStore(); // Access store to use the action.
 
+  // Function to handle the creation of a new video element.
   const handlePresentationTitleCreateImage = () => {
-    const idElements = uuidv4();
+    const idElements = uuidv4(); // Generate a unique ID for the new element.
     const element = {
       id: idElements,
       type: 'video',
@@ -46,14 +49,15 @@ const VideoModal = ({
       height: sizeTextBoxHeight,
       width: sizeTextBoxWidth,
       autoplay,
-      controls: true,
+      controls: true, // Always provide controls for video elements.
     };
-    addElementToSlide(presentationId, selectedSlideId, element);
-    setVideoUrl(null);
-    handleCloseVideoHandler();
-    setAnchorEl(null);
+    addElementToSlide(presentationId, selectedSlideId, element); // Add the new video to the slide.
+    setVideoUrl(null); // Reset the video URL state.
+    handleCloseVideoHandler(); // Close the modal.
+    setAnchorEl(null); // Reset the anchor element.
   };
 
+  // Handle changes to the autoplay checkbox.
   const handleAutoplayChange = (event) => {
     setAutoplay(event.target.checked);
   };
@@ -62,8 +66,7 @@ const VideoModal = ({
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleCloseVideoHandler}
-      style={style}
-    >
+      style={style}>
       <InputWithLabels
         dataTestId={'title-video-url-box-test'}
         value={videoUrl}
