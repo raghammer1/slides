@@ -25,6 +25,7 @@ const Wrapper = styled('div')({
   alignContent: 'flex-start',
   justifyContent: 'center',
   gap: '300px',
+  marginTop: '20px',
   '@media (max-width: 750px)': {
     gap: '100px',
   },

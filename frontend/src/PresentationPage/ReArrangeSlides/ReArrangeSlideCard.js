@@ -10,16 +10,20 @@ import { Typography } from '@mui/material';
 import CodePreview from '../../PreviewPresentation/PreviewElementDisplay/CodePreview';
 import { styled } from '@mui/system';
 
-const Card = styled('div')({
-  width: '300px',
-  height: '150px',
-  position: 'relative',
-  overflow: 'hidden',
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-  border: '2px #333 solid',
-});
-
 function ReArrangeSlideCard({ id, slide }) {
+  const Card = styled('div')({
+    width: '300px',
+    height: '150px',
+    position: 'relative',
+    overflow: 'hidden',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    border: '2px #333 solid',
+    backgroundImage: slide.bgCol
+      ? slide.bgCol
+      : 'linear-gradient(to bottom right, #999, #999)',
+    borderRadius: '9px',
+  });
+
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: id.toString() });
 
