@@ -1,4 +1,3 @@
-/* eslint-disable multiline-ternary */
 import React, { useState } from 'react';
 import CustomModal from '../../../components/CustomModal';
 import { Tooltip } from '@mui/material';

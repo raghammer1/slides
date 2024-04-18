@@ -1,4 +1,3 @@
-/* eslint-disable no-unneeded-ternary */
 import React from 'react';
 import { styled } from '@mui/system';
 
@@ -52,11 +51,11 @@ const InputWithLabels = ({
         {label}
       </Label>
       <Input
-        value={value ? value : ''}
+        value={value || ''}
         onChange={handleValueChange}
         placeholder={placeholder}
         type={type}
-        data-testid={dataTestId ? dataTestId : `${label}-data`}
+        data-testid={dataTestId || `${label}-data`}
       />
     </Wrapper>
   );

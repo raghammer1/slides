@@ -51,8 +51,7 @@ const TextBoxWithLabel = ({
         onChange={handleValueChange}
         placeholder={placeholder}
         type={type}
-        // eslint-disable-next-line no-unneeded-ternary
-        data-testid={dataTestId ? dataTestId : ''}
+        data-testid={dataTestId || ''}
       />
     </Wrapper>
   );
