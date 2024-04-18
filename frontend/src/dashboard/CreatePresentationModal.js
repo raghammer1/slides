@@ -19,6 +19,8 @@ const style = {
   p: 4,
 };
 
+// CreatePresentationModal component that provides UI for creating a new presentation.
+
 const CreatePresentationModal = ({ open, handleClose }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -28,10 +30,12 @@ const CreatePresentationModal = ({ open, handleClose }) => {
   const { showAlert } = useAlert();
   const { addPresentation } = usePresentationListStore();
 
+  // Checks if the form is valid when the name is updated.
   useEffect(() => {
     setIsFormValid(name.length > 3);
   }, [name, setIsFormValid]);
 
+  // Messages for tooltip based on form validity.
   const getNotFormValid = () => {
     return 'Presentation name must be greater than 3 characters';
   };
@@ -40,10 +44,12 @@ const CreatePresentationModal = ({ open, handleClose }) => {
     return 'Create New Presentation';
   };
 
+  // Cancels the creation process.
   const handleCancel = () => {
     handleClose();
   };
 
+  // Handles the creation of a new presentation.
   const handleCreatePresentationFunction = () => {
     const presentationId = uuidv4();
     const randomIdSlides = uuidv4();
@@ -69,8 +75,7 @@ const CreatePresentationModal = ({ open, handleClose }) => {
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleClose}
-      style={style}
-    >
+      style={style}>
       <InputWithLabels
         value={name}
         setValue={setName}

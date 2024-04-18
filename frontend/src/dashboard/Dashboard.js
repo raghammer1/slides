@@ -4,6 +4,7 @@ import MainDashboard from './MainDashboard';
 import DashboardFooter from './DashboardFooter';
 import { styled } from '@mui/system';
 
+// Dashboard component that orchestrates the layout of the application dashboard.
 const Dashboard = () => {
   const Wrapper = styled('div')({
     margin: 0,

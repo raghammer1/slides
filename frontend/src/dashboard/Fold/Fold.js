@@ -7,6 +7,7 @@ import useCurrentUserStore from '../../zustandStore/useCurrentUserStore';
 import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 import { useNavigate } from 'react-router-dom';
 
+// Styled navigation wrapper with a gradient background.
 const NavWrapper = styled('div')({
   height: '50px',
   backgroundColor: '#333',
@@ -23,6 +24,7 @@ const NavWrapper = styled('div')({
   boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
 });
 
+// Wrapper for the search input within the navigation bar.
 const InputWrapper = styled('div')({
   display: 'flex',
   alignItems: 'center',
@@ -34,6 +36,7 @@ const InputWrapper = styled('div')({
   },
 });
 
+// Styled input field for search functionality.
 const Input = styled('input')({
   padding: '8px 12px',
   border: 'none',
@@ -44,29 +47,33 @@ const Input = styled('input')({
   backgroundColor: 'transparent',
 });
 
+// Media-query aware SearchIcon styling.
 const SearchIconStyled = styled(SearchIcon)({
   '@media (max-width: 650px)': {
     marginLeft: '-90px',
   },
 });
 
+// Component that provides UI for searching and actions like logout.
 const Fold = ({ handleOpen, setSearchInput, searchInput }) => {
   const [localInput, setLocalInput] = useState(searchInput);
   const { clearCurrentUser } = useCurrentUserStore();
   const { clearPresentations } = usePresentationListStore();
   const nav = useNavigate();
 
+  // Function to log out the user, clearing stored user and presentation data.
   const LogoutUser = () => {
     localStorage.clear();
     clearCurrentUser();
     clearPresentations();
     nav('/login');
   };
-
+  // Updates the search input state to trigger filter operations.
   const handleSearchClick = () => {
     setSearchInput(localInput);
   };
 
+  // Dynamic label for 'New Presentation' button based on screen size.
   const [buttonLabel, setButtonLabel] = useState('New Presentation');
 
   useEffect(() => {
@@ -107,8 +114,7 @@ const Fold = ({ handleOpen, setSearchInput, searchInput }) => {
         />
         <IconButton
           onClick={handleSearchClick}
-          style={{ color: 'gray', padding: '5px' }}
-        >
+          style={{ color: 'gray', padding: '5px' }}>
           <SearchIconStyled />
         </IconButton>
       </InputWrapper>

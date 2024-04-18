@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { isValidImage } from '../../shared/isImageValid';
 
+// FlipCard styled component providing a 3D effect for presentation cards.
 const FlipCard = styled('div')({
   width: '300px',
   height: '150px',
@@ -10,6 +11,7 @@ const FlipCard = styled('div')({
   marginTop: '10px',
 });
 
+// Card styled component handling the flipping effect.
 const Card = styled('div')((props) => ({
   width: '100%',
   height: '100%',
@@ -26,6 +28,7 @@ const Card = styled('div')((props) => ({
   },
 }));
 
+// CardSide styled component for both front and back of the card.
 const CardSide = styled('div')({
   position: 'absolute',
   width: '100%',
@@ -35,6 +38,7 @@ const CardSide = styled('div')({
   borderRadius: '9px',
 });
 
+// CardFront styled component representing the front of the flip card.
 const CardFront = styled(CardSide)((props) => ({
   backgroundColor: props.bgColor || '#333',
   backgroundImage: props.bgImage ? `url(${props.bgImage})` : 'none',
@@ -46,6 +50,7 @@ const CardFront = styled(CardSide)((props) => ({
   alignItems: 'center',
 }));
 
+// CardBack styled component representing the back of the flip card.
 const CardBack = styled(CardSide)({
   backgroundColor: '#333',
   color: '#fff',
@@ -56,18 +61,22 @@ const CardBack = styled(CardSide)({
   justifyContent: 'center',
 });
 
+// PresentationCard component that utilizes the flipping card effect to display presentation details.
 const PresentationCard = ({ presentation }) => {
   const nav = useNavigate();
   const [isValid, setIsValid] = useState(false);
 
+  // Validates the thumbnail to decide if it should be displayed.
   useEffect(() => {
     isValidImage(presentation.thumbnail).then(setIsValid);
   }, [presentation.thumbnail]);
 
+  // Handles navigation to the detailed view of the presentation.
   const handleOpenPresentation = () => {
     nav(`/presentation/${presentation.id}`);
   };
 
+  // Dynamic styles based on thumbnail validity.
   const backgroundStyle = {
     bgColor: isValid ? undefined : '#333',
     bgImage: presentation.thumbnail,
@@ -77,22 +86,19 @@ const PresentationCard = ({ presentation }) => {
   return (
     <FlipCard
       onClick={handleOpenPresentation}
-      data-testid={`presentation-card-${presentation.id}`}
-    >
+      data-testid={`presentation-card-${presentation.id}`}>
       <Card>
         <CardFront
           bgColor={isValid ? undefined : '#333'}
           bgImage={isValid ? `url(${presentation.thumbnail})` : undefined}
-          {...backgroundStyle}
-        >
+          {...backgroundStyle}>
           <div
             style={{
               fontSize: '22px',
               fontWeight: 'bold',
               marginBottom: '5px',
               fontFamily: 'Arial',
-            }}
-          >
+            }}>
             {presentation.name}
           </div>
         </CardFront>
@@ -103,8 +109,7 @@ const PresentationCard = ({ presentation }) => {
               fontWeight: 'bold',
               marginBottom: '5px',
               fontFamily: 'Arial',
-            }}
-          >
+            }}>
             {presentation.name}
           </div>
           <div
@@ -112,8 +117,7 @@ const PresentationCard = ({ presentation }) => {
               fontSize: '18px',
               fontWeight: '600',
               fontFamily: 'Tahoma',
-            }}
-          >
+            }}>
             Slides: {presentation.slides.length}
           </div>
           <div
@@ -121,8 +125,7 @@ const PresentationCard = ({ presentation }) => {
               fontSize: '16px',
               fontWeight: '400',
               fontFamily: 'Verdana',
-            }}
-          >
+            }}>
             {presentation.description || 'No description provided'}
           </div>
         </CardBack>

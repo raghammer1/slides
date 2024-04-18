@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+// DashboardFooter component providing a responsive footer with dynamic text sizing based on window width.
 const DashboardFooter = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
