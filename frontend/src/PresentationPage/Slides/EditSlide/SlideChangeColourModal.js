@@ -79,13 +79,15 @@ const SlideChangeColourModal = ({
         height: '1000px',
       }}
     >
-      <Title>Set Slide Background Color</Title>
+      <Title style={{ fontFamily: 'Arial' }}>Set Slide Background Color</Title>
       <ColorPickerContainer>
         <SketchPicker color={color1} onChangeComplete={handleColor1Change} />
         <SketchPicker color={color2} onChangeComplete={handleColor2Change} />
       </ColorPickerContainer>
       <GradientDirectionSelector>
-        <label htmlFor="gradient-direction">Choose Gradient Direction:</label>
+        <label htmlFor="gradient-direction" style={{ fontFamily: 'Arial' }}>
+          Choose Gradient Direction:
+        </label>
         <select
           id="gradient-direction"
           value={gradientDirection}

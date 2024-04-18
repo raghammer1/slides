@@ -38,11 +38,15 @@ const Select = styled('select')({
 });
 
 // Combines select with label and styled options.
-const SelectWithLabel = ({ label, value, setValue, options }) => {
+const SelectWithLabel = ({ label, value, setValue, options, disabled }) => {
   return (
     <Wrapper>
       <Label>{label}</Label>
-      <Select value={value} onChange={(e) => setValue(e.target.value)}>
+      <Select
+        disabled={disabled || false}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      >
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
