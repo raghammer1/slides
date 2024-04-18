@@ -1,11 +1,11 @@
 import { create } from 'zustand';
 import { getStore, setStore } from '../services/api';
 
+// ***** THIS IS WHAT THE STORE AND ZUSTAND LOOKS LIKE ***** //
 /**
  * Zustand store contains:
  * @property {Array[Objects]} presentations
  */
-
 /**
  * @Each  presentation will be an object having following properties
  * @property {String} id
@@ -14,20 +14,17 @@ import { getStore, setStore } from '../services/api';
  * @property {String} ThumbnailBase64Image
  * @property {Array[Objects]} slides
  */
-
 /**
  * @Each  slide will be an object having following properties
  * @property {String} id
  * @property {String} backGroundImgOrColor
  * @property {Array[Objects]} elements
  */
-
 /**
  * @Each  element will be an object having following properties
  * @property {key/String} creationTimeStamp Used to keep track of history of each slide
  * @property {value/Array[Objects]} historyElements The elements that were there at that point in the history of the slide
  */
-
 /**
  * @Each  historyElements will be an object having properties that are dependent on the type of element
  * These properties are common
@@ -58,6 +55,7 @@ import { getStore, setStore } from '../services/api';
  *    @property {String} fontSize
  *    @property {Select} language the language the code was written in (This properly is auto-detected)
  */
+// ***** ********************************************* ***** //
 
 //* This is a middleware function which updates the state of the backend
 //* Whenever there is a change detected to the presentations array in Zustand
