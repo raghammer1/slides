@@ -6,6 +6,7 @@ import usePresentationListStore from '../../zustandStore/usePresentationListStor
 import styled from '@emotion/styled';
 import { useAlert } from '../../components/AlertError';
 
+// Styled component for the slide container
 const SlideContainer = styled.div`
   overflow: auto;
   height: 500px;
@@ -28,6 +29,7 @@ const SlideContainer = styled.div`
   }
 `;
 
+// Styled component for individual slide buttons
 const SlideButton = styled.div`
   cursor: pointer;
   padding: 10px;
@@ -51,6 +53,7 @@ const SlideButton = styled.div`
   transition: all 0.3s ease;
 `;
 
+// Styled component specifically for adding a new slide
 const AddSlideButton = styled(SlideButton)`
   justify-content: center;
   background-color: #4caf50;
@@ -63,6 +66,7 @@ const AddSlideButton = styled(SlideButton)`
   }
 `;
 
+// Main component for displaying and managing slides
 const SlidesList = ({
   selectedSlideId,
   presentationId,
@@ -80,20 +84,20 @@ const SlidesList = ({
 
   const handleAddNewSlide = () => {
     const newSlide = {
-      id: uuidv4(),
-      elements: [],
+      id: uuidv4(), // Generate a unique ID for the new slide
+      elements: [], // Initialize with no elements
     };
     showAlert('Slide successfully added', 'green');
     addSlide(presentationId, newSlide);
   };
 
+  // Render differently based on screen width
   if (isNarrowScreen) {
     return (
       <>
         <AddSlideButton
           onClick={handleAddNewSlide}
-          data-testid={'add-slide-button'}
-        >
+          data-testid={'add-slide-button'}>
           Add Slide +
         </AddSlideButton>
         <IconButton
@@ -118,8 +122,7 @@ const SlidesList = ({
           key={slide.id}
           onClick={() => setSelectedSlide(slide)}
           isSelected={slide.id === selectedSlideId}
-          data-testid={`data-test-slide-${slide.id}`}
-        >
+          data-testid={`data-test-slide-${slide.id}`}>
           <span style={{ marginLeft: '10px' }}>Slide {slide.slideNumber}</span>
           <IconButton
             data-testid={`slide-delete-btn-test-${slide.id}`}
@@ -127,16 +130,14 @@ const SlidesList = ({
               e.stopPropagation();
               handleDeleteSlide(slide);
             }}
-            size="small"
-          >
+            size="small">
             <DeleteIcon fontSize="small" />
           </IconButton>
         </SlideButton>
       ))}
       <AddSlideButton
         onClick={handleAddNewSlide}
-        data-testid={'add-slide-button'}
-      >
+        data-testid={'add-slide-button'}>
         Add Slide +
       </AddSlideButton>
     </SlideContainer>

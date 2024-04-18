@@ -3,6 +3,7 @@ import CustomModal from '../components/CustomModal';
 import InputWithLabels from '../components/InputLabel';
 import CustomPrimaryButton from '../components/CustomePrimaryButton';
 
+// Similar style as the delete modal for consistency
 const style = {
   position: 'absolute',
   top: '50%',
@@ -15,6 +16,7 @@ const style = {
   p: 4,
 };
 
+// Component for editing presentation title and details
 const EditPresentationTitleModal = ({
   open,
   handleClose,
@@ -30,8 +32,7 @@ const EditPresentationTitleModal = ({
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleClose}
-      style={style}
-    >
+      style={style}>
       <InputWithLabels
         value={title}
         setValue={setTitle}
