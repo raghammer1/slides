@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled } from '@mui/system';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
@@ -29,6 +29,9 @@ const InputWrapper = styled('div')({
   backgroundColor: 'rgba(255, 255, 255, 0.8)',
   borderRadius: '4px',
   boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.2)',
+  '@media (max-width: 650px)': {
+    width: '150px',
+  },
 });
 
 const Input = styled('input')({
@@ -39,6 +42,12 @@ const Input = styled('input')({
   fontFamily: 'Arial, sans-serif',
   fontSize: '14px',
   backgroundColor: 'transparent',
+});
+
+const SearchIconStyled = styled(SearchIcon)({
+  '@media (max-width: 650px)': {
+    marginLeft: '-90px',
+  },
 });
 
 const Fold = ({ handleOpen, setSearchInput, searchInput }) => {
@@ -58,11 +67,34 @@ const Fold = ({ handleOpen, setSearchInput, searchInput }) => {
     setSearchInput(localInput);
   };
 
+  const [buttonLabel, setButtonLabel] = useState('New Presentation');
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 550) {
+        setButtonLabel('+');
+      } else {
+        setButtonLabel('New Presentation');
+      }
+    };
+
+    // Set initial state based on window size
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Clean up event listener
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <NavWrapper>
       <CustomPrimaryButton
-        label={'New Presentation'}
-        additionalStyle={{ width: '200px', height: '35px' }}
+        label={buttonLabel}
+        additionalStyle={{ width: '170px', height: '35px' }}
         onClick={handleOpen}
         dataTestid="newPresentationButton"
       />
@@ -77,12 +109,12 @@ const Fold = ({ handleOpen, setSearchInput, searchInput }) => {
           onClick={handleSearchClick}
           style={{ color: 'gray', padding: '5px' }}
         >
-          <SearchIcon />
+          <SearchIconStyled />
         </IconButton>
       </InputWrapper>
       <CustomPrimaryButton
         label={'Logout'}
-        additionalStyle={{ width: '100px', height: '35px' }}
+        additionalStyle={{ width: '170px', height: '35px' }}
         onClick={LogoutUser}
         dataTestid={'logout-btn'}
       />

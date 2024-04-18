@@ -26,6 +26,9 @@ const modalStyle = {
     },
   },
   animation: 'fadeIn 0.2s ease-in-out',
+  '@media (max-width: 650px)': {
+    width: '300px',
+  },
 };
 
 const CustomModal = ({ open, handleCloseCreateTextBox, children }) => {
