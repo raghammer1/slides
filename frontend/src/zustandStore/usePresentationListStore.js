@@ -177,6 +177,79 @@ const usePresentationListStore = create(
       return slide || null;
     },
 
+    // addElementToSlide: (presentationId, slideId, newElement) => {
+    //   set((state) => {
+    //     const presentationIndex = state.presentations.findIndex(
+    //       (p) => p.id === presentationId
+    //     );
+    //     if (presentationIndex === -1) {
+    //       console.error('Presentation not found');
+    //       return state;
+    //     }
+
+    //     const updatedPresentation = {
+    //       ...state.presentations[presentationIndex],
+    //     };
+
+    //     const slideIndex = updatedPresentation.slides.findIndex(
+    //       (slide) => slide.id === slideId
+    //     );
+    //     if (slideIndex === -1) {
+    //       console.error('Slide not found');
+    //       return state;
+    //     }
+
+    //     const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
+
+    //     const currentTime = Date.now();
+    //     let timeStartChanger = state.timerStart;
+
+    //     if (updatedSlide.elements.length > 0) {
+    //       const lastElementObject =
+    //         updatedSlide.elements[updatedSlide.elements.length - 1];
+
+    //       const lastTimeKey = Object.keys(lastElementObject)[0];
+
+    //       const elapsedTime = currentTime - parseInt(lastTimeKey);
+
+    //       if (elapsedTime < 60000) {
+    //         const timeKey = Object.keys(lastElementObject)[0];
+    //         lastElementObject[timeKey].push(newElement);
+    //       }
+    //     } else {
+    //       const newTimeKey = currentTime;
+
+    //       const newElementsArray =
+    //         updatedSlide.elements.length > 0
+    //           ? [
+    //               ...updatedSlide.elements[updatedSlide.elements.length - 1][
+    //                 Object.keys(
+    //                   updatedSlide.elements[updatedSlide.elements.length - 1]
+    //                 )[0]
+    //               ],
+    //               newElement,
+    //             ]
+    //           : [newElement];
+
+    //       timeStartChanger = Date.now();
+    //       updatedSlide.elements.push({ [newTimeKey]: newElementsArray });
+    //     }
+
+    //     updatedPresentation.slides[slideIndex] = updatedSlide;
+
+    //     const updatedPresentations = [...state.presentations];
+    //     updatedPresentations[presentationIndex] = updatedPresentation;
+
+    //     console.log(state.presentations, 'IJFWIBUHEWRUWRUHEWRGUV');
+
+    //     return {
+    //       ...state,
+    //       presentations: updatedPresentations,
+    //       timerStart: timeStartChanger,
+    //       version: state.version + 1,
+    //     };
+    //   });
+    // },
     addElementToSlide: (presentationId, slideId, newElement) => {
       set((state) => {
         const presentationIndex = state.presentations.findIndex(
@@ -190,7 +263,6 @@ const usePresentationListStore = create(
         const updatedPresentation = {
           ...state.presentations[presentationIndex],
         };
-
         const slideIndex = updatedPresentation.slides.findIndex(
           (slide) => slide.id === slideId
         );
@@ -200,54 +272,38 @@ const usePresentationListStore = create(
         }
 
         const updatedSlide = { ...updatedPresentation.slides[slideIndex] };
-
         const currentTime = Date.now();
-        let timeStartChanger = state.timerStart;
 
         if (updatedSlide.elements.length > 0) {
-          const lastElementObject =
+          const lastElement =
             updatedSlide.elements[updatedSlide.elements.length - 1];
-
-          const lastTimeKey = Object.keys(lastElementObject)[0];
-
+          const lastTimeKey = Object.keys(lastElement)[0];
           const elapsedTime = currentTime - parseInt(lastTimeKey);
 
           if (elapsedTime < 60000) {
-            const timeKey = Object.keys(lastElementObject)[0];
-            lastElementObject[timeKey].push(newElement);
+            // Less than 1 minute since the last element was added
+            lastElement[lastTimeKey].push(newElement);
+          } else {
+            // More than 1 minute since the last element, create a new timestamp key
+            const newElementsArray = [...lastElement[lastTimeKey], newElement];
+            updatedSlide.elements.push({ [currentTime]: newElementsArray });
           }
         } else {
-          const newTimeKey = currentTime;
-
-          const newElementsArray =
-            updatedSlide.elements.length > 0
-              ? [
-                  ...updatedSlide.elements[updatedSlide.elements.length - 1][
-                    Object.keys(
-                      updatedSlide.elements[updatedSlide.elements.length - 1]
-                    )[0]
-                  ],
-                  newElement,
-                ]
-              : [newElement];
-
-          timeStartChanger = Date.now();
-          updatedSlide.elements.push({ [newTimeKey]: newElementsArray });
+          // No elements present, start with the new element at the current time
+          updatedSlide.elements.push({ [currentTime]: [newElement] });
         }
 
         updatedPresentation.slides[slideIndex] = updatedSlide;
-
         const updatedPresentations = [...state.presentations];
         updatedPresentations[presentationIndex] = updatedPresentation;
 
         return {
           ...state,
           presentations: updatedPresentations,
-          timerStart: timeStartChanger,
+          version: state.version + 1,
         };
       });
     },
-
     updateElementPosition: (presentationId, slideId, elementId, top, left) => {
       set((state) => {
         const presentationIndex = state.presentations.findIndex(

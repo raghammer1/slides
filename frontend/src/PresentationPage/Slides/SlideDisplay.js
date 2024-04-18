@@ -61,6 +61,7 @@ const SlideDisplay = ({
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+    console.log('AnchorEl set in handleClick:', anchorEl);
   };
 
   useEffect(() => {
@@ -227,6 +228,9 @@ const SlideDisplay = ({
     setAnchorEl(null);
     handleOpenColourPaletteHandler();
   };
+
+  // Debug: Log the value right before passing it to EditMenu
+  console.log('AnchorEl before passing to EditMenu:', anchorEl);
   return (
     <div
       key={version}

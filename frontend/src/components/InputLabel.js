@@ -48,7 +48,7 @@ const InputWithLabels = ({
         {label}
       </Label>
       <Input
-        value={value}
+        value={value ? value : ''}
         onChange={handleValueChange}
         placeholder={placeholder}
         type={type}

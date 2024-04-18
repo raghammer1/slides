@@ -13,8 +13,6 @@ const EditMenu = ({
   handleOpenSlideHistory,
   handleOpenColourPalette,
 }) => {
-  const openAnchor = Boolean(anchorEl);
-
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -23,7 +21,8 @@ const EditMenu = ({
     <Menu
       id="edit-slide-menu"
       anchorEl={anchorEl}
-      open={openAnchor}
+      keepMounted
+      open={Boolean(anchorEl)}
       onClose={handleClose}
       MenuListProps={{
         'aria-labelledby': 'edit-slide-button',
