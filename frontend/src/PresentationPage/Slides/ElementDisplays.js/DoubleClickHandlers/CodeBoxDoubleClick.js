@@ -110,6 +110,7 @@ const CodeBoxDoubleClick = ({
       <SelectWithLabel
         label="Language"
         value={language}
+        disabled={true}
         setValue={setLanguage}
         options={[
           { value: 'javascript', label: 'JavaScript' },
