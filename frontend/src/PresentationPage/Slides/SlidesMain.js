@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 import { useAlert } from '../../components/AlertError';
 
+// Styled component for the main wrapper
 const Wrapper = styled('div')({
   width: '90vw',
   display: 'flex',
@@ -20,6 +21,7 @@ const Wrapper = styled('div')({
   },
 });
 
+// The main component for presentation slides interface
 const SlidesMain = ({
   presentationId,
   isNarrowScreen,
@@ -99,8 +101,7 @@ const SlidesMain = ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-      }}
-    >
+      }}>
       <Wrapper>
         <SlidesList
           selectedSlide={selectedSlide}

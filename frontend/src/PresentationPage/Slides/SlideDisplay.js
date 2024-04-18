@@ -73,7 +73,6 @@ const SlideDisplay = ({
   }, [selectedSlide]);
 
   // Function to handle selecting an element
-
   const handleSelectedElement = (element) => {
     setSelectedElement(element);
   };
@@ -89,7 +88,7 @@ const SlideDisplay = ({
       `${(d.y / containerHeight) * 100}`
     );
 
-    // Update the selected element with new position
+    // Update the selected element with new position.
     setSelectedElement({
       ...element,
       top: `${(d.y / containerHeight) * 100}`,
@@ -268,8 +267,7 @@ const SlideDisplay = ({
           : `linear-gradient(${'to bottom right'}, ${'#999'}, ${'#999'})`,
         position: 'relative',
         overflow: 'hidden',
-      }}
-    >
+      }}>
       {getElements().map((element) => {
         return (
           <GetElement
@@ -296,8 +294,7 @@ const SlideDisplay = ({
           padding: '5px 10px',
           borderRadius: '5px',
         }}
-        data-testid={'slide-number-for-current-slide'}
-      >
+        data-testid={'slide-number-for-current-slide'}>
         {selectedSlide?.slideNumber}
       </Typography>
 
@@ -313,8 +310,7 @@ const SlideDisplay = ({
           cursor: 'pointer',
         }}
         data-testid={'edit-btn'}
-        onClick={handleClick}
-      >
+        onClick={handleClick}>
         Edit
       </Typography>
 

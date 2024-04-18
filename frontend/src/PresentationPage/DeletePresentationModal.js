@@ -3,6 +3,7 @@ import CustomModal from '../components/CustomModal';
 import { Typography } from '@mui/material';
 import CustomPrimaryButton from '../components/CustomePrimaryButton';
 
+// Style configuration for the modal's appearance
 const style = {
   position: 'absolute',
   top: '50%',
@@ -15,6 +16,7 @@ const style = {
   p: 4,
 };
 
+// Component for deletion confirmation modal
 const DeletePresentationModal = ({
   open,
   handleClose,
@@ -25,8 +27,7 @@ const DeletePresentationModal = ({
     <CustomModal
       open={open}
       handleCloseCreateTextBox={handleClose}
-      style={style}
-    >
+      style={style}>
       <Typography>
         Are you sure? you want to delete this presentation
       </Typography>
