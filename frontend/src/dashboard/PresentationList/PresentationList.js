@@ -17,6 +17,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   gap: 20px;
+  padding-bottom: 20px;
   flex-wrap: wrap;
   overflow: auto;
   justify-content: center;
