@@ -100,6 +100,9 @@ const PresentationCard = ({ presentation }) => {
               fontWeight: 'bold',
               marginBottom: '5px',
               fontFamily: 'Arial',
+              background: 'rgba(150, 150, 150, 0.5)',
+              padding: '10px',
+              borderRadius: '9px',
             }}
           >
             {presentation.name}
