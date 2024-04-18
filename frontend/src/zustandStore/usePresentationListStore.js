@@ -2,10 +2,61 @@ import { create } from 'zustand';
 import { getStore, setStore } from '../services/api';
 
 /**
+ * Zustand store contains:
+ * @property {Array[Objects]} presentations
+ */
+
+/**
  * @Each  presentation will be an object having following properties
  * @property {String} id
  * @property {String} presentationName
+ * @property {String} description
+ * @property {String} ThumbnailBase64Image
  * @property {Array[Objects]} slides
+ */
+
+/**
+ * @Each  slide will be an object having following properties
+ * @property {String} id
+ * @property {String} backGroundImgOrColor
+ * @property {Array[Objects]} elements
+ */
+
+/**
+ * @Each  element will be an object having following properties
+ * @property {key/String} creationTimeStamp Used to keep track of history of each slide
+ * @property {value/Array[Objects]} historyElements The elements that were there at that point in the history of the slide
+ */
+
+/**
+ * @Each  historyElements will be an object having properties that are dependent on the type of element
+ * These properties are common
+ * @property {String} id
+ * @property {String} type showcasing the type of element
+ * @property {String} top the position of element from the top of the box
+ * @property {String} left the position of element from the left of the box
+ * @property {String} width the width of the element
+ * @property {String} height the height of the element
+ *
+ *    @Each properties specific to elements of type typeBox include
+ *    @property {String} text
+ *    @property {String} fontSize
+ *    @property {String} textColor
+ *    @property {String} fontFamily
+ *
+ *    @Each properties specific to elements of type video include
+ *    @property {String} src the url of the video
+ *    @property {Boolean} autoplay specifying whether a video must autoplay or not
+ *    @property {Boolean} controls whether the video must have controls or not
+ *
+ *    @Each properties specific to elements of type image include
+ *    @property {String} alt the alt text for the image
+ *    @property {String} src the source of the image could be of type base64 or url
+ *
+ *    @Each properties specific to elements of type code include
+ *    @property {String} text
+ *    @property {String} fontSize
+ *    @property {Select} language the language the code was written in (This properly is auto-detected)
  */
 
 const presentationsChangeLogger = (config) => (set, get, api) =>

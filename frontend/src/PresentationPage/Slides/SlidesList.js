@@ -85,6 +85,7 @@ const SlidesList = ({
   const handleAddNewSlide = () => {
     const newSlide = {
       id: uuidv4(), // Generate a unique ID for the new slide
+      bgCol: null,
       elements: [], // Initialize with no elements
     };
     showAlert('Slide successfully added', 'green');

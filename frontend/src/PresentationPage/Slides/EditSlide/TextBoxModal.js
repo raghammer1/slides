@@ -38,9 +38,9 @@ const TextBoxModal = ({
 
   // Function to handle the creation of a new text box
   const handlePresentationTitleCreateTextBox = () => {
-    const idElements = uuidv4();
+    const idElements = uuidv4(); // Generate a unique ID for the new element
     const element = {
-      id: idElements, // Generate a unique ID for the new element
+      id: idElements,
       type: 'textarea',
       text: title,
       top: '0',
@@ -49,7 +49,7 @@ const TextBoxModal = ({
       width: sizeTextBoxWidth,
       fontSize: `${fontSizeTextBox}em`,
       color: `${colourTextBox}`,
-      fonFamily: 'Arial',
+      fontFamily: 'Arial',
     };
     addElementToSlide(presentationId, selectedSlideId, element); // Add the new text box to the slide
     setTitle(''); // Reset the title state
