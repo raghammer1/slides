@@ -18,6 +18,7 @@ import ReArrangeSlideCard from './ReArrangeSlideCard';
 import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 import { styled } from '@mui/system';
 import CustomPrimaryButton from '../../components/CustomePrimaryButton';
+import { useAlert } from '../../components/AlertError';
 
 // Styled wrapper for the re-arrange slides page, aligning content centrally with significant gap.
 const Wrapper = styled('div')({
@@ -65,10 +66,13 @@ const ReArrangeMainPage = () => {
     }
   };
 
+  const { showAlert } = useAlert();
+
   // Commits changes to the presentation store and navigates to the presentation view.
   const handleGoToSlideFunction = () => {
     setSlidesForPresentation(id, slides);
     nav(`/presentation/${id}`);
+    showAlert('Slides successfully re-arranged', 'green');
   };
 
   return (
