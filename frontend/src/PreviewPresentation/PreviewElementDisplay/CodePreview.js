@@ -1,6 +1,8 @@
 import React from 'react';
 
+// CodePreview: Displays a styled code block in a textarea and a preformatted text element
 const CodePreview = ({ element, size }) => {
+  // Dynamic styles based on the element's properties
   const topStyle = `${element.left}%`;
   const leftStyle = `${element.top}%`;
   const widthStyle = `${element.width}%`;
@@ -14,8 +16,8 @@ const CodePreview = ({ element, size }) => {
         height: heightStyle,
         top: topStyle,
         left: leftStyle,
-      }}
-    >
+      }}>
+      {/* Textarea for capturing code but not meant for user interaction */}
       <textarea
         defaultValue={element.text}
         style={{
@@ -36,6 +38,7 @@ const CodePreview = ({ element, size }) => {
         }}
         readOnly
       />
+      {/* Preformatted text for displaying syntax-highlighted code */}
       <pre
         style={{
           position: 'absolute',
@@ -48,12 +51,10 @@ const CodePreview = ({ element, size }) => {
           overflowY: 'auto',
           zIndex: 0,
           pointerEvents: 'none',
-        }}
-      >
+        }}>
         <code
           style={{ fontSize: element.fontSize }}
-          className={`language-${element.language}`}
-        >
+          className={`language-${element.language}`}>
           {element.text}
         </code>
       </pre>

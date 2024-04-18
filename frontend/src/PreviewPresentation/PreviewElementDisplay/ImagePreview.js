@@ -1,6 +1,8 @@
 import React from 'react';
 
+// ImagePreview: Component for displaying an image based on the provided 'element' props
 const ImagePreview = ({ element, size }) => {
+  // Calculate styles based on element's position and size
   const topStyle = `${element.left}%`;
   const leftStyle = `${element.top}%`;
 

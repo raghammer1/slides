@@ -1,9 +1,11 @@
 import React from 'react';
 
+// Renders a video element from YouTube or other sources
 const VideoPreview = ({ element, size }) => {
   const topStyle = `${element.left}%`;
   const leftStyle = `${element.top}%`;
 
+  // Parsing the video ID from a URL to embed correctly
   const extractVideoID = (url) => {
     const regex =
       /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^/\n\s]+\/\s*[^/\n\s]+\/|(?:v|e(?:mbed)?)\/|\S+?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
@@ -24,15 +26,13 @@ const VideoPreview = ({ element, size }) => {
         width: `${element.width}%`,
         height: `${element.height}%`,
         border: 'none',
-      }}
-    >
+      }}>
       <iframe
         width="100%"
         height="100%"
         src={videoSrc}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
+        allowFullScreen></iframe>
     </div>
   );
 };

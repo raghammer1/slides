@@ -14,6 +14,7 @@ import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-c';
 import { styled } from '@mui/system';
 
+// Styled component for displaying the page number of the current slide
 const PageNumber = styled('div')({
   position: 'absolute',
   bottom: 10,
@@ -26,6 +27,7 @@ const PageNumber = styled('div')({
   fontSize: '1rem',
 });
 
+// Main wrapper styled component for the presentation area
 const Wrapper = styled('div')({
   height: '100vh',
   width: '100vw',
@@ -34,6 +36,7 @@ const Wrapper = styled('div')({
   backgroundColor: '#f1f1f1',
 });
 
+// Container for each slide; includes styling for transition effects
 const SlideContainer = styled('div')(({ theme, isVisible }) => ({
   transition: 'opacity 0.5s',
   opacity: isVisible ? 1 : 0,
@@ -45,6 +48,7 @@ const SlideContainer = styled('div')(({ theme, isVisible }) => ({
 }));
 
 const PreviewPresentationMain = () => {
+  // Initialization of the presentation store
   useEffect(() => {
     initializeStore();
   }, []);
@@ -61,6 +65,7 @@ const PreviewPresentationMain = () => {
   const parentRef = useRef(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
 
+  // Adjust the size state based on the parent container's dimensions
   useEffect(() => {
     if (parentRef.current) {
       const { width, height } = parentRef.current.getBoundingClientRect();
@@ -68,6 +73,7 @@ const PreviewPresentationMain = () => {
     }
   }, []);
 
+  // Handle arrow key navigation between slides
   useEffect(() => {
     const handleKeyDown = (event) => {
       let newSlideNumber = currSlideNumber;
@@ -91,10 +97,12 @@ const PreviewPresentationMain = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [currSlideNumber, slides.length, id, nav]);
 
+  // Trigger syntax highlighting update when the slide changes
   useEffect(() => {
     Prism.highlightAll();
   }, [currSlideNumber, id, slides.length]);
 
+  // Extracts elements for rendering based on the slide data
   const getElements = (selectedSlide) => {
     if (selectedSlide?.elements?.length) {
       const lastElementObj =
@@ -115,8 +123,7 @@ const PreviewPresentationMain = () => {
               : 'linear-gradient(to bottom right, #999, #999)',
           }}
           key={slide.id}
-          isVisible={index === currSlideNumber && isVisible}
-        >
+          isVisible={index === currSlideNumber && isVisible}>
           {getElements(slide).map((element) => {
             if (element.type === 'textarea') {
               return (

@@ -9,6 +9,7 @@ import EditPresentationTitleModal from './EditPresentationTitleModal';
 import SlidesMain from './Slides/SlidesMain';
 import { useAlert } from '../components/AlertError';
 
+// Styled component for general layout of the detail page.
 const Wrapper = styled('div')(() => ({
   display: 'flex',
   alignItems: 'center',
@@ -20,6 +21,7 @@ const Wrapper = styled('div')(() => ({
   },
 }));
 
+// Second wrapper for responsive layout control.
 const Wrapper2 = styled('div')({
   width: '100%',
   display: 'flex',
@@ -40,6 +42,7 @@ const Wrapper2 = styled('div')({
   },
 });
 
+// Typography component styled for presentation titles with interactive effects
 const StyledTypography = styled(Typography)(() => ({
   position: 'relative',
   fontSize: '32px',
@@ -71,10 +74,11 @@ const StyledTypography = styled(Typography)(() => ({
     transform: 'scaleX(1)',
   },
   '@media (max-width: 400px)': {
-    fontSize: '24px', // Smaller font size for small screens
+    fontSize: '24px', // Smaller font size for small screens.
   },
 }));
 
+// Custom button styled specifically for primary actions in the presentation details.
 const CustomPrimaryButtonStyle = styled(CustomPrimaryButton)(() => ({
   width: '170px',
   height: '35px',
@@ -88,10 +92,12 @@ const CustomPrimaryButtonStyle = styled(CustomPrimaryButton)(() => ({
   },
 }));
 
+// Main component that displays details and controls for a single presentation.
 const PresentationDetail = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // Retrieve the presentation ID from URL.
   const nav = useNavigate();
 
+  // Responsive states to adapt UI components based on screen width.
   const [isNarrowScreen, setIsNarrowScreen] = useState(
     window.innerWidth < 1430
   );
@@ -116,24 +122,29 @@ const PresentationDetail = () => {
     };
   }, []);
 
+  // States for modal control
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const { showAlert } = useAlert();
 
+  // States for editing modal control
   const [openEdit, setOpenEdit] = useState(false);
   const handleOpenEdit = () => setOpenEdit(true);
   const handleCloseEdit = () => setOpenEdit(false);
 
+  // Fetch presentations and define handlers for deleting and updating presentation details.
   const { presentations, deleteOnePresentation, updatePresentationTitle } =
     usePresentationListStore();
 
   const presentation = presentations.find((p) => p.id === id);
 
+  // State hooks for managing presentation title, thumbnail, and description.
   const [title, setTitle] = useState(`${presentation.name}`);
   const [thumbnail, setThumbnail] = useState(`${presentation.thumbnail}`);
   const [description, setDescription] = useState(`${presentation.description}`);
 
+  // Define actions for various button interactions.
   const handlePresentationDelete = () => {
     setOpen(false);
     deleteOnePresentation(id);
@@ -170,16 +181,14 @@ const PresentationDetail = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-      }}
-    >
+      }}>
       <Wrapper2>
         <StyledTypography
           sx={{
             fontSize: '32px',
             textAlign: 'center',
           }}
-          onClick={handleOpenEdit}
-        >
+          onClick={handleOpenEdit}>
           <b>Title -</b> {presentation.name}
         </StyledTypography>
         <Wrapper>
