@@ -88,6 +88,7 @@ const usePresentationListStore = create(
     presentations: [],
     version: 0,
 
+    // To add a new presentation to the presentations array
     addPresentation: (newPresentation) => {
       set((state) => {
         const presentationWithStandardizedSlide = {
@@ -108,7 +109,11 @@ const usePresentationListStore = create(
         };
       });
     },
+
+    // To completely delete all the presentations
     clearPresentations: () => set({ presentations: [] }),
+
+    // To delete a single presentation by presentationId
     deleteOnePresentation: (id) => {
       set((state) => {
         const updatedPresentations = state.presentations.filter(
@@ -119,12 +124,16 @@ const usePresentationListStore = create(
         };
       });
     },
+
+    // To update the title (presentation name) of a specific presentation
     updatePresentationTitle: (id, edits) =>
       set((state) => ({
         presentations: state.presentations.map((presentation) =>
           presentation.id === id ? { ...presentation, ...edits } : presentation
         ),
       })),
+
+    // To add a new slide to the given presentation
     addSlide: (presentationId, newSlide) => {
       set((state) => {
         const presentationIndex = state.presentations.findIndex(
@@ -157,6 +166,8 @@ const usePresentationListStore = create(
         return { ...state, presentations: updatedPresentations };
       });
     },
+
+    // To delete a particular slide from a particular presentation
     deleteSlide: (presentationId, slideId) => {
       set((state) => {
         const presentationIndex = state.presentations.findIndex(
@@ -183,6 +194,8 @@ const usePresentationListStore = create(
         return { ...state, presentations: updatedPresentations };
       });
     },
+
+    // To all slides for a particular presentation
     getSlidesForPresentation: (presentationId) => {
       const state = get();
       const presentation = state.presentations.find(
@@ -190,6 +203,8 @@ const usePresentationListStore = create(
       );
       return presentation ? presentation.slides : [];
     },
+
+    // To get one slide by id for a particular presentation
     getSlideFromPresentationById: (presentationId, slideId) => {
       const state = get();
       const presentation = state.presentations.find(
@@ -200,6 +215,8 @@ const usePresentationListStore = create(
       const slide = presentation.slides.find((s) => s.id === slideId);
       return slide || null;
     },
+
+    // To add element to a particular slide
     addElementToSlide: (presentationId, slideId, newElement) => {
       set((state) => {
         const presentationIndex = state.presentations.findIndex(
@@ -254,6 +271,8 @@ const usePresentationListStore = create(
         };
       });
     },
+
+    // To update the position (top and left properties) of a particular element
     updateElementPosition: (presentationId, slideId, elementId, top, left) => {
       set((state) => {
         const presentationIndex = state.presentations.findIndex(
@@ -319,6 +338,7 @@ const usePresentationListStore = create(
       });
     },
 
+    // To update the size (width and height properties) of a particular element
     updateElementSize: (presentationId, slideId, elementId, width, height) => {
       set((state) => {
         const presentationIndex = state.presentations.findIndex(
@@ -384,6 +404,7 @@ const usePresentationListStore = create(
       });
     },
 
+    // To delete a particular element from a slide
     deleteElementFromSlide: (presentationId, slideId, elementId) => {
       set((state) => {
         const presentationIndex = state.presentations.findIndex(
@@ -437,6 +458,8 @@ const usePresentationListStore = create(
         return { ...state, presentations: updatedPresentations };
       });
     },
+
+    // To add a new history object to the elements array when user choses a particular history
     addElementToObject: (presentationId, slideId, newValue) => {
       set((state) => {
         const presentationsCopy = [...state.presentations];
@@ -478,6 +501,7 @@ const usePresentationListStore = create(
       });
     },
 
+    // To reset slides ordering and numbering when user re-arranges them
     setSlidesForPresentation: (presentationId, newSlides) => {
       set((state) => {
         const presentationIndex = state.presentations.findIndex(
@@ -502,10 +526,11 @@ const usePresentationListStore = create(
             return presentation;
           }
         );
-
         return { presentations: updatedPresentations };
       });
     },
+
+    // To update the slide's background color in the zustand
     updateSlideBackgroundColor: (presentationId, slideId, newBgColor) => {
       set((state) => {
         const updatedPresentations = state.presentations.map((presentation) => {
@@ -525,6 +550,8 @@ const usePresentationListStore = create(
         return { presentations: updatedPresentations };
       });
     },
+
+    // To update particular properties of a element
     updateElementInSlide: (
       presentationId,
       slideId,
@@ -601,6 +628,8 @@ const usePresentationListStore = create(
   }))
 );
 
+//* This function is the one that is called after login or registration
+//* It calls the api to get the store from the backend
 export const initializeStore = async () => {
   const initialStore = await getStore();
   usePresentationListStore.setState({
