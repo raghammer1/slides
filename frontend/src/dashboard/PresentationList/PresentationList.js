@@ -29,6 +29,7 @@ const PresentationList = ({ presentations, searchInput }) => {
   const filteredPresentations = presentations.filter((presentation) =>
     presentation.name.toLowerCase().includes(searchInput.toLowerCase())
   );
+
   const [openConfirmDialog, setOpenConfirmDialog] = useState(false);
   const handleOpenConfirmDialog = () => setOpenConfirmDialog(true);
   const handleCloseConfirmDialog = () => setOpenConfirmDialog(false);
