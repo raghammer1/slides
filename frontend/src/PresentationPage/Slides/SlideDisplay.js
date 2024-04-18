@@ -39,20 +39,25 @@ const SlideDisplay = ({
 
   const version = usePresentationListStore((state) => state.version);
 
-  const { selectedSlide, deleteElementFromSlide, updateElementInSlide } =
-    usePresentationListStore(
-      useCallback(
-        (store) => ({
-          selectedSlide: store.getSlideFromPresentationById(
-            presentationId,
-            selectedSlideId
-          ),
-          updateElementInSlide: store.updateElementInSlide,
-          deleteElementFromSlide: store.deleteElementFromSlide,
-        }),
-        [presentationId, selectedSlideId, version]
-      )
-    );
+  const {
+    selectedSlide,
+    updateElementPosition,
+    updateElementSize,
+    deleteElementFromSlide,
+  } = usePresentationListStore(
+    useCallback(
+      (store) => ({
+        selectedSlide: store.getSlideFromPresentationById(
+          presentationId,
+          selectedSlideId
+        ),
+        updateElementPosition: store.updateElementPosition,
+        updateElementSize: store.updateElementSize,
+        deleteElementFromSlide: store.deleteElementFromSlide,
+      }),
+      [presentationId, selectedSlideId, version]
+    )
+  );
 
   const [selectedElement, setSelectedElement] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -262,8 +267,7 @@ const SlideDisplay = ({
           : `linear-gradient(${'to bottom right'}, ${'#999'}, ${'#999'})`,
         position: 'relative',
         overflow: 'hidden',
-      }}
-    >
+      }}>
       {getElements().map((element) => {
         return (
           <GetElement
@@ -290,8 +294,7 @@ const SlideDisplay = ({
           padding: '5px 10px',
           borderRadius: '5px',
         }}
-        data-testid={'slide-number-for-current-slide'}
-      >
+        data-testid={'slide-number-for-current-slide'}>
         {selectedSlide?.slideNumber}
       </Typography>
 
@@ -307,8 +310,7 @@ const SlideDisplay = ({
           cursor: 'pointer',
         }}
         data-testid={'edit-btn'}
-        onClick={handleClick}
-      >
+        onClick={handleClick}>
         Edit
       </Typography>
 
