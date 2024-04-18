@@ -1,5 +1,4 @@
 import React from 'react';
-import usePresentationListStore from '../../zustandStore/usePresentationListStore';
 import PresentationCard from './PresentationCard';
 import styled from '@emotion/styled';
 
@@ -18,11 +17,7 @@ const Wrapper = styled.div`
 `;
 
 // PresentationList component filters and displays a list of presentation cards.
-const PresentationList = ({ searchInput }) => {
-  const { presentations } = usePresentationListStore((state) => ({
-    presentations: state.presentations,
-  }));
-
+const PresentationList = ({ presentations, searchInput }) => {
   // Filters presentations based on the search input.
   const filteredPresentations = presentations.filter((presentation) =>
     presentation.name.toLowerCase().includes(searchInput.toLowerCase())

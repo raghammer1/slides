@@ -83,7 +83,6 @@ const usePresentationListStore = create(
         };
       });
     },
-
     clearPresentations: () => set({ presentations: [] }),
     deleteOnePresentation: (id) => {
       set((state) => {
