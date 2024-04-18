@@ -1,6 +1,7 @@
 import React from 'react';
 import { styled } from '@mui/system';
 
+// Styled wrapper for form elements.
 const Wrapper = styled('div')({
   display: 'flex',
   flexDirection: 'column',
@@ -8,6 +9,7 @@ const Wrapper = styled('div')({
   marginTop: '20px',
 });
 
+// Styled label for select component.
 const Label = styled('label')({
   fontSize: '16px',
   color: '#61dafb',
@@ -15,6 +17,7 @@ const Label = styled('label')({
   marginBottom: '8px',
 });
 
+// Styled select component with focus and hover effects.
 const Select = styled('select')({
   padding: '10px 15px',
   fontSize: '16px',
@@ -34,6 +37,7 @@ const Select = styled('select')({
   },
 });
 
+// Combines select with label and styled options.
 const SelectWithLabel = ({ label, value, setValue, options }) => {
   return (
     <Wrapper>

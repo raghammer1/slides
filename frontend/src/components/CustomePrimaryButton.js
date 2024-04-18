@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 
+// Custom styled button for primary actions within the application.
 const CustomPrimaryButton = ({
   label,
   additionalStyle,
@@ -27,8 +28,7 @@ const CustomPrimaryButton = ({
       disabled={disabled}
       onClick={onClick}
       // eslint-disable-next-line no-unneeded-ternary
-      data-testid={dataTestid ? dataTestid : ''}
-    >
+      data-testid={dataTestid ? dataTestid : ''}>
       {label}
     </Button>
   );

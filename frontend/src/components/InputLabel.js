@@ -2,6 +2,7 @@
 import React from 'react';
 import { styled } from '@mui/system';
 
+// Wrapper component that provides flex layout properties.
 const Wrapper = styled('div')({
   display: 'flex',
   justifyContent: 'center',
@@ -9,6 +10,7 @@ const Wrapper = styled('div')({
   width: '100%',
 });
 
+// Styled paragraph component for labels.
 const Label = styled('p')({
   color: '#a5d8ff',
   textTransform: 'uppercase',
@@ -16,6 +18,7 @@ const Label = styled('p')({
   fontSize: '16px',
 });
 
+// Styled input component for text input.
 const Input = styled('input')({
   flexGrow: 1,
   height: '40px',
@@ -29,6 +32,7 @@ const Input = styled('input')({
   padding: '0 5px',
 });
 
+// Combines styled input with label.
 const InputWithLabels = ({
   value,
   setValue,

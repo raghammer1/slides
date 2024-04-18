@@ -2,6 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import { styled } from '@mui/system';
 
+// Styled wrapper for authentication related components.
 const BoxWrapper = styled('div')({
   width: '100%',
   height: '100vh',
@@ -11,6 +12,7 @@ const BoxWrapper = styled('div')({
   background: '#1864ab',
 });
 
+// Container component to hold and style authentication forms.
 const AuthBox = (props) => {
   return (
     <BoxWrapper data-testid="box-wrapper">
@@ -25,8 +27,7 @@ const AuthBox = (props) => {
           flexDirection: 'column',
           padding: '25px',
         }}
-        data-testid="box"
-      >
+        data-testid="box">
         {props.children}
       </Box>
     </BoxWrapper>

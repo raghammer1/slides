@@ -5,14 +5,18 @@ import CloseIcon from '@mui/icons-material/Close';
 import { IconButton } from '@mui/material';
 import { styled } from '@mui/system';
 
+// Context for managing alerts across the application.
 const AlertContext = createContext();
 
+// Styled component for SnackbarContent with dynamic background color.
 const StyledSnackbarContent = styled(SnackbarContent)(({ theme, bgColor }) => ({
   backgroundColor: bgColor || theme.palette.primary.main,
 }));
 
+// Hook to use the alert system within any component.
 export const useAlert = () => useContext(AlertContext);
 
+// Provider component to wrap application and manage alert states.
 export const AlertProvider = ({ children }) => {
   const [alertState, setAlertState] = useState({
     open: false,
@@ -20,6 +24,7 @@ export const AlertProvider = ({ children }) => {
     bgColor: 'default',
   });
 
+  // Function to show alerts.
   const showAlert = (message, bgColor = 'default') => {
     setAlertState({
       open: true,
@@ -28,6 +33,7 @@ export const AlertProvider = ({ children }) => {
     });
   };
 
+  // Handles close event of the Snackbar, preventing close on clickaway.
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -48,8 +54,7 @@ export const AlertProvider = ({ children }) => {
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',
-        }}
-      >
+        }}>
         <StyledSnackbarContent
           bgColor={alertState.bgColor}
           message={<span id="client-snackbar">{alertState.message}</span>}
@@ -58,8 +63,7 @@ export const AlertProvider = ({ children }) => {
               key="close"
               aria-label="Close"
               color="inherit"
-              onClick={handleClose}
-            >
+              onClick={handleClose}>
               <CloseIcon style={{ color: '#fff' }} />
             </IconButton>,
           ]}
