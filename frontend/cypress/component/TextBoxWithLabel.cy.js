@@ -87,8 +87,7 @@ describe('<TextBoxWithLabel />', () => {
       />
     );
 
-    // eslint-disable-next-line cypress/unsafe-to-chain-command
-    cy.get('textarea').clear().type(updatedValue, { delay: 100 });
+    cy.get('textarea').type(updatedValue);
 
     // Assert the value is updated correctly
     const checkValue = () => value === updatedValue;
