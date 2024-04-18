@@ -70,9 +70,7 @@ describe('Beautiful Testing 2', () => {
     // Creating a new text box on the slide 5
     cy.get('[data-testid="edit-btn"]').click();
     cy.get('[data-testid="add-text-box-btn"]').click();
-    cy.get('[data-testid="title-text-box-test"]').type('HI HELLO HOW ARE YOU', {
-      force: true,
-    });
+    cy.get('[data-testid="title-text-box-test"]').type('HI HELLO HOW ARE YOU');
     cy.get('[data-testid="create-new-text-box-btn"]').click();
 
     // Moving the text box on the slide
@@ -141,8 +139,7 @@ describe('Beautiful Testing 2', () => {
     cy.get('[data-testid="edit-btn"]').click();
     cy.get('[data-testid="add-video-box-btn"]').click();
     cy.get('[data-testid="title-video-url-box-test"]').type(
-      'https://www.youtube.com/watch?v=lK4EZiIpC14&ab_channel=AmericanMuseumofNaturalHistory',
-      { force: true }
+      'https://www.youtube.com/watch?v=lK4EZiIpC14&ab_channel=AmericanMuseumofNaturalHistory'
     );
     cy.get('[data-testid="autoplay-checkbox-btn"]').click();
     cy.get('[data-testid="create-new-video-box-btn"]').click();
