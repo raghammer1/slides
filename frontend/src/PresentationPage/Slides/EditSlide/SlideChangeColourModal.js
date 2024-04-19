@@ -81,8 +81,16 @@ const SlideChangeColourModal = ({
     >
       <Title style={{ fontFamily: 'Arial' }}>Set Slide Background Color</Title>
       <ColorPickerContainer>
-        <SketchPicker color={color1} onChangeComplete={handleColor1Change} />
-        <SketchPicker color={color2} onChangeComplete={handleColor2Change} />
+        <SketchPicker
+          color={color1}
+          onChangeComplete={handleColor1Change}
+          data-testid="color-picker-1"
+        />
+        <SketchPicker
+          color={color2}
+          onChangeComplete={handleColor2Change}
+          data-testid="color-picker-2"
+        />
       </ColorPickerContainer>
       <GradientDirectionSelector>
         <label htmlFor="gradient-direction" style={{ fontFamily: 'Arial' }}>
