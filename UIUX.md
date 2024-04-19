@@ -7,3 +7,4 @@
 7. Familiarity: We have used design patterns that users are used to and understand already, meaning for example to change the title or properties of a presentation user hovers over the title and it underline showing intractability
 8. Usability: We have added a slides list as well so that user exactly understands the configuration of there presentation meaning how many slides there are which slide they are deleting exactly etc.
 9. Buttons will be disabled with a tip on hover so that user knows exactly the requirements of the form.
+10. For 2.4.3 instead of putting the arrow buttons we have implemented the right and left arrow key click for more user friendly behavior and also a better experience at the slideshow
