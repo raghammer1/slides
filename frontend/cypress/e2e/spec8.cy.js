@@ -4,7 +4,7 @@ describe('template spec', () => {
   });
 });
 
-describe('Edit Image Box', () => {
+describe('Re-Arrange slides testing', () => {
   let uniqueEmail;
 
   beforeEach(() => {
@@ -77,13 +77,34 @@ describe('Edit Image Box', () => {
     );
     cy.get('[data-testid="image-box-create-btn-test"]').click();
 
-    cy.get('[data-testid^="image-box-element-test"]').click();
-    cy.get('[data-testid^="image-box-element-test"]').click();
+    // Creating a new text box on the slide 5
+    cy.get('[data-testid="edit-btn"]').click();
+    cy.get('[data-testid="add-text-box-btn"]').click();
+    cy.get('[data-testid="title-text-box-test"]').type('HI HELLO HOW ARE YOU');
+    cy.get('[data-testid="create-new-text-box-btn"]').click();
 
-    cy.get('[data-testid="image-box-url-test-edit"]').clear();
-    cy.get('[data-testid="image-box-url-test-edit"]').type(
-      'https://images.pexels.com/photos/16946978/pexels-photo-16946978/free-photo-of-traditional-temple-by-the-square-in-tokyo.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load'
+    // Adding a new code on the slide 3
+    cy.get('[data-testid^="data-test-slide-"]').eq(2).click();
+    cy.get('[data-testid="edit-btn"]').click();
+    cy.get('[data-testid="add-code-box-btn"]').click();
+    cy.get('[data-testid="main-code-box-test"]').type(
+      "import fs from 'fs/promises';\nconsole.log(data);"
     );
-    cy.get('[data-testid="edit-image-box-btn"]').click();
+    cy.get('[data-testid="main-code-box-font-size-test"]').type('.1');
+    cy.wait(1000);
+    cy.get('[data-testid="create-new-code-box-btn"]').click();
+
+    // Adding a new video through url on the slide
+    cy.get('[data-testid="edit-btn"]').click();
+    cy.get('[data-testid="add-video-box-btn"]').click();
+    cy.get('[data-testid="title-video-url-box-test"]').type(
+      'https://www.youtube.com/watch?v=lK4EZiIpC14&ab_channel=AmericanMuseumofNaturalHistory'
+    );
+    cy.get('[data-testid="autoplay-checkbox-btn"]').click();
+    cy.get('[data-testid="create-new-video-box-btn"]').click();
+
+    // Adding a new image through url on the slide
+    cy.get('[data-testid^="presentation-re-arrange-page-"]').click();
+    cy.get('[data-testid="close-re-arrange-button"]').click();
   });
 });
