@@ -62,7 +62,7 @@ const CardBack = styled(CardSide)({
 });
 
 // PresentationCard component that utilizes the flipping card effect to display presentation details.
-const PresentationCard = ({ presentation }) => {
+const PresentationCard = ({ presentation, dataTestId }) => {
   const nav = useNavigate();
   const [isValid, setIsValid] = useState(false);
 

@@ -71,6 +71,7 @@ const PresentationList = ({ presentations, searchInput }) => {
                 height: '35px',
               }}
               onClick={handleOpenConfirmDialog}
+              dataTestid={'delete-all-presentations'}
             />
           </div>
         </Tooltip>
@@ -94,7 +95,11 @@ const PresentationList = ({ presentations, searchInput }) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseConfirmDialog}>Cancel</Button>
-          <Button onClick={handleDeleteConfirm} autoFocus>
+          <Button
+            data-testid={'delete-all-presentation-modal-btn'}
+            onClick={handleDeleteConfirm}
+            autoFocus
+          >
             Yes, Delete
           </Button>
         </DialogActions>

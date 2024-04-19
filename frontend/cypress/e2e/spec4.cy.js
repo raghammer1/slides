@@ -4,7 +4,7 @@ describe('template spec', () => {
   });
 });
 
-describe('Beautiful Testing 2', () => {
+describe('Testing presentation creation, thumbnail and delete all', () => {
   let uniqueEmail;
 
   beforeEach(() => {
@@ -32,12 +32,18 @@ describe('Beautiful Testing 2', () => {
     cy.get('[data-testid="create-presentation-name-test"]').type(
       'newPresentation'
     );
+    cy.get('[data-testid="create-presentation-thumbnail-input"]').type(
+      'https://images.pexels.com/photos/5191867/pexels-photo-5191867.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load'
+    );
     cy.get('[data-testid="create-presentation-name-test-button"]').click();
 
     // Creating a second presentation
     cy.get('[data-testid="newPresentationButton"]').click();
     cy.get('[data-testid="create-presentation-name-test"]').type(
       'newPresentation2'
+    );
+    cy.get('[data-testid="create-presentation-thumbnail-input"]').type(
+      'https://images.pexels.com/photos/5191867/pexels-photo-5191867.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load'
     );
     cy.get('[data-testid="create-presentation-name-test-button"]').click();
 
@@ -46,176 +52,15 @@ describe('Beautiful Testing 2', () => {
     cy.get('[data-testid="create-presentation-name-test"]').type(
       'newPresentation'
     );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-
-    // Creating a second presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation2'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-
-    // Creating a new presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
+    cy.get('[data-testid="create-presentation-description-input"]').type(
       'newPresentation'
     );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-
-    // Creating a second presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation2'
+    cy.get('[data-testid="create-presentation-thumbnail-input"]').type(
+      'https://images.pexels.com/photos/5191867/pexels-photo-5191867.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load'
     );
     cy.get('[data-testid="create-presentation-name-test-button"]').click();
 
-    // Creating a new presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-
-    // Creating a second presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation2'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-
-    // Creating a new presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-
-    // Creating a second presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation2'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-
-    // Creating a new presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-
-    // Creating a second presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation2'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-
-    // Creating a new presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-
-    // Creating a second presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation2'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-
-    // Creating a new presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-
-    // Creating a second presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation2'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-
-    // Creating a new presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-
-    // Creating a second presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation2'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-    // Creating a new presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-
-    // Creating a second presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation2'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-    // Creating a new presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-
-    // Creating a second presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation2'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-    // Creating a new presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-
-    // Creating a second presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation2'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-    // Creating a new presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-
-    // Creating a second presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation2'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-    // Creating a new presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
-
-    // Creating a second presentation
-    cy.get('[data-testid="newPresentationButton"]').click();
-    cy.get('[data-testid="create-presentation-name-test"]').type(
-      'newPresentation2'
-    );
-    cy.get('[data-testid="create-presentation-name-test-button"]').click();
+    cy.get('[data-testid="delete-all-presentations"]').click();
+    cy.get('[data-testid="delete-all-presentation-modal-btn"]').click();
   });
 });

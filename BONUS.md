@@ -6,3 +6,4 @@
 6. Used ZuStand instead of React-Redux to learn the new and upcoming technology.
 7. Buttons will be disabled with a tip on hover so that user knows exactly the requirements of the website.
 8. Showing Alert notification to showcase actions that users are taking without any apparent changes on the UI.
+9. Users can give URL or upload image to add element on the slide

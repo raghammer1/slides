@@ -5,6 +5,7 @@ import CustomPrimaryButton from '../../../../components/CustomePrimaryButton';
 import InputLabelRange from '../../../../components/InputLabelRange';
 import usePresentationListStore from '../../../../zustandStore/usePresentationListStore';
 import SelectWithLabel from '../../../../components/SelectWithLabel';
+import { Typography } from '@mui/material';
 
 const style = {
   position: 'absolute',
@@ -57,8 +58,11 @@ const TextBoxDoubleClick = ({
       handleCloseCreateTextBox={handleCloseEditTextBox}
       style={style}
     >
+      <Typography style={{ fontSize: '24px', color: '#fff' }}>
+        Edit Text Box
+      </Typography>
       <InputWithLabels
-        dataTestId={'title-text-box-test'}
+        dataTestId={'title-text-box-test-edit'}
         value={title}
         setValue={setTitle}
         type="Title"
@@ -100,7 +104,7 @@ const TextBoxDoubleClick = ({
         label="Save"
         additionalStyle={{ marginTop: '30px' }}
         onClick={handleEditTextBoxHere}
-        dataTestid={'create-new-text-box-btn'}
+        dataTestid={'edited-text-box-btn'}
       />
     </CustomModal>
   );

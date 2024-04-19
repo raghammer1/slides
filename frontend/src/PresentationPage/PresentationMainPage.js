@@ -184,6 +184,7 @@ const PresentationDetail = () => {
         alignItems: 'center',
         height: '100vh',
       }}
+      data-testid={`presentation-id-${presentation.id}`}
     >
       <div
         style={{
@@ -248,7 +249,7 @@ const PresentationDetail = () => {
               color: 'white',
             }}
             onClick={handleOpenSlideshow}
-            dataTestid={`presentation-re-arrange-page-${presentation.id}`}
+            dataTestid={`presentation-slideshow-page-${presentation.id}`}
           />
         </Wrapper>
       </Wrapper2>
