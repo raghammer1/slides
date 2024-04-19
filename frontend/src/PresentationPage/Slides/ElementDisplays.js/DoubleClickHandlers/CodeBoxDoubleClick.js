@@ -10,6 +10,7 @@ import TextBoxWithLabel from '../../../../components/TextBoxWithLabel';
 import InputWithLabels from '../../../../components/InputLabel';
 import CustomPrimaryButton from '../../../../components/CustomePrimaryButton';
 import usePresentationListStore from '../../../../zustandStore/usePresentationListStore';
+import { Typography } from '@mui/material';
 
 // Custom styling for this element.
 const style = {
@@ -82,6 +83,9 @@ const CodeBoxDoubleClick = ({
       handleCloseCreateTextBox={handleCloseCodeHandler}
       style={style}
     >
+      <Typography style={{ fontSize: '24px', color: '#fff' }}>
+        Edit Code Box
+      </Typography>
       <div style={{ width: '100px', height: '100px' }}>
         <pre
           aria-hidden="true"

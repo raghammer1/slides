@@ -3,6 +3,7 @@ import CustomModal from '../../../../components/CustomModal';
 import InputWithLabels from '../../../../components/InputLabel';
 import CustomPrimaryButton from '../../../../components/CustomePrimaryButton';
 import usePresentationListStore from '../../../../zustandStore/usePresentationListStore';
+import { Typography } from '@mui/material';
 
 const style = {
   position: 'absolute',
@@ -51,6 +52,9 @@ const VideoDoubleClick = ({
       handleCloseCreateTextBox={handleCloseEditTextBox}
       style={style}
     >
+      <Typography style={{ fontSize: '24px', color: '#fff' }}>
+        Edit Video
+      </Typography>
       <InputWithLabels
         dataTestId={'title-video-url-box-test'}
         value={videoUrl}

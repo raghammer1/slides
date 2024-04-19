@@ -78,6 +78,9 @@ const ImageBoxDoubleClick = ({
       handleCloseCreateTextBox={handleCloseEditTextBox}
       style={style}
     >
+      <Typography style={{ fontSize: '24px', color: '#fff' }}>
+        Edit Image
+      </Typography>
       <InputWithLabels
         dataTestId={'imageAlt-text-box-test'}
         value={imageAlt}
@@ -107,7 +110,7 @@ const ImageBoxDoubleClick = ({
         {imageInputType === 'url' ? (
           <div>
             <InputWithLabels
-              dataTestId={'image-box-url-test'}
+              dataTestId={'image-box-url-test-edit'}
               value={selectedFile}
               setValue={setSelectedFile}
               type="Url"
@@ -162,7 +165,7 @@ const ImageBoxDoubleClick = ({
         label="Save"
         additionalStyle={{ marginTop: '30px' }}
         onClick={handleEditTextBoxHere}
-        dataTestid={'create-new-text-box-btn'}
+        dataTestid={'edit-image-box-btn'}
       />
     </CustomModal>
   );
