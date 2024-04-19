@@ -1,3 +1,4 @@
+// Encodes a file to Base64 and calls the callback function with the result.
 export const imageEncoder = (file, callback) => {
   if (file) {
     const reader = new FileReader();

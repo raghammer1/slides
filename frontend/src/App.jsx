@@ -9,6 +9,10 @@ import { AlertProvider } from './components/AlertError.js';
 import ReArrangeMainPage from './PresentationPage/ReArrangeSlides/ReArrangeMainPage.js';
 import PreviewPresentationMain from './PreviewPresentation/PreviewPresentationMain.js';
 
+/**
+ * Main application component that sets up routing and global providers.
+ * Handles the routing for login, registration, dashboard, and presentation management.
+ */
 const App = () => {
   return (
     <div>
