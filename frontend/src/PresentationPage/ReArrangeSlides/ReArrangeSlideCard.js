@@ -8,6 +8,7 @@ import { Typography } from '@mui/material';
 import CodePreview from '../../PreviewPresentation/PreviewElementDisplay/CodePreview';
 import { styled } from '@mui/system';
 
+// Component to render and manage a draggable slide card.
 const ReArrangeSlideCard = ({ id, slide }) => {
   const Card = styled('div')({
     width: '300px',
@@ -18,18 +19,21 @@ const ReArrangeSlideCard = ({ id, slide }) => {
     border: '2px #333 solid',
     backgroundImage: slide.bgCol
       ? slide.bgCol
-      : 'linear-gradient(to bottom right, #999, #999)',
+      : 'linear-gradient(to bottom right, #999, #999)', // Default or slide-specific background.
     borderRadius: '9px',
   });
 
+  // Hooks into DnD Kit's sortable functionality to manage drag-and-drop.
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: id.toString() }); // Hooks into DnD Kit's sortable functionality.
 
+  // Applies CSS transformations and transitions for smooth dragging effects.
   const style = {
     transform: CSS.Transform.toString(transform), // Applies CSS transformations for drag motion.
     transition,
   };
 
+  // Retrieves the last element from a slide's elements array to display.
   const getElements = (selectedSlide) => {
     if (selectedSlide?.elements?.length) {
       const lastElementObj =
@@ -40,6 +44,7 @@ const ReArrangeSlideCard = ({ id, slide }) => {
     return [];
   };
 
+  // Define a fixed size for the elements to be previewed.
   const size = { width: 200, height: 100 };
 
   return (
@@ -47,8 +52,7 @@ const ReArrangeSlideCard = ({ id, slide }) => {
       ref={setNodeRef}
       style={{ ...style, marginBottom: '20px' }}
       {...attributes}
-      {...listeners}
-    >
+      {...listeners}>
       <Card>
         {getElements(slide).map((element) => {
           if (element.type === 'textarea') {
