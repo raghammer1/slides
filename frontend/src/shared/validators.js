@@ -1,9 +1,11 @@
+// Validates the input of a login form.
 export const validateLoginForm = ({ mail, password }) => {
   const isMailValid = validateMail(mail);
   const isPassValid = validatePassword(password);
   return isMailValid && isPassValid;
 };
 
+// Validates the input of a registration form.
 export const validateRegisterForm = ({
   mail,
   username,
@@ -30,14 +32,17 @@ export const validateRegisterForm = ({
   };
 };
 
+// Validates a username based on length.
 const validateUsername = (username) => {
   return username.length >= 3 && username.length <= 12;
 };
 
+// Validates a password based on length.
 const validatePassword = (pass) => {
   return pass.length >= 6 && pass.length <= 12;
 };
 
+// Validates an email address using a regular expression.
 export const validateMail = (mail) => {
   const emailPatter = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   return emailPatter.test(mail);
