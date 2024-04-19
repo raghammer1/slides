@@ -10,9 +10,6 @@ describe('Beautiful Testing 2', () => {
   beforeEach(() => {
     const timestamp = Date.now();
     uniqueEmail = `newUser${timestamp}@example.com`;
-  });
-
-  it('allows a user to navigate the whole app', () => {
     // Going to the register route
     cy.visit('http://localhost:3000/register');
     cy.viewport(1500, 1000);
@@ -23,7 +20,9 @@ describe('Beautiful Testing 2', () => {
     cy.get('[data-testid="Enter-Password-data"]').type('yourpassword');
     cy.get('[data-testid="Re-Enter-Password-data"]').type('yourpassword');
     cy.get('[data-testid="register-button"]').click();
+  });
 
+  it('allows a user to navigate the whole app', () => {
     // User now taken to dashboard on successful register
     cy.url().should('include', '/dashboard');
 
@@ -114,7 +113,7 @@ describe('Beautiful Testing 2', () => {
     cy.get('input[type="radio"][value="url"]').click();
     cy.get('[data-testid="image-box-alt-test"]').type('Girl');
     cy.get('[data-testid="image-box-url-test"]').type(
-      'https://images.pexels.com/photos/1202363/pexels-photo-1202363.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      'https://images.pexels.com/photos/3238529/pexels-photo-3238529.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load'
     );
     cy.get('[data-testid="image-box-create-btn-test"]').click();
 
@@ -220,18 +219,29 @@ describe('Beautiful Testing 2', () => {
 
     cy.get('[data-testid="edit-btn"]').click();
     cy.get('[data-testid="open-color-changer-btn"]').click();
-    cy.get('.sketch-picker input')
-      .first() // Assuming the first input corresponds to the first color picker
-      .invoke('val', '#123456')
-      .trigger('change');
-
-    // Set the secondary color
-    cy.get('.sketch-picker input')
-      .eq(1) // Assuming the second input corresponds to the second color picker
-      .invoke('val', '#654321')
-      .trigger('change');
-
-    // Submit the colors by clicking the 'Set Gradient Background' button
     cy.get('button[data-testid="apply-gradient"]').click();
+
+    cy.get('[data-testid^="data-test-slide-"]').eq(1).click();
+    cy.get('[data-testid="edit-btn"]').click();
+    cy.get('[data-testid="open-color-changer-btn"]').click();
+    cy.get('button[data-testid="apply-gradient"]').click();
+
+    cy.get('body').trigger('keydown', { key: 'ArrowRight' });
+
+    cy.get('[data-testid^="presentation-id-"]')
+      .invoke('attr', 'data-testid')
+      .then((dataTestId) => {
+        const presentationId = dataTestId.split('presentation-id-')[1];
+        cy.log('Presentation ID:', presentationId); // Now you have the ID
+        cy.visit(`/preview/${presentationId}/2`);
+        cy.wait(5000);
+        // Simulating moving between slides using keyboard keys
+        cy.get('body').trigger('keydown', { key: 'ArrowRight' });
+        cy.get('body').trigger('keydown', { key: 'ArrowRight' });
+        cy.get('body').trigger('keydown', { key: 'ArrowRight' });
+        cy.get('body').trigger('keydown', { key: 'ArrowRight' });
+        cy.get('body').trigger('keydown', { key: 'ArrowRight' });
+        cy.get('body').trigger('keydown', { key: 'ArrowLeft' });
+      });
   });
 });

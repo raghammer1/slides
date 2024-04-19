@@ -112,6 +112,7 @@ const SlideChangeColourModal = ({
         </select>
       </GradientDirectionSelector>
       <CustomPrimaryButton
+        dataTestid={'apply-gradient'}
         label="Set Gradient Background"
         onClick={applyGradient}
       />
