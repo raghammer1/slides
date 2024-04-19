@@ -4,7 +4,7 @@ describe('template spec', () => {
   });
 });
 
-describe('Beautiful Testing 2', () => {
+describe('Testing slideshow', () => {
   let uniqueEmail;
 
   beforeEach(() => {

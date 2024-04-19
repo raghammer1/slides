@@ -4,7 +4,7 @@ describe('template spec', () => {
   });
 });
 
-describe('Edit Text Box', () => {
+describe('Edit Image Box', () => {
   let uniqueEmail;
 
   beforeEach(() => {
