@@ -44,4 +44,6 @@ npm run test:coverage
 16. User then deletes all the slides hence deleting the presentation
 17. User back on the dashboard
 
+# CREATED MORE E2E TESTING TO INCREASE COVERAGE TO (85%)+
+
 # COMMENTS FOR COMPONENT TESTING
