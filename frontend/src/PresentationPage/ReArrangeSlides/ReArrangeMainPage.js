@@ -97,7 +97,7 @@ const ReArrangeMainPage = () => {
         label="Close"
         additionalStyle={{ marginTop: '30px', width: '100px' }}
         onClick={handleGoToSlideFunction}
-        dataTestid="login-button"
+        dataTestid="close-re-arrange-button"
       />
     </Wrapper>
   );
