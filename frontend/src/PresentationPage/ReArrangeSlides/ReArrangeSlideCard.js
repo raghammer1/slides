@@ -52,7 +52,8 @@ const ReArrangeSlideCard = ({ id, slide }) => {
       ref={setNodeRef}
       style={{ ...style, marginBottom: '20px' }}
       {...attributes}
-      {...listeners}>
+      {...listeners}
+    >
       <Card>
         {getElements(slide).map((element) => {
           if (element.type === 'textarea') {
