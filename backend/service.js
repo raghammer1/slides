@@ -58,7 +58,7 @@ export const setup = () => {
 // if (!onlyOnce) {
 //   setup();
 //   onlyOnce = true;
-// }
+// }.
 
 /***************************************************************
                        Helper Functions
