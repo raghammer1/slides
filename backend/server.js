@@ -280,6 +280,7 @@ const corsOptions = {
 
 // Apply CORS to all routes
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
