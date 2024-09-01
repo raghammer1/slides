@@ -2,12 +2,12 @@ import fs from 'fs';
 import jwt from 'jsonwebtoken';
 import AsyncLock from 'async-lock';
 import { InputError, AccessError } from './error';
-const path = require('path');
+import path from 'path';
 
 const lock = new AsyncLock();
 
 const JWT_SECRET = 'llamallamaduck';
-const DATABASE_FILE = `${path.basename(__dirname)}/database.json`;
+const DATABASE_FILE = path.join(__dirname, 'database.json');
 
 /***************************************************************
                        State Management
