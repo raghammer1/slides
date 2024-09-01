@@ -228,10 +228,10 @@ app.get('/', (req, res) => res.redirect('/docs'));
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // No app.listen() here to avoid conflicts in a serverless environment
-const server = app.listen(5005, () => {
-  console.log(`Backend is now listening on 5005 ${5005}!`);
-  console.log(`For API docs, navigate to http://localhost:${5005}`);
-});
+// const server = app.listen(port, () => {
+//   console.log(`Backend is now listening on port ${port}!`);
+//   console.log(`For API docs, navigate to http://localhost:${port}`);
+// });
 
 // Export the Express app so Vercel can handle the request/response lifecycle
-export default server;
+export default app;
