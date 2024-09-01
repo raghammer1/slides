@@ -34,7 +34,7 @@ const catchErrors = (fn) => async (req, res) => {
       res.status(403).send({ error: err.message });
     } else {
       console.log(err);
-      res.status(500).send({ error: 'A system error ocurred' });
+      res.status(500).send({ error: 'A system error occurred' });
     }
   }
 };
@@ -112,9 +112,19 @@ const configData = JSON.parse(
 );
 const port = 'BACKEND_PORT' in configData ? configData.BACKEND_PORT : 5000;
 
-const server = app.listen(port, () => {
-  console.log(`Backend is now listening on port ${port}!`);
-  console.log(`For API docs, navigate to http://localhost:${port}`);
-});
+    const server = app.listen(port, () => {
+      console.log(`Backend is now listening on port ${port}!`);
+      console.log(`For API docs, navigate to http://localhost:${port}`);
+    });
+
+    serverStarted = true; // Mark server as started
+    return server;
+  } else {
+    console.log('Server is already running. Cannot start it again.');
+    return null;
+  }
+};
+
+const server = startServer(); // Start the server
 
 export default server;
