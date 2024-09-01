@@ -1,0 +1,9 @@
+{
+  "admins": {
+    "ragh@g.com": {
+      "name": "Raghava",
+      "password": "raghuraghu",
+      "store": {}
+    }
+  }
+}
