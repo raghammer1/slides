@@ -34,7 +34,7 @@ const catchErrors = (fn) => async (req, res) => {
       res.status(403).send({ error: err.message });
     } else {
       console.log(err);
-      res.status(500).send({ error: 'A system error ocurred' });
+      res.status(500).send({ error: 'A system error occurred' });
     }
   }
 };
@@ -103,18 +103,29 @@ app.put(
                        Running Server
 ***************************************************************/
 
-app.get('/', (req, res) => res.redirect('/docs'));
+// Variable to track whether the server has been started
+let serverStarted = false;
 
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+const startServer = () => {
+  if (!serverStarted) {
+    const configData = JSON.parse(
+      fs.readFileSync(path.join(__dirname, './config.json'))
+    );
+    const port = 'BACKEND_PORT' in configData ? configData.BACKEND_PORT : 5000;
 
-const configData = JSON.parse(
-  fs.readFileSync(path.join(__dirname, './config.json'))
-);
-const port = 'BACKEND_PORT' in configData ? configData.BACKEND_PORT : 5000;
+    const server = app.listen(port, () => {
+      console.log(`Backend is now listening on port ${port}!`);
+      console.log(`For API docs, navigate to http://localhost:${port}`);
+    });
 
-const server = app.listen(port, () => {
-  console.log(`Backend is now listening on port ${port}!`);
-  console.log(`For API docs, navigate to http://localhost:${port}`);
-});
+    serverStarted = true; // Mark server as started
+    return server;
+  } else {
+    console.log('Server is already running. Cannot start it again.');
+    return null;
+  }
+};
+
+const server = startServer(); // Start the server
 
 export default server;
