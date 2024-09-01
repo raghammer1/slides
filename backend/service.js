@@ -44,12 +44,19 @@ export const reset = () => {
   admins = {};
 };
 
-try {
-  const data = JSON.parse(fs.readFileSync(DATABASE_FILE));
-  admins = data.admins;
-} catch {
-  console.log('WARNING: No database found, create a new one');
-  save();
+const setup = () => {
+  try {
+    const data = JSON.parse(fs.readFileSync(DATABASE_FILE));
+    admins = data.admins;
+  } catch {
+    console.log('WARNING: No database found, create a new one');
+    save();
+  }
+};
+const onlyOnce = false;
+if (!onlyOnce) {
+  setup();
+  onlyOnce = true;
 }
 
 /***************************************************************
