@@ -108,7 +108,7 @@ app.get('/', (req, res) => res.redirect('/docs'));
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const configData = JSON.parse(
-  fs.readFileSync(path.join(__dirname, '../frontend/src/config.json'))
+  fs.readFileSync(path.join(__dirname, './config.json'))
 );
 const port = 'BACKEND_PORT' in configData ? configData.BACKEND_PORT : 5000;
 
