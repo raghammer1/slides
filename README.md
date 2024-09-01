@@ -9,7 +9,7 @@
 7. Originality of Work
 8. Submission
 9. Late Submission Policy
-   lol
+   lol loler
 
 ## 0. Change Log
 
@@ -214,8 +214,10 @@ Note: The behaviour after current slide is deleted could be implemented entirely
 #### 2.3.6. 🙉🙉🙉 Making elements resizable
 
 - For all of `2.3.1`, `2.3.2`, `2.3.3`, `2.3.4`, and `2.3.5`, change it so that:
+
   - When you double click on a block, it no longer displays the position as an option to edit the size of the block
   - When you click on a block once, each of the 4 corners should now have a small `5px` x `5px` solid box on it, whereby:
+
     - If the user clicks and drags the corners, they can increase or decrease the size of the box.
     - The block cannot be resized smaller than `1%` of width or height.
     - The block cannot have any of its corners extend beyond the edges of the slide.
