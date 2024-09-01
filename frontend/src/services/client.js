@@ -3,7 +3,7 @@ import axios from 'axios';
 // Creates an Axios instance configured with base settings.
 const apiClient = axios.create({
   baseURL: 'https://slides-seven-iota.vercel.app', // Base URL for all requests.
-  timeout: 1000, // Request timeout set to 1000 milliseconds.
+  timeout: 10000, // Request timeout set to 1000 milliseconds.
 });
 
 // Adds a request interceptor to include a bearer token in each request's headers.
