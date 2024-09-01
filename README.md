@@ -9,7 +9,7 @@
 7. Originality of Work
 8. Submission
 9. Late Submission Policy
-   lol loler
+   lol lolerl
 
 ## 0. Change Log
 
