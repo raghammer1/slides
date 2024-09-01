@@ -53,7 +53,8 @@ const setup = () => {
     save();
   }
 };
-const onlyOnce = false;
+
+let onlyOnce = false;
 if (!onlyOnce) {
   setup();
   onlyOnce = true;
