@@ -346,6 +346,7 @@ app.post(
 
 app.get(
   '/store',
+  cors(corsOptions),
   catchErrors(
     authed(async (req, res, email) => {
       return res.json({ store: await getStore(email) });
@@ -355,6 +356,7 @@ app.get(
 
 app.put(
   '/store',
+  cors(corsOptions),
   catchErrors(
     authed(async (req, res, email) => {
       await setStore(email, req.body.store);
