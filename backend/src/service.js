@@ -6,7 +6,7 @@ import { InputError, AccessError } from './error';
 const lock = new AsyncLock();
 
 const JWT_SECRET = 'llamallamaduck';
-const DATABASE_FILE = './../database.json';
+const DATABASE_FILE = './database.json';
 
 /***************************************************************
                        State Management
