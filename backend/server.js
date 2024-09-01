@@ -258,6 +258,7 @@ import {
   getStore,
   setStore,
   save,
+  setup,
 } from './service';
 
 const app = express();
@@ -374,6 +375,8 @@ app.put(
 app.get('/', (req, res) => res.redirect('/docs'));
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+setup();
 
 // Export the Express app so Vercel can handle the request/response lifecycle
 export default app;

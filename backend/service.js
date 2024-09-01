@@ -44,7 +44,7 @@ export const reset = () => {
   admins = {};
 };
 
-const setup = () => {
+export const setup = () => {
   try {
     const data = JSON.parse(fs.readFileSync(DATABASE_FILE));
     admins = data.admins;
@@ -54,11 +54,11 @@ const setup = () => {
   }
 };
 
-let onlyOnce = false;
-if (!onlyOnce) {
-  setup();
-  onlyOnce = true;
-}
+// let onlyOnce = false;
+// if (!onlyOnce) {
+//   setup();
+//   onlyOnce = true;
+// }
 
 /***************************************************************
                        Helper Functions
