@@ -273,7 +273,7 @@ const corsOptions = {
       callback(new Error('Not allowed by CORS'));
     }
   },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 };
@@ -281,6 +281,7 @@ const corsOptions = {
 // Apply CORS to all routes
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
+app.options('/store', cors(corsOptions)); // Handle preflight requests for /store
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
