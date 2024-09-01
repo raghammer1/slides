@@ -139,7 +139,14 @@ import {
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = ['https://slides-frontend-sigma.vercel.app'];
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ limit: '50mb' }));
 
