@@ -126,7 +126,7 @@ import cors from 'cors';
 import path from 'path';
 
 import { InputError, AccessError } from './error';
-import swaggerDocument from '../swagger.json';
+import swaggerDocument from './swagger.json';
 import {
   getEmailFromAuthorization,
   login,
